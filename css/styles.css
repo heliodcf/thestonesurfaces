@@ -2247,6 +2247,23 @@ p {
   .user-toggle { display: none; }
   .nav-toggle { display: flex; }
 
+  .hero-content {
+    padding: 0 32px;
+  }
+
+  .carousel-track {
+    padding: 0 32px;
+  }
+
+  .carousel-card {
+    flex: 0 0 300px;
+  }
+
+  .lucciare-flare {
+    width: 350px;
+    height: 350px;
+  }
+
   .hero .hanstone-badge { display: none; }
   .hero-badges { display: none; }
 }
@@ -2285,8 +2302,45 @@ p {
     gap: 32px;
   }
 
+  .hero-content {
+    padding: 0 var(--padding-mobile);
+  }
+
+  .hero-content .subheadline {
+    font-size: 16px;
+  }
+
+  .carousel-track {
+    padding: 0 var(--padding-mobile);
+    gap: 16px;
+  }
+
   .carousel-card {
-    flex: 0 0 280px;
+    flex: 0 0 260px;
+  }
+
+  .testimonial-carousel {
+    max-width: 100%;
+    padding: 32px 20px;
+  }
+
+  .testimonial-item blockquote {
+    font-size: 18px;
+  }
+
+  .lucciare-flare {
+    width: 250px;
+    height: 250px;
+  }
+
+  .lucciare-flare--top-right {
+    top: -100px;
+    right: -80px;
+  }
+
+  .lucciare-flare--bottom-left {
+    bottom: -100px;
+    left: -80px;
   }
 
   .newsletter-form {
