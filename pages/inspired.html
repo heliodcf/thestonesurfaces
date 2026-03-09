@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Inspired — The Stone Surfaces Gallery</title>
+  <meta name="description" content="Browse stunning real-world projects featuring granite, marble, quartz, quartzite, and porcelain surfaces. Get inspired for your next kitchen, bathroom, or commercial project.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Get Inspired — The Stone Surfaces Gallery">
+  <meta property="og:description" content="Real projects, real materials, real beauty. Explore our gallery of stunning stone surface installations across South Florida.">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/styles.css">
+
+  <style>
+    /* ===== INSPIRED PAGE STYLES ===== */
+
+    /* Page Hero */
+    .inspired-hero {
+      padding: 160px 0 80px;
+      background: var(--color-dark, #1a1a1a);
+      text-align: center;
+    }
+    .inspired-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(42px, 6vw, 72px);
+      font-weight: 300;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .inspired-hero .subtext {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      color: rgba(255,255,255,0.6);
+      font-weight: 400;
+    }
+
+    /* Filter Bar */
+    .filter-bar {
+      background: var(--color-surface, #f8f6f3);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      padding: 24px 0;
+      position: sticky;
+      top: 72px;
+      z-index: 90;
+    }
+    .filter-bar .container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+    }
+    .filter-tabs {
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+    .filter-tab {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 8px 20px;
+      border-radius: 100px;
+      border: 1px solid rgba(0,0,0,0.12);
+      background: transparent;
+      color: var(--color-text-dark, #1a1a1a);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .filter-tab:hover,
+    .filter-tab.active {
+      background: var(--color-text-dark, #1a1a1a);
+      color: #fff;
+      border-color: var(--color-text-dark, #1a1a1a);
+    }
+    .filter-select {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      padding: 8px 36px 8px 16px;
+      border-radius: 100px;
+      border: 1px solid rgba(0,0,0,0.12);
+      background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%231a1a1a' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center;
+      appearance: none;
+      cursor: pointer;
+      color: var(--color-text-dark, #1a1a1a);
+    }
+
+    /* Masonry Gallery */
+    .masonry-gallery {
+      padding: 64px 0;
+    }
+    .masonry-grid {
+      columns: 3;
+      column-gap: 24px;
+    }
+    .masonry-item {
+      break-inside: avoid;
+      margin-bottom: 24px;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+    .masonry-item img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    .masonry-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 50%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 24px;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .masonry-item:hover .masonry-overlay {
+      opacity: 1;
+    }
+    .masonry-overlay h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .masonry-overlay .meta {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+    }
+    .masonry-overlay .meta span + span::before {
+      content: " · ";
+    }
+
+    /* Before/After Section */
+    .before-after-section {
+      padding: 80px 0;
+      background: var(--color-surface, #f8f6f3);
+    }
+    .ba-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 32px;
+      margin-top: 48px;
+    }
+    .ba-card {
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+    .ba-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+    }
+    .ba-images img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+    .ba-images .ba-label {
+      position: absolute;
+      bottom: 12px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #fff;
+      background: rgba(0,0,0,0.5);
+      padding: 4px 12px;
+      border-radius: 100px;
+    }
+    .ba-images .ba-label--before { left: 12px; }
+    .ba-images .ba-label--after { right: 12px; }
+    .ba-card-body {
+      padding: 24px;
+    }
+    .ba-card-body h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--color-text-dark, #1a1a1a);
+      margin-bottom: 8px;
+    }
+    .ba-card-body p {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      color: var(--color-text-muted, #6b6b6b);
+      line-height: 1.6;
+    }
+
+    /* Instagram Feed */
+    .instagram-section {
+      padding: 80px 0;
+    }
+    .insta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-top: 48px;
+    }
+    .insta-item {
+      aspect-ratio: 1;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+    .insta-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .insta-item::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.3);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .insta-item:hover::after {
+      opacity: 1;
+    }
+
+    /* Submit Section */
+    .submit-section {
+      padding: 80px 0;
+      background: var(--color-dark, #1a1a1a);
+      color: #fff;
+    }
+    .submit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      margin-top: 48px;
+    }
+    .submit-info h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 300;
+      margin-bottom: 16px;
+    }
+    .submit-info p {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
+    }
+    .submit-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .submit-form input,
+    .submit-form textarea {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      padding: 14px 20px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+    .submit-form input::placeholder,
+    .submit-form textarea::placeholder {
+      color: rgba(255,255,255,0.35);
+    }
+    .submit-form input:focus,
+    .submit-form textarea:focus {
+      border-color: var(--color-cta, #c9a96e);
+    }
+    .submit-form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    .file-upload {
+      border: 2px dashed rgba(255,255,255,0.15);
+      border-radius: 8px;
+      padding: 32px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.3s ease;
+    }
+    .file-upload:hover {
+      border-color: var(--color-cta, #c9a96e);
+    }
+    .file-upload-icon {
+      font-size: 28px;
+      margin-bottom: 8px;
+      color: rgba(255,255,255,0.4);
+    }
+    .file-upload p {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      color: rgba(255,255,255,0.4);
+    }
+    .file-upload p strong {
+      color: var(--color-cta, #c9a96e);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .masonry-grid { columns: 2; }
+    }
+    @media (max-width: 768px) {
+      .masonry-grid { columns: 1; }
+      .filter-bar .container { flex-direction: column; align-items: flex-start; }
+      .insta-grid { grid-template-columns: repeat(2, 1fr); }
+      .submit-grid { grid-template-columns: 1fr; gap: 40px; }
+      .ba-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header header--transparent">
+    <div class="container">
+      <a href="../index.html" class="logo">
+        <img src="../images/header/TSS_LOGO.png" alt="The Stone Surfaces" class="logo-img">
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="products.html" data-mega-menu>Products</a>
+        <a href="hanstone.html">Hanstone Quartz</a>
+        <a href="inspired.html" class="active">Get Inspired</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+        <a href="trade.html">For The Trade</a>
+      </nav>
+
+      <!-- Mega Menu -->
+      <div class="mega-menu">
+        <div class="container">
+          <div class="mega-menu-grid">
+            <a href="products.html#granite" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/Granite.jpg" alt="Granite"></div>
+              <h4>Granite</h4>
+            </a>
+            <a href="products.html#marble" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/marble.jpg" alt="Marble"></div>
+              <h4>Marble</h4>
+            </a>
+            <a href="products.html#quartz" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/Quartz.jpg" alt="Quartz"></div>
+              <h4>Quartz</h4>
+            </a>
+            <a href="products.html#quartzite" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/Quartzite.jpg" alt="Quartzite"></div>
+              <h4>Quartzite</h4>
+            </a>
+            <a href="products.html#dolomite" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/Dolomite.jpg" alt="Dolomite"></div>
+              <h4>Dolomite</h4>
+            </a>
+            <a href="products.html#hard-marble" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/Hard_Marble.jpg" alt="Hard Marble"></div>
+              <h4>Hard Marble</h4>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <a href="contact.html" class="btn btn--primary">Request a Quote</a>
+        <div class="nav-toggle" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu">
+    <a href="products.html">Products</a>
+    <a href="hanstone.html">Hanstone Quartz</a>
+    <a href="inspired.html" class="active">Get Inspired</a>
+    <a href="blog.html">Blog</a>
+    <a href="about.html">About</a>
+    <a href="trade.html">For The Trade</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <main>
+
+    <!-- ===== SECTION 1: PAGE HERO ===== -->
+    <section class="inspired-hero">
+      <div class="container">
+        <span class="label reveal">GALLERY</span>
+        <h1 class="reveal">Get Inspired</h1>
+        <p class="subtext reveal">Real projects, real materials, real beauty.</p>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 2: FILTER BAR ===== -->
+    <div class="filter-bar">
+      <div class="container">
+        <div class="filter-tabs">
+          <button class="filter-tab active" data-filter="all">All</button>
+          <button class="filter-tab" data-filter="kitchen">Kitchen</button>
+          <button class="filter-tab" data-filter="bathroom">Bathroom</button>
+          <button class="filter-tab" data-filter="commercial">Commercial</button>
+          <button class="filter-tab" data-filter="outdoor">Outdoor</button>
+          <button class="filter-tab" data-filter="living">Living Space</button>
+        </div>
+
+        <select class="filter-select" aria-label="Filter by material">
+          <option value="">All Materials</option>
+          <option value="granite">Granite</option>
+          <option value="marble">Marble</option>
+          <option value="quartz">Quartz</option>
+          <option value="quartzite">Quartzite</option>
+          <option value="dolomite">Dolomite</option>
+          <option value="hard-marble">Hard Marble</option>
+        </select>
+
+        <select class="filter-select" aria-label="Filter by color family">
+          <option value="">All Colors</option>
+          <option value="white">White &amp; Cream</option>
+          <option value="gray">Gray &amp; Charcoal</option>
+          <option value="brown">Brown &amp; Tan</option>
+          <option value="black">Black &amp; Dark</option>
+          <option value="blue">Blue &amp; Green</option>
+          <option value="gold">Gold &amp; Warm</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- ===== SECTION 3: MASONRY GALLERY ===== -->
+    <section class="masonry-gallery section">
+      <div class="container">
+        <div class="masonry-grid">
+
+          <div class="masonry-item reveal" data-room="kitchen" data-material="quartzite">
+            <img src="../images/inspired/kitchen-quartzite-island.jpg" alt="Taj Mahal Quartzite Kitchen Island" style="height: 360px;">
+            <div class="masonry-overlay">
+              <h4>Taj Mahal Quartzite</h4>
+              <div class="meta"><span>Kitchen Island</span><span>Design by Rivera Studio</span></div>
+            </div>
+          </div>
+
+          <div class="masonry-item reveal reveal-delay-1" data-room="bathroom" data-material="marble">
+            <img src="../images/inspired/bathroom-marble.jpg" alt="Calacatta Gold Marble Bathroom" style="height: 280px;">
+            <div class="masonry-overlay">
+              <h4>Calacatta Gold Marble</h4>
+              <div class="meta"><span>Primary Bathroom</span><span>Design by Lux Interiors</span></div>
+            </div>
+          </div>
+
+          <div class="masonry-item reveal reveal-delay-2" data-room="commercial" data-material="granite">
+            <img src="../images/inspired/hotel-lobby-granite.jpg" alt="Black Galaxy Granite Hotel Lobby" style="height: 420px;">
+            <div class="masonry-overlay">
+              <h4>Black Galaxy Granite</h4>
+              <div class="meta"><span>Hotel Lobby</span><span>Design by Coastal Arch Group</span></div>
+            </div>
+          </div>
+
+          <div class="masonry-item reveal" data-room="kitchen" data-material="quartz">
+            <img src="../images/inspired/kitchen-quartz-white.jpg" alt="Hanstone Tranquility Kitchen" style="height: 300px;">
+            <div class="masonry-overlay">
+              <h4>Hanstone Tranquility</h4>
+              <div class="meta"><span>Kitchen Countertops</span><span>Design by Forma Design</span></div>
+            </div>
+          </div>
+
+          <div class="masonry-item reveal reveal-delay-1" data-room="outdoor" data-material="hard-marble">
+            <img src="../images/inspired/outdoor-kitchen.jpg" alt="Outdoor Kitchen with Stone Surfaces" style="height: 380px;">
+            <div class="masonry-overlay">
+              <h4>Hard Marble Pavers</h4>
+              <div class="meta"><span>Outdoor Kitchen</span><span>Design by Tropical Living Co.</span></div>
+            </div>
+          </div>
+
+          <div class="masonry-item reveal reveal-delay-2" data-room="living" data-material="marble">
+            <img src="../images/inspired/fireplace-marble.jpg" alt="Statuario Marble Fireplace Surround" style="height: 260px;">
+            <div class="masonry-overlay">
+              <h4>Statuario Marble</h4>
+              <div class="meta"><span>Fireplace Surround</span><span>Design by Casa Bella</span></div>
+            </div>
+          </div>
+
+          <div class="masonry-item reveal" data-room="bathroom" data-material="quartzite">
+            <img src="../images/inspired/shower-quartzite.jpg" alt="Mont Blanc Quartzite Shower Walls" style="height: 340px;">
+            <div class="masonry-overlay">
+              <h4>Mont Blanc Quartzite</h4>
+              <div class="meta"><span>Shower Walls</span><span>Design by Blu Bathrooms</span></div>
+            </div>
+          </div>
+
+          <div class="masonry-item reveal reveal-delay-1" data-room="kitchen" data-material="granite">
+            <img src="../images/inspired/kitchen-granite-dark.jpg" alt="Colonial White Granite Kitchen" style="height: 400px;">
+            <div class="masonry-overlay">
+              <h4>Colonial White Granite</h4>
+              <div class="meta"><span>Kitchen Perimeter</span><span>Design by MKDA Studio</span></div>
+            </div>
+          </div>
+
+          <div class="masonry-item reveal reveal-delay-2" data-room="commercial" data-material="quartz">
+            <img src="../images/inspired/restaurant-bar.jpg" alt="Hanstone Cascina Restaurant Bar Top" style="height: 320px;">
+            <div class="masonry-overlay">
+              <h4>Hanstone Cascina</h4>
+              <div class="meta"><span>Restaurant Bar Top</span><span>Design by Nolita Design</span></div>
+            </div>
+          </div>
+
+          <div class="masonry-item reveal" data-room="outdoor" data-material="granite">
+            <img src="../images/inspired/pool-deck.jpg" alt="Giallo Ornamental Granite Pool Deck" style="height: 290px;">
+            <div class="masonry-overlay">
+              <h4>Giallo Ornamental Granite</h4>
+              <div class="meta"><span>Pool Deck Coping</span><span>Design by Seabreeze Designs</span></div>
+            </div>
+          </div>
+
+          <div class="masonry-item reveal reveal-delay-1" data-room="living" data-material="dolomite">
+            <img src="../images/inspired/living-feature-wall.jpg" alt="Dolomite Feature Wall" style="height: 350px;">
+            <div class="masonry-overlay">
+              <h4>Dolomite Feature Wall</h4>
+              <div class="meta"><span>Feature Wall</span><span>Design by Atelier South</span></div>
+            </div>
+          </div>
+
+          <div class="masonry-item reveal reveal-delay-2" data-room="kitchen" data-material="quartzite">
+            <img src="../images/inspired/kitchen-waterfall.jpg" alt="Fantasy Brown Quartzite Waterfall Island" style="height: 310px;">
+            <div class="masonry-overlay">
+              <h4>Fantasy Brown Quartzite</h4>
+              <div class="meta"><span>Waterfall Island</span><span>Design by Studio Dwell</span></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 4: BEFORE & AFTER ===== -->
+    <section class="before-after-section">
+      <div class="container">
+        <div class="text-center reveal">
+          <span class="label label-dark">TRANSFORMATIONS</span>
+          <h2 style="margin-top: 16px; color: var(--color-text-dark, #1a1a1a);">Before &amp; After</h2>
+          <p class="text-muted" style="margin-top: 12px; max-width: 540px; margin-left: auto; margin-right: auto;">See how the right stone can completely transform a space. These are real renovations completed by our fabrication partners.</p>
+        </div>
+
+        <div class="ba-grid">
+          <div class="ba-card reveal">
+            <div class="ba-images">
+              <img src="../images/inspired/ba-kitchen-before.jpg" alt="Before - Coral Gables Kitchen">
+              <img src="../images/inspired/ba-kitchen-after.jpg" alt="After - Taj Mahal Quartzite">
+              <span class="ba-label ba-label--before">Before</span>
+              <span class="ba-label ba-label--after">After</span>
+            </div>
+            <div class="ba-card-body">
+              <h4>Coral Gables Kitchen Renovation</h4>
+              <p>Dated laminate countertops replaced with Taj Mahal Quartzite, paired with a full-height backsplash. The space went from outdated to timeless in under two weeks.</p>
+            </div>
+          </div>
+
+          <div class="ba-card reveal reveal-delay-1">
+            <div class="ba-images">
+              <img src="../images/inspired/ba-bath-before.jpg" alt="Before - Brickell Condo Bath">
+              <img src="../images/inspired/ba-bath-after.jpg" alt="After - Calacatta Gold Marble">
+              <span class="ba-label ba-label--before">Before</span>
+              <span class="ba-label ba-label--after">After</span>
+            </div>
+            <div class="ba-card-body">
+              <h4>Brickell Condo Primary Bath</h4>
+              <p>Builder-grade tile swapped for Calacatta Gold marble on floors, walls, and a floating vanity. A true spa-like retreat in the heart of the city.</p>
+            </div>
+          </div>
+
+          <div class="ba-card reveal reveal-delay-2">
+            <div class="ba-images">
+              <img src="../images/inspired/ba-bar-before.jpg" alt="Before - Wynwood Restaurant">
+              <img src="../images/inspired/ba-bar-after.jpg" alt="After - Hanstone Cascina Quartz">
+              <span class="ba-label ba-label--before">Before</span>
+              <span class="ba-label ba-label--after">After</span>
+            </div>
+            <div class="ba-card-body">
+              <h4>Wynwood Restaurant Bar</h4>
+              <p>A worn concrete bar top transformed with Hanstone Cascina quartz. Durable, stunning, and perfect for a high-traffic hospitality environment.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 5: INSTAGRAM FEED ===== -->
+    <section class="instagram-section section">
+      <div class="container">
+        <div class="text-center reveal">
+          <span class="label label-dark">ON INSTAGRAM</span>
+          <h2 style="margin-top: 16px; color: var(--color-text-dark, #1a1a1a);">Follow the Journey</h2>
+        </div>
+
+        <div class="insta-grid">
+          <a href="#" class="insta-item reveal">
+            <img src="../images/inspired/insta-1.jpg" alt="Instagram post">
+          </a>
+          <a href="#" class="insta-item reveal reveal-delay-1">
+            <img src="../images/inspired/insta-2.jpg" alt="Instagram post">
+          </a>
+          <a href="#" class="insta-item reveal reveal-delay-2">
+            <img src="../images/inspired/insta-3.jpg" alt="Instagram post">
+          </a>
+          <a href="#" class="insta-item reveal">
+            <img src="../images/inspired/insta-4.jpg" alt="Instagram post">
+          </a>
+          <a href="#" class="insta-item reveal reveal-delay-1">
+            <img src="../images/inspired/insta-5.jpg" alt="Instagram post">
+          </a>
+          <a href="#" class="insta-item reveal reveal-delay-2">
+            <img src="../images/inspired/insta-6.jpg" alt="Instagram post">
+          </a>
+          <a href="#" class="insta-item reveal">
+            <img src="../images/inspired/insta-7.jpg" alt="Instagram post">
+          </a>
+          <a href="#" class="insta-item reveal reveal-delay-1">
+            <img src="../images/inspired/insta-8.jpg" alt="Instagram post">
+          </a>
+        </div>
+
+        <div class="text-center" style="margin-top: 40px;">
+          <a href="#" class="btn btn--text" style="color: var(--color-cta, #c9a96e);">Follow Us @thestonesurfaces <span class="arrow">&rarr;</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 6: SUBMIT YOUR PROJECT ===== -->
+    <section class="submit-section">
+      <div class="container">
+        <div class="submit-grid">
+          <div class="submit-info reveal">
+            <span class="label">GET FEATURED</span>
+            <h2 style="margin-top: 16px;">Submit Your Project</h2>
+            <p>Are you a designer or fabricator? Share your project and get featured in our gallery. We love showcasing the incredible work our partners create with our materials.</p>
+            <p style="margin-top: 16px;">Selected projects are featured on our website, social media, and marketing materials with full credit to the designer and fabricator.</p>
+          </div>
+
+          <form class="submit-form reveal reveal-delay-1">
+            <input type="text" placeholder="Your name" required>
+            <input type="email" placeholder="Your email" required>
+
+            <div class="file-upload">
+              <div class="file-upload-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              </div>
+              <p><strong>Click to upload</strong> or drag and drop</p>
+              <p style="margin-top: 4px; font-size: 12px;">PNG, JPG up to 10MB</p>
+            </div>
+
+            <textarea placeholder="Tell us about the project — materials used, location, scope of work..." rows="4"></textarea>
+
+            <button type="submit" class="btn btn--primary" style="align-self: flex-start;">Submit Project</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-logo"><img src="../images/header/TSS_LOGO.png" alt="The Stone Surfaces" class="logo-img"></div>
+          <p class="tagline">South Florida's trusted source for premium natural and engineered stone surfaces since 2016.</p>
+          <p class="contact-line">&#9679; 7980 NW 56th St, Doral, FL 33166</p>
+          <p class="contact-line">&#9742; (305) 000-0000</p>
+          <p class="contact-line">&#9993; info@thestonesurfaces.com</p>
+        </div>
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul>
+            <li><a href="products.html#granite">Granite</a></li>
+            <li><a href="products.html#marble">Marble</a></li>
+            <li><a href="products.html#quartz">Quartz</a></li>
+            <li><a href="products.html#quartzite">Quartzite</a></li>
+            <li><a href="products.html#dolomite">Dolomite</a></li>
+            <li><a href="products.html#hard-marble">Hard Marble</a></li>
+            <li><a href="hanstone.html">Hanstone Quartz</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="inspired.html">Get Inspired</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Warranty Info</a></li>
+            <li><a href="trade.html">For The Trade</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="Pinterest">PI</a>
+            <a href="#" aria-label="LinkedIn">LI</a>
+            <a href="#" aria-label="Houzz">HZ</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 The Stone Surfaces. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== MOBILE TAB BAR ===== -->
+  <nav class="mobile-tab-bar">
+    <div class="container">
+      <a href="../index.html" class="tab-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+        <span>Home</span>
+      </a>
+      <a href="products.html" class="tab-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        <span>Products</span>
+      </a>
+      <a href="hanstone.html" class="tab-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <span>Hanstone</span>
+      </a>
+      <a href="inspired.html" class="tab-item active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span>Inspire</span>
+      </a>
+      <a href="contact.html" class="tab-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span>Contact</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ===== CHAT WIDGET ===== -->
+  <button class="chat-widget-btn" aria-label="Open chat">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+  </button>
+
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <h4>The Stone Surfaces Assistant</h4>
+      <div class="close-btn">&times;</div>
+    </div>
+    <div class="chat-messages">
+      <div class="chat-message bot">
+        Hi! I'm here to help you find the perfect stone for your project. What are you looking for?
+        <div class="quick-actions">
+          <button>Browse Products</button>
+          <button>Request a Quote</button>
+          <button>Hanstone Quartz Info</button>
+          <button>Visit Our Showroom</button>
+        </div>
+      </div>
+    </div>
+    <div class="chat-input">
+      <input type="text" placeholder="Type your message...">
+      <button aria-label="Send">&uarr;</button>
+    </div>
+    <!-- n8n integration placeholder -->
+    <div id="n8n-chat-widget" data-webhook-url="YOUR_N8N_WEBHOOK_URL" style="display:none;"></div>
+  </div>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

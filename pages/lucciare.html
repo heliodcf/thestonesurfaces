@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lucciare Quartz — The Stone Surfaces | Official Florida Distributor</title>
+  <meta name="description" content="Discover Lucciare Handcrafted Quartz. Italian-designed, GreenGuard Gold certified surfaces. Browse the Signature, Genesis, and Solstice collections at The Stone Surfaces.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Lucciare Quartz — Handcrafted Stone, Italian Design">
+  <meta property="og:description" content="Official Lucciare Quartz distributor in Florida. Explore 40+ handcrafted designs across three premium collections.">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/styles.css">
+
+  <!-- Page-specific styles -->
+  <style>
+    /* --- Lucciare Brand Colors --- */
+    :root {
+      --lc-terracotta: #CD7E59;
+      --lc-terracotta-hover: #b56a47;
+      --lc-terracotta-glow: rgba(205, 126, 89, 0.15);
+      --lc-terracotta-subtle: rgba(205, 126, 89, 0.08);
+      --lc-teal: #102526;
+    }
+
+    /* --- Page Hero --- */
+    .page-hero {
+      position: relative;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 160px var(--padding-desktop) 96px;
+      overflow: hidden;
+      background: var(--lc-teal);
+    }
+    .page-hero .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .page-hero .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .page-hero .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(16,37,38,0.5) 0%, rgba(16,37,38,0.85) 100%);
+      z-index: 1;
+    }
+    .hero-flare {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--lc-terracotta-glow) 0%, rgba(205,126,89,0.04) 40%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .hero-flare--left {
+      top: -100px;
+      left: -200px;
+    }
+    .hero-flare--right {
+      bottom: -150px;
+      right: -200px;
+    }
+    .page-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+    .hero-split {
+      display: flex;
+      align-items: center;
+      gap: 56px;
+      text-align: left;
+      max-width: 1000px;
+    }
+    .hero-split__logo {
+      flex: 0 0 auto;
+    }
+    .hero-split__logo img {
+      width: 200px;
+      height: auto;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+    .hero-split__text {
+      flex: 1;
+    }
+    .hero-split__text .brand-story-intro {
+      margin: 0;
+      text-align: left;
+    }
+    .page-hero-content h1 {
+      font-family: var(--font-headline);
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 300;
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+    .page-hero-content h1 em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--lc-terracotta);
+    }
+    .partnership-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--lc-terracotta-subtle);
+      border: 1px solid var(--lc-terracotta);
+      padding: 10px 24px;
+      margin-bottom: 32px;
+      font-family: var(--font-body);
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--lc-terracotta);
+    }
+    .partnership-badge .divider {
+      width: 1px;
+      height: 20px;
+      background: var(--lc-terracotta);
+      opacity: 0.4;
+    }
+    .brand-story-intro {
+      font-size: 16px;
+      color: var(--color-text-muted);
+      line-height: 1.8;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* --- Certifications Row --- */
+    .cert-row {
+      display: flex;
+      gap: 24px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+    .cert-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      padding: 6px 14px;
+      border: 1px solid var(--color-border-dark);
+    }
+    .cert-badge svg {
+      width: 16px;
+      height: 16px;
+      color: var(--lc-terracotta);
+    }
+
+    /* --- Brand Story Two-Column --- */
+    .brand-story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .brand-story-text .label {
+      margin-bottom: 16px;
+    }
+    .brand-story-text h2 {
+      font-family: var(--font-headline);
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 300;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+    .brand-story-text p {
+      color: var(--color-text-muted);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .brand-story-text ul {
+      list-style: none;
+      margin-top: 24px;
+    }
+    .brand-story-text ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 12px;
+      color: var(--color-text-muted);
+    }
+    .brand-story-text ul li .check {
+      color: var(--lc-terracotta);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .brand-story-image {
+      position: relative;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+    }
+    .brand-story-image .placeholder-bg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* --- Collections Browser --- */
+    .collections-section {
+      padding: var(--section-padding-desktop) 0;
+      background: var(--color-bg-primary);
+    }
+    .collections-section .section-header {
+      padding: 0 var(--padding-desktop);
+      margin-bottom: 48px;
+    }
+    .collection-band {
+      margin-bottom: 48px;
+    }
+    .collection-band:last-child {
+      margin-bottom: 0;
+    }
+    .collection-band-header {
+      padding: 0 var(--padding-desktop);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+    }
+    .collection-band-header h3 {
+      font-family: var(--font-headline);
+      font-size: 28px;
+      font-weight: 400;
+    }
+    .collection-band-header .collection-tag {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--lc-terracotta);
+    }
+    .collection-scroll {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      padding: 0 var(--padding-desktop) 16px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: var(--lc-terracotta) transparent;
+    }
+    .collection-scroll::-webkit-scrollbar {
+      height: 4px;
+    }
+    .collection-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .collection-scroll::-webkit-scrollbar-thumb {
+      background: var(--lc-terracotta);
+      border-radius: 2px;
+    }
+    .swatch-card {
+      flex: 0 0 220px;
+      scroll-snap-align: start;
+      cursor: pointer;
+      transition: transform var(--transition-default);
+    }
+    .swatch-card:hover {
+      transform: translateY(-4px);
+    }
+    .swatch-card .swatch-preview {
+      aspect-ratio: 1;
+      overflow: hidden;
+      margin-bottom: 12px;
+      position: relative;
+    }
+    .swatch-card .swatch-preview .placeholder-bg {
+      width: 100%;
+      height: 100%;
+      transition: transform var(--transition-default);
+    }
+    .swatch-card:hover .swatch-preview .placeholder-bg {
+      transform: scale(1.05);
+    }
+    .swatch-card .swatch-name {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-text-light);
+    }
+    .swatch-card .swatch-tier {
+      font-size: 11px;
+      color: var(--color-text-muted);
+      margin-top: 2px;
+    }
+
+    /* --- Benefits Grid --- */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+    .benefit-card {
+      background: var(--color-bg-surface);
+      padding: 40px 32px;
+      text-align: center;
+      border: 1px solid var(--color-border-dark);
+      transition: transform var(--transition-default), border-color var(--transition-default);
+    }
+    .benefit-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--lc-terracotta);
+    }
+    .benefit-card .benefit-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--lc-terracotta);
+      border-radius: 50%;
+      color: var(--lc-terracotta);
+    }
+    .benefit-card .benefit-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+    .benefit-card h4 {
+      font-family: var(--font-headline);
+      font-size: 22px;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+    .benefit-card p {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+    }
+
+    /* --- CTA Section --- */
+    .cta-section {
+      text-align: center;
+      padding: var(--section-padding-desktop) var(--padding-desktop);
+    }
+    .cta-section h2 {
+      font-family: var(--font-headline);
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 300;
+      margin-bottom: 12px;
+    }
+    .cta-section p {
+      color: var(--color-text-muted);
+      font-size: 16px;
+      margin-bottom: 32px;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* --- Lucciare Buttons --- */
+    .btn--lucciare {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 32px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      border-radius: var(--radius-button);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      background-color: var(--lc-terracotta);
+      color: white;
+      border: none;
+    }
+    .btn--lucciare:hover {
+      background-color: var(--lc-terracotta-hover);
+      transform: translateY(-1px);
+    }
+
+    /* --- HGTV Featured Badge --- */
+    .featured-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-top: 20px;
+    }
+    .featured-badge span {
+      color: var(--lc-terracotta);
+      font-weight: 700;
+    }
+
+    /* Labels override for this page */
+    .label {
+      color: var(--lc-terracotta) !important;
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 1024px) {
+      .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 768px) {
+      .page-hero {
+        padding: 140px var(--padding-mobile) 64px;
+        min-height: 60vh;
+      }
+      .hero-split {
+        flex-direction: column;
+        text-align: center;
+        gap: 32px;
+      }
+      .hero-split__logo img {
+        width: 150px;
+      }
+      .hero-split__text .brand-story-intro {
+        text-align: center;
+      }
+      .brand-story-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .brand-story-image {
+        order: -1;
+      }
+      .collections-section .section-header,
+      .collection-band-header {
+        padding: 0 var(--padding-mobile);
+      }
+      .collection-scroll {
+        padding: 0 var(--padding-mobile) 16px;
+      }
+      .swatch-card {
+        flex: 0 0 160px;
+      }
+      .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .benefit-card {
+        padding: 32px 24px;
+      }
+      .cta-section {
+        padding: var(--section-padding-mobile) var(--padding-mobile);
+      }
+      .cert-row {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header header--transparent">
+    <div class="container">
+      <a href="../index.html" class="logo">
+        <img src="../images/header/TSS_LOGO.png" alt="The Stone Surfaces" class="logo-img">
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="products.html" data-mega-menu>Products</a>
+        <a href="hanstone.html">Hanstone Quartz</a>
+        <a href="lucciare.html" class="active">Lucciare</a>
+        <a href="inspired.html">Get Inspired</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+        <a href="trade.html">For The Trade</a>
+      </nav>
+
+      <!-- Mega Menu -->
+      <div class="mega-menu">
+        <div class="container">
+          <div class="mega-menu-grid">
+            <a href="products.html#granite" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/Granite.jpg" alt="Granite"></div>
+              <h4>Granite</h4>
+            </a>
+            <a href="products.html#marble" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/marble.jpg" alt="Marble"></div>
+              <h4>Marble</h4>
+            </a>
+            <a href="products.html#quartz" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/Quartz.jpg" alt="Quartz"></div>
+              <h4>Quartz</h4>
+            </a>
+            <a href="products.html#quartzite" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/Quartzite.jpg" alt="Quartzite"></div>
+              <h4>Quartzite</h4>
+            </a>
+            <a href="products.html#dolomite" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/Dolomite.jpg" alt="Dolomite"></div>
+              <h4>Dolomite</h4>
+            </a>
+            <a href="products.html#hard-marble" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/Hard_Marble.jpg" alt="Hard Marble"></div>
+              <h4>Hard Marble</h4>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <a href="contact.html" class="btn btn--lucciare">Request a Quote</a>
+        <div class="nav-toggle" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu">
+    <a href="products.html">Products</a>
+    <a href="hanstone.html">Hanstone Quartz</a>
+    <a href="lucciare.html">Lucciare</a>
+    <a href="inspired.html">Get Inspired</a>
+    <a href="blog.html">Blog</a>
+    <a href="about.html">About</a>
+    <a href="trade.html">For The Trade</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <main>
+
+    <!-- ===== SECTION 1: BRAND HERO ===== -->
+    <section class="page-hero">
+      <div class="hero-bg">
+        <img src="../images/lucciare/Lucciare_page.jpg" alt="Lucciare Handcrafted Quartz — luxury kitchen with premium surfaces">
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-flare hero-flare--left"></div>
+      <div class="hero-flare hero-flare--right"></div>
+
+      <div class="page-hero-content">
+        <div class="hero-split reveal">
+          <div class="hero-split__logo">
+            <img src="../images/lucciare/lucciare_distributor_logo.jpg" alt="Lucciare Handcrafted Quartz" style="border-radius: 12px;">
+          </div>
+          <div class="hero-split__text">
+            <div class="partnership-badge">
+              <span>Lucciare</span>
+              <span class="divider"></span>
+              <span>Official Distributor</span>
+            </div>
+            <h1>Handcrafted Stone. <em>Italian Design.</em></h1>
+            <p class="brand-story-intro">Designed in Italy and perfected over a decade of innovation, Lucciare is the leader in the art of marbleized veining. Every slab is handcrafted to deliver the beauty of natural marble with the performance of engineered quartz.</p>
+            <div class="featured-badge">As seen on <span>HGTV</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 2: BRAND STORY ===== -->
+    <section class="section section--surface noise-overlay">
+      <div class="container">
+        <div class="brand-story-grid">
+          <div class="brand-story-text reveal">
+            <span class="label">THE LUCCIARE STORY</span>
+            <h2>A Decade of Innovation, Born in Italy</h2>
+            <p>Lucciare surfaces were designed in Italy and developed over 10 years before the brand's establishment. The company created Polarstone&reg; in 2013 to introduce Calacatta and Statuario quartz designs to the market, then launched the Lucciare&reg; brand in 2019 with refined manufacturing processes.</p>
+            <p>Today, Lucciare represents the latest evolution in countertop surfaces &mdash; combining beautiful handcrafted designs with engineered durability. Their intricate veining patterns replicate natural marble while offering superior stain resistance and low maintenance.</p>
+            <ul>
+              <li><span class="check">&#10003;</span><span>Italian-designed with over 10 years of development</span></li>
+              <li><span class="check">&#10003;</span><span>Leader in the art of marbleized veining technology</span></li>
+              <li><span class="check">&#10003;</span><span>GreenGuard Gold &amp; NSF Certified</span></li>
+              <li><span class="check">&#10003;</span><span>Non-porous, stain-resistant, microbial-free surfaces</span></li>
+            </ul>
+            <div class="cert-row">
+              <div class="cert-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+                GreenGuard Gold
+              </div>
+              <div class="cert-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+                NSF Certified
+              </div>
+              <div class="cert-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+                GreenGuard
+              </div>
+            </div>
+          </div>
+          <div class="brand-story-image reveal reveal-delay-1">
+            <div class="placeholder-bg" style="background: linear-gradient(135deg, #1a3536 0%, #102526 40%, #0d1e1f 100%);"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 3: COLLECTIONS BROWSER ===== -->
+    <section class="collections-section" id="collections">
+      <div class="section-header">
+        <span class="label reveal">EXPLORE THE COLLECTIONS</span>
+        <h2 class="reveal" style="margin-top: 16px; font-family: var(--font-headline); font-size: clamp(28px, 3.5vw, 42px); font-weight: 300;">Three Collections. Timeless Craftsmanship.</h2>
+      </div>
+
+      <!-- Signature Collection -->
+      <div class="collection-band reveal">
+        <div class="collection-band-header">
+          <h3>Signature</h3>
+          <span class="collection-tag">Timeless Designs</span>
+        </div>
+        <div class="collection-scroll">
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #f5f0e8, #d8cfc2);"></div></div>
+            <div class="swatch-name">Calacatta Gold</div>
+            <div class="swatch-tier">Prestige</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #eae5dd, #c8bfb5);"></div></div>
+            <div class="swatch-name">Statuario Vigaria</div>
+            <div class="swatch-tier">Prestige</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #f0ebe2, #d0c5b8);"></div></div>
+            <div class="swatch-name">Taj Mahal</div>
+            <div class="swatch-tier">Premiere</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e8e0d5, #c0b5a8);"></div></div>
+            <div class="swatch-name">Calacatta Bella</div>
+            <div class="swatch-tier">Select</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #ede8e0, #ccc5ba);"></div></div>
+            <div class="swatch-name">Statuario Michel</div>
+            <div class="swatch-tier">Select</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #ddd5c8, #b8aea0);"></div></div>
+            <div class="swatch-name">Borghini Premium</div>
+            <div class="swatch-tier">Prestige</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e5ddd0, #c5b8a8);"></div></div>
+            <div class="swatch-name">Travertine Lume</div>
+            <div class="swatch-tier">Prestige</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #d8d0c5, #b0a898);"></div></div>
+            <div class="swatch-name">Rhino White</div>
+            <div class="swatch-tier">Designer</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #f2ede5, #dbd5cb);"></div></div>
+            <div class="swatch-name">Bella Lincoln</div>
+            <div class="swatch-tier">Premiere</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e0d8cc, #bab0a2);"></div></div>
+            <div class="swatch-name">Sky Falls</div>
+            <div class="swatch-tier">Prestige</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Genesis Collection -->
+      <div class="collection-band reveal">
+        <div class="collection-band-header">
+          <h3>Genesis</h3>
+          <span class="collection-tag">Innovative Engineering</span>
+        </div>
+        <div class="collection-scroll">
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e8e2d8, #c5bdb0);"></div></div>
+            <div class="swatch-name">Calacatta Versailles</div>
+            <div class="swatch-tier">Genesis Strata</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #f0eae0, #d2c8bc);"></div></div>
+            <div class="swatch-name">Calacatta Oro</div>
+            <div class="swatch-tier">Genesis Art</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #ddd8d0, #b5aea5);"></div></div>
+            <div class="swatch-name">Victoria Grey</div>
+            <div class="swatch-tier">Genesis Strata</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #c8c0e0, #a098c5);"></div></div>
+            <div class="swatch-name">Lilac</div>
+            <div class="swatch-tier">Genesis Art</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #b0c0d8, #8898b5);"></div></div>
+            <div class="swatch-name">Bulgari Blue</div>
+            <div class="swatch-tier">Genesis Art</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #f5f0e8, #e0d8cc);"></div></div>
+            <div class="swatch-name">Cristallo</div>
+            <div class="swatch-tier">Genesis Lumina</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e5dfd5, #c8c0b5);"></div></div>
+            <div class="swatch-name">Statuario Classic</div>
+            <div class="swatch-tier">Genesis Strata</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #d5c8b5, #b0a290);"></div></div>
+            <div class="swatch-name">Calacatta Vagli Gold</div>
+            <div class="swatch-tier">Genesis Art</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #f8f5f0, #e5e0d8);"></div></div>
+            <div class="swatch-name">Opus White</div>
+            <div class="swatch-tier">Genesis Strata</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Solstice Collection -->
+      <div class="collection-band reveal">
+        <div class="collection-band-header">
+          <h3>Solstice</h3>
+          <span class="collection-tag">Bold Expression</span>
+        </div>
+        <div class="collection-scroll">
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e8e2d8, #c8bfb2);"></div></div>
+            <div class="swatch-name">Calacatta Solstice</div>
+            <div class="swatch-tier">Solstice</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #d8d0c5, #b5aba0);"></div></div>
+            <div class="swatch-name">Statuario Solstice</div>
+            <div class="swatch-tier">Solstice</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e0dbd2, #c0b8ac);"></div></div>
+            <div class="swatch-name">Bianco Solstice</div>
+            <div class="swatch-tier">Solstice</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #ede5da, #ccc2b5);"></div></div>
+            <div class="swatch-name">Travertine Solstice</div>
+            <div class="swatch-tier">Solstice</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 4: GENESIS TECHNOLOGY ===== -->
+    <section class="section section--surface noise-overlay">
+      <div class="container">
+        <div class="brand-story-grid">
+          <div class="brand-story-image reveal">
+            <div class="placeholder-bg" style="background: linear-gradient(135deg, #2a2018 0%, #1a1510 40%, #0f0f0f 100%);"></div>
+          </div>
+          <div class="brand-story-text reveal reveal-delay-1">
+            <span class="label">GENESIS TECHNOLOGY</span>
+            <h2>Full-Body Veining, Engineered to Perfection</h2>
+            <p>The Genesis Collection represents a breakthrough in engineered stone. The Strata Series features full-body composition with consistent veining and color throughout the entire thickness &mdash; not just surface-level patterns.</p>
+            <p>Combined with the Art Series, which transforms engineered stone into a canvas for bold creativity with imaginative patterns and dynamic hues, Genesis offers a level of depth and authenticity never seen before in quartz surfaces.</p>
+            <ul>
+              <li><span class="check">&#10003;</span><span>Strata Series: Full-body veining through entire slab thickness</span></li>
+              <li><span class="check">&#10003;</span><span>Art Series: Bold, creative patterns with dynamic depth effects</span></li>
+              <li><span class="check">&#10003;</span><span>Lumina Series: Light-capturing surfaces with translucent quality</span></li>
+              <li><span class="check">&#10003;</span><span>Perfect for countertops, vanities, staircases &amp; furniture</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 5: BENEFITS ===== -->
+    <section class="section section--dark">
+      <div class="container">
+        <div class="text-center reveal" style="margin-bottom: 56px;">
+          <span class="label">WHY LUCCIARE</span>
+          <h2 style="margin-top: 16px; font-family: var(--font-headline); font-size: clamp(28px, 3.5vw, 42px); font-weight: 300;">The Best of All Worlds</h2>
+        </div>
+
+        <div class="benefits-grid">
+          <div class="benefit-card reveal">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+            </div>
+            <h4>Italian Design</h4>
+            <p>Every surface is conceived in Italy, where centuries of stone artistry meet modern engineering. The result is handcrafted veining that captures the soul of natural marble.</p>
+          </div>
+
+          <div class="benefit-card reveal reveal-delay-1">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h4>Stain Resistant</h4>
+            <p>Non-porous and microbial-free, Lucciare surfaces resist stains, bacteria, and everyday wear without sealing. Engineered for kitchens, bathrooms, and high-traffic spaces.</p>
+          </div>
+
+          <div class="benefit-card reveal reveal-delay-2">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M8 12l3 3 5-5"/></svg>
+            </div>
+            <h4>Certified Safe</h4>
+            <p>Triple-certified with GreenGuard Gold, GreenGuard, and NSF standards. Guaranteed safe for indoor air quality and food contact surfaces in homes and commercial spaces.</p>
+          </div>
+
+          <div class="benefit-card reveal reveal-delay-3">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <h4>Exceptional Durability</h4>
+            <p>Engineered quartz provides superior resilience against scratches, chips, and heat. Low-maintenance surfaces that maintain their beauty for years without reconditioning.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 6: CTA ===== -->
+    <section class="section section--dark cta-section" style="border-top: 1px solid var(--color-border-dark);">
+      <div class="container">
+        <h2 class="reveal">Ready to see Lucciare in person?</h2>
+        <p class="reveal">Visit any of our Florida showrooms to explore the full collection, or request samples delivered to your door.</p>
+        <div class="cta-buttons reveal">
+          <a href="contact.html" class="btn btn--lucciare">Request a Quote</a>
+          <a href="about.html#showroom" class="btn btn--outline">Visit Our Showroom</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-logo"><img src="../images/header/TSS_LOGO.png" alt="The Stone Surfaces" class="logo-img"></div>
+          <p class="tagline">Florida's trusted source for premium natural and engineered stone surfaces since 2016.</p>
+          <p class="contact-line">&#9679; 7972 NW 56th St, Doral, FL 33166</p>
+          <p class="contact-line">&#9742; 1.866.960.8579</p>
+          <p class="contact-line">&#9993; info@thestonesurfaces.com</p>
+        </div>
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul>
+            <li><a href="products.html#granite">Granite</a></li>
+            <li><a href="products.html#marble">Marble</a></li>
+            <li><a href="products.html#quartz">Quartz</a></li>
+            <li><a href="products.html#quartzite">Quartzite</a></li>
+            <li><a href="products.html#dolomite">Dolomite</a></li>
+            <li><a href="products.html#hard-marble">Hard Marble</a></li>
+            <li><a href="hanstone.html">Hanstone Quartz</a></li>
+            <li><a href="lucciare.html">Lucciare</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="inspired.html">Get Inspired</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Warranty Info</a></li>
+            <li><a href="trade.html">For The Trade</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="Pinterest">PI</a>
+            <a href="#" aria-label="LinkedIn">LI</a>
+            <a href="#" aria-label="Houzz">HZ</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 The Stone Surfaces. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== MOBILE TAB BAR ===== -->
+  <nav class="mobile-tab-bar">
+    <div class="container">
+      <a href="../index.html" class="tab-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+        <span>Home</span>
+      </a>
+      <a href="products.html" class="tab-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        <span>Products</span>
+      </a>
+      <a href="lucciare.html" class="tab-item active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/></svg>
+        <span>Lucciare</span>
+      </a>
+      <a href="inspired.html" class="tab-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span>Inspire</span>
+      </a>
+      <a href="contact.html" class="tab-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span>Contact</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ===== CHAT WIDGET ===== -->
+  <button class="chat-widget-btn" style="background: var(--lc-terracotta); box-shadow: 0 4px 20px rgba(205, 126, 89, 0.4);" aria-label="Open chat">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+  </button>
+
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <h4>The Stone Surfaces Assistant</h4>
+      <div class="close-btn">&times;</div>
+    </div>
+    <div class="chat-messages">
+      <div class="chat-message bot">
+        Hi! I'm here to help you find the perfect Lucciare quartz surface for your project. What are you looking for?
+        <div class="quick-actions">
+          <button>Browse Collections</button>
+          <button>Request a Quote</button>
+          <button>Genesis Technology</button>
+          <button>Visit Our Showroom</button>
+        </div>
+      </div>
+    </div>
+    <div class="chat-input">
+      <input type="text" placeholder="Type your message...">
+      <button aria-label="Send">&uarr;</button>
+    </div>
+    <div id="n8n-chat-widget" data-webhook-url="YOUR_N8N_WEBHOOK_URL" style="display:none;"></div>
+  </div>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

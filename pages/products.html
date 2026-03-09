@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Collections — The Stone Surfaces</title>
+  <meta name="description" content="Browse our premium selection of granite, marble, quartz, quartzite, engineered stone, porcelain, and tile slabs. Filter by color, finish, brand, and application.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Our Collections — The Stone Surfaces">
+  <meta property="og:description" content="Explore 500+ premium stone and quartz slabs. Filter by color, finish, thickness, and application to find the perfect surface for your project.">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/styles.css">
+
+  <style>
+    /* ===== PRODUCTS PAGE STYLES ===== */
+
+    /* Breadcrumb */
+    .breadcrumb {
+      padding: 120px 0 0;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      color: var(--color-text-muted, #999);
+    }
+    .breadcrumb a {
+      color: var(--color-text-muted, #999);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .breadcrumb a:hover {
+      color: var(--color-cta, #c9a96e);
+    }
+    .breadcrumb .separator {
+      margin: 0 8px;
+      opacity: 0.5;
+    }
+    .breadcrumb .current {
+      color: var(--color-text, #f5f0eb);
+    }
+
+    /* Page Hero */
+    .page-hero {
+      padding: 40px 0 48px;
+      text-align: center;
+    }
+    .page-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 700;
+      color: var(--color-text, #f5f0eb);
+      margin-bottom: 16px;
+    }
+    .page-hero p {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      color: var(--color-text-muted, #999);
+      max-width: 640px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Products Layout */
+    .products-layout {
+      display: flex;
+      gap: 40px;
+      padding-bottom: 80px;
+    }
+
+    /* Filter Sidebar */
+    .filter-sidebar {
+      flex: 0 0 280px;
+      position: sticky;
+      top: 100px;
+      align-self: flex-start;
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+      padding-right: 8px;
+    }
+    .filter-sidebar::-webkit-scrollbar {
+      width: 4px;
+    }
+    .filter-sidebar::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.15);
+      border-radius: 2px;
+    }
+
+    .filter-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+    .filter-header h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--color-text, #f5f0eb);
+      margin: 0;
+    }
+    .filter-clear {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      color: var(--color-cta, #c9a96e);
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-decoration: underline;
+      padding: 0;
+    }
+
+    .filter-group {
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+    }
+    .filter-group:last-child {
+      border-bottom: none;
+    }
+
+    .filter-group-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--color-text, #f5f0eb);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 8px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .filter-group-toggle .chevron {
+      transition: transform 0.3s;
+      font-size: 12px;
+      opacity: 0.5;
+    }
+    .filter-group.collapsed .chevron {
+      transform: rotate(-90deg);
+    }
+    .filter-group.collapsed .filter-options {
+      display: none;
+    }
+
+    .filter-options {
+      padding-top: 8px;
+    }
+    .filter-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 0;
+      cursor: pointer;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      color: var(--color-text-muted, #999);
+      transition: color 0.3s;
+    }
+    .filter-option:hover {
+      color: var(--color-text, #f5f0eb);
+    }
+    .filter-checkbox {
+      width: 16px;
+      height: 16px;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.3s;
+    }
+    .filter-option.active .filter-checkbox {
+      background: var(--color-cta, #c9a96e);
+      border-color: var(--color-cta, #c9a96e);
+    }
+    .filter-option.active .filter-checkbox::after {
+      content: '\2713';
+      font-size: 11px;
+      color: #1a1510;
+      font-weight: 700;
+    }
+    .filter-option.active {
+      color: var(--color-text, #f5f0eb);
+    }
+    .filter-count {
+      margin-left: auto;
+      font-size: 12px;
+      opacity: 0.4;
+    }
+
+    .color-swatch {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.15);
+      flex-shrink: 0;
+    }
+
+    /* Products Main Area */
+    .products-main {
+      flex: 1;
+      min-width: 0;
+    }
+
+    /* Sort / Toolbar */
+    .products-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .results-count {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      color: var(--color-text-muted, #999);
+    }
+    .sort-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .sort-wrapper label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      color: var(--color-text-muted, #999);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .sort-select {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--color-text, #f5f0eb);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      padding: 8px 32px 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+    }
+    .sort-select:focus {
+      outline: none;
+      border-color: var(--color-cta, #c9a96e);
+    }
+
+    .view-toggles {
+      display: flex;
+      gap: 4px;
+    }
+    .view-toggle {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 6px;
+      color: var(--color-text-muted, #999);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .view-toggle.active,
+    .view-toggle:hover {
+      background: rgba(255,255,255,0.1);
+      color: var(--color-cta, #c9a96e);
+      border-color: rgba(255,255,255,0.15);
+    }
+    .view-toggle svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* Product Grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .product-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .product-card:hover {
+      border-color: rgba(255,255,255,0.15);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    .product-card-image {
+      position: relative;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+    }
+    .product-card-image .placeholder-bg {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .product-card:hover .product-card-image .placeholder-bg {
+      transform: scale(1.05);
+    }
+
+    .product-card-compare {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 36px;
+      height: 36px;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      transition: all 0.3s;
+      color: #fff;
+    }
+    .product-card:hover .product-card-compare {
+      opacity: 1;
+    }
+    .product-card-compare:hover {
+      background: var(--color-cta, #c9a96e);
+      border-color: var(--color-cta, #c9a96e);
+      color: #1a1510;
+    }
+    .product-card-compare.active {
+      background: var(--color-cta, #c9a96e);
+      border-color: var(--color-cta, #c9a96e);
+      color: #1a1510;
+      opacity: 1;
+    }
+    .product-card-compare svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .product-card-body {
+      padding: 20px;
+    }
+    .product-card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--color-text, #f5f0eb);
+      margin-bottom: 4px;
+    }
+    .product-card-origin {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      color: var(--color-text-muted, #999);
+      margin-bottom: 12px;
+    }
+
+    .finish-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .finish-badge {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 100px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--color-text-muted, #999);
+    }
+
+    .product-card-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .product-card-actions .btn--details {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 16px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: #1a1510;
+      background: var(--color-cta, #c9a96e);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .product-card-actions .btn--details:hover {
+      filter: brightness(1.1);
+    }
+    .product-card-actions .btn--quote {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 16px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-text, #f5f0eb);
+      background: none;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .product-card-actions .btn--quote:hover {
+      border-color: var(--color-cta, #c9a96e);
+      color: var(--color-cta, #c9a96e);
+    }
+
+    /* Comparison Bar */
+    .comparison-bar {
+      position: fixed;
+      bottom: 80px;
+      left: 0;
+      right: 0;
+      background: rgba(26, 21, 16, 0.95);
+      backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 16px 0;
+      z-index: 90;
+      transform: translateY(calc(100% + 80px));
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .comparison-bar.visible {
+      transform: translateY(0);
+    }
+    .comparison-bar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .comparison-items {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .comparison-chip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      color: var(--color-text, #f5f0eb);
+    }
+    .comparison-chip .remove {
+      width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 12px;
+      color: var(--color-text-muted, #999);
+      transition: all 0.3s;
+    }
+    .comparison-chip .remove:hover {
+      background: rgba(255,0,0,0.3);
+      color: #fff;
+    }
+    .comparison-count {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      color: var(--color-text-muted, #999);
+      margin-right: 16px;
+    }
+    .comparison-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .comparison-clear {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      color: var(--color-text-muted, #999);
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-decoration: underline;
+      padding: 0;
+    }
+
+    /* Mobile Filter Toggle */
+    .mobile-filter-toggle {
+      display: none;
+      width: 100%;
+      padding: 12px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      color: var(--color-text, #f5f0eb);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      margin-bottom: 24px;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 768px) {
+      .filter-sidebar {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 100;
+        background: var(--color-bg, #0f0d0a);
+        padding: 24px;
+        overflow-y: auto;
+        max-height: 100vh;
+      }
+      .filter-sidebar.mobile-open {
+        display: block;
+      }
+      .mobile-filter-toggle {
+        display: flex;
+      }
+      .products-layout {
+        flex-direction: column;
+        gap: 0;
+      }
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+      .breadcrumb {
+        padding-top: 100px;
+      }
+      .comparison-bar {
+        bottom: 60px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <div class="container">
+      <a href="../index.html" class="logo">
+        <img src="../images/header/TSS_LOGO.png" alt="The Stone Surfaces" class="logo-img">
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="products.html" class="active" data-mega-menu>Products</a>
+        <a href="hanstone.html">Hanstone Quartz</a>
+        <a href="inspired.html">Get Inspired</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+        <a href="trade.html">For The Trade</a>
+      </nav>
+
+      <!-- Mega Menu -->
+      <div class="mega-menu">
+        <div class="container">
+          <div class="mega-menu-grid">
+            <a href="products.html#granite" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/Granite.jpg" alt="Granite"></div>
+              <h4>Granite</h4>
+            </a>
+            <a href="products.html#marble" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/marble.jpg" alt="Marble"></div>
+              <h4>Marble</h4>
+            </a>
+            <a href="products.html#quartz" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/Quartz.jpg" alt="Quartz"></div>
+              <h4>Quartz</h4>
+            </a>
+            <a href="products.html#quartzite" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/Quartzite.jpg" alt="Quartzite"></div>
+              <h4>Quartzite</h4>
+            </a>
+            <a href="products.html#dolomite" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/Dolomite.jpg" alt="Dolomite"></div>
+              <h4>Dolomite</h4>
+            </a>
+            <a href="products.html#hard-marble" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/Hard_Marble.jpg" alt="Hard Marble"></div>
+              <h4>Hard Marble</h4>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <a href="contact.html" class="btn btn--primary">Request a Quote</a>
+        <div class="nav-toggle" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu">
+    <a href="products.html" class="active">Products</a>
+    <a href="hanstone.html">Hanstone Quartz</a>
+    <a href="inspired.html">Get Inspired</a>
+    <a href="blog.html">Blog</a>
+    <a href="about.html">About</a>
+    <a href="trade.html">For The Trade</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <main>
+
+    <!-- ===== BREADCRUMB ===== -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <div class="container">
+        <a href="../index.html">Home</a>
+        <span class="separator">/</span>
+        <span class="current">Products</span>
+      </div>
+    </nav>
+
+    <!-- ===== PAGE HERO ===== -->
+    <section class="page-hero">
+      <div class="container">
+        <span class="label reveal">PREMIUM STONE SELECTION</span>
+        <h1 class="reveal">Our Collections</h1>
+        <p class="reveal reveal-delay-1">Discover over 500 slabs of granite, marble, quartz, quartzite, and more. Each surface is hand-selected for quality, beauty, and durability to elevate any space.</p>
+      </div>
+    </section>
+
+    <!-- ===== PRODUCTS CATALOG (StoneProfitsWeb) ===== -->
+    <section class="section" style="padding-top: 0;">
+      <div class="container" style="max-width: 100%; padding: 0;">
+
+        <!-- Wrapper clips the top of the iframe to hide StoneProfitsWeb header -->
+        <div style="overflow: hidden; position: relative; height: 1200px;">
+          <iframe
+            src="https://thestonesurfaces.stoneprofitsweb.com/"
+            title="The Stone Surfaces — Product Catalog"
+            style="width: 100%; height: calc(100% + 160px); border: none; display: block; position: relative; top: -160px;"
+            loading="lazy"
+            allow="fullscreen">
+          </iframe>
+        </div>
+
+        <!-- Original filter/grid layout preserved below (hidden) -->
+        <div class="products-layout" style="display: none;">
+          <aside class="filter-sidebar" id="filterSidebar" aria-label="Product filters">
+            <div class="filter-header">
+              <h3>Filters</h3>
+              <button class="filter-clear">Clear All</button>
+            </div>
+
+            <!-- Color Family -->
+            <div class="filter-group">
+              <button class="filter-group-toggle" aria-expanded="true">
+                Color Family
+                <span class="chevron">&#9660;</span>
+              </button>
+              <div class="filter-options">
+                <div class="filter-option" data-filter="color" data-value="white">
+                  <span class="color-swatch" style="background: #f0ece8;"></span>
+                  <span>White</span>
+                  <span class="filter-count">84</span>
+                </div>
+                <div class="filter-option" data-filter="color" data-value="gray">
+                  <span class="color-swatch" style="background: #8a8a8a;"></span>
+                  <span>Gray</span>
+                  <span class="filter-count">72</span>
+                </div>
+                <div class="filter-option" data-filter="color" data-value="black">
+                  <span class="color-swatch" style="background: #2a2a2a;"></span>
+                  <span>Black</span>
+                  <span class="filter-count">56</span>
+                </div>
+                <div class="filter-option" data-filter="color" data-value="brown">
+                  <span class="color-swatch" style="background: #8b6f47;"></span>
+                  <span>Brown</span>
+                  <span class="filter-count">68</span>
+                </div>
+                <div class="filter-option" data-filter="color" data-value="blue">
+                  <span class="color-swatch" style="background: #5a7a8a;"></span>
+                  <span>Blue</span>
+                  <span class="filter-count">24</span>
+                </div>
+                <div class="filter-option" data-filter="color" data-value="green">
+                  <span class="color-swatch" style="background: #5a7a5a;"></span>
+                  <span>Green</span>
+                  <span class="filter-count">18</span>
+                </div>
+                <div class="filter-option" data-filter="color" data-value="multi">
+                  <span class="color-swatch" style="background: conic-gradient(#8b6f47, #5a7a8a, #e8e0d8, #2a2a2a);"></span>
+                  <span>Multi</span>
+                  <span class="filter-count">42</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Finish -->
+            <div class="filter-group">
+              <button class="filter-group-toggle" aria-expanded="true">
+                Finish
+                <span class="chevron">&#9660;</span>
+              </button>
+              <div class="filter-options">
+                <div class="filter-option" data-filter="finish" data-value="polished">
+                  <div class="filter-checkbox"></div>
+                  <span>Polished</span>
+                  <span class="filter-count">210</span>
+                </div>
+                <div class="filter-option" data-filter="finish" data-value="honed">
+                  <div class="filter-checkbox"></div>
+                  <span>Honed</span>
+                  <span class="filter-count">145</span>
+                </div>
+                <div class="filter-option" data-filter="finish" data-value="leathered">
+                  <div class="filter-checkbox"></div>
+                  <span>Leathered</span>
+                  <span class="filter-count">78</span>
+                </div>
+                <div class="filter-option" data-filter="finish" data-value="brushed">
+                  <div class="filter-checkbox"></div>
+                  <span>Brushed</span>
+                  <span class="filter-count">52</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Brand -->
+            <div class="filter-group">
+              <button class="filter-group-toggle" aria-expanded="true">
+                Brand
+                <span class="chevron">&#9660;</span>
+              </button>
+              <div class="filter-options">
+                <div class="filter-option" data-filter="brand" data-value="hanstone">
+                  <div class="filter-checkbox"></div>
+                  <span>Hanstone Quartz</span>
+                  <span class="filter-count">64</span>
+                </div>
+                <div class="filter-option" data-filter="brand" data-value="cosentino">
+                  <div class="filter-checkbox"></div>
+                  <span>Cosentino</span>
+                  <span class="filter-count">48</span>
+                </div>
+                <div class="filter-option" data-filter="brand" data-value="msi">
+                  <div class="filter-checkbox"></div>
+                  <span>MSI</span>
+                  <span class="filter-count">36</span>
+                </div>
+                <div class="filter-option" data-filter="brand" data-value="daltile">
+                  <div class="filter-checkbox"></div>
+                  <span>Daltile</span>
+                  <span class="filter-count">28</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Thickness -->
+            <div class="filter-group">
+              <button class="filter-group-toggle" aria-expanded="true">
+                Thickness
+                <span class="chevron">&#9660;</span>
+              </button>
+              <div class="filter-options">
+                <div class="filter-option" data-filter="thickness" data-value="2cm">
+                  <div class="filter-checkbox"></div>
+                  <span>2 cm</span>
+                  <span class="filter-count">180</span>
+                </div>
+                <div class="filter-option" data-filter="thickness" data-value="3cm">
+                  <div class="filter-checkbox"></div>
+                  <span>3 cm</span>
+                  <span class="filter-count">290</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Application -->
+            <div class="filter-group">
+              <button class="filter-group-toggle" aria-expanded="true">
+                Application
+                <span class="chevron">&#9660;</span>
+              </button>
+              <div class="filter-options">
+                <div class="filter-option" data-filter="application" data-value="kitchen">
+                  <div class="filter-checkbox"></div>
+                  <span>Kitchen</span>
+                  <span class="filter-count">320</span>
+                </div>
+                <div class="filter-option" data-filter="application" data-value="bathroom">
+                  <div class="filter-checkbox"></div>
+                  <span>Bathroom</span>
+                  <span class="filter-count">280</span>
+                </div>
+                <div class="filter-option" data-filter="application" data-value="commercial">
+                  <div class="filter-checkbox"></div>
+                  <span>Commercial</span>
+                  <span class="filter-count">190</span>
+                </div>
+                <div class="filter-option" data-filter="application" data-value="outdoor">
+                  <div class="filter-checkbox"></div>
+                  <span>Outdoor</span>
+                  <span class="filter-count">85</span>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+          <!-- ===== PRODUCT GRID AREA ===== -->
+          <div class="products-main">
+
+            <!-- Toolbar -->
+            <div class="products-toolbar reveal">
+              <span class="results-count">Showing <strong>510</strong> products</span>
+              <div style="display: flex; align-items: center; gap: 16px;">
+                <div class="sort-wrapper">
+                  <label for="sortSelect">Sort by</label>
+                  <select class="sort-select" id="sortSelect">
+                    <option value="newest">Newest</option>
+                    <option value="popular" selected>Popular</option>
+                    <option value="color">Color Family</option>
+                    <option value="price">Price</option>
+                  </select>
+                </div>
+                <div class="view-toggles">
+                  <button class="view-toggle active" aria-label="Grid view" data-view="grid">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                  </button>
+                  <button class="view-toggle" aria-label="List view" data-view="list">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="product-grid" id="productGrid">
+
+              <!-- Product Card 1 -->
+              <article class="product-card reveal">
+                <div class="product-card-image">
+                  <div class="placeholder-bg" style="background: linear-gradient(135deg, #e8e0d8 0%, #d0c0b0 40%, #c8b8a8 100%);"></div>
+                  <button class="product-card-compare" aria-label="Add to compare" data-product="calacatta-gold">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+                  </button>
+                </div>
+                <div class="product-card-body">
+                  <h3 class="product-card-name">Calacatta Gold</h3>
+                  <p class="product-card-origin">Italian Marble</p>
+                  <div class="finish-badges">
+                    <span class="finish-badge">Polished</span>
+                    <span class="finish-badge">Honed</span>
+                  </div>
+                  <div class="product-card-actions">
+                    <a href="#" class="btn--details">View Details</a>
+                    <a href="contact.html" class="btn--quote">Request Quote</a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Product Card 2 -->
+              <article class="product-card reveal reveal-delay-1">
+                <div class="product-card-image">
+                  <div class="placeholder-bg" style="background: linear-gradient(135deg, #1a1a2a 0%, #0a0a15 50%, #2a2a3a 100%);"></div>
+                  <button class="product-card-compare" aria-label="Add to compare" data-product="black-galaxy">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+                  </button>
+                </div>
+                <div class="product-card-body">
+                  <h3 class="product-card-name">Black Galaxy</h3>
+                  <p class="product-card-origin">Indian Granite</p>
+                  <div class="finish-badges">
+                    <span class="finish-badge">Polished</span>
+                  </div>
+                  <div class="product-card-actions">
+                    <a href="#" class="btn--details">View Details</a>
+                    <a href="contact.html" class="btn--quote">Request Quote</a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Product Card 3 -->
+              <article class="product-card reveal reveal-delay-2">
+                <div class="product-card-image">
+                  <div class="placeholder-bg" style="background: linear-gradient(135deg, #d0c8c0 0%, #b8b0a8 40%, #a09888 100%);"></div>
+                  <button class="product-card-compare" aria-label="Add to compare" data-product="hanstone-montauk">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+                  </button>
+                </div>
+                <div class="product-card-body">
+                  <h3 class="product-card-name">Montauk</h3>
+                  <p class="product-card-origin">Hanstone Quartz</p>
+                  <div class="finish-badges">
+                    <span class="finish-badge">Polished</span>
+                    <span class="finish-badge">Brushed</span>
+                  </div>
+                  <div class="product-card-actions">
+                    <a href="#" class="btn--details">View Details</a>
+                    <a href="contact.html" class="btn--quote">Request Quote</a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Product Card 4 -->
+              <article class="product-card reveal">
+                <div class="product-card-image">
+                  <div class="placeholder-bg" style="background: linear-gradient(135deg, #c8c0b8 0%, #a8a098 40%, #8a8278 100%);"></div>
+                  <button class="product-card-compare" aria-label="Add to compare" data-product="taj-mahal">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+                  </button>
+                </div>
+                <div class="product-card-body">
+                  <h3 class="product-card-name">Taj Mahal</h3>
+                  <p class="product-card-origin">Brazilian Quartzite</p>
+                  <div class="finish-badges">
+                    <span class="finish-badge">Polished</span>
+                    <span class="finish-badge">Leathered</span>
+                  </div>
+                  <div class="product-card-actions">
+                    <a href="#" class="btn--details">View Details</a>
+                    <a href="contact.html" class="btn--quote">Request Quote</a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Product Card 5 -->
+              <article class="product-card reveal reveal-delay-1">
+                <div class="product-card-image">
+                  <div class="placeholder-bg" style="background: linear-gradient(135deg, #f0e8e0 0%, #e0d8d0 40%, #d8d0c8 100%);"></div>
+                  <button class="product-card-compare" aria-label="Add to compare" data-product="white-macaubas">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+                  </button>
+                </div>
+                <div class="product-card-body">
+                  <h3 class="product-card-name">White Macaubas</h3>
+                  <p class="product-card-origin">Brazilian Quartzite</p>
+                  <div class="finish-badges">
+                    <span class="finish-badge">Polished</span>
+                    <span class="finish-badge">Honed</span>
+                  </div>
+                  <div class="product-card-actions">
+                    <a href="#" class="btn--details">View Details</a>
+                    <a href="contact.html" class="btn--quote">Request Quote</a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Product Card 6 -->
+              <article class="product-card reveal reveal-delay-2">
+                <div class="product-card-image">
+                  <div class="placeholder-bg" style="background: linear-gradient(135deg, #3a3028 0%, #2a2018 50%, #1a1510 100%);"></div>
+                  <button class="product-card-compare" aria-label="Add to compare" data-product="emperador-dark">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+                  </button>
+                </div>
+                <div class="product-card-body">
+                  <h3 class="product-card-name">Emperador Dark</h3>
+                  <p class="product-card-origin">Spanish Marble</p>
+                  <div class="finish-badges">
+                    <span class="finish-badge">Polished</span>
+                  </div>
+                  <div class="product-card-actions">
+                    <a href="#" class="btn--details">View Details</a>
+                    <a href="contact.html" class="btn--quote">Request Quote</a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Product Card 7 -->
+              <article class="product-card reveal">
+                <div class="product-card-image">
+                  <div class="placeholder-bg" style="background: linear-gradient(135deg, #b8b0a8 0%, #989088 40%, #787068 100%);"></div>
+                  <button class="product-card-compare" aria-label="Add to compare" data-product="hanstone-cascina">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+                  </button>
+                </div>
+                <div class="product-card-body">
+                  <h3 class="product-card-name">Cascina</h3>
+                  <p class="product-card-origin">Hanstone Quartz</p>
+                  <div class="finish-badges">
+                    <span class="finish-badge">Polished</span>
+                    <span class="finish-badge">Honed</span>
+                    <span class="finish-badge">Leathered</span>
+                  </div>
+                  <div class="product-card-actions">
+                    <a href="#" class="btn--details">View Details</a>
+                    <a href="contact.html" class="btn--quote">Request Quote</a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Product Card 8 -->
+              <article class="product-card reveal reveal-delay-1">
+                <div class="product-card-image">
+                  <div class="placeholder-bg" style="background: linear-gradient(135deg, #8a8a9a 0%, #5a5a6a 50%, #3a3a4a 100%);"></div>
+                  <button class="product-card-compare" aria-label="Add to compare" data-product="blue-pearl">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+                  </button>
+                </div>
+                <div class="product-card-body">
+                  <h3 class="product-card-name">Blue Pearl</h3>
+                  <p class="product-card-origin">Norwegian Granite</p>
+                  <div class="finish-badges">
+                    <span class="finish-badge">Polished</span>
+                  </div>
+                  <div class="product-card-actions">
+                    <a href="#" class="btn--details">View Details</a>
+                    <a href="contact.html" class="btn--quote">Request Quote</a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Product Card 9 -->
+              <article class="product-card reveal reveal-delay-2">
+                <div class="product-card-image">
+                  <div class="placeholder-bg" style="background: linear-gradient(135deg, #e0d8d0 0%, #c8c0b8 30%, #d8cec6 60%, #c0b8b0 100%);"></div>
+                  <button class="product-card-compare" aria-label="Add to compare" data-product="porcelain-statuario">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+                  </button>
+                </div>
+                <div class="product-card-body">
+                  <h3 class="product-card-name">Statuario Classico</h3>
+                  <p class="product-card-origin">Porcelain &middot; Cosentino</p>
+                  <div class="finish-badges">
+                    <span class="finish-badge">Polished</span>
+                    <span class="finish-badge">Honed</span>
+                  </div>
+                  <div class="product-card-actions">
+                    <a href="#" class="btn--details">View Details</a>
+                    <a href="contact.html" class="btn--quote">Request Quote</a>
+                  </div>
+                </div>
+              </article>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== COMPARISON BAR ===== -->
+  <div class="comparison-bar" id="comparisonBar" style="display: none;">
+    <div class="container">
+      <div class="comparison-items">
+        <span class="comparison-count"><span id="compareCount">0</span> of 4 selected</span>
+        <div id="comparisonChips"></div>
+      </div>
+      <div class="comparison-actions">
+        <button class="comparison-clear" id="compareClear">Clear All</button>
+        <a href="#" class="btn btn--primary" style="padding: 10px 24px; font-size: 14px;">Compare Now</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-logo"><img src="../images/header/TSS_LOGO.png" alt="The Stone Surfaces" class="logo-img"></div>
+          <p class="tagline">South Florida's trusted source for premium natural and engineered stone surfaces since 2016.</p>
+          <p class="contact-line">&#9679; 7980 NW 56th St, Doral, FL 33166</p>
+          <p class="contact-line">&#9742; (305) 000-0000</p>
+          <p class="contact-line">&#9993; info@thestonesurfaces.com</p>
+        </div>
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul>
+            <li><a href="products.html#granite">Granite</a></li>
+            <li><a href="products.html#marble">Marble</a></li>
+            <li><a href="products.html#quartz">Quartz</a></li>
+            <li><a href="products.html#quartzite">Quartzite</a></li>
+            <li><a href="products.html#dolomite">Dolomite</a></li>
+            <li><a href="products.html#hard-marble">Hard Marble</a></li>
+            <li><a href="hanstone.html">Hanstone Quartz</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="inspired.html">Get Inspired</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Warranty Info</a></li>
+            <li><a href="trade.html">For The Trade</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="Pinterest">PI</a>
+            <a href="#" aria-label="LinkedIn">LI</a>
+            <a href="#" aria-label="Houzz">HZ</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 The Stone Surfaces. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== MOBILE TAB BAR ===== -->
+  <nav class="mobile-tab-bar">
+    <div class="container">
+      <a href="../index.html" class="tab-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+        <span>Home</span>
+      </a>
+      <a href="products.html" class="tab-item active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        <span>Products</span>
+      </a>
+      <a href="hanstone.html" class="tab-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <span>Hanstone</span>
+      </a>
+      <a href="inspired.html" class="tab-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span>Inspire</span>
+      </a>
+      <a href="contact.html" class="tab-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span>Contact</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ===== CHAT WIDGET ===== -->
+  <button class="chat-widget-btn" aria-label="Open chat">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+  </button>
+
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <h4>The Stone Surfaces Assistant</h4>
+      <div class="close-btn">&times;</div>
+    </div>
+    <div class="chat-messages">
+      <div class="chat-message bot">
+        Hi! I'm here to help you find the perfect stone for your project. What are you looking for?
+        <div class="quick-actions">
+          <button>Browse Products</button>
+          <button>Request a Quote</button>
+          <button>Hanstone Quartz Info</button>
+          <button>Visit Our Showroom</button>
+        </div>
+      </div>
+    </div>
+    <div class="chat-input">
+      <input type="text" placeholder="Type your message...">
+      <button aria-label="Send">&uarr;</button>
+    </div>
+    <div id="n8n-chat-widget" data-webhook-url="YOUR_N8N_WEBHOOK_URL" style="display:none;"></div>
+  </div>
+
+  <script src="../js/main.js"></script>
+
+  <!-- Products Page Scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+      // ===== Filter Group Toggle =====
+      document.querySelectorAll('.filter-group-toggle').forEach(function(toggle) {
+        toggle.addEventListener('click', function() {
+          var group = this.closest('.filter-group');
+          group.classList.toggle('collapsed');
+          this.setAttribute('aria-expanded', !group.classList.contains('collapsed'));
+        });
+      });
+
+      // ===== Filter Option Toggle =====
+      document.querySelectorAll('.filter-option').forEach(function(option) {
+        option.addEventListener('click', function() {
+          this.classList.toggle('active');
+        });
+      });
+
+      // ===== Clear All Filters =====
+      document.querySelector('.filter-clear').addEventListener('click', function() {
+        document.querySelectorAll('.filter-option.active').forEach(function(opt) {
+          opt.classList.remove('active');
+        });
+      });
+
+      // ===== Mobile Filter Toggle =====
+      var mobileFilterToggle = document.getElementById('mobileFilterToggle');
+      var filterSidebar = document.getElementById('filterSidebar');
+      if (mobileFilterToggle && filterSidebar) {
+        mobileFilterToggle.addEventListener('click', function() {
+          filterSidebar.classList.toggle('mobile-open');
+        });
+      }
+
+      // ===== View Toggle =====
+      document.querySelectorAll('.view-toggle').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.view-toggle').forEach(function(b) { b.classList.remove('active'); });
+          this.classList.add('active');
+        });
+      });
+
+      // ===== Compare Functionality =====
+      var compareItems = [];
+      var comparisonBar = document.getElementById('comparisonBar');
+      var compareCount = document.getElementById('compareCount');
+      var comparisonChips = document.getElementById('comparisonChips');
+      var compareClear = document.getElementById('compareClear');
+
+      function updateComparisonBar() {
+        compareCount.textContent = compareItems.length;
+        comparisonChips.innerHTML = '';
+        compareItems.forEach(function(item) {
+          var chip = document.createElement('div');
+          chip.className = 'comparison-chip';
+          chip.innerHTML = item.name + '<span class="remove" data-product="' + item.id + '">&times;</span>';
+          comparisonChips.appendChild(chip);
+        });
+        if (compareItems.length > 0) {
+          comparisonBar.classList.add('visible');
+        } else {
+          comparisonBar.classList.remove('visible');
+        }
+        // Bind remove buttons
+        comparisonChips.querySelectorAll('.remove').forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            var productId = this.getAttribute('data-product');
+            compareItems = compareItems.filter(function(i) { return i.id !== productId; });
+            var compareBtn = document.querySelector('.product-card-compare[data-product="' + productId + '"]');
+            if (compareBtn) compareBtn.classList.remove('active');
+            updateComparisonBar();
+          });
+        });
+      }
+
+      document.querySelectorAll('.product-card-compare').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var productId = this.getAttribute('data-product');
+          var productName = this.closest('.product-card').querySelector('.product-card-name').textContent;
+          if (this.classList.contains('active')) {
+            this.classList.remove('active');
+            compareItems = compareItems.filter(function(i) { return i.id !== productId; });
+          } else {
+            if (compareItems.length >= 4) return;
+            this.classList.add('active');
+            compareItems.push({ id: productId, name: productName });
+          }
+          updateComparisonBar();
+        });
+      });
+
+      compareClear.addEventListener('click', function() {
+        compareItems = [];
+        document.querySelectorAll('.product-card-compare.active').forEach(function(btn) {
+          btn.classList.remove('active');
+        });
+        updateComparisonBar();
+      });
+    });
+  </script>
+</body>
+</html>

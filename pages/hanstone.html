@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hanstone Quartz — The Stone Surfaces | Official South Florida Distributor</title>
+  <meta name="description" content="Discover Hanstone Quartz by Hyundai L&C. 93% natural quartz, Breton technology, lifetime warranty. Browse the Signature, Pinnacle, Connections, and Opimo collections.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Hanstone Quartz — Created by Earth. Designed for You.">
+  <meta property="og:description" content="Official Hanstone Quartz distributor in South Florida. Explore 60+ colors across four premium collections.">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/styles.css">
+
+  <!-- Page-specific styles -->
+  <style>
+    /* --- Hanstone Brand Color --- */
+    :root {
+      --hs-pink: #c44398;
+      --hs-pink-hover: #a8357f;
+      --hs-pink-glow: rgba(196, 67, 152, 0.15);
+      --hs-pink-subtle: rgba(196, 67, 152, 0.08);
+    }
+
+    /* --- Page Hero --- */
+    .page-hero {
+      position: relative;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 160px var(--padding-desktop) 96px;
+      overflow: hidden;
+    }
+    .page-hero .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .page-hero .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .page-hero .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(15,15,15,0.5) 0%, rgba(15,15,15,0.8) 100%);
+      z-index: 1;
+    }
+    /* Hero flares */
+    .hero-flare {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--hs-pink-glow) 0%, rgba(196,67,152,0.04) 40%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .hero-flare--left {
+      top: -100px;
+      left: -200px;
+    }
+    .hero-flare--right {
+      bottom: -150px;
+      right: -200px;
+    }
+    .page-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+    .hero-split {
+      display: flex;
+      align-items: center;
+      gap: 56px;
+      text-align: left;
+      max-width: 1000px;
+    }
+    .hero-split__logo {
+      flex: 0 0 auto;
+    }
+    .hero-split__logo img {
+      width: 200px;
+      height: auto;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+    .hero-split__text {
+      flex: 1;
+    }
+    .hero-split__text .brand-story-intro {
+      margin: 0;
+      text-align: left;
+    }
+    .page-hero-content h1 {
+      font-family: var(--font-headline);
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 300;
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+    .page-hero-content h1 em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--hs-pink);
+    }
+    .partnership-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--hs-pink-subtle);
+      border: 1px solid var(--hs-pink);
+      padding: 10px 24px;
+      margin-bottom: 32px;
+      font-family: var(--font-body);
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--hs-pink);
+    }
+    .partnership-badge .divider {
+      width: 1px;
+      height: 20px;
+      background: var(--hs-pink);
+      opacity: 0.4;
+    }
+    .brand-story-intro {
+      font-size: 16px;
+      color: var(--color-text-muted);
+      line-height: 1.8;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* --- Brand Story Two-Column --- */
+    .brand-story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .brand-story-text .label {
+      margin-bottom: 16px;
+    }
+    .brand-story-text h2 {
+      font-family: var(--font-headline);
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 300;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+    .brand-story-text p {
+      color: var(--color-text-muted);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .brand-story-text ul {
+      list-style: none;
+      margin-top: 24px;
+    }
+    .brand-story-text ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 12px;
+      color: var(--color-text-muted);
+    }
+    .brand-story-text ul li .check {
+      color: var(--hs-pink);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .brand-story-image {
+      position: relative;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+    }
+    .brand-story-image .placeholder-bg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* --- Collections Browser --- */
+    .collections-section {
+      padding: var(--section-padding-desktop) 0;
+      background: var(--color-bg-primary);
+    }
+    .collections-section .section-header {
+      padding: 0 var(--padding-desktop);
+      margin-bottom: 48px;
+    }
+    .collection-band {
+      margin-bottom: 48px;
+    }
+    .collection-band:last-child {
+      margin-bottom: 0;
+    }
+    .collection-band-header {
+      padding: 0 var(--padding-desktop);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+    }
+    .collection-band-header h3 {
+      font-family: var(--font-headline);
+      font-size: 28px;
+      font-weight: 400;
+    }
+    .collection-band-header .collection-tag {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--hs-pink);
+    }
+    .collection-scroll {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      padding: 0 var(--padding-desktop) 16px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: var(--hs-pink) transparent;
+    }
+    .collection-scroll::-webkit-scrollbar {
+      height: 4px;
+    }
+    .collection-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .collection-scroll::-webkit-scrollbar-thumb {
+      background: var(--hs-pink);
+      border-radius: 2px;
+    }
+    .swatch-card {
+      flex: 0 0 220px;
+      scroll-snap-align: start;
+      cursor: pointer;
+      transition: transform var(--transition-default);
+    }
+    .swatch-card:hover {
+      transform: translateY(-4px);
+    }
+    .swatch-card .swatch-preview {
+      aspect-ratio: 1;
+      overflow: hidden;
+      margin-bottom: 12px;
+      position: relative;
+    }
+    .swatch-card .swatch-preview .placeholder-bg {
+      width: 100%;
+      height: 100%;
+      transition: transform var(--transition-default);
+    }
+    .swatch-card:hover .swatch-preview .placeholder-bg {
+      transform: scale(1.05);
+    }
+    .swatch-card .swatch-name {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-text-light);
+    }
+    .swatch-card .swatch-id {
+      font-size: 11px;
+      color: var(--color-text-muted);
+      margin-top: 2px;
+    }
+
+    /* --- Color Palette Explorer --- */
+    .palette-section {
+      padding: var(--section-padding-desktop) var(--padding-desktop);
+    }
+    .filter-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .filter-tabs .tab {
+      padding: 8px 20px;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-text-muted);
+      background: transparent;
+      border: 1px solid var(--color-border-dark);
+      cursor: pointer;
+      transition: all var(--transition-default);
+    }
+    .filter-tabs .tab:hover,
+    .filter-tabs .tab.active {
+      background: var(--hs-pink);
+      color: #fff;
+      border-color: var(--hs-pink);
+    }
+    .swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 24px;
+    }
+    .swatch-grid .swatch-card {
+      flex: unset;
+    }
+    .swatch-card .collection-badge {
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      background: rgba(15,15,15,0.75);
+      padding: 3px 8px;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--hs-pink);
+    }
+
+    /* --- Benefits Grid --- */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+    .benefit-card {
+      background: var(--color-bg-surface);
+      padding: 40px 32px;
+      text-align: center;
+      border: 1px solid var(--color-border-dark);
+      transition: transform var(--transition-default), border-color var(--transition-default);
+    }
+    .benefit-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--hs-pink);
+    }
+    .benefit-card .benefit-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--hs-pink);
+      border-radius: 50%;
+      color: var(--hs-pink);
+    }
+    .benefit-card .benefit-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+    .benefit-card h4 {
+      font-family: var(--font-headline);
+      font-size: 22px;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+    .benefit-card p {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+    }
+
+    /* --- Professional Resources --- */
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .resource-link {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 24px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--color-border-dark);
+      transition: all var(--transition-default);
+      color: var(--color-text-light);
+    }
+    .resource-link:hover {
+      background: var(--hs-pink-subtle);
+      border-color: var(--hs-pink);
+    }
+    .resource-link .resource-icon {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--hs-pink);
+    }
+    .resource-link .resource-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+    .resource-link .resource-info h4 {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .resource-link .resource-info p {
+      font-size: 12px;
+      color: var(--color-text-muted);
+    }
+
+    /* --- CTA Section --- */
+    .cta-section {
+      text-align: center;
+      padding: var(--section-padding-desktop) var(--padding-desktop);
+    }
+    .cta-section h2 {
+      font-family: var(--font-headline);
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 300;
+      margin-bottom: 12px;
+    }
+    .cta-section p {
+      color: var(--color-text-muted);
+      font-size: 16px;
+      margin-bottom: 32px;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* --- Hanstone Buttons --- */
+    .btn--hanstone {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 32px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      border-radius: var(--radius-btn);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      background-color: var(--hs-pink);
+      color: white;
+      border: none;
+    }
+    .btn--hanstone:hover {
+      background-color: var(--hs-pink-hover);
+      transform: translateY(-1px);
+    }
+
+    /* Labels override for this page */
+    .label {
+      color: var(--hs-pink) !important;
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 1024px) {
+      .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 768px) {
+      .page-hero {
+        padding: 140px var(--padding-mobile) 64px;
+        min-height: 60vh;
+      }
+      .hero-split {
+        flex-direction: column;
+        text-align: center;
+        gap: 32px;
+      }
+      .hero-split__logo img {
+        width: 150px;
+      }
+      .hero-split__text .brand-story-intro {
+        text-align: center;
+      }
+      .brand-story-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .brand-story-image {
+        order: -1;
+      }
+      .collections-section .section-header,
+      .collection-band-header {
+        padding: 0 var(--padding-mobile);
+      }
+      .collection-scroll {
+        padding: 0 var(--padding-mobile) 16px;
+      }
+      .swatch-card {
+        flex: 0 0 160px;
+      }
+      .palette-section {
+        padding: var(--section-padding-mobile) var(--padding-mobile);
+      }
+      .swatch-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 16px;
+      }
+      .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .benefit-card {
+        padding: 32px 24px;
+      }
+      .cta-section {
+        padding: var(--section-padding-mobile) var(--padding-mobile);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header header--transparent">
+    <div class="container">
+      <a href="../index.html" class="logo">
+        <img src="../images/header/TSS_LOGO.png" alt="The Stone Surfaces" class="logo-img">
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="products.html" data-mega-menu>Products</a>
+        <a href="hanstone.html" class="active">Hanstone Quartz</a>
+        <a href="inspired.html">Get Inspired</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+        <a href="trade.html">For The Trade</a>
+      </nav>
+
+      <!-- Mega Menu -->
+      <div class="mega-menu">
+        <div class="container">
+          <div class="mega-menu-grid">
+            <a href="products.html#granite" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/Granite.jpg" alt="Granite"></div>
+              <h4>Granite</h4>
+            </a>
+            <a href="products.html#marble" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/marble.jpg" alt="Marble"></div>
+              <h4>Marble</h4>
+            </a>
+            <a href="products.html#quartz" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/Quartz.jpg" alt="Quartz"></div>
+              <h4>Quartz</h4>
+            </a>
+            <a href="products.html#quartzite" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/Quartzite.jpg" alt="Quartzite"></div>
+              <h4>Quartzite</h4>
+            </a>
+            <a href="products.html#dolomite" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/Dolomite.jpg" alt="Dolomite"></div>
+              <h4>Dolomite</h4>
+            </a>
+            <a href="products.html#hard-marble" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/Hard_Marble.jpg" alt="Hard Marble"></div>
+              <h4>Hard Marble</h4>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <a href="contact.html" class="btn btn--hanstone">Request a Quote</a>
+        <div class="nav-toggle" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu">
+    <a href="products.html">Products</a>
+    <a href="hanstone.html">Hanstone Quartz</a>
+    <a href="inspired.html">Get Inspired</a>
+    <a href="blog.html">Blog</a>
+    <a href="about.html">About</a>
+    <a href="trade.html">For The Trade</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <main>
+
+    <!-- ===== SECTION 1: BRAND HERO ===== -->
+    <section class="page-hero">
+      <div class="hero-bg">
+        <img src="../images/hanstone/Hanzstone_Background.jpg" alt="Hanstone Quartz — natural quartz landscape">
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-flare hero-flare--left"></div>
+      <div class="hero-flare hero-flare--right"></div>
+
+      <div class="page-hero-content">
+        <div class="hero-split reveal">
+          <div class="hero-split__logo">
+            <img src="../images/hanstone/hanstone-quartz-logo-2.jpg" alt="Hanstone Quartz by Hyundai L&C" style="border-radius: 12px;">
+          </div>
+          <div class="hero-split__text">
+            <div class="partnership-badge">
+              <span>Hyundai L&amp;C</span>
+              <span class="divider"></span>
+              <span>Official Partner</span>
+            </div>
+            <h1>Created by Earth. <em>Designed for You.</em></h1>
+            <p class="brand-story-intro">Born from a partnership between Hyundai L&amp;C and the finest raw materials on earth, Hanstone Quartz has been manufactured in London, Ontario since 2009. Every slab is crafted using advanced Breton&trade; technology &mdash; the gold standard in engineered stone production.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 2: BRAND STORY ===== -->
+    <section class="section section--surface noise-overlay">
+      <div class="container">
+        <div class="brand-story-grid">
+          <div class="brand-story-text reveal">
+            <span class="label">OUR HERITAGE</span>
+            <h2>A Legacy of Innovation, Rooted in Nature</h2>
+            <p>Hanstone Quartz represents the perfect marriage of natural beauty and modern engineering. Composed of 93% natural quartz &mdash; one of the hardest minerals on earth &mdash; every surface delivers the organic warmth of natural stone with the reliability of cutting-edge manufacturing.</p>
+            <p>Produced at Hyundai L&amp;C's state-of-the-art facility in Canada, Hanstone is committed to sustainable production. From responsible sourcing of raw materials to energy-efficient manufacturing processes, every slab reflects a commitment to both quality and the environment.</p>
+            <ul>
+              <li><span class="check">&#10003;</span><span>93% natural quartz for superior hardness and durability</span></li>
+              <li><span class="check">&#10003;</span><span>Canadian-manufactured with Breton&trade; compaction technology</span></li>
+              <li><span class="check">&#10003;</span><span>Greenguard Gold Certified for low chemical emissions</span></li>
+              <li><span class="check">&#10003;</span><span>Backed by Hyundai L&amp;C's global quality standards</span></li>
+            </ul>
+          </div>
+          <div class="brand-story-image reveal reveal-delay-1">
+            <div class="placeholder-bg" style="background: linear-gradient(135deg, #3a3228 0%, #2a2018 40%, #1a1510 100%);"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 3: COLLECTIONS BROWSER ===== -->
+    <section class="collections-section" id="collections">
+      <div class="section-header">
+        <span class="label reveal">EXPLORE THE COLLECTIONS</span>
+        <h2 class="reveal" style="margin-top: 16px; font-family: var(--font-headline); font-size: clamp(28px, 3.5vw, 42px); font-weight: 300;">Four Collections. Endless Possibilities.</h2>
+      </div>
+
+      <!-- Signature Collection -->
+      <div class="collection-band reveal">
+        <div class="collection-band-header">
+          <h3>Signature</h3>
+          <span class="collection-tag">Premium Tier</span>
+        </div>
+        <div class="collection-scroll">
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e8e2dc, #d0c8c0);"></div></div>
+            <div class="swatch-name">Montauk</div>
+            <div class="swatch-id">HS-SM001</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #f0ebe5, #c8bfb5);"></div></div>
+            <div class="swatch-name">Cascina</div>
+            <div class="swatch-id">HS-SM002</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #ddd5cd, #b8aea5);"></div></div>
+            <div class="swatch-name">Tranquility</div>
+            <div class="swatch-id">HS-SM003</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #c5bdb5, #a8a098);"></div></div>
+            <div class="swatch-name">Champagne</div>
+            <div class="swatch-id">HS-SM004</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e0ddd8, #bab5ae);"></div></div>
+            <div class="swatch-name">Aspen</div>
+            <div class="swatch-id">HS-SM005</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pinnacle Collection -->
+      <div class="collection-band reveal">
+        <div class="collection-band-header">
+          <h3>Pinnacle</h3>
+          <span class="collection-tag">Statement Veining</span>
+        </div>
+        <div class="collection-scroll">
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #f5f0ea, #d8cfc5);"></div></div>
+            <div class="swatch-name">Calacatta Luccia</div>
+            <div class="swatch-id">HS-PN001</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #ede8e2, #c8c0b8);"></div></div>
+            <div class="swatch-name">Bianca Statuario</div>
+            <div class="swatch-id">HS-PN002</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e5dfd8, #bfb8b0);"></div></div>
+            <div class="swatch-name">Tuscany</div>
+            <div class="swatch-id">HS-PN003</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #eae5df, #d0c8c0);"></div></div>
+            <div class="swatch-name">Cortina</div>
+            <div class="swatch-id">HS-PN004</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #f2ede7, #cec5bc);"></div></div>
+            <div class="swatch-name">Liatris</div>
+            <div class="swatch-id">HS-PN005</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e8e0d8, #bab2a8);"></div></div>
+            <div class="swatch-name">Ravenna</div>
+            <div class="swatch-id">HS-PN006</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Connections Collection -->
+      <div class="collection-band reveal">
+        <div class="collection-band-header">
+          <h3>Connections</h3>
+          <span class="collection-tag">Modern Essentials</span>
+        </div>
+        <div class="collection-scroll">
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #f8f5f0, #e0dcd5);"></div></div>
+            <div class="swatch-name">Cotton White</div>
+            <div class="swatch-id">HS-CN001</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #d5cfc8, #b0a8a0);"></div></div>
+            <div class="swatch-name">Steel</div>
+            <div class="swatch-id">HS-CN002</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #c8c0b5, #988f85);"></div></div>
+            <div class="swatch-name">Tundra</div>
+            <div class="swatch-id">HS-CN003</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e2ddd5, #c0b8b0);"></div></div>
+            <div class="swatch-name">Walden</div>
+            <div class="swatch-id">HS-CN004</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #3a3a3a, #1a1a1a);"></div></div>
+            <div class="swatch-name">Carbon</div>
+            <div class="swatch-id">HS-CN005</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Opimo Collection -->
+      <div class="collection-band reveal">
+        <div class="collection-band-header">
+          <h3>Opimo</h3>
+          <span class="collection-tag">Best Value</span>
+        </div>
+        <div class="collection-scroll">
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #f0ece5, #d8d2ca);"></div></div>
+            <div class="swatch-name">Aurora Snow</div>
+            <div class="swatch-id">HS-OP001</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #dcd5cc, #bab2a8);"></div></div>
+            <div class="swatch-name">Sand Palace</div>
+            <div class="swatch-id">HS-OP002</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #c0b8ae, #908880);"></div></div>
+            <div class="swatch-name">Strato</div>
+            <div class="swatch-id">HS-OP003</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e8e5e0, #c8c2ba);"></div></div>
+            <div class="swatch-name">Ivory</div>
+            <div class="swatch-id">HS-OP004</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 4: COLOR PALETTE EXPLORER ===== -->
+    <section class="section section--surface noise-overlay palette-section" id="colors">
+      <div class="container">
+        <div class="reveal" style="margin-bottom: 16px;">
+          <span class="label">COLOR PALETTE EXPLORER</span>
+          <h2 style="margin-top: 16px; font-family: var(--font-headline); font-size: clamp(28px, 3.5vw, 42px); font-weight: 300;">Find Your Perfect Shade</h2>
+        </div>
+
+        <div class="filter-tabs reveal">
+          <button class="tab active" data-filter="all">All</button>
+          <button class="tab" data-filter="white">White</button>
+          <button class="tab" data-filter="warm">Warm</button>
+          <button class="tab" data-filter="cool">Cool</button>
+          <button class="tab" data-filter="vibrant">Vibrant</button>
+          <button class="tab" data-filter="grey">Grey</button>
+          <button class="tab" data-filter="black">Black</button>
+        </div>
+
+        <div class="swatch-grid reveal">
+          <!-- White -->
+          <div class="swatch-card" data-category="white">
+            <div class="swatch-preview">
+              <div class="placeholder-bg" style="background: linear-gradient(135deg, #f8f5f0, #eae5de);"></div>
+              <span class="collection-badge">Connections</span>
+            </div>
+            <div class="swatch-name">Cotton White</div>
+          </div>
+          <div class="swatch-card" data-category="white">
+            <div class="swatch-preview">
+              <div class="placeholder-bg" style="background: linear-gradient(135deg, #f5f2ed, #e5e0d8);"></div>
+              <span class="collection-badge">Pinnacle</span>
+            </div>
+            <div class="swatch-name">Bianca Statuario</div>
+          </div>
+          <div class="swatch-card" data-category="white">
+            <div class="swatch-preview">
+              <div class="placeholder-bg" style="background: linear-gradient(135deg, #f0ece5, #ddd8d0);"></div>
+              <span class="collection-badge">Opimo</span>
+            </div>
+            <div class="swatch-name">Aurora Snow</div>
+          </div>
+
+          <!-- Warm -->
+          <div class="swatch-card" data-category="warm">
+            <div class="swatch-preview">
+              <div class="placeholder-bg" style="background: linear-gradient(135deg, #e8ddd2, #c8b8a5);"></div>
+              <span class="collection-badge">Signature</span>
+            </div>
+            <div class="swatch-name">Champagne</div>
+          </div>
+          <div class="swatch-card" data-category="warm">
+            <div class="swatch-preview">
+              <div class="placeholder-bg" style="background: linear-gradient(135deg, #ddd2c5, #bfb0a0);"></div>
+              <span class="collection-badge">Opimo</span>
+            </div>
+            <div class="swatch-name">Sand Palace</div>
+          </div>
+          <div class="swatch-card" data-category="warm">
+            <div class="swatch-preview">
+              <div class="placeholder-bg" style="background: linear-gradient(135deg, #e5dcd2, #c5b8a8);"></div>
+              <span class="collection-badge">Pinnacle</span>
+            </div>
+            <div class="swatch-name">Tuscany</div>
+          </div>
+          <div class="swatch-card" data-category="warm">
+            <div class="swatch-preview">
+              <div class="placeholder-bg" style="background: linear-gradient(135deg, #f0e8de, #d0c5b8);"></div>
+              <span class="collection-badge">Signature</span>
+            </div>
+            <div class="swatch-name">Cascina</div>
+          </div>
+
+          <!-- Cool -->
+          <div class="swatch-card" data-category="cool">
+            <div class="swatch-preview">
+              <div class="placeholder-bg" style="background: linear-gradient(135deg, #e0ddd8, #bfbab5);"></div>
+              <span class="collection-badge">Signature</span>
+            </div>
+            <div class="swatch-name">Tranquility</div>
+          </div>
+          <div class="swatch-card" data-category="cool">
+            <div class="swatch-preview">
+              <div class="placeholder-bg" style="background: linear-gradient(135deg, #dcdad5, #b8b5b0);"></div>
+              <span class="collection-badge">Connections</span>
+            </div>
+            <div class="swatch-name">Walden</div>
+          </div>
+          <div class="swatch-card" data-category="cool">
+            <div class="swatch-preview">
+              <div class="placeholder-bg" style="background: linear-gradient(135deg, #e2e0dc, #c0bdb8);"></div>
+              <span class="collection-badge">Signature</span>
+            </div>
+            <div class="swatch-name">Aspen</div>
+          </div>
+
+          <!-- Vibrant -->
+          <div class="swatch-card" data-category="vibrant">
+            <div class="swatch-preview">
+              <div class="placeholder-bg" style="background: linear-gradient(135deg, #f0e5d5, #c8b898);"></div>
+              <span class="collection-badge">Pinnacle</span>
+            </div>
+            <div class="swatch-name">Calacatta Luccia</div>
+          </div>
+          <div class="swatch-card" data-category="vibrant">
+            <div class="swatch-preview">
+              <div class="placeholder-bg" style="background: linear-gradient(135deg, #e8ddd0, #c0b5a5);"></div>
+              <span class="collection-badge">Pinnacle</span>
+            </div>
+            <div class="swatch-name">Cortina</div>
+          </div>
+
+          <!-- Grey -->
+          <div class="swatch-card" data-category="grey">
+            <div class="swatch-preview">
+              <div class="placeholder-bg" style="background: linear-gradient(135deg, #d0ccc5, #a8a49d);"></div>
+              <span class="collection-badge">Connections</span>
+            </div>
+            <div class="swatch-name">Steel</div>
+          </div>
+          <div class="swatch-card" data-category="grey">
+            <div class="swatch-preview">
+              <div class="placeholder-bg" style="background: linear-gradient(135deg, #c5c0b8, #9a958d);"></div>
+              <span class="collection-badge">Connections</span>
+            </div>
+            <div class="swatch-name">Tundra</div>
+          </div>
+          <div class="swatch-card" data-category="grey">
+            <div class="swatch-preview">
+              <div class="placeholder-bg" style="background: linear-gradient(135deg, #bab5ad, #8a8580);"></div>
+              <span class="collection-badge">Opimo</span>
+            </div>
+            <div class="swatch-name">Strato</div>
+          </div>
+          <div class="swatch-card" data-category="grey">
+            <div class="swatch-preview">
+              <div class="placeholder-bg" style="background: linear-gradient(135deg, #e0dcd5, #c0b8b0);"></div>
+              <span class="collection-badge">Signature</span>
+            </div>
+            <div class="swatch-name">Montauk</div>
+          </div>
+
+          <!-- Black -->
+          <div class="swatch-card" data-category="black">
+            <div class="swatch-preview">
+              <div class="placeholder-bg" style="background: linear-gradient(135deg, #3a3a3a, #1a1a1a);"></div>
+              <span class="collection-badge">Connections</span>
+            </div>
+            <div class="swatch-name">Carbon</div>
+          </div>
+          <div class="swatch-card" data-category="black">
+            <div class="swatch-preview">
+              <div class="placeholder-bg" style="background: linear-gradient(135deg, #2a2a2a, #0f0f0f);"></div>
+              <span class="collection-badge">Pinnacle</span>
+            </div>
+            <div class="swatch-name">Ravenna</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 5: BENEFITS ===== -->
+    <section class="section section--dark">
+      <div class="container">
+        <div class="text-center reveal" style="margin-bottom: 56px;">
+          <span class="label">WHY HANSTONE</span>
+          <h2 style="margin-top: 16px; font-family: var(--font-headline); font-size: clamp(28px, 3.5vw, 42px); font-weight: 300;">Engineered to Outperform</h2>
+        </div>
+
+        <div class="benefits-grid">
+          <div class="benefit-card reveal">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <h4>Harder Than Granite</h4>
+            <p>Composed of 93% natural quartz, Hanstone scores a 7 on the Mohs hardness scale &mdash; making it one of the most durable countertop surfaces available. It resists scratching, chipping, and cracking under everyday use.</p>
+          </div>
+
+          <div class="benefit-card reveal reveal-delay-1">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M8 12l3 3 5-5"/></svg>
+            </div>
+            <h4>Never Needs Sealing</h4>
+            <p>Unlike natural stone, Hanstone Quartz never requires sealing, polishing, or reconditioning. The non-porous surface maintains its luster and finish for the lifetime of your countertop with minimal maintenance.</p>
+          </div>
+
+          <div class="benefit-card reveal reveal-delay-2">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h4>Non-Porous &amp; Hygienic</h4>
+            <p>Hanstone's non-porous surface means no bacteria, mold, or mildew can penetrate the material. Greenguard Gold Certified for indoor air quality, it's the ideal choice for kitchens and bathrooms.</p>
+          </div>
+
+          <div class="benefit-card reveal reveal-delay-3">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <h4>Lifetime Warranty</h4>
+            <p>Every Hanstone slab is backed by a transferable lifetime residential warranty and a 10-year commercial warranty. It's a promise of quality from a global manufacturer you can trust.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 6: PROFESSIONAL RESOURCES ===== -->
+    <section class="section section--surface noise-overlay">
+      <div class="container">
+        <div class="text-center reveal" style="margin-bottom: 48px;">
+          <span class="label">FOR PROFESSIONALS</span>
+          <h2 style="margin-top: 16px; font-family: var(--font-headline); font-size: clamp(28px, 3.5vw, 42px); font-weight: 300;">Professional Resources</h2>
+          <p style="color: var(--color-text-muted); margin-top: 12px; max-width: 560px; margin-left: auto; margin-right: auto;">Everything architects, designers, and fabricators need to specify and install Hanstone Quartz with confidence.</p>
+        </div>
+
+        <div class="resources-grid reveal">
+          <a href="#" class="resource-link">
+            <div class="resource-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <div class="resource-info">
+              <h4>BIM Library</h4>
+              <p>Revit families &amp; objects</p>
+            </div>
+          </a>
+
+          <a href="#" class="resource-link">
+            <div class="resource-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <div class="resource-info">
+              <h4>CAD Files</h4>
+              <p>DWG &amp; DXF downloads</p>
+            </div>
+          </a>
+
+          <a href="#" class="resource-link">
+            <div class="resource-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+            </div>
+            <div class="resource-info">
+              <h4>CEU Courses</h4>
+              <p>AIA-approved learning</p>
+            </div>
+          </a>
+
+          <a href="#" class="resource-link">
+            <div class="resource-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div class="resource-info">
+              <h4>Spec Sheets</h4>
+              <p>Technical specifications</p>
+            </div>
+          </a>
+
+          <a href="#" class="resource-link">
+            <div class="resource-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+            </div>
+            <div class="resource-info">
+              <h4>Care &amp; Maintenance</h4>
+              <p>Cleaning guides &amp; tips</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 7: CTA ===== -->
+    <section class="section section--dark cta-section">
+      <div class="container">
+        <h2 class="reveal">Ready to see Hanstone in person?</h2>
+        <p class="reveal">Visit our Doral showroom to explore the full collection, or request samples delivered to your door.</p>
+        <div class="cta-buttons reveal">
+          <a href="contact.html" class="btn btn--hanstone">Request a Quote</a>
+          <a href="about.html#showroom" class="btn btn--outline">Visit Our Showroom</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-logo"><img src="../images/header/TSS_LOGO.png" alt="The Stone Surfaces" class="logo-img"></div>
+          <p class="tagline">South Florida's trusted source for premium natural and engineered stone surfaces since 2016.</p>
+          <p class="contact-line">&#9679; 7980 NW 56th St, Doral, FL 33166</p>
+          <p class="contact-line">&#9742; (305) 000-0000</p>
+          <p class="contact-line">&#9993; info@thestonesurfaces.com</p>
+        </div>
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul>
+            <li><a href="products.html#granite">Granite</a></li>
+            <li><a href="products.html#marble">Marble</a></li>
+            <li><a href="products.html#quartz">Quartz</a></li>
+            <li><a href="products.html#quartzite">Quartzite</a></li>
+            <li><a href="products.html#dolomite">Dolomite</a></li>
+            <li><a href="products.html#hard-marble">Hard Marble</a></li>
+            <li><a href="hanstone.html">Hanstone Quartz</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="inspired.html">Get Inspired</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Warranty Info</a></li>
+            <li><a href="trade.html">For The Trade</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="Pinterest">PI</a>
+            <a href="#" aria-label="LinkedIn">LI</a>
+            <a href="#" aria-label="Houzz">HZ</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 The Stone Surfaces. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== MOBILE TAB BAR ===== -->
+  <nav class="mobile-tab-bar">
+    <div class="container">
+      <a href="../index.html" class="tab-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+        <span>Home</span>
+      </a>
+      <a href="products.html" class="tab-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        <span>Products</span>
+      </a>
+      <a href="hanstone.html" class="tab-item active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <span>Hanstone</span>
+      </a>
+      <a href="inspired.html" class="tab-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span>Inspire</span>
+      </a>
+      <a href="contact.html" class="tab-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span>Contact</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ===== CHAT WIDGET ===== -->
+  <button class="chat-widget-btn" aria-label="Open chat">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+  </button>
+
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <h4>The Stone Surfaces Assistant</h4>
+      <div class="close-btn">&times;</div>
+    </div>
+    <div class="chat-messages">
+      <div class="chat-message bot">
+        Hi! I'm here to help you find the perfect Hanstone Quartz color for your project. What are you looking for?
+        <div class="quick-actions">
+          <button>Browse Colors</button>
+          <button>Request a Quote</button>
+          <button>Compare Collections</button>
+          <button>Visit Our Showroom</button>
+        </div>
+      </div>
+    </div>
+    <div class="chat-input">
+      <input type="text" placeholder="Type your message...">
+      <button aria-label="Send">&uarr;</button>
+    </div>
+    <div id="n8n-chat-widget" data-webhook-url="YOUR_N8N_WEBHOOK_URL" style="display:none;"></div>
+  </div>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

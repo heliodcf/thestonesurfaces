@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — The Stone Surfaces | Our Story & Showroom</title>
+  <meta name="description" content="Learn about The Stone Surfaces — a decade of excellence in natural and engineered stone distribution. Visit our 10,000 sq ft Doral showroom.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="About Us — The Stone Surfaces">
+  <meta property="og:description" content="A decade of excellence in natural and engineered stone. Meet our team and visit our Doral showroom.">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/styles.css">
+
+  <style>
+    /* ===== PAGE HERO ===== */
+    .page-hero {
+      position: relative;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      overflow: hidden;
+    }
+    .page-hero .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .page-hero .hero-bg .placeholder-bg {
+      width: 100%;
+      height: 100%;
+    }
+    .page-hero .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 1;
+    }
+    .page-hero .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    .page-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: clamp(42px, 6vw, 72px);
+      color: #fff;
+      margin: 0 0 16px;
+      line-height: 1.1;
+    }
+    .page-hero .subtext {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      color: rgba(255,255,255,0.7);
+      font-weight: 400;
+    }
+
+    /* ===== TIMELINE ===== */
+    .timeline-section {
+      padding: 100px 24px;
+    }
+    .timeline-section .section-heading {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .timeline-section .section-heading h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: clamp(32px, 4vw, 48px);
+      color: #fff;
+      margin-top: 16px;
+    }
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: rgba(196,164,120,0.3);
+    }
+    .timeline-item {
+      position: relative;
+      padding: 0 0 48px;
+      display: flex;
+      align-items: flex-start;
+    }
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+    .timeline-item:nth-child(odd) {
+      flex-direction: row;
+      padding-right: calc(50% + 40px);
+      text-align: right;
+    }
+    .timeline-item:nth-child(even) {
+      flex-direction: row-reverse;
+      padding-left: calc(50% + 40px);
+      text-align: left;
+    }
+    .timeline-marker {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 48px;
+      height: 48px;
+      background: var(--color-cta, #c4a478);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      color: #0f0d0a;
+      z-index: 2;
+      flex-shrink: 0;
+    }
+    .timeline-content {
+      flex: 1;
+    }
+    .timeline-content h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 22px;
+      color: #fff;
+      margin: 0 0 8px;
+    }
+    .timeline-content p {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      color: rgba(255,255,255,0.6);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .timeline::before {
+        left: 24px;
+      }
+      .timeline-item:nth-child(odd),
+      .timeline-item:nth-child(even) {
+        flex-direction: row;
+        padding-left: 72px;
+        padding-right: 0;
+        text-align: left;
+      }
+      .timeline-marker {
+        left: 24px;
+        width: 40px;
+        height: 40px;
+        font-size: 12px;
+      }
+    }
+
+    /* ===== MISSION & VALUES ===== */
+    .values-section {
+      padding: 100px 24px;
+    }
+    .values-section .section-heading {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .values-section .section-heading h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: clamp(32px, 4vw, 48px);
+      color: var(--color-text-dark, #1a1510);
+      margin-top: 16px;
+    }
+    .values-section .section-heading p {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      color: rgba(26,21,16,0.6);
+      max-width: 600px;
+      margin: 16px auto 0;
+      line-height: 1.6;
+    }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .value-card {
+      text-align: center;
+      padding: 40px 24px;
+    }
+    .value-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--color-cta, #c4a478);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 28px;
+      color: #0f0d0a;
+    }
+    .value-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 26px;
+      color: var(--color-text-dark, #1a1510);
+      margin: 0 0 12px;
+    }
+    .value-card p {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      color: rgba(26,21,16,0.6);
+      line-height: 1.7;
+      margin: 0;
+    }
+    @media (max-width: 768px) {
+      .values-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    /* ===== TEAM SECTION ===== */
+    .team-section {
+      padding: 100px 24px;
+    }
+    .team-section .section-heading {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .team-section .section-heading h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: clamp(32px, 4vw, 48px);
+      color: #fff;
+      margin-top: 16px;
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .team-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      cursor: pointer;
+    }
+    .team-card .team-photo {
+      width: 100%;
+      height: 100%;
+    }
+    .team-card .team-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 24px 16px 16px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+      transition: opacity 0.3s ease;
+    }
+    .team-card .team-info h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: #fff;
+      margin: 0 0 4px;
+    }
+    .team-card .team-info .role {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      color: var(--color-cta, #c4a478);
+      margin: 0;
+    }
+    .team-card .team-bio-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(15,13,10,0.92);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .team-card:hover .team-bio-overlay {
+      opacity: 1;
+    }
+    .team-bio-overlay h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: #fff;
+      margin: 0 0 4px;
+    }
+    .team-bio-overlay .role {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      color: var(--color-cta, #c4a478);
+      margin: 0 0 16px;
+    }
+    .team-bio-overlay p {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+      margin: 0;
+    }
+    @media (max-width: 1024px) {
+      .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 480px) {
+      .team-grid {
+        grid-template-columns: 1fr;
+        max-width: 320px;
+      }
+    }
+
+    /* ===== SHOWROOM SECTION ===== */
+    .showroom-section {
+      padding: 100px 24px;
+    }
+    .showroom-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 64px;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .showroom-image {
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+    .showroom-image .placeholder-bg {
+      width: 100%;
+      height: 100%;
+    }
+    .showroom-content h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: clamp(32px, 4vw, 42px);
+      color: var(--color-text-dark, #1a1510);
+      margin: 0 0 16px;
+    }
+    .showroom-content p {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      color: rgba(26,21,16,0.6);
+      line-height: 1.7;
+      margin: 0 0 16px;
+    }
+    .showroom-details {
+      margin: 24px 0 32px;
+      padding: 0;
+      list-style: none;
+    }
+    .showroom-details li {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      color: rgba(26,21,16,0.7);
+      padding: 8px 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .showroom-details li .check {
+      color: var(--color-cta, #c4a478);
+      font-weight: 700;
+    }
+    @media (max-width: 768px) {
+      .showroom-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    /* ===== MAP SECTION ===== */
+    .map-section {
+      padding: 0;
+    }
+    .map-section iframe {
+      width: 100%;
+      height: 450px;
+      border: 0;
+      display: block;
+    }
+    @media (max-width: 768px) {
+      .map-section iframe {
+        height: 320px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header header--transparent">
+    <div class="container">
+      <a href="../index.html" class="logo">
+        <img src="../images/header/TSS_LOGO.png" alt="The Stone Surfaces" class="logo-img">
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="products.html" data-mega-menu>Products</a>
+        <a href="hanstone.html">Hanstone Quartz</a>
+        <a href="inspired.html">Get Inspired</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html" class="active">About</a>
+        <a href="trade.html">For The Trade</a>
+      </nav>
+
+      <!-- Mega Menu -->
+      <div class="mega-menu">
+        <div class="container">
+          <div class="mega-menu-grid">
+            <a href="products.html#granite" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/Granite.jpg" alt="Granite"></div>
+              <h4>Granite</h4>
+            </a>
+            <a href="products.html#marble" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/marble.jpg" alt="Marble"></div>
+              <h4>Marble</h4>
+            </a>
+            <a href="products.html#quartz" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/Quartz.jpg" alt="Quartz"></div>
+              <h4>Quartz</h4>
+            </a>
+            <a href="products.html#quartzite" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/Quartzite.jpg" alt="Quartzite"></div>
+              <h4>Quartzite</h4>
+            </a>
+            <a href="products.html#dolomite" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/Dolomite.jpg" alt="Dolomite"></div>
+              <h4>Dolomite</h4>
+            </a>
+            <a href="products.html#hard-marble" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/Hard_Marble.jpg" alt="Hard Marble"></div>
+              <h4>Hard Marble</h4>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <a href="contact.html" class="btn btn--primary">Request a Quote</a>
+        <div class="nav-toggle" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu">
+    <a href="products.html">Products</a>
+    <a href="hanstone.html">Hanstone Quartz</a>
+    <a href="inspired.html">Get Inspired</a>
+    <a href="blog.html">Blog</a>
+    <a href="about.html" class="active">About</a>
+    <a href="trade.html">For The Trade</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <main>
+
+    <!-- ===== SECTION 1: PAGE HERO ===== -->
+    <section class="page-hero">
+      <div class="hero-bg">
+        <div class="placeholder-bg" style="background: linear-gradient(135deg, #2a2118 0%, #1a1510 30%, #0f0d0a 60%, #1a1510 100%);"></div>
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content reveal">
+        <span class="label">ABOUT THE STONE SURFACES</span>
+        <h1>Our Story</h1>
+        <p class="subtext">A decade of excellence in natural and engineered stone.</p>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 2: TIMELINE ===== -->
+    <section class="timeline-section section--dark">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="label">A DECADE OF GROWTH</span>
+          <h2>Our Journey</h2>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item reveal">
+            <div class="timeline-marker">2016</div>
+            <div class="timeline-content">
+              <h3>Founded in Doral</h3>
+              <p>Started with a small warehouse and a vision to bring the finest natural stone to South Florida's builders and homeowners.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal reveal-delay-1">
+            <div class="timeline-marker">2018</div>
+            <div class="timeline-content">
+              <h3>Expanded Our Showroom</h3>
+              <p>Opened our 10,000 sq ft showroom, giving clients the ability to see and touch hundreds of slabs before making a decision.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal reveal-delay-2">
+            <div class="timeline-marker">2020</div>
+            <div class="timeline-content">
+              <h3>500+ Slab Varieties</h3>
+              <p>Became the largest stone selection in South Florida, curating premium materials from quarries around the world.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal reveal-delay-3">
+            <div class="timeline-marker">2022</div>
+            <div class="timeline-content">
+              <h3>Trade Program Launch</h3>
+              <p>Launched dedicated services for fabricators, designers, and contractors with wholesale pricing and priority access.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal">
+            <div class="timeline-marker">2024</div>
+            <div class="timeline-content">
+              <h3>Regional Growth</h3>
+              <p>Expanded our delivery network to serve fabricators and builders across the entire state of Florida.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal reveal-delay-1">
+            <div class="timeline-marker">2026</div>
+            <div class="timeline-content">
+              <h3>Hanstone Partnership</h3>
+              <p>Became the official Hanstone Quartz distributor by Hyundai L&amp;C, bringing world-class engineered surfaces to our clients.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 3: MISSION & VALUES ===== -->
+    <section class="values-section section--light">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="label label-dark">WHAT DRIVES US</span>
+          <h2>Mission &amp; Values</h2>
+          <p>Every slab we source, every client we serve, and every project we support is guided by three foundational pillars.</p>
+        </div>
+
+        <div class="values-grid">
+          <div class="value-card reveal">
+            <div class="value-icon">&#9830;</div>
+            <h3>Quality</h3>
+            <p>We hand-select every slab from trusted quarries worldwide. No shortcuts, no compromises. Every surface that leaves our warehouse meets the highest standards for color, consistency, and structural integrity.</p>
+          </div>
+          <div class="value-card reveal reveal-delay-1">
+            <div class="value-icon">&#9733;</div>
+            <h3>Service</h3>
+            <p>From your first showroom visit to final delivery, our team provides expert guidance at every step. We answer the phone, we follow through, and we treat your project like our own.</p>
+          </div>
+          <div class="value-card reveal reveal-delay-2">
+            <div class="value-icon">&#9670;</div>
+            <h3>Integrity</h3>
+            <p>Transparent pricing, honest timelines, and straightforward advice. We build long-term relationships by doing what we say we'll do, every single time.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 4: TEAM ===== -->
+    <section class="team-section section--dark">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="label">THE PEOPLE BEHIND THE STONE</span>
+          <h2>Meet Our Team</h2>
+        </div>
+
+        <div class="team-grid">
+          <div class="team-card reveal">
+            <div class="team-photo placeholder-bg" style="background: linear-gradient(135deg, #4a3a2a, #2a1a0a);"></div>
+            <div class="team-info">
+              <h4>Carlos Mendez</h4>
+              <p class="role">Founder &amp; CEO</p>
+            </div>
+            <div class="team-bio-overlay">
+              <h4>Carlos Mendez</h4>
+              <p class="role">Founder &amp; CEO</p>
+              <p>With over 20 years in the stone industry, Carlos founded The Stone Surfaces with a mission to bring premium materials and honest service to South Florida.</p>
+            </div>
+          </div>
+
+          <div class="team-card reveal reveal-delay-1">
+            <div class="team-photo placeholder-bg" style="background: linear-gradient(135deg, #3a4a3a, #1a2a1a);"></div>
+            <div class="team-info">
+              <h4>Ana Lucia Reyes</h4>
+              <p class="role">Director of Operations</p>
+            </div>
+            <div class="team-bio-overlay">
+              <h4>Ana Lucia Reyes</h4>
+              <p class="role">Director of Operations</p>
+              <p>Ana oversees logistics, inventory, and supplier relationships. Her attention to detail ensures every order is fulfilled accurately and on time.</p>
+            </div>
+          </div>
+
+          <div class="team-card reveal reveal-delay-2">
+            <div class="team-photo placeholder-bg" style="background: linear-gradient(135deg, #3a3a4a, #1a1a2a);"></div>
+            <div class="team-info">
+              <h4>David Chen</h4>
+              <p class="role">Sales Manager</p>
+            </div>
+            <div class="team-bio-overlay">
+              <h4>David Chen</h4>
+              <p class="role">Sales Manager</p>
+              <p>David leads our sales team with deep product knowledge and a consultative approach, helping clients find the perfect surface for every project.</p>
+            </div>
+          </div>
+
+          <div class="team-card reveal reveal-delay-3">
+            <div class="team-photo placeholder-bg" style="background: linear-gradient(135deg, #4a3a3a, #2a1a1a);"></div>
+            <div class="team-info">
+              <h4>Isabella Vargas</h4>
+              <p class="role">Design Consultant</p>
+            </div>
+            <div class="team-bio-overlay">
+              <h4>Isabella Vargas</h4>
+              <p class="role">Design Consultant</p>
+              <p>A trained interior designer, Isabella helps homeowners and professionals visualize how different stones will transform their spaces.</p>
+            </div>
+          </div>
+
+          <div class="team-card reveal">
+            <div class="team-photo placeholder-bg" style="background: linear-gradient(135deg, #3a4a4a, #1a2a2a);"></div>
+            <div class="team-info">
+              <h4>Marcus Johnson</h4>
+              <p class="role">Trade Program Lead</p>
+            </div>
+            <div class="team-bio-overlay">
+              <h4>Marcus Johnson</h4>
+              <p class="role">Trade Program Lead</p>
+              <p>Marcus manages relationships with fabricators and contractors statewide, ensuring our trade partners get priority service and competitive pricing.</p>
+            </div>
+          </div>
+
+          <div class="team-card reveal reveal-delay-1">
+            <div class="team-photo placeholder-bg" style="background: linear-gradient(135deg, #4a4a3a, #2a2a1a);"></div>
+            <div class="team-info">
+              <h4>Sofia Petrov</h4>
+              <p class="role">Marketing Director</p>
+            </div>
+            <div class="team-bio-overlay">
+              <h4>Sofia Petrov</h4>
+              <p class="role">Marketing Director</p>
+              <p>Sofia drives our brand presence and digital strategy, connecting homeowners and trade professionals with the surfaces they need.</p>
+            </div>
+          </div>
+
+          <div class="team-card reveal reveal-delay-2">
+            <div class="team-photo placeholder-bg" style="background: linear-gradient(135deg, #3a3a3a, #1a1a1a);"></div>
+            <div class="team-info">
+              <h4>Roberto Silva</h4>
+              <p class="role">Warehouse Manager</p>
+            </div>
+            <div class="team-bio-overlay">
+              <h4>Roberto Silva</h4>
+              <p class="role">Warehouse Manager</p>
+              <p>Roberto ensures every slab is properly stored, catalogued, and handled with care. His team manages our entire 10,000 sq ft facility.</p>
+            </div>
+          </div>
+
+          <div class="team-card reveal reveal-delay-3">
+            <div class="team-photo placeholder-bg" style="background: linear-gradient(135deg, #4a3a4a, #2a1a2a);"></div>
+            <div class="team-info">
+              <h4>Elena Torres</h4>
+              <p class="role">Client Relations</p>
+            </div>
+            <div class="team-bio-overlay">
+              <h4>Elena Torres</h4>
+              <p class="role">Client Relations</p>
+              <p>Elena is the first point of contact for new clients, guiding them through the selection process and ensuring a seamless showroom experience.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 5: SHOWROOM ===== -->
+    <section id="showroom" class="showroom-section section--light">
+      <div class="container">
+        <div class="showroom-grid">
+          <div class="showroom-image reveal">
+            <div class="placeholder-bg" style="background: linear-gradient(135deg, #3a3028 0%, #2a2018 40%, #1a1510 100%); width: 100%; height: 100%;"></div>
+          </div>
+          <div class="showroom-content reveal reveal-delay-1">
+            <span class="label label-dark">VISIT US</span>
+            <h2>Our Doral Showroom</h2>
+            <p>Step into our 10,000 sq ft showroom and experience hundreds of premium slabs in person. Our expert team is on-site to help you compare materials, match colors, and find the perfect surface for your project.</p>
+            <p>Whether you're a homeowner planning a renovation or a trade professional sourcing for your next build, we're here to help.</p>
+            <ul class="showroom-details">
+              <li><span class="check">&#10003;</span> 500+ slabs on display</li>
+              <li><span class="check">&#10003;</span> Expert consultations available</li>
+              <li><span class="check">&#10003;</span> Mon&ndash;Fri 8am&ndash;5pm, Sat 9am&ndash;2pm</li>
+              <li><span class="check">&#10003;</span> 7980 NW 56th St, Doral, FL 33166</li>
+            </ul>
+            <a href="contact.html" class="btn btn--primary">Schedule a Visit</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 6: GOOGLE MAP ===== -->
+    <section class="map-section">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3591.847!2d-80.3430!3d25.8070!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b90a1e5b0001%3A0x1234567890abcdef!2s7980%20NW%2056th%20St%2C%20Doral%2C%20FL%2033166!5e0!3m2!1sen!2sus!4v1709900000000!5m2!1sen!2sus"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="The Stone Surfaces location - 7980 NW 56th St, Doral, FL 33166">
+      </iframe>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-logo"><img src="../images/header/TSS_LOGO.png" alt="The Stone Surfaces" class="logo-img"></div>
+          <p class="tagline">South Florida's trusted source for premium natural and engineered stone surfaces since 2016.</p>
+          <p class="contact-line">&#9679; 7980 NW 56th St, Doral, FL 33166</p>
+          <p class="contact-line">&#9742; (305) 000-0000</p>
+          <p class="contact-line">&#9993; info@thestonesurfaces.com</p>
+        </div>
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul>
+            <li><a href="products.html#granite">Granite</a></li>
+            <li><a href="products.html#marble">Marble</a></li>
+            <li><a href="products.html#quartz">Quartz</a></li>
+            <li><a href="products.html#quartzite">Quartzite</a></li>
+            <li><a href="products.html#dolomite">Dolomite</a></li>
+            <li><a href="products.html#hard-marble">Hard Marble</a></li>
+            <li><a href="hanstone.html">Hanstone Quartz</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="inspired.html">Get Inspired</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Warranty Info</a></li>
+            <li><a href="trade.html">For The Trade</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="Pinterest">PI</a>
+            <a href="#" aria-label="LinkedIn">LI</a>
+            <a href="#" aria-label="Houzz">HZ</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 The Stone Surfaces. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== MOBILE TAB BAR ===== -->
+  <nav class="mobile-tab-bar">
+    <div class="container">
+      <a href="../index.html" class="tab-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+        <span>Home</span>
+      </a>
+      <a href="products.html" class="tab-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        <span>Products</span>
+      </a>
+      <a href="hanstone.html" class="tab-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <span>Hanstone</span>
+      </a>
+      <a href="inspired.html" class="tab-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span>Inspire</span>
+      </a>
+      <a href="contact.html" class="tab-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span>Contact</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ===== CHAT WIDGET ===== -->
+  <button class="chat-widget-btn" aria-label="Open chat">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+  </button>
+
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <h4>The Stone Surfaces Assistant</h4>
+      <div class="close-btn">&times;</div>
+    </div>
+    <div class="chat-messages">
+      <div class="chat-message bot">
+        Hi! I'm here to help you find the perfect stone for your project. What are you looking for?
+        <div class="quick-actions">
+          <button>Browse Products</button>
+          <button>Request a Quote</button>
+          <button>Hanstone Quartz Info</button>
+          <button>Visit Our Showroom</button>
+        </div>
+      </div>
+    </div>
+    <div class="chat-input">
+      <input type="text" placeholder="Type your message...">
+      <button aria-label="Send">&uarr;</button>
+    </div>
+    <div id="n8n-chat-widget" data-webhook-url="YOUR_N8N_WEBHOOK_URL" style="display:none;"></div>
+  </div>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
