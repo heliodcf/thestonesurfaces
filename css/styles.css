@@ -267,8 +267,8 @@ p {
 
 .btn--outline {
   background: transparent;
-  color: var(--color-text-light);
-  border: 1px solid var(--color-text-light);
+  color: #000000;
+  border: 1px solid #000000;
 }
 
 .btn--outline:hover {
@@ -325,12 +325,44 @@ p {
   background: transparent;
 }
 
+.header--transparent .logo-img {
+  filter: brightness(0);
+  transition: filter var(--transition-default);
+}
+
+.header--transparent .nav-desktop a {
+  color: #000000;
+}
+
+.header--transparent .nav-desktop a:hover,
+.header--transparent .nav-desktop a.active {
+  color: var(--color-cta);
+}
+
+.header--transparent .nav-toggle span {
+  background: #000000;
+}
+
 .header--solid {
   background: rgba(15, 15, 15, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   padding: 12px 0;
   border-bottom: 1px solid var(--color-border-dark);
+}
+
+.header--solid .logo-img {
+  filter: brightness(0) invert(1);
+  transition: filter var(--transition-default);
+}
+
+.header--solid .nav-desktop a {
+  color: var(--color-text-light);
+}
+
+.header--solid .nav-desktop a:hover,
+.header--solid .nav-desktop a.active {
+  color: var(--color-text-light);
 }
 
 .header .container {
@@ -615,11 +647,7 @@ p {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom,
-    rgba(15,15,15,0.3) 0%,
-    rgba(15,15,15,0.5) 50%,
-    rgba(15,15,15,0.7) 100%
-  );
+  background: none;
   z-index: 1;
 }
 
@@ -633,15 +661,17 @@ p {
 
 .hero-content .label {
   margin-bottom: 24px;
+  color: #000000;
 }
 
 .hero-content h1 {
   margin-bottom: 24px;
+  color: var(--color-cta);
 }
 
 .hero-content .subheadline {
   font-size: 20px;
-  color: var(--color-text-muted);
+  color: #3a3a3a;
   margin-bottom: 40px;
   line-height: 1.6;
 }
