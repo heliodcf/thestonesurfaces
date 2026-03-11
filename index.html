@@ -306,20 +306,29 @@
     </section>
 
     <!-- ===== SECTION 4: TRUST PILLARS ===== -->
-    <section class="section section--light">
-      <div class="container">
-        <div class="trust-grid">
-          <div class="trust-item reveal">
-            <div class="number" data-count="10" data-suffix="+">0</div>
-            <p class="desc" data-i18n="home.trust.years">Years of Excellence</p>
+    <section class="section trust-section">
+      <div class="container trust-layout">
+        <div class="trust-video-col">
+          <div class="trust-video-wrapper" data-scroll-video>
+            <video muted playsinline preload="auto" aria-hidden="true">
+              <source src="images/data/Data-hero.mp4" type="video/mp4">
+            </video>
           </div>
-          <div class="trust-item reveal reveal-delay-1">
-            <div class="number" data-count="500" data-suffix="+">0</div>
-            <p class="desc" data-i18n="home.trust.slabs">Slab Varieties in Stock</p>
-          </div>
-          <div class="trust-item reveal reveal-delay-2">
-            <div class="number" data-count="100" data-suffix="%">0</div>
-            <p class="desc" data-i18n="home.trust.consultation">Expert Consultation Included</p>
+        </div>
+        <div class="trust-data-col">
+          <div class="trust-grid">
+            <div class="trust-item reveal">
+              <div class="number" data-count="10" data-suffix="+">0</div>
+              <p class="desc" data-i18n="home.trust.years">Years of Excellence</p>
+            </div>
+            <div class="trust-item reveal reveal-delay-1">
+              <div class="number" data-count="500" data-suffix="+">0</div>
+              <p class="desc" data-i18n="home.trust.slabs">Slab Varieties in Stock</p>
+            </div>
+            <div class="trust-item reveal reveal-delay-2">
+              <div class="number" data-count="100" data-suffix="%">0</div>
+              <p class="desc" data-i18n="home.trust.consultation">Expert Consultation Included</p>
+            </div>
           </div>
         </div>
       </div>
@@ -707,6 +716,105 @@
     <div id="n8n-chat-widget" data-webhook-url="YOUR_N8N_WEBHOOK_URL" style="display:none;"></div>
   </div>
 
+  <script>
+    /* Scroll-scrub video with GPU chroma key (WebGL) */
+    (function() {
+      var wrapper = document.querySelector('[data-scroll-video]');
+      if (!wrapper) return;
+      var video = wrapper.querySelector('video');
+      if (!video) return;
+      var section = wrapper.closest('.trust-section');
+
+      var canvas = document.createElement('canvas');
+      wrapper.appendChild(canvas);
+
+      var gl = canvas.getContext('webgl', { alpha: true, premultipliedAlpha: false });
+      if (!gl) return; /* fallback: no WebGL */
+
+      /* Shaders */
+      var vsrc = 'attribute vec2 a_pos;varying vec2 v_uv;void main(){v_uv=a_pos*0.5+0.5;v_uv.y=1.0-v_uv.y;gl_Position=vec4(a_pos,0,1);}';
+      var fsrc = [
+        'precision mediump float;',
+        'varying vec2 v_uv;',
+        'uniform sampler2D u_tex;',
+        'void main(){',
+        '  vec4 c=texture2D(u_tex,v_uv);',
+        '  float b=dot(c.rgb,vec3(0.299,0.587,0.114));',
+        '  float lo=0.15;float hi=0.27;',
+        '  float a=smoothstep(lo,hi,b);',
+        '  gl_FragColor=vec4(c.rgb,a);',
+        '}'
+      ].join('\n');
+
+      function makeShader(src, type) {
+        var s = gl.createShader(type);
+        gl.shaderSource(s, src);
+        gl.compileShader(s);
+        return s;
+      }
+      var prog = gl.createProgram();
+      gl.attachShader(prog, makeShader(vsrc, gl.VERTEX_SHADER));
+      gl.attachShader(prog, makeShader(fsrc, gl.FRAGMENT_SHADER));
+      gl.linkProgram(prog);
+      gl.useProgram(prog);
+
+      /* Full-screen quad */
+      var buf = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,1,-1,-1,1,1,1]), gl.STATIC_DRAW);
+      var aPos = gl.getAttribLocation(prog, 'a_pos');
+      gl.enableVertexAttribArray(aPos);
+      gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
+
+      /* Texture */
+      var tex = gl.createTexture();
+      gl.bindTexture(gl.TEXTURE_2D, tex);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+
+      gl.enable(gl.BLEND);
+      gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+
+      var ready = false, duration = 0;
+
+      video.addEventListener('loadedmetadata', function() {
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        gl.viewport(0, 0, canvas.width, canvas.height);
+        duration = video.duration;
+        ready = true;
+        video.currentTime = 0;
+      });
+
+      video.addEventListener('seeked', drawFrame);
+
+      function drawFrame() {
+        if (!ready) return;
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, video);
+        gl.clearColor(0, 0, 0, 0);
+        gl.clear(gl.COLOR_BUFFER_BIT);
+        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+      }
+
+      var ticking = false;
+      window.addEventListener('scroll', function() {
+        if (!ready) return;
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(function() {
+            var rect = section.getBoundingClientRect();
+            var vh = window.innerHeight;
+            var progress = (vh - rect.top) / (vh + rect.height);
+            var clamped = Math.max(0, Math.min(1, progress));
+            video.currentTime = clamped * duration;
+            ticking = false;
+          });
+        }
+      }, { passive: true });
+    })();
+  </script>
   <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
 </body>
