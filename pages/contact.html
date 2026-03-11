@@ -69,6 +69,27 @@
       </div>
 
       <div class="header-right">
+        <div class="lang-selector">
+          <button class="lang-selector-toggle" aria-label="Select language">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            <span class="lang-current">EN</span>
+            <svg class="lang-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+          </button>
+          <div class="lang-dropdown">
+            <div class="lang-option active" data-lang="en">
+              <span class="lang-option-label">English</span>
+              <span class="lang-option-code">EN</span>
+            </div>
+            <div class="lang-option" data-lang="es">
+              <span class="lang-option-label">Español</span>
+              <span class="lang-option-code">ES</span>
+            </div>
+            <div class="lang-option" data-lang="pt">
+              <span class="lang-option-label">Português</span>
+              <span class="lang-option-code">PT</span>
+            </div>
+          </div>
+        </div>
         <a href="contact.html" class="btn btn--primary">Request a Quote</a>
         <div class="nav-toggle" aria-label="Toggle navigation">
           <span></span><span></span><span></span>
@@ -86,6 +107,11 @@
     <a href="about.html">About</a>
     <a href="trade.html">For The Trade</a>
     <a href="contact.html">Contact</a>
+    <div class="lang-selector-mobile">
+      <button data-lang="en" class="active">EN</button>
+      <button data-lang="es">ES</button>
+      <button data-lang="pt">PT</button>
+    </div>
   </div>
 
   <main>
@@ -93,8 +119,8 @@
     <!-- ===== PAGE HERO ===== -->
     <section class="page-hero">
       <div class="container">
-        <h1 class="reveal">Request a Quote</h1>
-        <p class="page-hero-sub reveal reveal-delay-1">Tell us about your project and we'll get back to you within 24 hours.</p>
+        <h1 class="reveal" data-i18n="contact.title">Request a Quote</h1>
+        <p class="page-hero-sub reveal reveal-delay-1" data-i18n="contact.subtitle">Tell us about your project and we'll get back to you within 24 hours.</p>
       </div>
     </section>
 
@@ -109,96 +135,96 @@
 
               <div class="form-row">
                 <div class="form-group">
-                  <label for="full-name">Full Name <span class="required">*</span></label>
-                  <input type="text" id="full-name" name="full_name" placeholder="Your full name" required>
+                  <label for="full-name" data-i18n-html="contact.form.name">Full Name <span class="required">*</span></label>
+                  <input type="text" id="full-name" name="full_name" placeholder="Your full name" data-i18n-placeholder="contact.form.namePh" required>
                 </div>
                 <div class="form-group">
-                  <label for="company-name">Company Name</label>
-                  <input type="text" id="company-name" name="company_name" placeholder="Your company (optional)">
+                  <label for="company-name" data-i18n="contact.form.company">Company Name</label>
+                  <input type="text" id="company-name" name="company_name" placeholder="Your company (optional)" data-i18n-placeholder="contact.form.companyPh">
                 </div>
               </div>
 
               <div class="form-row">
                 <div class="form-group">
-                  <label for="email">Email <span class="required">*</span></label>
-                  <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                  <label for="email" data-i18n-html="contact.form.email">Email <span class="required">*</span></label>
+                  <input type="email" id="email" name="email" placeholder="you@example.com" data-i18n-placeholder="contact.form.emailPh" required>
                 </div>
                 <div class="form-group">
-                  <label for="phone">Phone <span class="required">*</span></label>
-                  <input type="tel" id="phone" name="phone" placeholder="(305) 000-0000" required>
+                  <label for="phone" data-i18n-html="contact.form.phone">Phone <span class="required">*</span></label>
+                  <input type="tel" id="phone" name="phone" placeholder="(305) 000-0000" data-i18n-placeholder="contact.form.phonePh" required>
                 </div>
               </div>
 
               <div class="form-group">
-                <label for="project-type">Project Type <span class="required">*</span></label>
+                <label for="project-type" data-i18n-html="contact.form.projectType">Project Type <span class="required">*</span></label>
                 <select id="project-type" name="project_type" required>
-                  <option value="" disabled selected>Select your project type</option>
-                  <option value="residential-kitchen">Residential Kitchen</option>
-                  <option value="residential-bathroom">Residential Bathroom</option>
-                  <option value="commercial">Commercial</option>
-                  <option value="outdoor">Outdoor</option>
-                  <option value="other">Other</option>
+                  <option value="" disabled selected data-i18n="contact.form.projectTypePh">Select your project type</option>
+                  <option value="residential-kitchen" data-i18n="contact.form.residential">Residential Kitchen</option>
+                  <option value="residential-bathroom" data-i18n="contact.form.residentialBath">Residential Bathroom</option>
+                  <option value="commercial" data-i18n="contact.form.commercial">Commercial</option>
+                  <option value="outdoor" data-i18n="contact.form.outdoor">Outdoor</option>
+                  <option value="other" data-i18n="contact.form.other">Other</option>
                 </select>
               </div>
 
               <div class="form-group">
-                <label>Materials of Interest</label>
+                <label data-i18n="contact.form.materials">Materials of Interest</label>
                 <div class="checkbox-group">
                   <label class="checkbox-label">
                     <input type="checkbox" name="materials" value="granite">
                     <span class="checkmark"></span>
-                    Granite
+                    <span data-i18n="contact.form.matGranite">Granite</span>
                   </label>
                   <label class="checkbox-label">
                     <input type="checkbox" name="materials" value="marble">
                     <span class="checkmark"></span>
-                    Marble
+                    <span data-i18n="contact.form.matMarble">Marble</span>
                   </label>
                   <label class="checkbox-label">
                     <input type="checkbox" name="materials" value="quartz">
                     <span class="checkmark"></span>
-                    Quartz
+                    <span data-i18n="contact.form.matQuartz">Quartz</span>
                   </label>
                   <label class="checkbox-label">
                     <input type="checkbox" name="materials" value="quartzite">
                     <span class="checkmark"></span>
-                    Quartzite
+                    <span data-i18n="contact.form.matQuartzite">Quartzite</span>
                   </label>
                   <label class="checkbox-label">
                     <input type="checkbox" name="materials" value="hanstone-quartz">
                     <span class="checkmark"></span>
-                    Hanstone Quartz
+                    <span data-i18n="contact.form.matHanstone">Hanstone Quartz</span>
                   </label>
                   <label class="checkbox-label">
                     <input type="checkbox" name="materials" value="engineered-stone">
                     <span class="checkmark"></span>
-                    Engineered Stone
+                    <span data-i18n="contact.form.matEngineered">Engineered Stone</span>
                   </label>
                   <label class="checkbox-label">
                     <input type="checkbox" name="materials" value="porcelain">
                     <span class="checkmark"></span>
-                    Porcelain
+                    <span data-i18n="contact.form.matPorcelain">Porcelain</span>
                   </label>
                   <label class="checkbox-label">
                     <input type="checkbox" name="materials" value="tiles">
                     <span class="checkmark"></span>
-                    Tiles
+                    <span data-i18n="contact.form.matTiles">Tiles</span>
                   </label>
                 </div>
               </div>
 
               <div class="form-group">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" rows="5" placeholder="Tell us about your project — dimensions, timeline, design preferences..."></textarea>
+                <label for="message" data-i18n="contact.form.message">Message</label>
+                <textarea id="message" name="message" rows="5" placeholder="Tell us about your project — dimensions, timeline, design preferences..." data-i18n-placeholder="contact.form.messagePh"></textarea>
               </div>
 
               <div class="form-group">
-                <label for="file-upload">Upload Project Plans</label>
+                <label for="file-upload" data-i18n="contact.form.upload">Upload Project Plans</label>
                 <input type="file" id="file-upload" name="project_files" accept=".pdf,.jpg,.jpeg,.png,.dwg" multiple>
-                <span class="file-hint">Accepted formats: PDF, JPG, PNG, DWG (max 10MB each)</span>
+                <span class="file-hint" data-i18n="contact.form.uploadHint">Accepted formats: PDF, JPG, PNG, DWG (max 10MB each)</span>
               </div>
 
-              <button type="submit" class="btn btn--primary btn--full">Send Your Request</button>
+              <button type="submit" class="btn btn--primary btn--full" data-i18n="contact.form.submit">Send Your Request</button>
 
             </form>
           </div>
@@ -207,7 +233,7 @@
           <div class="contact-info-panel reveal reveal-delay-1">
 
             <div class="contact-info-card">
-              <h3>Get in Touch</h3>
+              <h3 data-i18n="contact.info.title">Get in Touch</h3>
 
               <div class="contact-info-items">
                 <div class="contact-info-item">
@@ -215,7 +241,7 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
                   </div>
                   <div class="contact-info-text">
-                    <span class="contact-info-label">Phone</span>
+                    <span class="contact-info-label" data-i18n="contact.info.phone">Phone</span>
                     <a href="tel:+13050000000">(305) 000-0000</a>
                   </div>
                 </div>
@@ -225,7 +251,7 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                   </div>
                   <div class="contact-info-text">
-                    <span class="contact-info-label">Email</span>
+                    <span class="contact-info-label" data-i18n="contact.info.email">Email</span>
                     <a href="mailto:info@thestonesurfaces.com">info@thestonesurfaces.com</a>
                   </div>
                 </div>
@@ -235,26 +261,26 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
                   </div>
                   <div class="contact-info-text">
-                    <span class="contact-info-label">Address</span>
+                    <span class="contact-info-label" data-i18n="contact.info.address">Address</span>
                     <a href="https://maps.google.com/?q=7980+NW+56th+St+Doral+FL+33166" target="_blank" rel="noopener">7980 NW 56th St<br>Doral, FL 33166</a>
                   </div>
                 </div>
               </div>
 
               <div class="business-hours">
-                <h4>Business Hours</h4>
+                <h4 data-i18n="contact.hours.title">Business Hours</h4>
                 <div class="hours-list">
                   <div class="hours-row">
-                    <span>Monday &ndash; Friday</span>
-                    <span>8:00 AM &ndash; 5:00 PM</span>
+                    <span data-i18n-html="contact.hours.weekday">Monday &ndash; Friday</span>
+                    <span data-i18n-html="contact.hours.weekdayTime">8:00 AM &ndash; 5:00 PM</span>
                   </div>
                   <div class="hours-row">
-                    <span>Saturday</span>
-                    <span>9:00 AM &ndash; 2:00 PM</span>
+                    <span data-i18n="contact.hours.saturday">Saturday</span>
+                    <span data-i18n-html="contact.hours.saturdayTime">9:00 AM &ndash; 2:00 PM</span>
                   </div>
                   <div class="hours-row">
-                    <span>Sunday</span>
-                    <span>Closed</span>
+                    <span data-i18n="contact.hours.sunday">Sunday</span>
+                    <span data-i18n="contact.hours.sundayClosed">Closed</span>
                   </div>
                 </div>
               </div>
@@ -288,13 +314,13 @@
       <div class="footer-grid">
         <div class="footer-col">
           <div class="footer-logo"><img src="../images/header/TSS_LOGO.png" alt="The Stone Surfaces" class="logo-img"></div>
-          <p class="tagline">South Florida's trusted source for premium natural and engineered stone surfaces since 2016.</p>
+          <p class="tagline" data-i18n="footer.tagline">South Florida's trusted source for premium natural and engineered stone surfaces since 2016.</p>
           <p class="contact-line">&#9679; 7980 NW 56th St, Doral, FL 33166</p>
           <p class="contact-line">&#9742; (305) 000-0000</p>
           <p class="contact-line">&#9993; info@thestonesurfaces.com</p>
         </div>
         <div class="footer-col">
-          <h4>Products</h4>
+          <h4 data-i18n="footer.products">Products</h4>
           <ul>
             <li><a href="products.html#granite">Granite</a></li>
             <li><a href="products.html#marble">Marble</a></li>
@@ -306,17 +332,17 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Resources</h4>
+          <h4 data-i18n="footer.resources">Resources</h4>
           <ul>
             <li><a href="blog.html">Blog</a></li>
             <li><a href="inspired.html">Get Inspired</a></li>
-            <li><a href="#">FAQs</a></li>
-            <li><a href="#">Warranty Info</a></li>
+            <li><a href="#" data-i18n="footer.faqs">FAQs</a></li>
+            <li><a href="#" data-i18n="footer.warranty">Warranty Info</a></li>
             <li><a href="trade.html">For The Trade</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Connect</h4>
+          <h4 data-i18n="footer.connect">Connect</h4>
           <div class="footer-social">
             <a href="#" aria-label="Instagram">IG</a>
             <a href="#" aria-label="Facebook">FB</a>
@@ -327,10 +353,10 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span>&copy; 2026 The Stone Surfaces. All rights reserved.</span>
+        <span data-i18n-html="footer.copyright">&copy; 2026 The Stone Surfaces. All rights reserved.</span>
         <div class="footer-bottom-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
+          <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
+          <a href="#" data-i18n="footer.terms">Terms of Service</a>
         </div>
       </div>
     </div>
@@ -391,6 +417,7 @@
     <div id="n8n-chat-widget" data-webhook-url="YOUR_N8N_WEBHOOK_URL" style="display:none;"></div>
   </div>
 
+  <script src="../js/i18n.js"></script>
   <script src="../js/main.js"></script>
 </body>
 </html>

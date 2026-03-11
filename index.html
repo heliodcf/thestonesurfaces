@@ -48,13 +48,13 @@
       </a>
 
       <nav class="nav-desktop">
-        <a href="pages/products.html" data-mega-menu>Products</a>
-        <a href="pages/hanstone.html">Hanstone Quartz</a>
-        <a href="pages/lucciare.html">Lucciare</a>
-        <a href="pages/inspired.html">Get Inspired</a>
-        <a href="pages/blog.html">Blog</a>
-        <a href="pages/about.html">About</a>
-        <a href="pages/trade.html">For The Trade</a>
+        <a href="pages/products.html" data-mega-menu data-i18n="nav.products">Products</a>
+        <a href="pages/hanstone.html" data-i18n="nav.hanstone">Hanstone Quartz</a>
+        <a href="pages/lucciare.html" data-i18n="nav.lucciare">Lucciare</a>
+        <a href="pages/inspired.html" data-i18n="nav.inspired">Get Inspired</a>
+        <a href="pages/blog.html" data-i18n="nav.blog">Blog</a>
+        <a href="pages/about.html" data-i18n="nav.about">About</a>
+        <a href="pages/trade.html" data-i18n="nav.trade">For The Trade</a>
       </nav>
 
       <!-- Mega Menu -->
@@ -63,34 +63,55 @@
           <div class="mega-menu-grid">
             <a href="pages/products.html#quartzite" class="mega-menu-item">
               <div class="thumb"><img src="images/collections/QUARTZITE - Bianco Superiore 2cm.jpg" alt="Quartzite slabs"></div>
-              <h4>Quartzite</h4>
+              <h4 data-i18n="nav.mega.quartzite">Quartzite</h4>
             </a>
             <a href="pages/products.html#granite" class="mega-menu-item">
               <div class="thumb"><img src="images/collections/GRANITE - Alpinus Cream 3cm.jpg" alt="Granite slabs"></div>
-              <h4>Granite</h4>
+              <h4 data-i18n="nav.mega.granite">Granite</h4>
             </a>
             <a href="pages/products.html#dolomite-hard-marble" class="mega-menu-item">
               <div class="thumb"><img src="images/collections/DOLOMITE & HARD MARBLE - Matarazzo 3cm.jpg" alt="Dolomite & Hard Marble slabs"></div>
-              <h4>Dolomite & Hard Marble</h4>
+              <h4 data-i18n="nav.mega.dolomite">Dolomite & Hard Marble</h4>
             </a>
             <a href="pages/products.html#marble" class="mega-menu-item">
               <div class="thumb"><img src="images/collections/MARBLE - Calacatta Viola 2cm.jpg" alt="Marble slabs"></div>
-              <h4>Marble</h4>
+              <h4 data-i18n="nav.mega.marble">Marble</h4>
             </a>
             <a href="pages/products.html#semi-precious-onyx" class="mega-menu-item">
               <div class="thumb"><img src="images/collections/SEMI-PRECIOUS & ONYX - Onyx Fantastico 2cm.jpg" alt="Semi-Precious & Onyx slabs"></div>
-              <h4>Semi-Precious & Onyx</h4>
+              <h4 data-i18n="nav.mega.semiprecious">Semi-Precious & Onyx</h4>
             </a>
             <a href="pages/products.html#quartz" class="mega-menu-item">
               <div class="thumb"><img src="images/collections/QUARTZ - Quartz Lucciare Statuario Classic.jpg" alt="Quartz slabs"></div>
-              <h4>Quartz</h4>
+              <h4 data-i18n="nav.mega.quartz">Quartz</h4>
             </a>
           </div>
         </div>
       </div>
 
       <div class="header-right">
-        <a href="pages/contact.html" class="btn btn--primary">Request a Quote</a>
+      <div class="lang-selector">
+        <button class="lang-selector-toggle" aria-label="Select language">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          <span class="lang-current">EN</span>
+          <svg class="lang-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+        </button>
+        <div class="lang-dropdown">
+          <div class="lang-option active" data-lang="en">
+            <span class="lang-option-label">English</span>
+            <span class="lang-option-code">EN</span>
+          </div>
+          <div class="lang-option" data-lang="es">
+            <span class="lang-option-label">Español</span>
+            <span class="lang-option-code">ES</span>
+          </div>
+          <div class="lang-option" data-lang="pt">
+            <span class="lang-option-label">Português</span>
+            <span class="lang-option-code">PT</span>
+          </div>
+        </div>
+      </div>
+        <a href="pages/contact.html" class="btn btn--primary" data-i18n="nav.cta">Request a Quote</a>
         <div class="nav-toggle" aria-label="Toggle navigation">
           <span></span><span></span><span></span>
         </div>
@@ -100,14 +121,19 @@
 
   <!-- Mobile Menu Overlay -->
   <div class="mobile-menu">
-    <a href="pages/products.html">Products</a>
-    <a href="pages/hanstone.html">Hanstone Quartz</a>
-    <a href="pages/lucciare.html">Lucciare</a>
-    <a href="pages/inspired.html">Get Inspired</a>
-    <a href="pages/blog.html">Blog</a>
-    <a href="pages/about.html">About</a>
-    <a href="pages/trade.html">For The Trade</a>
-    <a href="pages/contact.html">Contact</a>
+    <a href="pages/products.html" data-i18n="nav.products">Products</a>
+    <a href="pages/hanstone.html" data-i18n="nav.hanstone">Hanstone Quartz</a>
+    <a href="pages/lucciare.html" data-i18n="nav.lucciare">Lucciare</a>
+    <a href="pages/inspired.html" data-i18n="nav.inspired">Get Inspired</a>
+    <a href="pages/blog.html" data-i18n="nav.blog">Blog</a>
+    <a href="pages/about.html" data-i18n="nav.about">About</a>
+    <a href="pages/trade.html" data-i18n="nav.trade">For The Trade</a>
+    <a href="pages/contact.html" data-i18n="nav.contact">Contact</a>
+    <div class="lang-selector-mobile">
+      <button data-lang="en" class="active">EN</button>
+      <button data-lang="es">ES</button>
+      <button data-lang="pt">PT</button>
+    </div>
   </div>
 
   <main>
@@ -121,6 +147,7 @@
         </video>
         <img src="images/hero/TajMahal.jpg" alt="Premium marble surface with elegant veining — The Stone Surfaces" class="hero-fallback">
       </div>
+      <div class="hero-overlay"></div>
 
       <div class="hero-badges">
         <a href="#hanstone-spotlight" class="hanstone-badge">
@@ -132,12 +159,12 @@
       </div>
 
       <div class="hero-content">
-        <span class="label">SOUTH FLORIDA'S PREMIER STONE DISTRIBUTOR</span>
-        <h1>Where Natural Beauty Meets Precision Engineering</h1>
-        <p class="subheadline">Premium slabs, expert guidance, and now — the exclusive home of Hanstone Quartz in South Florida.</p>
+        <span class="label" data-i18n="home.hero.label">SOUTH FLORIDA'S PREMIER STONE DISTRIBUTOR</span>
+        <h1 data-i18n="home.hero.title">Where Natural Beauty Meets Precision Engineering</h1>
+        <p class="subheadline" data-i18n="home.hero.subtitle">Premium slabs, expert guidance, and now — the exclusive home of Hanstone Quartz in South Florida.</p>
         <div class="hero-ctas">
-          <a href="pages/products.html" class="btn btn--primary">Explore Our Collection</a>
-          <a href="pages/about.html#showroom" class="btn btn--outline">Visit Our Showroom</a>
+          <a href="pages/products.html" class="btn btn--primary" data-i18n="home.hero.cta1">Explore Our Collection</a>
+          <a href="pages/about.html#showroom" class="btn btn--outline" data-i18n="home.hero.cta2">Visit Our Showroom</a>
         </div>
       </div>
     </section>
@@ -153,28 +180,28 @@
             <img src="images/hanstone/hanstone-quartz-logo-2.jpg" alt="Hanstone Quartz Logo" style="position: absolute; bottom: 24px; left: 24px; max-height: 100px; width: auto;">
           </div>
           <div class="spotlight-content reveal reveal-delay-1">
-            <span class="label hanstone-label">NOW FEATURING</span>
+            <span class="label hanstone-label" data-i18n="home.hanstone.label">NOW FEATURING</span>
             <h2 style="font-weight: 700;">Hanstone Quartz by Hyundai L&C</h2>
-            <p class="text-body text-italic text-muted">Created by Earth. Designed for You.</p>
+            <p class="text-body text-italic text-muted" data-i18n="home.hanstone.tagline">Created by Earth. Designed for You.</p>
             <div class="selling-points">
               <div class="selling-point">
                 <span class="check hanstone-check">&#10003;</span>
-                <span>93% Natural Quartz — harder than granite</span>
+                <span data-i18n="home.hanstone.point1">93% Natural Quartz — harder than granite</span>
               </div>
               <div class="selling-point">
                 <span class="check hanstone-check">&#10003;</span>
-                <span>Lifetime Residential Warranty</span>
+                <span data-i18n="home.hanstone.point2">Lifetime Residential Warranty</span>
               </div>
               <div class="selling-point">
                 <span class="check hanstone-check">&#10003;</span>
-                <span>60+ Colors, 3 Premium Finishes</span>
+                <span data-i18n="home.hanstone.point3">60+ Colors, 3 Premium Finishes</span>
               </div>
               <div class="selling-point">
                 <span class="check hanstone-check">&#10003;</span>
-                <span>Advanced Breton&trade; Technology</span>
+                <span data-i18n="home.hanstone.point4">Advanced Breton&trade; Technology</span>
               </div>
             </div>
-            <a href="pages/hanstone.html" class="btn btn--hanstone">Discover the Hanstone Collection</a>
+            <a href="pages/hanstone.html" class="btn btn--hanstone" data-i18n="home.hanstone.cta">Discover the Hanstone Collection</a>
           </div>
         </div>
       </div>
@@ -187,28 +214,28 @@
       <div class="container" style="position: relative; z-index: 2;">
         <div class="spotlight-grid spotlight-grid--reverse">
           <div class="spotlight-content reveal">
-            <span class="label lucciare-label">NOW FEATURING</span>
+            <span class="label lucciare-label" data-i18n="home.lucciare.label">NOW FEATURING</span>
             <h2 style="font-weight: 700;">Lucciare Handcrafted Quartz</h2>
-            <p class="text-body text-italic text-muted">The Art of Marbleized Veining</p>
+            <p class="text-body text-italic text-muted" data-i18n="home.lucciare.tagline">The Art of Marbleized Veining</p>
             <div class="selling-points">
               <div class="selling-point">
                 <span class="check lucciare-check">&#10003;</span>
-                <span>Italian-Designed, Handcrafted Surfaces</span>
+                <span data-i18n="home.lucciare.point1">Italian-Designed, Handcrafted Surfaces</span>
               </div>
               <div class="selling-point">
                 <span class="check lucciare-check">&#10003;</span>
-                <span>GreenGuard Gold & NSF Certified</span>
+                <span data-i18n="home.lucciare.point2">GreenGuard Gold & NSF Certified</span>
               </div>
               <div class="selling-point">
                 <span class="check lucciare-check">&#10003;</span>
-                <span>3 Collections — Signature, Genesis & Solstice</span>
+                <span data-i18n="home.lucciare.point3">3 Collections — Signature, Genesis & Solstice</span>
               </div>
               <div class="selling-point">
                 <span class="check lucciare-check">&#10003;</span>
-                <span>Stain-Resistant, Non-Porous & Durable</span>
+                <span data-i18n="home.lucciare.point4">Stain-Resistant, Non-Porous & Durable</span>
               </div>
             </div>
-            <a href="pages/lucciare.html" class="btn btn--lucciare">Discover the Lucciare Collection</a>
+            <a href="pages/lucciare.html" class="btn btn--lucciare" data-i18n="home.lucciare.cta">Discover the Lucciare Collection</a>
           </div>
           <div class="spotlight-image reveal reveal-delay-1" style="position: relative;">
             <img src="images/lucciare/lucciare_Image.jpg" alt="Lucciare Handcrafted Quartz — luxury kitchen with premium quartz surface">
@@ -223,57 +250,57 @@
       <div class="container">
         <div class="collection-header reveal">
           <div class="collection-header__text">
-            <span class="label">OUR COLLECTIONS</span>
-            <h2 style="margin-top: 16px;">Find the Right Stone for Your Vision</h2>
+            <span class="label" data-i18n="home.collections.label">OUR COLLECTIONS</span>
+            <h2 style="margin-top: 16px;" data-i18n="home.collections.title">Find the Right Stone for Your Vision</h2>
           </div>
-          <p class="collection-header__desc reveal reveal-delay-1">Every project deserves a surface that matches its ambition. Whether you're drawn to the timeless elegance of marble, the strength of granite, or the precision of engineered quartz — the right stone transforms a space from ordinary to unforgettable.</p>
+          <p class="collection-header__desc reveal reveal-delay-1" data-i18n="home.collections.desc">Every project deserves a surface that matches its ambition. Whether you're drawn to the timeless elegance of marble, the strength of granite, or the precision of engineered quartz — the right stone transforms a space from ordinary to unforgettable.</p>
         </div>
         <div class="collection-mosaic">
           <a href="pages/products.html#quartzite" class="mosaic-card mosaic-card--tall reveal">
             <div class="card-bg"><img src="images/collections/QUARTZITE - Bianco Superiore 2cm.jpg" alt="Quartzite slabs"></div>
             <div class="mosaic-card__overlay">
               <h4>Quartzite</h4>
-              <span class="mosaic-card__cta">Explore <span class="arrow">&rarr;</span></span>
+              <span class="mosaic-card__cta" data-i18n="common.explore">Explore <span class="arrow">&rarr;</span></span>
             </div>
           </a>
           <a href="pages/products.html#granite" class="mosaic-card reveal reveal-delay-1">
             <div class="card-bg"><img src="images/collections/GRANITE - Alpinus Cream 3cm.jpg" alt="Granite slabs"></div>
             <div class="mosaic-card__overlay">
               <h4>Granite</h4>
-              <span class="mosaic-card__cta">Explore <span class="arrow">&rarr;</span></span>
+              <span class="mosaic-card__cta" data-i18n="common.explore">Explore <span class="arrow">&rarr;</span></span>
             </div>
           </a>
           <a href="pages/products.html#dolomite-hard-marble" class="mosaic-card reveal reveal-delay-2">
             <div class="card-bg"><img src="images/collections/DOLOMITE & HARD MARBLE - Matarazzo 3cm.jpg" alt="Dolomite & Hard Marble slabs"></div>
             <div class="mosaic-card__overlay">
               <h4>Dolomite & Hard Marble</h4>
-              <span class="mosaic-card__cta">Explore <span class="arrow">&rarr;</span></span>
+              <span class="mosaic-card__cta" data-i18n="common.explore">Explore <span class="arrow">&rarr;</span></span>
             </div>
           </a>
           <a href="pages/products.html#marble" class="mosaic-card reveal">
             <div class="card-bg"><img src="images/collections/MARBLE - Calacatta Viola 2cm.jpg" alt="Marble slabs"></div>
             <div class="mosaic-card__overlay">
               <h4>Marble</h4>
-              <span class="mosaic-card__cta">Explore <span class="arrow">&rarr;</span></span>
+              <span class="mosaic-card__cta" data-i18n="common.explore">Explore <span class="arrow">&rarr;</span></span>
             </div>
           </a>
           <a href="pages/products.html#semi-precious-onyx" class="mosaic-card reveal reveal-delay-1">
             <div class="card-bg"><img src="images/collections/SEMI-PRECIOUS & ONYX - Onyx Fantastico 2cm.jpg" alt="Semi-Precious & Onyx slabs"></div>
             <div class="mosaic-card__overlay">
               <h4>Semi-Precious & Onyx</h4>
-              <span class="mosaic-card__cta">Explore <span class="arrow">&rarr;</span></span>
+              <span class="mosaic-card__cta" data-i18n="common.explore">Explore <span class="arrow">&rarr;</span></span>
             </div>
           </a>
           <a href="pages/products.html#quartz" class="mosaic-card reveal reveal-delay-2">
             <div class="card-bg"><img src="images/collections/QUARTZ - Quartz Lucciare Statuario Classic.jpg" alt="Quartz slabs"></div>
             <div class="mosaic-card__overlay">
               <h4>Quartz</h4>
-              <span class="mosaic-card__cta">Explore <span class="arrow">&rarr;</span></span>
+              <span class="mosaic-card__cta" data-i18n="common.explore">Explore <span class="arrow">&rarr;</span></span>
             </div>
           </a>
         </div>
         <div class="text-center reveal" style="margin-top: 40px;">
-          <a href="pages/products.html" class="btn btn--outline">View All Collections</a>
+          <a href="pages/products.html" class="btn btn--outline" data-i18n="home.collections.cta">View All Collections</a>
         </div>
       </div>
     </section>
@@ -284,15 +311,15 @@
         <div class="trust-grid">
           <div class="trust-item reveal">
             <div class="number" data-count="10" data-suffix="+">0</div>
-            <p class="desc">Years of Excellence</p>
+            <p class="desc" data-i18n="home.trust.years">Years of Excellence</p>
           </div>
           <div class="trust-item reveal reveal-delay-1">
             <div class="number" data-count="500" data-suffix="+">0</div>
-            <p class="desc">Slab Varieties in Stock</p>
+            <p class="desc" data-i18n="home.trust.slabs">Slab Varieties in Stock</p>
           </div>
           <div class="trust-item reveal reveal-delay-2">
             <div class="number" data-count="100" data-suffix="%">0</div>
-            <p class="desc">Expert Consultation Included</p>
+            <p class="desc" data-i18n="home.trust.consultation">Expert Consultation Included</p>
           </div>
         </div>
       </div>
@@ -301,36 +328,36 @@
     <!-- ===== SECTION 5: GET INSPIRED CAROUSEL ===== -->
     <section class="section section--dark">
       <div class="container" style="margin-bottom: 32px;">
-        <span class="label reveal">GET INSPIRED</span>
-        <h2 class="reveal" style="margin-top: 16px;">See What's Possible</h2>
+        <span class="label reveal" data-i18n="home.inspired.label">GET INSPIRED</span>
+        <h2 class="reveal" style="margin-top: 16px;" data-i18n="home.inspired.title">See What's Possible</h2>
       </div>
       <div class="carousel-wrapper">
         <div class="carousel-track">
           <a href="pages/inspired.html" class="carousel-card reveal" style="text-decoration: none; color: inherit; cursor: pointer;">
             <div class="card-bg"><div class="placeholder-bg" style="background: linear-gradient(135deg, #3a3028, #1a1510);"></div></div>
             <div class="card-overlay">
-              <span class="room-type">Modern Kitchen</span>
+              <span class="room-type" data-i18n="home.inspired.room1">Modern Kitchen</span>
               <span class="material-name">Calacatta Gold Marble</span>
             </div>
           </a>
           <a href="pages/inspired.html" class="carousel-card reveal reveal-delay-1" style="text-decoration: none; color: inherit; cursor: pointer;">
             <div class="card-bg"><div class="placeholder-bg" style="background: linear-gradient(135deg, #2a3028, #101510);"></div></div>
             <div class="card-overlay">
-              <span class="room-type">Luxury Bathroom</span>
+              <span class="room-type" data-i18n="home.inspired.room2">Luxury Bathroom</span>
               <span class="material-name">Hanstone Montauk</span>
             </div>
           </a>
           <a href="pages/inspired.html" class="carousel-card reveal reveal-delay-2" style="text-decoration: none; color: inherit; cursor: pointer;">
             <div class="card-bg"><div class="placeholder-bg" style="background: linear-gradient(135deg, #382a20, #181010);"></div></div>
             <div class="card-overlay">
-              <span class="room-type">Commercial Lobby</span>
+              <span class="room-type" data-i18n="home.inspired.room3">Commercial Lobby</span>
               <span class="material-name">Taj Mahal Quartzite</span>
             </div>
           </a>
           <a href="pages/inspired.html" class="carousel-card reveal reveal-delay-3" style="text-decoration: none; color: inherit; cursor: pointer;">
             <div class="card-bg"><div class="placeholder-bg" style="background: linear-gradient(135deg, #303828, #101810);"></div></div>
             <div class="card-overlay">
-              <span class="room-type">Outdoor Kitchen</span>
+              <span class="room-type" data-i18n="home.inspired.room4">Outdoor Kitchen</span>
               <span class="material-name">Black Galaxy Granite</span>
             </div>
           </a>
@@ -342,46 +369,46 @@
     <section class="section section--surface noise-overlay">
       <div class="container">
         <div class="text-center reveal" style="margin-bottom: 48px;">
-          <span class="label">CLIENT STORIES</span>
-          <h2 style="margin-top: 16px;">Trusted by Fabricators & Designers Across Florida</h2>
+          <span class="label" data-i18n="home.testimonials.label">CLIENT STORIES</span>
+          <h2 style="margin-top: 16px;" data-i18n="home.testimonials.title">Trusted by Fabricators & Designers Across Florida</h2>
         </div>
 
         <div class="testimonial-carousel reveal">
           <div class="testimonial-item active">
             <div class="quote-icon">&ldquo;</div>
-            <blockquote>This is the best Stone provider in Miami. Not only with very good prices, but with the trending stones available.</blockquote>
+            <blockquote data-i18n="home.testimonials.quote1">This is the best Stone provider in Miami. Not only with very good prices, but with the trending stones available.</blockquote>
             <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
             <div class="testimonial-author">
               <div class="avatar">NP</div>
               <div class="info">
                 <div class="name">Nelson Paredes</div>
-                <div class="role">Verified Customer</div>
+                <div class="role" data-i18n="home.testimonials.role">Verified Customer</div>
               </div>
             </div>
           </div>
 
           <div class="testimonial-item">
             <div class="quote-icon">&ldquo;</div>
-            <blockquote>Great customer service, very proactive and efficient. Great work!</blockquote>
+            <blockquote data-i18n="home.testimonials.quote2">Great customer service, very proactive and efficient. Great work!</blockquote>
             <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
             <div class="testimonial-author">
               <div class="avatar">KN</div>
               <div class="info">
                 <div class="name">KasabarBBQ Naples</div>
-                <div class="role">Verified Customer</div>
+                <div class="role" data-i18n="home.testimonials.role">Verified Customer</div>
               </div>
             </div>
           </div>
 
           <div class="testimonial-item">
             <div class="quote-icon">&ldquo;</div>
-            <blockquote>Best people, best material, best prices!</blockquote>
+            <blockquote data-i18n="home.testimonials.quote3">Best people, best material, best prices!</blockquote>
             <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
             <div class="testimonial-author">
               <div class="avatar">NG</div>
               <div class="info">
                 <div class="name">Norman Garcia</div>
-                <div class="role">Verified Customer</div>
+                <div class="role" data-i18n="home.testimonials.role">Verified Customer</div>
               </div>
             </div>
           </div>
@@ -393,7 +420,7 @@
           </div>
         </div>
 
-        <div class="review-source reveal" style="text-align: center; margin-top: 24px; opacity: 0.6; font-size: 14px; letter-spacing: 1px;">
+        <div class="review-source reveal" style="text-align: center; margin-top: 24px; opacity: 0.6; font-size: 14px; letter-spacing: 1px;" data-i18n-html="home.testimonials.source">
           <span style="color: var(--color-accent-gold);">&#9733;</span> 5.0 Rating &mdash; Reviews sourced from Google &amp; verified platforms
         </div>
       </div>
@@ -403,20 +430,20 @@
     <section class="section section--light">
       <div class="container">
         <div class="text-center reveal" style="margin-bottom: 48px;">
-          <span class="label label-dark">FROM OUR BLOG</span>
-          <h2 style="margin-top: 16px; color: var(--color-text-dark);">Insights & Inspiration</h2>
+          <span class="label label-dark" data-i18n="home.blog.label">FROM OUR BLOG</span>
+          <h2 style="margin-top: 16px; color: var(--color-text-dark);" data-i18n="home.blog.title">Insights & Inspiration</h2>
         </div>
         <div class="grid grid-3">
           <div class="blog-card reveal">
             <div class="card-image">
               <div class="placeholder-bg" style="background: linear-gradient(135deg, #c8b8a8, #a89888); height: 100%;"></div>
-              <span class="tag">Design Trends</span>
+              <span class="tag" data-i18n="home.blog.tag1">Design Trends</span>
             </div>
             <div class="card-body">
-              <h4>2026 Kitchen Countertop Trends: What Designers Are Choosing</h4>
-              <p>From dramatic veining to matte finishes, discover the surfaces defining luxury kitchens this year.</p>
+              <h4 data-i18n="home.blog.title1">2026 Kitchen Countertop Trends: What Designers Are Choosing</h4>
+              <p data-i18n="home.blog.excerpt1">From dramatic veining to matte finishes, discover the surfaces defining luxury kitchens this year.</p>
               <div class="card-meta">
-                <span>5 min read</span>
+                <span data-i18n="home.blog.read1">5 min read</span>
                 <span>March 1, 2026</span>
               </div>
             </div>
@@ -424,13 +451,13 @@
           <div class="blog-card reveal reveal-delay-1">
             <div class="card-image">
               <div class="placeholder-bg" style="background: linear-gradient(135deg, #b0a090, #908070); height: 100%;"></div>
-              <span class="tag">Stone Care</span>
+              <span class="tag" data-i18n="home.blog.tag2">Stone Care</span>
             </div>
             <div class="card-body">
-              <h4>How to Maintain Your Natural Stone Surfaces Like a Pro</h4>
-              <p>Simple daily habits and annual treatments that keep granite, marble, and quartzite looking flawless.</p>
+              <h4 data-i18n="home.blog.title2">How to Maintain Your Natural Stone Surfaces Like a Pro</h4>
+              <p data-i18n="home.blog.excerpt2">Simple daily habits and annual treatments that keep granite, marble, and quartzite looking flawless.</p>
               <div class="card-meta">
-                <span>4 min read</span>
+                <span data-i18n="home.blog.read2">4 min read</span>
                 <span>Feb 22, 2026</span>
               </div>
             </div>
@@ -438,20 +465,20 @@
           <div class="blog-card reveal reveal-delay-2">
             <div class="card-image">
               <div class="placeholder-bg" style="background: linear-gradient(135deg, #d8c8b8, #b8a898); height: 100%;"></div>
-              <span class="tag">Hanstone Updates</span>
+              <span class="tag" data-i18n="home.blog.tag3">Hanstone Updates</span>
             </div>
             <div class="card-body">
-              <h4>Introducing Hanstone Quartz: Why We Partnered with Hyundai L&C</h4>
-              <p>The story behind our exclusive partnership and what it means for our customers.</p>
+              <h4 data-i18n="home.blog.title3">Introducing Hanstone Quartz: Why We Partnered with Hyundai L&C</h4>
+              <p data-i18n="home.blog.excerpt3">The story behind our exclusive partnership and what it means for our customers.</p>
               <div class="card-meta">
-                <span>6 min read</span>
+                <span data-i18n="home.blog.read3">6 min read</span>
                 <span>Feb 15, 2026</span>
               </div>
             </div>
           </div>
         </div>
         <div class="text-center" style="margin-top: 40px;">
-          <a href="pages/blog.html" class="btn btn--text" style="color: var(--color-cta);">Read Our Blog <span class="arrow">&rarr;</span></a>
+          <a href="pages/blog.html" class="btn btn--text" style="color: var(--color-cta);" data-i18n-html="home.blog.cta">Read Our Blog <span class="arrow">&rarr;</span></a>
         </div>
       </div>
     </section>
@@ -460,9 +487,9 @@
     <section id="locations" class="section section--dark locations-section">
       <div class="container">
         <div class="text-center reveal" style="margin-bottom: 56px;">
-          <span class="label">OUR LOCATIONS</span>
-          <h2 style="margin-top: 16px;">Visit Us in Person</h2>
-          <p class="text-muted" style="margin-top: 12px; font-size: 16px; max-width: 600px; margin-left: auto; margin-right: auto;">Three showrooms across Florida, each stocked with premium slabs ready for your next project.</p>
+          <span class="label" data-i18n="home.locations.label">OUR LOCATIONS</span>
+          <h2 style="margin-top: 16px;" data-i18n="home.locations.title">Visit Us in Person</h2>
+          <p class="text-muted" style="margin-top: 12px; font-size: 16px; max-width: 600px; margin-left: auto; margin-right: auto;" data-i18n="home.locations.desc">Three showrooms across Florida, each stocked with premium slabs ready for your next project.</p>
         </div>
 
         <div class="locations-grid">
@@ -475,7 +502,7 @@
                 referrerpolicy="no-referrer-when-downgrade" title="The Stone Surfaces - Doral Location"></iframe>
             </div>
             <div class="location-info">
-              <div class="location-badge">Main Showroom</div>
+              <div class="location-badge" data-i18n="home.locations.badge">Main Showroom</div>
               <h3>Doral</h3>
               <div class="location-details">
                 <div class="location-detail">
@@ -491,7 +518,7 @@
                   <span>info@thestonesurfaces.com</span>
                 </div>
               </div>
-              <a href="https://www.google.com/maps/dir/?api=1&destination=7972+NW+56th+St+Doral+FL+33166" target="_blank" rel="noopener" class="btn btn--outline btn--small">Get Directions</a>
+              <a href="https://www.google.com/maps/dir/?api=1&destination=7972+NW+56th+St+Doral+FL+33166" target="_blank" rel="noopener" class="btn btn--outline btn--small" data-i18n="home.locations.directions">Get Directions</a>
             </div>
           </div>
 
@@ -519,7 +546,7 @@
                   <span>info@thestonesurfaces.com</span>
                 </div>
               </div>
-              <a href="https://www.google.com/maps/dir/?api=1&destination=3924+N+John+Young+Pkwy+Orlando+FL+32804" target="_blank" rel="noopener" class="btn btn--outline btn--small">Get Directions</a>
+              <a href="https://www.google.com/maps/dir/?api=1&destination=3924+N+John+Young+Pkwy+Orlando+FL+32804" target="_blank" rel="noopener" class="btn btn--outline btn--small" data-i18n="home.locations.directions">Get Directions</a>
             </div>
           </div>
 
@@ -547,7 +574,7 @@
                   <span>info@thestonesurfaces.com</span>
                 </div>
               </div>
-              <a href="https://www.google.com/maps/dir/?api=1&destination=1695+12th+St+Sarasota+FL+34236" target="_blank" rel="noopener" class="btn btn--outline btn--small">Get Directions</a>
+              <a href="https://www.google.com/maps/dir/?api=1&destination=1695+12th+St+Sarasota+FL+34236" target="_blank" rel="noopener" class="btn btn--outline btn--small" data-i18n="home.locations.directions">Get Directions</a>
             </div>
           </div>
         </div>
@@ -558,12 +585,12 @@
     <section class="section newsletter-section noise-overlay">
       <div class="newsletter-bg"></div>
       <div class="container text-center" style="position: relative; z-index: 2;">
-        <h2 class="reveal" style="font-weight: 700;">Get Our 2026 Stone Selection Guide</h2>
-        <p class="text-muted reveal" style="margin-top: 16px; font-size: 18px;">Expert tips on choosing the perfect surface for your next project. Free, straight to your inbox.</p>
+        <h2 class="reveal" style="font-weight: 700;" data-i18n="home.newsletter.title">Get Our 2026 Stone Selection Guide</h2>
+        <p class="text-muted reveal" style="margin-top: 16px; font-size: 18px;" data-i18n="home.newsletter.desc">Expert tips on choosing the perfect surface for your next project. Free, straight to your inbox.</p>
         <form class="newsletter-form reveal">
-          <input type="text" placeholder="Your name" required>
-          <input type="email" placeholder="Your email" required>
-          <button type="submit" class="btn btn--primary">Download Free Guide</button>
+          <input type="text" placeholder="Your name" data-i18n-placeholder="home.newsletter.name" required>
+          <input type="email" placeholder="Your email" data-i18n-placeholder="home.newsletter.email" required>
+          <button type="submit" class="btn btn--primary" data-i18n="home.newsletter.cta">Download Free Guide</button>
         </form>
       </div>
     </section>
@@ -576,13 +603,13 @@
       <div class="footer-grid">
         <div class="footer-col">
           <div class="footer-logo"><img src="images/header/TSS_LOGO.png" alt="The Stone Surfaces" class="logo-img"></div>
-          <p class="tagline">South Florida's trusted source for premium natural and engineered stone surfaces since 2016.</p>
+          <p class="tagline" data-i18n="footer.tagline">South Florida's trusted source for premium natural and engineered stone surfaces since 2016.</p>
           <p class="contact-line">&#9679; 7980 NW 56th St, Doral, FL 33166</p>
           <p class="contact-line">&#9742; (305) 000-0000</p>
           <p class="contact-line">&#9993; info@thestonesurfaces.com</p>
         </div>
         <div class="footer-col">
-          <h4>Products</h4>
+          <h4 data-i18n="footer.products">Products</h4>
           <ul>
             <li><a href="pages/products.html#quartzite">Quartzite</a></li>
             <li><a href="pages/products.html#granite">Granite</a></li>
@@ -594,17 +621,17 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Resources</h4>
+          <h4 data-i18n="footer.resources">Resources</h4>
           <ul>
-            <li><a href="pages/blog.html">Blog</a></li>
-            <li><a href="pages/inspired.html">Get Inspired</a></li>
-            <li><a href="#">FAQs</a></li>
-            <li><a href="#">Warranty Info</a></li>
-            <li><a href="pages/trade.html">For The Trade</a></li>
+            <li><a href="pages/blog.html" data-i18n="nav.blog">Blog</a></li>
+            <li><a href="pages/inspired.html" data-i18n="nav.inspired">Get Inspired</a></li>
+            <li><a href="#" data-i18n="footer.faqs">FAQs</a></li>
+            <li><a href="#" data-i18n="footer.warranty">Warranty Info</a></li>
+            <li><a href="pages/trade.html" data-i18n="nav.trade">For The Trade</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Connect</h4>
+          <h4 data-i18n="footer.connect">Connect</h4>
           <div class="footer-social">
             <a href="#" aria-label="Instagram">IG</a>
             <a href="#" aria-label="Facebook">FB</a>
@@ -615,10 +642,10 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span>&copy; 2026 The Stone Surfaces. All rights reserved.</span>
+        <span data-i18n-html="footer.copyright">&copy; 2026 The Stone Surfaces. All rights reserved.</span>
         <div class="footer-bottom-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
+          <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
+          <a href="#" data-i18n="footer.terms">Terms of Service</a>
         </div>
       </div>
     </div>
@@ -629,23 +656,23 @@
     <div class="container">
       <a href="index.html" class="tab-item active">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
-        <span>Home</span>
+        <span data-i18n="nav.home">Home</span>
       </a>
       <a href="pages/products.html" class="tab-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-        <span>Products</span>
+        <span data-i18n="nav.products">Products</span>
       </a>
       <a href="pages/hanstone.html" class="tab-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        <span>Hanstone</span>
+        <span data-i18n="nav.hanstone_short">Hanstone</span>
       </a>
       <a href="pages/inspired.html" class="tab-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-        <span>Inspire</span>
+        <span data-i18n="nav.inspire">Inspire</span>
       </a>
       <a href="pages/contact.html" class="tab-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        <span>Contact</span>
+        <span data-i18n="nav.contact">Contact</span>
       </a>
     </div>
   </nav>
@@ -657,28 +684,29 @@
 
   <div class="chat-panel">
     <div class="chat-panel-header">
-      <h4>The Stone Surfaces Assistant</h4>
+      <h4 data-i18n="chat.title">The Stone Surfaces Assistant</h4>
       <div class="close-btn">&times;</div>
     </div>
     <div class="chat-messages">
       <div class="chat-message bot">
         Hi! I'm here to help you find the perfect stone for your project. What are you looking for?
         <div class="quick-actions">
-          <button>Browse Products</button>
-          <button>Request a Quote</button>
-          <button>Hanstone Quartz Info</button>
-          <button>Visit Our Showroom</button>
+          <button data-i18n="chat.browse">Browse Products</button>
+          <button data-i18n="chat.quote">Request a Quote</button>
+          <button data-i18n="chat.hanstone_info">Hanstone Quartz Info</button>
+          <button data-i18n="chat.showroom">Visit Our Showroom</button>
         </div>
       </div>
     </div>
     <div class="chat-input">
-      <input type="text" placeholder="Type your message...">
+      <input type="text" placeholder="Type your message..." data-i18n-placeholder="chat.placeholder">
       <button aria-label="Send">&uarr;</button>
     </div>
     <!-- n8n integration placeholder -->
     <div id="n8n-chat-widget" data-webhook-url="YOUR_N8N_WEBHOOK_URL" style="display:none;"></div>
   </div>
 
+  <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

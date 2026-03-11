@@ -571,6 +571,27 @@
       </div>
 
       <div class="header-right">
+        <div class="lang-selector">
+          <button class="lang-selector-toggle" aria-label="Select language">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            <span class="lang-current">EN</span>
+            <svg class="lang-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+          </button>
+          <div class="lang-dropdown">
+            <div class="lang-option active" data-lang="en">
+              <span class="lang-option-label">English</span>
+              <span class="lang-option-code">EN</span>
+            </div>
+            <div class="lang-option" data-lang="es">
+              <span class="lang-option-label">Español</span>
+              <span class="lang-option-code">ES</span>
+            </div>
+            <div class="lang-option" data-lang="pt">
+              <span class="lang-option-label">Português</span>
+              <span class="lang-option-code">PT</span>
+            </div>
+          </div>
+        </div>
         <a href="contact.html" class="btn btn--hanstone">Request a Quote</a>
         <div class="nav-toggle" aria-label="Toggle navigation">
           <span></span><span></span><span></span>
@@ -588,6 +609,11 @@
     <a href="about.html">About</a>
     <a href="trade.html">For The Trade</a>
     <a href="contact.html">Contact</a>
+    <div class="lang-selector-mobile">
+      <button data-lang="en" class="active">EN</button>
+      <button data-lang="es">ES</button>
+      <button data-lang="pt">PT</button>
+    </div>
   </div>
 
   <main>
@@ -610,10 +636,10 @@
             <div class="partnership-badge">
               <span>Hyundai L&amp;C</span>
               <span class="divider"></span>
-              <span>Official Partner</span>
+              <span data-i18n="hanstone.hero.badge">Official Partner</span>
             </div>
-            <h1>Created by Earth. <em>Designed for You.</em></h1>
-            <p class="brand-story-intro">Born from a partnership between Hyundai L&amp;C and the finest raw materials on earth, Hanstone Quartz has been manufactured in London, Ontario since 2009. Every slab is crafted using advanced Breton&trade; technology &mdash; the gold standard in engineered stone production.</p>
+            <h1 data-i18n-html="hanstone.hero.title">Created by Earth. <em>Designed for You.</em></h1>
+            <p class="brand-story-intro" data-i18n="hanstone.hero.tagline">Born from a partnership between Hyundai L&amp;C and the finest raw materials on earth, Hanstone Quartz has been manufactured in London, Ontario since 2009. Every slab is crafted using advanced Breton&trade; technology &mdash; the gold standard in engineered stone production.</p>
           </div>
         </div>
       </div>
@@ -624,15 +650,15 @@
       <div class="container">
         <div class="brand-story-grid">
           <div class="brand-story-text reveal">
-            <span class="label">OUR HERITAGE</span>
-            <h2>A Legacy of Innovation, Rooted in Nature</h2>
-            <p>Hanstone Quartz represents the perfect marriage of natural beauty and modern engineering. Composed of 93% natural quartz &mdash; one of the hardest minerals on earth &mdash; every surface delivers the organic warmth of natural stone with the reliability of cutting-edge manufacturing.</p>
-            <p>Produced at Hyundai L&amp;C's state-of-the-art facility in Canada, Hanstone is committed to sustainable production. From responsible sourcing of raw materials to energy-efficient manufacturing processes, every slab reflects a commitment to both quality and the environment.</p>
+            <span class="label" data-i18n="hanstone.story.label">OUR HERITAGE</span>
+            <h2 data-i18n="hanstone.story.title">A Legacy of Innovation, Rooted in Nature</h2>
+            <p data-i18n="hanstone.story.text1">Hanstone Quartz represents the perfect marriage of natural beauty and modern engineering. Composed of 93% natural quartz &mdash; one of the hardest minerals on earth &mdash; every surface delivers the organic warmth of natural stone with the reliability of cutting-edge manufacturing.</p>
+            <p data-i18n="hanstone.story.text2">Produced at Hyundai L&amp;C's state-of-the-art facility in Canada, Hanstone is committed to sustainable production. From responsible sourcing of raw materials to energy-efficient manufacturing processes, every slab reflects a commitment to both quality and the environment.</p>
             <ul>
-              <li><span class="check">&#10003;</span><span>93% natural quartz for superior hardness and durability</span></li>
-              <li><span class="check">&#10003;</span><span>Canadian-manufactured with Breton&trade; compaction technology</span></li>
-              <li><span class="check">&#10003;</span><span>Greenguard Gold Certified for low chemical emissions</span></li>
-              <li><span class="check">&#10003;</span><span>Backed by Hyundai L&amp;C's global quality standards</span></li>
+              <li><span class="check">&#10003;</span><span data-i18n="hanstone.story.point1">93% natural quartz for superior hardness and durability</span></li>
+              <li><span class="check">&#10003;</span><span data-i18n="hanstone.story.point2">Canadian-manufactured with Breton&trade; compaction technology</span></li>
+              <li><span class="check">&#10003;</span><span data-i18n="hanstone.story.point3">Greenguard Gold Certified for low chemical emissions</span></li>
+              <li><span class="check">&#10003;</span><span data-i18n="hanstone.story.point4">Backed by Hyundai L&amp;C's global quality standards</span></li>
             </ul>
           </div>
           <div class="brand-story-image reveal reveal-delay-1">
@@ -645,15 +671,15 @@
     <!-- ===== SECTION 3: COLLECTIONS BROWSER ===== -->
     <section class="collections-section" id="collections">
       <div class="section-header">
-        <span class="label reveal">EXPLORE THE COLLECTIONS</span>
-        <h2 class="reveal" style="margin-top: 16px; font-family: var(--font-headline); font-size: clamp(28px, 3.5vw, 42px); font-weight: 300;">Four Collections. Endless Possibilities.</h2>
+        <span class="label reveal" data-i18n="hanstone.collections.label">EXPLORE THE COLLECTIONS</span>
+        <h2 class="reveal" style="margin-top: 16px; font-family: var(--font-headline); font-size: clamp(28px, 3.5vw, 42px); font-weight: 300;" data-i18n="hanstone.collections.title">Four Collections. Endless Possibilities.</h2>
       </div>
 
       <!-- Signature Collection -->
       <div class="collection-band reveal">
         <div class="collection-band-header">
           <h3>Signature</h3>
-          <span class="collection-tag">Premium Tier</span>
+          <span class="collection-tag" data-i18n="hanstone.collections.signature.tag">Premium Tier</span>
         </div>
         <div class="collection-scroll">
           <div class="swatch-card">
@@ -688,7 +714,7 @@
       <div class="collection-band reveal">
         <div class="collection-band-header">
           <h3>Pinnacle</h3>
-          <span class="collection-tag">Statement Veining</span>
+          <span class="collection-tag" data-i18n="hanstone.collections.pinnacle.tag">Statement Veining</span>
         </div>
         <div class="collection-scroll">
           <div class="swatch-card">
@@ -728,7 +754,7 @@
       <div class="collection-band reveal">
         <div class="collection-band-header">
           <h3>Connections</h3>
-          <span class="collection-tag">Modern Essentials</span>
+          <span class="collection-tag" data-i18n="hanstone.collections.connections.tag">Modern Essentials</span>
         </div>
         <div class="collection-scroll">
           <div class="swatch-card">
@@ -763,7 +789,7 @@
       <div class="collection-band reveal">
         <div class="collection-band-header">
           <h3>Opimo</h3>
-          <span class="collection-tag">Best Value</span>
+          <span class="collection-tag" data-i18n="hanstone.collections.opimo.tag">Best Value</span>
         </div>
         <div class="collection-scroll">
           <div class="swatch-card">
@@ -794,18 +820,18 @@
     <section class="section section--surface noise-overlay palette-section" id="colors">
       <div class="container">
         <div class="reveal" style="margin-bottom: 16px;">
-          <span class="label">COLOR PALETTE EXPLORER</span>
-          <h2 style="margin-top: 16px; font-family: var(--font-headline); font-size: clamp(28px, 3.5vw, 42px); font-weight: 300;">Find Your Perfect Shade</h2>
+          <span class="label" data-i18n="hanstone.palette.label">COLOR PALETTE EXPLORER</span>
+          <h2 style="margin-top: 16px; font-family: var(--font-headline); font-size: clamp(28px, 3.5vw, 42px); font-weight: 300;" data-i18n="hanstone.palette.title">Find Your Perfect Shade</h2>
         </div>
 
         <div class="filter-tabs reveal">
-          <button class="tab active" data-filter="all">All</button>
-          <button class="tab" data-filter="white">White</button>
-          <button class="tab" data-filter="warm">Warm</button>
-          <button class="tab" data-filter="cool">Cool</button>
-          <button class="tab" data-filter="vibrant">Vibrant</button>
-          <button class="tab" data-filter="grey">Grey</button>
-          <button class="tab" data-filter="black">Black</button>
+          <button class="tab active" data-filter="all" data-i18n="hanstone.palette.all">All</button>
+          <button class="tab" data-filter="white" data-i18n="hanstone.palette.white">White</button>
+          <button class="tab" data-filter="warm" data-i18n="hanstone.palette.warm">Warm</button>
+          <button class="tab" data-filter="cool" data-i18n="hanstone.palette.cool">Cool</button>
+          <button class="tab" data-filter="vibrant" data-i18n="hanstone.palette.vibrant">Vibrant</button>
+          <button class="tab" data-filter="grey" data-i18n="hanstone.palette.grey">Grey</button>
+          <button class="tab" data-filter="black" data-i18n="hanstone.palette.black">Black</button>
         </div>
 
         <div class="swatch-grid reveal">
@@ -954,8 +980,8 @@
     <section class="section section--dark">
       <div class="container">
         <div class="text-center reveal" style="margin-bottom: 56px;">
-          <span class="label">WHY HANSTONE</span>
-          <h2 style="margin-top: 16px; font-family: var(--font-headline); font-size: clamp(28px, 3.5vw, 42px); font-weight: 300;">Engineered to Outperform</h2>
+          <span class="label" data-i18n="hanstone.benefits.label">WHY HANSTONE</span>
+          <h2 style="margin-top: 16px; font-family: var(--font-headline); font-size: clamp(28px, 3.5vw, 42px); font-weight: 300;" data-i18n="hanstone.benefits.title">Engineered to Outperform</h2>
         </div>
 
         <div class="benefits-grid">
@@ -963,32 +989,32 @@
             <div class="benefit-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             </div>
-            <h4>Harder Than Granite</h4>
-            <p>Composed of 93% natural quartz, Hanstone scores a 7 on the Mohs hardness scale &mdash; making it one of the most durable countertop surfaces available. It resists scratching, chipping, and cracking under everyday use.</p>
+            <h4 data-i18n="hanstone.benefits.card1.title">Harder Than Granite</h4>
+            <p data-i18n="hanstone.benefits.card1.desc">Composed of 93% natural quartz, Hanstone scores a 7 on the Mohs hardness scale &mdash; making it one of the most durable countertop surfaces available. It resists scratching, chipping, and cracking under everyday use.</p>
           </div>
 
           <div class="benefit-card reveal reveal-delay-1">
             <div class="benefit-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M8 12l3 3 5-5"/></svg>
             </div>
-            <h4>Never Needs Sealing</h4>
-            <p>Unlike natural stone, Hanstone Quartz never requires sealing, polishing, or reconditioning. The non-porous surface maintains its luster and finish for the lifetime of your countertop with minimal maintenance.</p>
+            <h4 data-i18n="hanstone.benefits.card2.title">Never Needs Sealing</h4>
+            <p data-i18n="hanstone.benefits.card2.desc">Unlike natural stone, Hanstone Quartz never requires sealing, polishing, or reconditioning. The non-porous surface maintains its luster and finish for the lifetime of your countertop with minimal maintenance.</p>
           </div>
 
           <div class="benefit-card reveal reveal-delay-2">
             <div class="benefit-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             </div>
-            <h4>Non-Porous &amp; Hygienic</h4>
-            <p>Hanstone's non-porous surface means no bacteria, mold, or mildew can penetrate the material. Greenguard Gold Certified for indoor air quality, it's the ideal choice for kitchens and bathrooms.</p>
+            <h4 data-i18n="hanstone.benefits.card3.title">Non-Porous &amp; Hygienic</h4>
+            <p data-i18n="hanstone.benefits.card3.desc">Hanstone's non-porous surface means no bacteria, mold, or mildew can penetrate the material. Greenguard Gold Certified for indoor air quality, it's the ideal choice for kitchens and bathrooms.</p>
           </div>
 
           <div class="benefit-card reveal reveal-delay-3">
             <div class="benefit-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
             </div>
-            <h4>Lifetime Warranty</h4>
-            <p>Every Hanstone slab is backed by a transferable lifetime residential warranty and a 10-year commercial warranty. It's a promise of quality from a global manufacturer you can trust.</p>
+            <h4 data-i18n="hanstone.benefits.card4.title">Lifetime Warranty</h4>
+            <p data-i18n="hanstone.benefits.card4.desc">Every Hanstone slab is backed by a transferable lifetime residential warranty and a 10-year commercial warranty. It's a promise of quality from a global manufacturer you can trust.</p>
           </div>
         </div>
       </div>
@@ -998,9 +1024,9 @@
     <section class="section section--surface noise-overlay">
       <div class="container">
         <div class="text-center reveal" style="margin-bottom: 48px;">
-          <span class="label">FOR PROFESSIONALS</span>
-          <h2 style="margin-top: 16px; font-family: var(--font-headline); font-size: clamp(28px, 3.5vw, 42px); font-weight: 300;">Professional Resources</h2>
-          <p style="color: var(--color-text-muted); margin-top: 12px; max-width: 560px; margin-left: auto; margin-right: auto;">Everything architects, designers, and fabricators need to specify and install Hanstone Quartz with confidence.</p>
+          <span class="label" data-i18n="hanstone.resources.label">FOR PROFESSIONALS</span>
+          <h2 style="margin-top: 16px; font-family: var(--font-headline); font-size: clamp(28px, 3.5vw, 42px); font-weight: 300;" data-i18n="hanstone.resources.title">Professional Resources</h2>
+          <p style="color: var(--color-text-muted); margin-top: 12px; max-width: 560px; margin-left: auto; margin-right: auto;" data-i18n="hanstone.resources.desc">Everything architects, designers, and fabricators need to specify and install Hanstone Quartz with confidence.</p>
         </div>
 
         <div class="resources-grid reveal">
@@ -1009,8 +1035,8 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
             </div>
             <div class="resource-info">
-              <h4>BIM Library</h4>
-              <p>Revit families &amp; objects</p>
+              <h4 data-i18n="hanstone.resources.bim.title">BIM Library</h4>
+              <p data-i18n="hanstone.resources.bim.desc">Revit families &amp; objects</p>
             </div>
           </a>
 
@@ -1019,8 +1045,8 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
             </div>
             <div class="resource-info">
-              <h4>CAD Files</h4>
-              <p>DWG &amp; DXF downloads</p>
+              <h4 data-i18n="hanstone.resources.cad.title">CAD Files</h4>
+              <p data-i18n="hanstone.resources.cad.desc">DWG &amp; DXF downloads</p>
             </div>
           </a>
 
@@ -1029,8 +1055,8 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
             </div>
             <div class="resource-info">
-              <h4>CEU Courses</h4>
-              <p>AIA-approved learning</p>
+              <h4 data-i18n="hanstone.resources.ceu.title">CEU Courses</h4>
+              <p data-i18n="hanstone.resources.ceu.desc">AIA-approved learning</p>
             </div>
           </a>
 
@@ -1039,8 +1065,8 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
             </div>
             <div class="resource-info">
-              <h4>Spec Sheets</h4>
-              <p>Technical specifications</p>
+              <h4 data-i18n="hanstone.resources.specs.title">Spec Sheets</h4>
+              <p data-i18n="hanstone.resources.specs.desc">Technical specifications</p>
             </div>
           </a>
 
@@ -1049,8 +1075,8 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
             </div>
             <div class="resource-info">
-              <h4>Care &amp; Maintenance</h4>
-              <p>Cleaning guides &amp; tips</p>
+              <h4 data-i18n="hanstone.resources.care.title">Care &amp; Maintenance</h4>
+              <p data-i18n="hanstone.resources.care.desc">Cleaning guides &amp; tips</p>
             </div>
           </a>
         </div>
@@ -1060,11 +1086,11 @@
     <!-- ===== SECTION 7: CTA ===== -->
     <section class="section section--dark cta-section">
       <div class="container">
-        <h2 class="reveal">Ready to see Hanstone in person?</h2>
-        <p class="reveal">Visit our Doral showroom to explore the full collection, or request samples delivered to your door.</p>
+        <h2 class="reveal" data-i18n="hanstone.cta.title">Ready to see Hanstone in person?</h2>
+        <p class="reveal" data-i18n="hanstone.cta.desc">Visit our Doral showroom to explore the full collection, or request samples delivered to your door.</p>
         <div class="cta-buttons reveal">
-          <a href="contact.html" class="btn btn--hanstone">Request a Quote</a>
-          <a href="about.html#showroom" class="btn btn--outline">Visit Our Showroom</a>
+          <a href="contact.html" class="btn btn--hanstone" data-i18n="hanstone.cta.quote">Request a Quote</a>
+          <a href="about.html#showroom" class="btn btn--outline" data-i18n="hanstone.cta.showroom">Visit Our Showroom</a>
         </div>
       </div>
     </section>
@@ -1077,13 +1103,13 @@
       <div class="footer-grid">
         <div class="footer-col">
           <div class="footer-logo"><img src="../images/header/TSS_LOGO.png" alt="The Stone Surfaces" class="logo-img"></div>
-          <p class="tagline">South Florida's trusted source for premium natural and engineered stone surfaces since 2016.</p>
+          <p class="tagline" data-i18n="footer.tagline">South Florida's trusted source for premium natural and engineered stone surfaces since 2016.</p>
           <p class="contact-line">&#9679; 7980 NW 56th St, Doral, FL 33166</p>
           <p class="contact-line">&#9742; (305) 000-0000</p>
           <p class="contact-line">&#9993; info@thestonesurfaces.com</p>
         </div>
         <div class="footer-col">
-          <h4>Products</h4>
+          <h4 data-i18n="footer.products">Products</h4>
           <ul>
             <li><a href="products.html#granite">Granite</a></li>
             <li><a href="products.html#marble">Marble</a></li>
@@ -1095,17 +1121,17 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Resources</h4>
+          <h4 data-i18n="footer.resources">Resources</h4>
           <ul>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="inspired.html">Get Inspired</a></li>
-            <li><a href="#">FAQs</a></li>
-            <li><a href="#">Warranty Info</a></li>
-            <li><a href="trade.html">For The Trade</a></li>
+            <li><a href="blog.html" data-i18n="nav.blog">Blog</a></li>
+            <li><a href="inspired.html" data-i18n="nav.inspired">Get Inspired</a></li>
+            <li><a href="#" data-i18n="footer.faqs">FAQs</a></li>
+            <li><a href="#" data-i18n="footer.warranty">Warranty Info</a></li>
+            <li><a href="trade.html" data-i18n="nav.trade">For The Trade</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Connect</h4>
+          <h4 data-i18n="footer.connect">Connect</h4>
           <div class="footer-social">
             <a href="#" aria-label="Instagram">IG</a>
             <a href="#" aria-label="Facebook">FB</a>
@@ -1116,10 +1142,10 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span>&copy; 2026 The Stone Surfaces. All rights reserved.</span>
+        <span data-i18n="footer.copyright">&copy; 2026 The Stone Surfaces. All rights reserved.</span>
         <div class="footer-bottom-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
+          <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
+          <a href="#" data-i18n="footer.terms">Terms of Service</a>
         </div>
       </div>
     </div>
@@ -1179,6 +1205,7 @@
     <div id="n8n-chat-widget" data-webhook-url="YOUR_N8N_WEBHOOK_URL" style="display:none;"></div>
   </div>
 
+  <script src="../js/i18n.js"></script>
   <script src="../js/main.js"></script>
 </body>
 </html>

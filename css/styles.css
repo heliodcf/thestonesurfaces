@@ -267,8 +267,8 @@ p {
 
 .btn--outline {
   background: transparent;
-  color: #000000;
-  border: 1px solid #000000;
+  color: var(--color-text-light);
+  border: 1px solid var(--color-text-light);
 }
 
 .btn--outline:hover {
@@ -326,21 +326,21 @@ p {
 }
 
 .header--transparent .logo-img {
-  filter: brightness(0);
+  filter: brightness(0) invert(1);
   transition: filter var(--transition-default);
 }
 
 .header--transparent .nav-desktop a {
-  color: #000000;
+  color: var(--color-text-light);
 }
 
 .header--transparent .nav-desktop a:hover,
 .header--transparent .nav-desktop a.active {
-  color: var(--color-cta);
+  color: var(--color-accent-gold);
 }
 
 .header--transparent .nav-toggle span {
-  background: #000000;
+  background: var(--color-text-light);
 }
 
 .header--solid {
@@ -661,7 +661,7 @@ p {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: none;
+  background: linear-gradient(to top, rgba(15,15,15,0.85) 0%, rgba(15,15,15,0.4) 50%, rgba(15,15,15,0.2) 100%);
   z-index: 1;
 }
 
@@ -675,17 +675,17 @@ p {
 
 .hero-content .label {
   margin-bottom: 24px;
-  color: #000000;
+  color: var(--color-accent-gold);
 }
 
 .hero-content h1 {
   margin-bottom: 24px;
-  color: var(--color-cta);
+  color: var(--color-text-light);
 }
 
 .hero-content .subheadline {
   font-size: 20px;
-  color: #3a3a3a;
+  color: var(--color-text-muted);
   margin-bottom: 40px;
   line-height: 1.6;
 }
@@ -2678,5 +2678,150 @@ p {
 
   .locations-grid .location-card:last-child {
     max-width: 100%;
+  }
+}
+
+/* ============================================
+   LANGUAGE SELECTOR
+   ============================================ */
+
+.lang-selector {
+  position: relative;
+  margin-right: 16px;
+}
+
+.lang-selector-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  padding: 6px 10px;
+  border: 1px solid var(--color-border-dark);
+  border-radius: var(--radius-button);
+  transition: border-color var(--transition-default), background var(--transition-default);
+  background: transparent;
+  color: var(--color-text-light);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.lang-selector-toggle:hover {
+  border-color: var(--color-accent-gold);
+  background: rgba(196, 163, 90, 0.08);
+}
+
+.lang-selector-toggle svg {
+  width: 16px;
+  height: 16px;
+  opacity: 0.7;
+}
+
+.lang-current {
+  min-width: 20px;
+  text-align: center;
+}
+
+.lang-chevron {
+  width: 10px;
+  height: 10px;
+  opacity: 0.5;
+  transition: transform var(--transition-default);
+}
+
+.lang-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 160px;
+  background: #1A1A1A;
+  border: 1px solid var(--color-border-dark);
+  border-radius: var(--radius-button);
+  padding: 4px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity var(--transition-default), transform var(--transition-default), visibility var(--transition-default);
+  z-index: 1001;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+}
+
+.lang-dropdown.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.lang-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background var(--transition-default);
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--color-text-light);
+}
+
+.lang-option:hover {
+  background: rgba(196, 163, 90, 0.1);
+}
+
+.lang-option.active {
+  color: var(--color-accent-gold);
+}
+
+.lang-option.active::after {
+  content: '\2713';
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--color-accent-gold);
+}
+
+.lang-option-label {
+  font-weight: 400;
+}
+
+.lang-option-code {
+  font-size: 11px;
+  opacity: 0.5;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.mobile-menu .lang-selector-mobile {
+  display: flex;
+  gap: 12px;
+  padding: 24px 0;
+  justify-content: center;
+  border-top: 1px solid var(--color-border-dark);
+  margin-top: 16px;
+}
+
+.mobile-menu .lang-selector-mobile button {
+  padding: 8px 16px;
+  border: 1px solid var(--color-border-dark);
+  border-radius: var(--radius-button);
+  color: var(--color-text-light);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-default);
+  background: transparent;
+}
+
+.mobile-menu .lang-selector-mobile button:hover,
+.mobile-menu .lang-selector-mobile button.active {
+  border-color: var(--color-accent-gold);
+  color: var(--color-accent-gold);
+  background: rgba(196, 163, 90, 0.08);
+}
+
+@media (max-width: 768px) {
+  .lang-selector {
+    display: none;
   }
 }

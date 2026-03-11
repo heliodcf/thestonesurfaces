@@ -521,6 +521,27 @@
       </div>
 
       <div class="header-right">
+        <div class="lang-selector">
+          <button class="lang-selector-toggle" aria-label="Select language">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            <span class="lang-current">EN</span>
+            <svg class="lang-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+          </button>
+          <div class="lang-dropdown">
+            <div class="lang-option active" data-lang="en">
+              <span class="lang-option-label">English</span>
+              <span class="lang-option-code">EN</span>
+            </div>
+            <div class="lang-option" data-lang="es">
+              <span class="lang-option-label">Español</span>
+              <span class="lang-option-code">ES</span>
+            </div>
+            <div class="lang-option" data-lang="pt">
+              <span class="lang-option-label">Português</span>
+              <span class="lang-option-code">PT</span>
+            </div>
+          </div>
+        </div>
         <a href="contact.html" class="btn btn--lucciare">Request a Quote</a>
         <div class="nav-toggle" aria-label="Toggle navigation">
           <span></span><span></span><span></span>
@@ -539,6 +560,11 @@
     <a href="about.html">About</a>
     <a href="trade.html">For The Trade</a>
     <a href="contact.html">Contact</a>
+    <div class="lang-selector-mobile">
+      <button data-lang="en" class="active">EN</button>
+      <button data-lang="es">ES</button>
+      <button data-lang="pt">PT</button>
+    </div>
   </div>
 
   <main>
@@ -561,11 +587,11 @@
             <div class="partnership-badge">
               <span>Lucciare</span>
               <span class="divider"></span>
-              <span>Official Distributor</span>
+              <span data-i18n="lucciare.hero.badge">Official Distributor</span>
             </div>
-            <h1>Handcrafted Stone. <em>Italian Design.</em></h1>
-            <p class="brand-story-intro">Designed in Italy and perfected over a decade of innovation, Lucciare is the leader in the art of marbleized veining. Every slab is handcrafted to deliver the beauty of natural marble with the performance of engineered quartz.</p>
-            <div class="featured-badge">As seen on <span>HGTV</span></div>
+            <h1 data-i18n-html="lucciare.hero.title">Handcrafted Stone. <em>Italian Design.</em></h1>
+            <p class="brand-story-intro" data-i18n="lucciare.hero.tagline">Designed in Italy and perfected over a decade of innovation, Lucciare is the leader in the art of marbleized veining. Every slab is handcrafted to deliver the beauty of natural marble with the performance of engineered quartz.</p>
+            <div class="featured-badge" data-i18n-html="lucciare.hero.featured">As seen on <span>HGTV</span></div>
           </div>
         </div>
       </div>
@@ -576,15 +602,15 @@
       <div class="container">
         <div class="brand-story-grid">
           <div class="brand-story-text reveal">
-            <span class="label">THE LUCCIARE STORY</span>
-            <h2>A Decade of Innovation, Born in Italy</h2>
-            <p>Lucciare surfaces were designed in Italy and developed over 10 years before the brand's establishment. The company created Polarstone&reg; in 2013 to introduce Calacatta and Statuario quartz designs to the market, then launched the Lucciare&reg; brand in 2019 with refined manufacturing processes.</p>
-            <p>Today, Lucciare represents the latest evolution in countertop surfaces &mdash; combining beautiful handcrafted designs with engineered durability. Their intricate veining patterns replicate natural marble while offering superior stain resistance and low maintenance.</p>
+            <span class="label" data-i18n="lucciare.story.label">THE LUCCIARE STORY</span>
+            <h2 data-i18n="lucciare.story.title">A Decade of Innovation, Born in Italy</h2>
+            <p data-i18n="lucciare.story.text1">Lucciare surfaces were designed in Italy and developed over 10 years before the brand's establishment. The company created Polarstone&reg; in 2013 to introduce Calacatta and Statuario quartz designs to the market, then launched the Lucciare&reg; brand in 2019 with refined manufacturing processes.</p>
+            <p data-i18n="lucciare.story.text2">Today, Lucciare represents the latest evolution in countertop surfaces &mdash; combining beautiful handcrafted designs with engineered durability. Their intricate veining patterns replicate natural marble while offering superior stain resistance and low maintenance.</p>
             <ul>
-              <li><span class="check">&#10003;</span><span>Italian-designed with over 10 years of development</span></li>
-              <li><span class="check">&#10003;</span><span>Leader in the art of marbleized veining technology</span></li>
-              <li><span class="check">&#10003;</span><span>GreenGuard Gold &amp; NSF Certified</span></li>
-              <li><span class="check">&#10003;</span><span>Non-porous, stain-resistant, microbial-free surfaces</span></li>
+              <li><span class="check">&#10003;</span><span data-i18n="lucciare.story.point1">Italian-designed with over 10 years of development</span></li>
+              <li><span class="check">&#10003;</span><span data-i18n="lucciare.story.point2">Leader in the art of marbleized veining technology</span></li>
+              <li><span class="check">&#10003;</span><span data-i18n="lucciare.story.point3">GreenGuard Gold &amp; NSF Certified</span></li>
+              <li><span class="check">&#10003;</span><span data-i18n="lucciare.story.point4">Non-porous, stain-resistant, microbial-free surfaces</span></li>
             </ul>
             <div class="cert-row">
               <div class="cert-badge">
@@ -611,15 +637,15 @@
     <!-- ===== SECTION 3: COLLECTIONS BROWSER ===== -->
     <section class="collections-section" id="collections">
       <div class="section-header">
-        <span class="label reveal">EXPLORE THE COLLECTIONS</span>
-        <h2 class="reveal" style="margin-top: 16px; font-family: var(--font-headline); font-size: clamp(28px, 3.5vw, 42px); font-weight: 300;">Three Collections. Timeless Craftsmanship.</h2>
+        <span class="label reveal" data-i18n="lucciare.collections.label">EXPLORE THE COLLECTIONS</span>
+        <h2 class="reveal" style="margin-top: 16px; font-family: var(--font-headline); font-size: clamp(28px, 3.5vw, 42px); font-weight: 300;" data-i18n="lucciare.collections.title">Three Collections. Timeless Craftsmanship.</h2>
       </div>
 
       <!-- Signature Collection -->
       <div class="collection-band reveal">
         <div class="collection-band-header">
           <h3>Signature</h3>
-          <span class="collection-tag">Timeless Designs</span>
+          <span class="collection-tag" data-i18n="lucciare.collections.signature.tag">Timeless Designs</span>
         </div>
         <div class="collection-scroll">
           <div class="swatch-card">
@@ -679,7 +705,7 @@
       <div class="collection-band reveal">
         <div class="collection-band-header">
           <h3>Genesis</h3>
-          <span class="collection-tag">Innovative Engineering</span>
+          <span class="collection-tag" data-i18n="lucciare.collections.genesis.tag">Innovative Engineering</span>
         </div>
         <div class="collection-scroll">
           <div class="swatch-card">
@@ -734,7 +760,7 @@
       <div class="collection-band reveal">
         <div class="collection-band-header">
           <h3>Solstice</h3>
-          <span class="collection-tag">Bold Expression</span>
+          <span class="collection-tag" data-i18n="lucciare.collections.solstice.tag">Bold Expression</span>
         </div>
         <div class="collection-scroll">
           <div class="swatch-card">
@@ -769,15 +795,15 @@
             <div class="placeholder-bg" style="background: linear-gradient(135deg, #2a2018 0%, #1a1510 40%, #0f0f0f 100%);"></div>
           </div>
           <div class="brand-story-text reveal reveal-delay-1">
-            <span class="label">GENESIS TECHNOLOGY</span>
-            <h2>Full-Body Veining, Engineered to Perfection</h2>
-            <p>The Genesis Collection represents a breakthrough in engineered stone. The Strata Series features full-body composition with consistent veining and color throughout the entire thickness &mdash; not just surface-level patterns.</p>
-            <p>Combined with the Art Series, which transforms engineered stone into a canvas for bold creativity with imaginative patterns and dynamic hues, Genesis offers a level of depth and authenticity never seen before in quartz surfaces.</p>
+            <span class="label" data-i18n="lucciare.genesis.label">GENESIS TECHNOLOGY</span>
+            <h2 data-i18n="lucciare.genesis.title">Full-Body Veining, Engineered to Perfection</h2>
+            <p data-i18n="lucciare.genesis.text1">The Genesis Collection represents a breakthrough in engineered stone. The Strata Series features full-body composition with consistent veining and color throughout the entire thickness &mdash; not just surface-level patterns.</p>
+            <p data-i18n="lucciare.genesis.text2">Combined with the Art Series, which transforms engineered stone into a canvas for bold creativity with imaginative patterns and dynamic hues, Genesis offers a level of depth and authenticity never seen before in quartz surfaces.</p>
             <ul>
-              <li><span class="check">&#10003;</span><span>Strata Series: Full-body veining through entire slab thickness</span></li>
-              <li><span class="check">&#10003;</span><span>Art Series: Bold, creative patterns with dynamic depth effects</span></li>
-              <li><span class="check">&#10003;</span><span>Lumina Series: Light-capturing surfaces with translucent quality</span></li>
-              <li><span class="check">&#10003;</span><span>Perfect for countertops, vanities, staircases &amp; furniture</span></li>
+              <li><span class="check">&#10003;</span><span data-i18n="lucciare.genesis.point1">Strata Series: Full-body veining through entire slab thickness</span></li>
+              <li><span class="check">&#10003;</span><span data-i18n="lucciare.genesis.point2">Art Series: Bold, creative patterns with dynamic depth effects</span></li>
+              <li><span class="check">&#10003;</span><span data-i18n="lucciare.genesis.point3">Lumina Series: Light-capturing surfaces with translucent quality</span></li>
+              <li><span class="check">&#10003;</span><span data-i18n="lucciare.genesis.point4">Perfect for countertops, vanities, staircases &amp; furniture</span></li>
             </ul>
           </div>
         </div>
@@ -788,8 +814,8 @@
     <section class="section section--dark">
       <div class="container">
         <div class="text-center reveal" style="margin-bottom: 56px;">
-          <span class="label">WHY LUCCIARE</span>
-          <h2 style="margin-top: 16px; font-family: var(--font-headline); font-size: clamp(28px, 3.5vw, 42px); font-weight: 300;">The Best of All Worlds</h2>
+          <span class="label" data-i18n="lucciare.benefits.label">WHY LUCCIARE</span>
+          <h2 style="margin-top: 16px; font-family: var(--font-headline); font-size: clamp(28px, 3.5vw, 42px); font-weight: 300;" data-i18n="lucciare.benefits.title">The Best of All Worlds</h2>
         </div>
 
         <div class="benefits-grid">
@@ -797,32 +823,32 @@
             <div class="benefit-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
             </div>
-            <h4>Italian Design</h4>
-            <p>Every surface is conceived in Italy, where centuries of stone artistry meet modern engineering. The result is handcrafted veining that captures the soul of natural marble.</p>
+            <h4 data-i18n="lucciare.benefits.card1.title">Italian Design</h4>
+            <p data-i18n="lucciare.benefits.card1.desc">Every surface is conceived in Italy, where centuries of stone artistry meet modern engineering. The result is handcrafted veining that captures the soul of natural marble.</p>
           </div>
 
           <div class="benefit-card reveal reveal-delay-1">
             <div class="benefit-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             </div>
-            <h4>Stain Resistant</h4>
-            <p>Non-porous and microbial-free, Lucciare surfaces resist stains, bacteria, and everyday wear without sealing. Engineered for kitchens, bathrooms, and high-traffic spaces.</p>
+            <h4 data-i18n="lucciare.benefits.card2.title">Stain Resistant</h4>
+            <p data-i18n="lucciare.benefits.card2.desc">Non-porous and microbial-free, Lucciare surfaces resist stains, bacteria, and everyday wear without sealing. Engineered for kitchens, bathrooms, and high-traffic spaces.</p>
           </div>
 
           <div class="benefit-card reveal reveal-delay-2">
             <div class="benefit-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M8 12l3 3 5-5"/></svg>
             </div>
-            <h4>Certified Safe</h4>
-            <p>Triple-certified with GreenGuard Gold, GreenGuard, and NSF standards. Guaranteed safe for indoor air quality and food contact surfaces in homes and commercial spaces.</p>
+            <h4 data-i18n="lucciare.benefits.card3.title">Certified Safe</h4>
+            <p data-i18n="lucciare.benefits.card3.desc">Triple-certified with GreenGuard Gold, GreenGuard, and NSF standards. Guaranteed safe for indoor air quality and food contact surfaces in homes and commercial spaces.</p>
           </div>
 
           <div class="benefit-card reveal reveal-delay-3">
             <div class="benefit-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             </div>
-            <h4>Exceptional Durability</h4>
-            <p>Engineered quartz provides superior resilience against scratches, chips, and heat. Low-maintenance surfaces that maintain their beauty for years without reconditioning.</p>
+            <h4 data-i18n="lucciare.benefits.card4.title">Exceptional Durability</h4>
+            <p data-i18n="lucciare.benefits.card4.desc">Engineered quartz provides superior resilience against scratches, chips, and heat. Low-maintenance surfaces that maintain their beauty for years without reconditioning.</p>
           </div>
         </div>
       </div>
@@ -831,11 +857,11 @@
     <!-- ===== SECTION 6: CTA ===== -->
     <section class="section section--dark cta-section" style="border-top: 1px solid var(--color-border-dark);">
       <div class="container">
-        <h2 class="reveal">Ready to see Lucciare in person?</h2>
-        <p class="reveal">Visit any of our Florida showrooms to explore the full collection, or request samples delivered to your door.</p>
+        <h2 class="reveal" data-i18n="lucciare.cta.title">Ready to see Lucciare in person?</h2>
+        <p class="reveal" data-i18n="lucciare.cta.desc">Visit any of our Florida showrooms to explore the full collection, or request samples delivered to your door.</p>
         <div class="cta-buttons reveal">
-          <a href="contact.html" class="btn btn--lucciare">Request a Quote</a>
-          <a href="about.html#showroom" class="btn btn--outline">Visit Our Showroom</a>
+          <a href="contact.html" class="btn btn--lucciare" data-i18n="lucciare.cta.quote">Request a Quote</a>
+          <a href="about.html#showroom" class="btn btn--outline" data-i18n="lucciare.cta.showroom">Visit Our Showroom</a>
         </div>
       </div>
     </section>
@@ -848,13 +874,13 @@
       <div class="footer-grid">
         <div class="footer-col">
           <div class="footer-logo"><img src="../images/header/TSS_LOGO.png" alt="The Stone Surfaces" class="logo-img"></div>
-          <p class="tagline">Florida's trusted source for premium natural and engineered stone surfaces since 2016.</p>
+          <p class="tagline" data-i18n="footer.tagline">Florida's trusted source for premium natural and engineered stone surfaces since 2016.</p>
           <p class="contact-line">&#9679; 7972 NW 56th St, Doral, FL 33166</p>
           <p class="contact-line">&#9742; 1.866.960.8579</p>
           <p class="contact-line">&#9993; info@thestonesurfaces.com</p>
         </div>
         <div class="footer-col">
-          <h4>Products</h4>
+          <h4 data-i18n="footer.products">Products</h4>
           <ul>
             <li><a href="products.html#granite">Granite</a></li>
             <li><a href="products.html#marble">Marble</a></li>
@@ -867,17 +893,17 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Resources</h4>
+          <h4 data-i18n="footer.resources">Resources</h4>
           <ul>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="inspired.html">Get Inspired</a></li>
-            <li><a href="#">FAQs</a></li>
-            <li><a href="#">Warranty Info</a></li>
-            <li><a href="trade.html">For The Trade</a></li>
+            <li><a href="blog.html" data-i18n="nav.blog">Blog</a></li>
+            <li><a href="inspired.html" data-i18n="nav.inspired">Get Inspired</a></li>
+            <li><a href="#" data-i18n="footer.faqs">FAQs</a></li>
+            <li><a href="#" data-i18n="footer.warranty">Warranty Info</a></li>
+            <li><a href="trade.html" data-i18n="nav.trade">For The Trade</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Connect</h4>
+          <h4 data-i18n="footer.connect">Connect</h4>
           <div class="footer-social">
             <a href="#" aria-label="Instagram">IG</a>
             <a href="#" aria-label="Facebook">FB</a>
@@ -888,10 +914,10 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span>&copy; 2026 The Stone Surfaces. All rights reserved.</span>
+        <span data-i18n="footer.copyright">&copy; 2026 The Stone Surfaces. All rights reserved.</span>
         <div class="footer-bottom-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
+          <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
+          <a href="#" data-i18n="footer.terms">Terms of Service</a>
         </div>
       </div>
     </div>
@@ -951,6 +977,7 @@
     <div id="n8n-chat-widget" data-webhook-url="YOUR_N8N_WEBHOOK_URL" style="display:none;"></div>
   </div>
 
+  <script src="../js/i18n.js"></script>
   <script src="../js/main.js"></script>
 </body>
 </html>

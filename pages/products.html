@@ -628,6 +628,27 @@
       </div>
 
       <div class="header-right">
+        <div class="lang-selector">
+          <button class="lang-selector-toggle" aria-label="Select language">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            <span class="lang-current">EN</span>
+            <svg class="lang-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+          </button>
+          <div class="lang-dropdown">
+            <div class="lang-option active" data-lang="en">
+              <span class="lang-option-label">English</span>
+              <span class="lang-option-code">EN</span>
+            </div>
+            <div class="lang-option" data-lang="es">
+              <span class="lang-option-label">Español</span>
+              <span class="lang-option-code">ES</span>
+            </div>
+            <div class="lang-option" data-lang="pt">
+              <span class="lang-option-label">Português</span>
+              <span class="lang-option-code">PT</span>
+            </div>
+          </div>
+        </div>
         <a href="contact.html" class="btn btn--primary">Request a Quote</a>
         <div class="nav-toggle" aria-label="Toggle navigation">
           <span></span><span></span><span></span>
@@ -645,6 +666,11 @@
     <a href="about.html">About</a>
     <a href="trade.html">For The Trade</a>
     <a href="contact.html">Contact</a>
+    <div class="lang-selector-mobile">
+      <button data-lang="en" class="active">EN</button>
+      <button data-lang="es">ES</button>
+      <button data-lang="pt">PT</button>
+    </div>
   </div>
 
   <main>
@@ -652,9 +678,9 @@
     <!-- ===== BREADCRUMB ===== -->
     <nav class="breadcrumb" aria-label="Breadcrumb">
       <div class="container">
-        <a href="../index.html">Home</a>
+        <a href="../index.html" data-i18n="common.home">Home</a>
         <span class="separator">/</span>
-        <span class="current">Products</span>
+        <span class="current" data-i18n="products.breadcrumb">Products</span>
       </div>
     </nav>
 
@@ -662,8 +688,8 @@
     <section class="page-hero">
       <div class="container">
         <span class="label reveal">PREMIUM STONE SELECTION</span>
-        <h1 class="reveal">Our Collections</h1>
-        <p class="reveal reveal-delay-1">Discover over 500 slabs of granite, marble, quartz, quartzite, and more. Each surface is hand-selected for quality, beauty, and durability to elevate any space.</p>
+        <h1 class="reveal" data-i18n="products.title">Our Collections</h1>
+        <p class="reveal reveal-delay-1" data-i18n="products.desc">Discover over 500 slabs of granite, marble, quartz, quartzite, and more. Each surface is hand-selected for quality, beauty, and durability to elevate any space.</p>
       </div>
     </section>
 
@@ -686,50 +712,50 @@
         <div class="products-layout" style="display: none;">
           <aside class="filter-sidebar" id="filterSidebar" aria-label="Product filters">
             <div class="filter-header">
-              <h3>Filters</h3>
-              <button class="filter-clear">Clear All</button>
+              <h3 data-i18n="products.filters">Filters</h3>
+              <button class="filter-clear" data-i18n="products.clearAll">Clear All</button>
             </div>
 
             <!-- Color Family -->
             <div class="filter-group">
               <button class="filter-group-toggle" aria-expanded="true">
-                Color Family
+                <span data-i18n="products.filterLabel.color">Color Family</span>
                 <span class="chevron">&#9660;</span>
               </button>
               <div class="filter-options">
                 <div class="filter-option" data-filter="color" data-value="white">
                   <span class="color-swatch" style="background: #f0ece8;"></span>
-                  <span>White</span>
+                  <span data-i18n="products.filter.color.white">White</span>
                   <span class="filter-count">84</span>
                 </div>
                 <div class="filter-option" data-filter="color" data-value="gray">
                   <span class="color-swatch" style="background: #8a8a8a;"></span>
-                  <span>Gray</span>
+                  <span data-i18n="products.filter.color.gray">Gray</span>
                   <span class="filter-count">72</span>
                 </div>
                 <div class="filter-option" data-filter="color" data-value="black">
                   <span class="color-swatch" style="background: #2a2a2a;"></span>
-                  <span>Black</span>
+                  <span data-i18n="products.filter.color.black">Black</span>
                   <span class="filter-count">56</span>
                 </div>
                 <div class="filter-option" data-filter="color" data-value="brown">
                   <span class="color-swatch" style="background: #8b6f47;"></span>
-                  <span>Brown</span>
+                  <span data-i18n="products.filter.color.brown">Brown</span>
                   <span class="filter-count">68</span>
                 </div>
                 <div class="filter-option" data-filter="color" data-value="blue">
                   <span class="color-swatch" style="background: #5a7a8a;"></span>
-                  <span>Blue</span>
+                  <span data-i18n="products.filter.color.blue">Blue</span>
                   <span class="filter-count">24</span>
                 </div>
                 <div class="filter-option" data-filter="color" data-value="green">
                   <span class="color-swatch" style="background: #5a7a5a;"></span>
-                  <span>Green</span>
+                  <span data-i18n="products.filter.color.green">Green</span>
                   <span class="filter-count">18</span>
                 </div>
                 <div class="filter-option" data-filter="color" data-value="multi">
                   <span class="color-swatch" style="background: conic-gradient(#8b6f47, #5a7a8a, #e8e0d8, #2a2a2a);"></span>
-                  <span>Multi</span>
+                  <span data-i18n="products.filter.color.multi">Multi</span>
                   <span class="filter-count">42</span>
                 </div>
               </div>
@@ -738,28 +764,28 @@
             <!-- Finish -->
             <div class="filter-group">
               <button class="filter-group-toggle" aria-expanded="true">
-                Finish
+                <span data-i18n="products.filterLabel.finish">Finish</span>
                 <span class="chevron">&#9660;</span>
               </button>
               <div class="filter-options">
                 <div class="filter-option" data-filter="finish" data-value="polished">
                   <div class="filter-checkbox"></div>
-                  <span>Polished</span>
+                  <span data-i18n="products.filter.finish.polished">Polished</span>
                   <span class="filter-count">210</span>
                 </div>
                 <div class="filter-option" data-filter="finish" data-value="honed">
                   <div class="filter-checkbox"></div>
-                  <span>Honed</span>
+                  <span data-i18n="products.filter.finish.honed">Honed</span>
                   <span class="filter-count">145</span>
                 </div>
                 <div class="filter-option" data-filter="finish" data-value="leathered">
                   <div class="filter-checkbox"></div>
-                  <span>Leathered</span>
+                  <span data-i18n="products.filter.finish.leathered">Leathered</span>
                   <span class="filter-count">78</span>
                 </div>
                 <div class="filter-option" data-filter="finish" data-value="brushed">
                   <div class="filter-checkbox"></div>
-                  <span>Brushed</span>
+                  <span data-i18n="products.filter.finish.brushed">Brushed</span>
                   <span class="filter-count">52</span>
                 </div>
               </div>
@@ -767,7 +793,7 @@
 
             <!-- Brand -->
             <div class="filter-group">
-              <button class="filter-group-toggle" aria-expanded="true">
+              <button class="filter-group-toggle" aria-expanded="true" data-i18n="products.filter.brand">
                 Brand
                 <span class="chevron">&#9660;</span>
               </button>
@@ -797,7 +823,7 @@
 
             <!-- Thickness -->
             <div class="filter-group">
-              <button class="filter-group-toggle" aria-expanded="true">
+              <button class="filter-group-toggle" aria-expanded="true" data-i18n="products.filter.thickness">
                 Thickness
                 <span class="chevron">&#9660;</span>
               </button>
@@ -818,28 +844,28 @@
             <!-- Application -->
             <div class="filter-group">
               <button class="filter-group-toggle" aria-expanded="true">
-                Application
+                <span data-i18n="products.filterLabel.application">Application</span>
                 <span class="chevron">&#9660;</span>
               </button>
               <div class="filter-options">
                 <div class="filter-option" data-filter="application" data-value="kitchen">
                   <div class="filter-checkbox"></div>
-                  <span>Kitchen</span>
+                  <span data-i18n="products.filter.application.kitchen">Kitchen</span>
                   <span class="filter-count">320</span>
                 </div>
                 <div class="filter-option" data-filter="application" data-value="bathroom">
                   <div class="filter-checkbox"></div>
-                  <span>Bathroom</span>
+                  <span data-i18n="products.filter.application.bathroom">Bathroom</span>
                   <span class="filter-count">280</span>
                 </div>
                 <div class="filter-option" data-filter="application" data-value="commercial">
                   <div class="filter-checkbox"></div>
-                  <span>Commercial</span>
+                  <span data-i18n="products.filter.application.commercial">Commercial</span>
                   <span class="filter-count">190</span>
                 </div>
                 <div class="filter-option" data-filter="application" data-value="outdoor">
                   <div class="filter-checkbox"></div>
-                  <span>Outdoor</span>
+                  <span data-i18n="products.filter.application.outdoor">Outdoor</span>
                   <span class="filter-count">85</span>
                 </div>
               </div>
@@ -854,12 +880,12 @@
               <span class="results-count">Showing <strong>510</strong> products</span>
               <div style="display: flex; align-items: center; gap: 16px;">
                 <div class="sort-wrapper">
-                  <label for="sortSelect">Sort by</label>
+                  <label for="sortSelect" data-i18n="products.sortBy">Sort by</label>
                   <select class="sort-select" id="sortSelect">
-                    <option value="newest">Newest</option>
-                    <option value="popular" selected>Popular</option>
-                    <option value="color">Color Family</option>
-                    <option value="price">Price</option>
+                    <option value="newest" data-i18n="products.sort.newest">Newest</option>
+                    <option value="popular" selected data-i18n="products.sort.popular">Popular</option>
+                    <option value="color" data-i18n="products.sort.color">Color Family</option>
+                    <option value="price" data-i18n="products.sort.price">Price</option>
                   </select>
                 </div>
                 <div class="view-toggles">
@@ -892,8 +918,8 @@
                     <span class="finish-badge">Honed</span>
                   </div>
                   <div class="product-card-actions">
-                    <a href="#" class="btn--details">View Details</a>
-                    <a href="contact.html" class="btn--quote">Request Quote</a>
+                    <a href="#" class="btn--details" data-i18n="products.viewDetails">View Details</a>
+                    <a href="contact.html" class="btn--quote" data-i18n="products.requestQuote">Request Quote</a>
                   </div>
                 </div>
               </article>
@@ -913,8 +939,8 @@
                     <span class="finish-badge">Polished</span>
                   </div>
                   <div class="product-card-actions">
-                    <a href="#" class="btn--details">View Details</a>
-                    <a href="contact.html" class="btn--quote">Request Quote</a>
+                    <a href="#" class="btn--details" data-i18n="products.viewDetails">View Details</a>
+                    <a href="contact.html" class="btn--quote" data-i18n="products.requestQuote">Request Quote</a>
                   </div>
                 </div>
               </article>
@@ -935,8 +961,8 @@
                     <span class="finish-badge">Brushed</span>
                   </div>
                   <div class="product-card-actions">
-                    <a href="#" class="btn--details">View Details</a>
-                    <a href="contact.html" class="btn--quote">Request Quote</a>
+                    <a href="#" class="btn--details" data-i18n="products.viewDetails">View Details</a>
+                    <a href="contact.html" class="btn--quote" data-i18n="products.requestQuote">Request Quote</a>
                   </div>
                 </div>
               </article>
@@ -957,8 +983,8 @@
                     <span class="finish-badge">Leathered</span>
                   </div>
                   <div class="product-card-actions">
-                    <a href="#" class="btn--details">View Details</a>
-                    <a href="contact.html" class="btn--quote">Request Quote</a>
+                    <a href="#" class="btn--details" data-i18n="products.viewDetails">View Details</a>
+                    <a href="contact.html" class="btn--quote" data-i18n="products.requestQuote">Request Quote</a>
                   </div>
                 </div>
               </article>
@@ -979,8 +1005,8 @@
                     <span class="finish-badge">Honed</span>
                   </div>
                   <div class="product-card-actions">
-                    <a href="#" class="btn--details">View Details</a>
-                    <a href="contact.html" class="btn--quote">Request Quote</a>
+                    <a href="#" class="btn--details" data-i18n="products.viewDetails">View Details</a>
+                    <a href="contact.html" class="btn--quote" data-i18n="products.requestQuote">Request Quote</a>
                   </div>
                 </div>
               </article>
@@ -1000,8 +1026,8 @@
                     <span class="finish-badge">Polished</span>
                   </div>
                   <div class="product-card-actions">
-                    <a href="#" class="btn--details">View Details</a>
-                    <a href="contact.html" class="btn--quote">Request Quote</a>
+                    <a href="#" class="btn--details" data-i18n="products.viewDetails">View Details</a>
+                    <a href="contact.html" class="btn--quote" data-i18n="products.requestQuote">Request Quote</a>
                   </div>
                 </div>
               </article>
@@ -1023,8 +1049,8 @@
                     <span class="finish-badge">Leathered</span>
                   </div>
                   <div class="product-card-actions">
-                    <a href="#" class="btn--details">View Details</a>
-                    <a href="contact.html" class="btn--quote">Request Quote</a>
+                    <a href="#" class="btn--details" data-i18n="products.viewDetails">View Details</a>
+                    <a href="contact.html" class="btn--quote" data-i18n="products.requestQuote">Request Quote</a>
                   </div>
                 </div>
               </article>
@@ -1044,8 +1070,8 @@
                     <span class="finish-badge">Polished</span>
                   </div>
                   <div class="product-card-actions">
-                    <a href="#" class="btn--details">View Details</a>
-                    <a href="contact.html" class="btn--quote">Request Quote</a>
+                    <a href="#" class="btn--details" data-i18n="products.viewDetails">View Details</a>
+                    <a href="contact.html" class="btn--quote" data-i18n="products.requestQuote">Request Quote</a>
                   </div>
                 </div>
               </article>
@@ -1066,8 +1092,8 @@
                     <span class="finish-badge">Honed</span>
                   </div>
                   <div class="product-card-actions">
-                    <a href="#" class="btn--details">View Details</a>
-                    <a href="contact.html" class="btn--quote">Request Quote</a>
+                    <a href="#" class="btn--details" data-i18n="products.viewDetails">View Details</a>
+                    <a href="contact.html" class="btn--quote" data-i18n="products.requestQuote">Request Quote</a>
                   </div>
                 </div>
               </article>
@@ -1088,8 +1114,8 @@
         <div id="comparisonChips"></div>
       </div>
       <div class="comparison-actions">
-        <button class="comparison-clear" id="compareClear">Clear All</button>
-        <a href="#" class="btn btn--primary" style="padding: 10px 24px; font-size: 14px;">Compare Now</a>
+        <button class="comparison-clear" id="compareClear" data-i18n="products.clearAll">Clear All</button>
+        <a href="#" class="btn btn--primary" style="padding: 10px 24px; font-size: 14px;" data-i18n="products.compareNow">Compare Now</a>
       </div>
     </div>
   </div>
@@ -1100,13 +1126,13 @@
       <div class="footer-grid">
         <div class="footer-col">
           <div class="footer-logo"><img src="../images/header/TSS_LOGO.png" alt="The Stone Surfaces" class="logo-img"></div>
-          <p class="tagline">South Florida's trusted source for premium natural and engineered stone surfaces since 2016.</p>
+          <p class="tagline" data-i18n="footer.tagline">South Florida's trusted source for premium natural and engineered stone surfaces since 2016.</p>
           <p class="contact-line">&#9679; 7980 NW 56th St, Doral, FL 33166</p>
           <p class="contact-line">&#9742; (305) 000-0000</p>
           <p class="contact-line">&#9993; info@thestonesurfaces.com</p>
         </div>
         <div class="footer-col">
-          <h4>Products</h4>
+          <h4 data-i18n="footer.products">Products</h4>
           <ul>
             <li><a href="products.html#granite">Granite</a></li>
             <li><a href="products.html#marble">Marble</a></li>
@@ -1118,17 +1144,17 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Resources</h4>
+          <h4 data-i18n="footer.resources">Resources</h4>
           <ul>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="inspired.html">Get Inspired</a></li>
-            <li><a href="#">FAQs</a></li>
-            <li><a href="#">Warranty Info</a></li>
-            <li><a href="trade.html">For The Trade</a></li>
+            <li><a href="blog.html" data-i18n="nav.blog">Blog</a></li>
+            <li><a href="inspired.html" data-i18n="nav.inspired">Get Inspired</a></li>
+            <li><a href="#" data-i18n="footer.faqs">FAQs</a></li>
+            <li><a href="#" data-i18n="footer.warranty">Warranty Info</a></li>
+            <li><a href="trade.html" data-i18n="nav.trade">For The Trade</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Connect</h4>
+          <h4 data-i18n="footer.connect">Connect</h4>
           <div class="footer-social">
             <a href="#" aria-label="Instagram">IG</a>
             <a href="#" aria-label="Facebook">FB</a>
@@ -1139,10 +1165,10 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span>&copy; 2026 The Stone Surfaces. All rights reserved.</span>
+        <span data-i18n="footer.copyright">&copy; 2026 The Stone Surfaces. All rights reserved.</span>
         <div class="footer-bottom-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
+          <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
+          <a href="#" data-i18n="footer.terms">Terms of Service</a>
         </div>
       </div>
     </div>
@@ -1202,6 +1228,7 @@
     <div id="n8n-chat-widget" data-webhook-url="YOUR_N8N_WEBHOOK_URL" style="display:none;"></div>
   </div>
 
+  <script src="../js/i18n.js"></script>
   <script src="../js/main.js"></script>
 
   <!-- Products Page Scripts -->

@@ -642,6 +642,27 @@
       </div>
 
       <div class="header-right">
+        <div class="lang-selector">
+          <button class="lang-selector-toggle" aria-label="Select language">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            <span class="lang-current">EN</span>
+            <svg class="lang-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+          </button>
+          <div class="lang-dropdown">
+            <div class="lang-option active" data-lang="en">
+              <span class="lang-option-label">English</span>
+              <span class="lang-option-code">EN</span>
+            </div>
+            <div class="lang-option" data-lang="es">
+              <span class="lang-option-label">Español</span>
+              <span class="lang-option-code">ES</span>
+            </div>
+            <div class="lang-option" data-lang="pt">
+              <span class="lang-option-label">Português</span>
+              <span class="lang-option-code">PT</span>
+            </div>
+          </div>
+        </div>
         <a href="contact.html" class="btn btn--primary">Request a Quote</a>
         <div class="nav-toggle" aria-label="Toggle navigation">
           <span></span><span></span><span></span>
@@ -659,6 +680,11 @@
     <a href="about.html">About</a>
     <a href="trade.html">For The Trade</a>
     <a href="contact.html">Contact</a>
+    <div class="lang-selector-mobile">
+      <button data-lang="en" class="active">EN</button>
+      <button data-lang="es">ES</button>
+      <button data-lang="pt">PT</button>
+    </div>
   </div>
 
   <main>
@@ -671,9 +697,9 @@
       <div class="hero-overlay"></div>
       <div class="container">
         <div class="hero-content reveal">
-          <span class="featured-tag">FEATURED POST</span>
-          <h1>2026 Kitchen Countertop Trends: What Designers Are Choosing</h1>
-          <p class="hero-excerpt">From dramatic veining and warm-toned marbles to matte quartz finishes, discover the surfaces that are defining luxury kitchens this year and why South Florida designers can't get enough.</p>
+          <span class="featured-tag" data-i18n="blog.featured.label">FEATURED POST</span>
+          <h1 data-i18n="blog.featured.title">2026 Kitchen Countertop Trends: What Designers Are Choosing</h1>
+          <p class="hero-excerpt" data-i18n="blog.featured.excerpt">From dramatic veining and warm-toned marbles to matte quartz finishes, discover the surfaces that are defining luxury kitchens this year and why South Florida designers can't get enough.</p>
           <div class="hero-meta">
             <div class="author-info">
               <div class="author-avatar">SM</div>
@@ -682,7 +708,7 @@
             <span class="meta-separator"></span>
             <span class="meta-item">March 1, 2026</span>
             <span class="meta-separator"></span>
-            <span class="meta-item">5 min read</span>
+            <span class="meta-item" data-i18n="blog.featured.readTime">5 min read</span>
           </div>
         </div>
       </div>
@@ -692,12 +718,12 @@
     <div class="blog-categories">
       <div class="container">
         <div class="category-tabs reveal">
-          <button class="category-tab active">All</button>
-          <button class="category-tab">Industry News</button>
-          <button class="category-tab">Design Trends</button>
-          <button class="category-tab">Stone Care</button>
-          <button class="category-tab">Project Spotlights</button>
-          <button class="category-tab">Hanstone Updates</button>
+          <button class="category-tab active" data-i18n="blog.cat.all">All</button>
+          <button class="category-tab" data-i18n="blog.cat.news">Industry News</button>
+          <button class="category-tab" data-i18n="blog.cat.trends">Design Trends</button>
+          <button class="category-tab" data-i18n="blog.cat.care">Stone Care</button>
+          <button class="category-tab" data-i18n="blog.cat.spotlights">Project Spotlights</button>
+          <button class="category-tab" data-i18n="blog.cat.hanstone">Hanstone Updates</button>
         </div>
       </div>
     </div>
@@ -714,11 +740,11 @@
             <article class="blog-card reveal">
               <div class="card-image">
                 <div class="placeholder-bg" style="background: linear-gradient(135deg, #c8b8a8, #a89888); height: 100%;"></div>
-                <span class="tag">DESIGN TRENDS</span>
+                <span class="tag" data-i18n="blog.cat.trends">DESIGN TRENDS</span>
               </div>
               <div class="card-body">
-                <h4>Why Warm-Toned Marble Is Dominating Miami Luxury Homes</h4>
-                <p class="excerpt">Designers are moving away from cool whites toward honey, caramel, and terracotta marble varieties that bring warmth to contemporary spaces.</p>
+                <h4 data-i18n="blog.card1.title">Why Warm-Toned Marble Is Dominating Miami Luxury Homes</h4>
+                <p class="excerpt" data-i18n="blog.card1.excerpt">Designers are moving away from cool whites toward honey, caramel, and terracotta marble varieties that bring warmth to contemporary spaces.</p>
                 <div class="card-footer">
                   <div class="card-author">
                     <div class="author-avatar-sm">SM</div>
@@ -726,7 +752,7 @@
                   </div>
                   <div class="card-meta-right">
                     <span>Feb 24, 2026</span>
-                    <span>4 min</span>
+                    <span data-i18n="blog.card1.readTime">4 min</span>
                   </div>
                 </div>
               </div>
@@ -736,11 +762,11 @@
             <article class="blog-card reveal reveal-delay-1">
               <div class="card-image">
                 <div class="placeholder-bg" style="background: linear-gradient(135deg, #b0a090, #908070); height: 100%;"></div>
-                <span class="tag">STONE CARE</span>
+                <span class="tag" data-i18n="blog.cat.care">STONE CARE</span>
               </div>
               <div class="card-body">
-                <h4>The Complete Guide to Sealing Natural Stone Countertops</h4>
-                <p class="excerpt">Everything you need to know about when to seal, which sealers to use, and the mistakes that void your warranty.</p>
+                <h4 data-i18n="blog.card2.title">The Complete Guide to Sealing Natural Stone Countertops</h4>
+                <p class="excerpt" data-i18n="blog.card2.excerpt">Everything you need to know about when to seal, which sealers to use, and the mistakes that void your warranty.</p>
                 <div class="card-footer">
                   <div class="card-author">
                     <div class="author-avatar-sm">DR</div>
@@ -748,7 +774,7 @@
                   </div>
                   <div class="card-meta-right">
                     <span>Feb 18, 2026</span>
-                    <span>6 min</span>
+                    <span data-i18n="blog.card2.readTime">6 min</span>
                   </div>
                 </div>
               </div>
@@ -758,11 +784,11 @@
             <article class="blog-card reveal">
               <div class="card-image">
                 <div class="placeholder-bg" style="background: linear-gradient(135deg, #d8c8b8, #b8a898); height: 100%;"></div>
-                <span class="tag">HANSTONE UPDATES</span>
+                <span class="tag" data-i18n="blog.cat.hanstone">HANSTONE UPDATES</span>
               </div>
               <div class="card-body">
-                <h4>Hanstone Quartz Introduces 12 New Colors for Spring 2026</h4>
-                <p class="excerpt">Hyundai L&C expands its Hanstone collection with nature-inspired tones and advanced veining technology now available at our showroom.</p>
+                <h4 data-i18n="blog.card3.title">Hanstone Quartz Introduces 12 New Colors for Spring 2026</h4>
+                <p class="excerpt" data-i18n="blog.card3.excerpt">Hyundai L&C expands its Hanstone collection with nature-inspired tones and advanced veining technology now available at our showroom.</p>
                 <div class="card-footer">
                   <div class="card-author">
                     <div class="author-avatar-sm">AL</div>
@@ -770,7 +796,7 @@
                   </div>
                   <div class="card-meta-right">
                     <span>Feb 12, 2026</span>
-                    <span>3 min</span>
+                    <span data-i18n="blog.card3.readTime">3 min</span>
                   </div>
                 </div>
               </div>
@@ -780,11 +806,11 @@
             <article class="blog-card reveal reveal-delay-1">
               <div class="card-image">
                 <div class="placeholder-bg" style="background: linear-gradient(135deg, #a89080, #887060); height: 100%;"></div>
-                <span class="tag">PROJECT SPOTLIGHTS</span>
+                <span class="tag" data-i18n="blog.cat.spotlights">PROJECT SPOTLIGHTS</span>
               </div>
               <div class="card-body">
-                <h4>Inside a $4M Coral Gables Renovation: Choosing the Right Stone</h4>
-                <p class="excerpt">How one design team used five different stone varieties to create a cohesive look across a 6,000 sq ft waterfront estate.</p>
+                <h4 data-i18n="blog.card4.title">Inside a $4M Coral Gables Renovation: Choosing the Right Stone</h4>
+                <p class="excerpt" data-i18n="blog.card4.excerpt">How one design team used five different stone varieties to create a cohesive look across a 6,000 sq ft waterfront estate.</p>
                 <div class="card-footer">
                   <div class="card-author">
                     <div class="author-avatar-sm">SM</div>
@@ -792,7 +818,7 @@
                   </div>
                   <div class="card-meta-right">
                     <span>Feb 5, 2026</span>
-                    <span>7 min</span>
+                    <span data-i18n="blog.card4.readTime">7 min</span>
                   </div>
                 </div>
               </div>
@@ -802,11 +828,11 @@
             <article class="blog-card reveal">
               <div class="card-image">
                 <div class="placeholder-bg" style="background: linear-gradient(135deg, #c0b0a0, #a09080); height: 100%;"></div>
-                <span class="tag">INDUSTRY NEWS</span>
+                <span class="tag" data-i18n="blog.cat.news">INDUSTRY NEWS</span>
               </div>
               <div class="card-body">
-                <h4>Natural Stone Supply Chains in 2026: What Contractors Need to Know</h4>
-                <p class="excerpt">Global quarry updates, shipping timelines, and how to plan ahead for your next project to avoid costly delays.</p>
+                <h4 data-i18n="blog.card5.title">Natural Stone Supply Chains in 2026: What Contractors Need to Know</h4>
+                <p class="excerpt" data-i18n="blog.card5.excerpt">Global quarry updates, shipping timelines, and how to plan ahead for your next project to avoid costly delays.</p>
                 <div class="card-footer">
                   <div class="card-author">
                     <div class="author-avatar-sm">DR</div>
@@ -814,7 +840,7 @@
                   </div>
                   <div class="card-meta-right">
                     <span>Jan 28, 2026</span>
-                    <span>5 min</span>
+                    <span data-i18n="blog.card5.readTime">5 min</span>
                   </div>
                 </div>
               </div>
@@ -824,11 +850,11 @@
             <article class="blog-card reveal reveal-delay-1">
               <div class="card-image">
                 <div class="placeholder-bg" style="background: linear-gradient(135deg, #b8a898, #988878); height: 100%;"></div>
-                <span class="tag">STONE CARE</span>
+                <span class="tag" data-i18n="blog.cat.care">STONE CARE</span>
               </div>
               <div class="card-body">
-                <h4>Quartz vs. Quartzite: The Differences Every Homeowner Should Know</h4>
-                <p class="excerpt">They sound alike, but these two surfaces couldn't be more different. Here's how to pick the right one for your lifestyle.</p>
+                <h4 data-i18n="blog.card6.title">Quartz vs. Quartzite: The Differences Every Homeowner Should Know</h4>
+                <p class="excerpt" data-i18n="blog.card6.excerpt">They sound alike, but these two surfaces couldn't be more different. Here's how to pick the right one for your lifestyle.</p>
                 <div class="card-footer">
                   <div class="card-author">
                     <div class="author-avatar-sm">AL</div>
@@ -836,7 +862,7 @@
                   </div>
                   <div class="card-meta-right">
                     <span>Jan 20, 2026</span>
-                    <span>4 min</span>
+                    <span data-i18n="blog.card6.readTime">4 min</span>
                   </div>
                 </div>
               </div>
@@ -849,7 +875,7 @@
 
             <!-- Popular Posts -->
             <div class="sidebar-card reveal">
-              <h3>Popular Posts</h3>
+              <h3 data-i18n="blog.sidebar.popular">Popular Posts</h3>
               <ul class="popular-posts-list">
                 <li>
                   <span class="post-number">1</span>
@@ -891,23 +917,23 @@
 
             <!-- Categories -->
             <div class="sidebar-card reveal">
-              <h3>Categories</h3>
+              <h3 data-i18n="blog.sidebar.categories">Categories</h3>
               <ul class="category-links">
-                <li><a href="#">Industry News <span class="count-badge">8</span></a></li>
-                <li><a href="#">Design Trends <span class="count-badge">14</span></a></li>
-                <li><a href="#">Stone Care <span class="count-badge">11</span></a></li>
-                <li><a href="#">Project Spotlights <span class="count-badge">9</span></a></li>
-                <li><a href="#">Hanstone Updates <span class="count-badge">6</span></a></li>
+                <li><a href="#" data-i18n-html="blog.sidebar.cat.news">Industry News <span class="count-badge">8</span></a></li>
+                <li><a href="#" data-i18n-html="blog.sidebar.cat.trends">Design Trends <span class="count-badge">14</span></a></li>
+                <li><a href="#" data-i18n-html="blog.sidebar.cat.care">Stone Care <span class="count-badge">11</span></a></li>
+                <li><a href="#" data-i18n-html="blog.sidebar.cat.spotlights">Project Spotlights <span class="count-badge">9</span></a></li>
+                <li><a href="#" data-i18n-html="blog.sidebar.cat.hanstone">Hanstone Updates <span class="count-badge">6</span></a></li>
               </ul>
             </div>
 
             <!-- Newsletter -->
             <div class="sidebar-newsletter reveal">
-              <h3>Stay in the Loop</h3>
-              <p>Get design inspiration, stone care tips, and exclusive updates delivered to your inbox.</p>
+              <h3 data-i18n="blog.sidebar.newsletter">Stay in the Loop</h3>
+              <p data-i18n="blog.sidebar.newsletterDesc">Get design inspiration, stone care tips, and exclusive updates delivered to your inbox.</p>
               <form>
-                <input type="email" placeholder="Your email address" required>
-                <button type="submit" class="btn-subscribe">Subscribe</button>
+                <input type="email" placeholder="Your email address" data-i18n-placeholder="blog.sidebar.emailPlaceholder" required>
+                <button type="submit" class="btn-subscribe" data-i18n="blog.sidebar.subscribe">Subscribe</button>
               </form>
             </div>
 
@@ -918,9 +944,9 @@
               </div>
               <div class="promo-overlay"></div>
               <div class="promo-content">
-                <div class="promo-label">OFFICIAL DISTRIBUTOR</div>
+                <div class="promo-label" data-i18n="blog.sidebar.promoLabel">OFFICIAL DISTRIBUTOR</div>
                 <h4>Discover Hanstone Quartz by Hyundai L&C</h4>
-                <a href="hanstone.html" class="btn-promo">Explore Collection &rarr;</a>
+                <a href="hanstone.html" class="btn-promo" data-i18n-html="blog.sidebar.promoCta">Explore Collection &rarr;</a>
               </div>
             </div>
 
@@ -938,13 +964,13 @@
       <div class="footer-grid">
         <div class="footer-col">
           <div class="footer-logo"><img src="../images/header/TSS_LOGO.png" alt="The Stone Surfaces" class="logo-img"></div>
-          <p class="tagline">South Florida's trusted source for premium natural and engineered stone surfaces since 2016.</p>
+          <p class="tagline" data-i18n="footer.tagline">South Florida's trusted source for premium natural and engineered stone surfaces since 2016.</p>
           <p class="contact-line">&#9679; 7980 NW 56th St, Doral, FL 33166</p>
           <p class="contact-line">&#9742; (305) 000-0000</p>
           <p class="contact-line">&#9993; info@thestonesurfaces.com</p>
         </div>
         <div class="footer-col">
-          <h4>Products</h4>
+          <h4 data-i18n="footer.products">Products</h4>
           <ul>
             <li><a href="products.html#granite">Granite</a></li>
             <li><a href="products.html#marble">Marble</a></li>
@@ -956,17 +982,17 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Resources</h4>
+          <h4 data-i18n="footer.resources">Resources</h4>
           <ul>
             <li><a href="blog.html">Blog</a></li>
             <li><a href="inspired.html">Get Inspired</a></li>
-            <li><a href="#">FAQs</a></li>
-            <li><a href="#">Warranty Info</a></li>
+            <li><a href="#" data-i18n="footer.faqs">FAQs</a></li>
+            <li><a href="#" data-i18n="footer.warranty">Warranty Info</a></li>
             <li><a href="trade.html">For The Trade</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Connect</h4>
+          <h4 data-i18n="footer.connect">Connect</h4>
           <div class="footer-social">
             <a href="#" aria-label="Instagram">IG</a>
             <a href="#" aria-label="Facebook">FB</a>
@@ -979,8 +1005,8 @@
       <div class="footer-bottom">
         <span>&copy; 2026 The Stone Surfaces. All rights reserved.</span>
         <div class="footer-bottom-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
+          <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
+          <a href="#" data-i18n="footer.terms">Terms of Service</a>
         </div>
       </div>
     </div>
@@ -1040,6 +1066,7 @@
     <div id="n8n-chat-widget" data-webhook-url="YOUR_N8N_WEBHOOK_URL" style="display:none;"></div>
   </div>
 
+  <script src="../js/i18n.js"></script>
   <script src="../js/main.js"></script>
 </body>
 </html>

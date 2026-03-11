@@ -378,6 +378,27 @@
       </div>
 
       <div class="header-right">
+        <div class="lang-selector">
+          <button class="lang-selector-toggle" aria-label="Select language">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            <span class="lang-current">EN</span>
+            <svg class="lang-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+          </button>
+          <div class="lang-dropdown">
+            <div class="lang-option active" data-lang="en">
+              <span class="lang-option-label">English</span>
+              <span class="lang-option-code">EN</span>
+            </div>
+            <div class="lang-option" data-lang="es">
+              <span class="lang-option-label">Español</span>
+              <span class="lang-option-code">ES</span>
+            </div>
+            <div class="lang-option" data-lang="pt">
+              <span class="lang-option-label">Português</span>
+              <span class="lang-option-code">PT</span>
+            </div>
+          </div>
+        </div>
         <a href="contact.html" class="btn btn--primary">Request a Quote</a>
         <div class="nav-toggle" aria-label="Toggle navigation">
           <span></span><span></span><span></span>
@@ -395,6 +416,11 @@
     <a href="about.html">About</a>
     <a href="trade.html">For The Trade</a>
     <a href="contact.html">Contact</a>
+    <div class="lang-selector-mobile">
+      <button data-lang="en" class="active">EN</button>
+      <button data-lang="es">ES</button>
+      <button data-lang="pt">PT</button>
+    </div>
   </div>
 
   <main>
@@ -402,9 +428,9 @@
     <!-- ===== SECTION 1: PAGE HERO ===== -->
     <section class="inspired-hero">
       <div class="container">
-        <span class="label reveal">GALLERY</span>
-        <h1 class="reveal">Get Inspired</h1>
-        <p class="subtext reveal">Real projects, real materials, real beauty.</p>
+        <span class="label reveal" data-i18n="inspired.label">GALLERY</span>
+        <h1 class="reveal" data-i18n="inspired.title">Get Inspired</h1>
+        <p class="subtext reveal" data-i18n="inspired.subtitle">Real projects, real materials, real beauty.</p>
       </div>
     </section>
 
@@ -412,16 +438,16 @@
     <div class="filter-bar">
       <div class="container">
         <div class="filter-tabs">
-          <button class="filter-tab active" data-filter="all">All</button>
-          <button class="filter-tab" data-filter="kitchen">Kitchen</button>
-          <button class="filter-tab" data-filter="bathroom">Bathroom</button>
-          <button class="filter-tab" data-filter="commercial">Commercial</button>
-          <button class="filter-tab" data-filter="outdoor">Outdoor</button>
-          <button class="filter-tab" data-filter="living">Living Space</button>
+          <button class="filter-tab active" data-filter="all" data-i18n="inspired.filter.all">All</button>
+          <button class="filter-tab" data-filter="kitchen" data-i18n="inspired.filter.kitchen">Kitchen</button>
+          <button class="filter-tab" data-filter="bathroom" data-i18n="inspired.filter.bathroom">Bathroom</button>
+          <button class="filter-tab" data-filter="commercial" data-i18n="inspired.filter.commercial">Commercial</button>
+          <button class="filter-tab" data-filter="outdoor" data-i18n="inspired.filter.outdoor">Outdoor</button>
+          <button class="filter-tab" data-filter="living" data-i18n="inspired.filter.living">Living Space</button>
         </div>
 
         <select class="filter-select" aria-label="Filter by material">
-          <option value="">All Materials</option>
+          <option value="" data-i18n="inspired.filter.allMaterials">All Materials</option>
           <option value="granite">Granite</option>
           <option value="marble">Marble</option>
           <option value="quartz">Quartz</option>
@@ -431,13 +457,13 @@
         </select>
 
         <select class="filter-select" aria-label="Filter by color family">
-          <option value="">All Colors</option>
-          <option value="white">White &amp; Cream</option>
-          <option value="gray">Gray &amp; Charcoal</option>
-          <option value="brown">Brown &amp; Tan</option>
-          <option value="black">Black &amp; Dark</option>
-          <option value="blue">Blue &amp; Green</option>
-          <option value="gold">Gold &amp; Warm</option>
+          <option value="" data-i18n="inspired.filter.allColors">All Colors</option>
+          <option value="white" data-i18n="inspired.filter.color.white">White &amp; Cream</option>
+          <option value="gray" data-i18n="inspired.filter.color.gray">Gray &amp; Charcoal</option>
+          <option value="brown" data-i18n="inspired.filter.color.brown">Brown &amp; Tan</option>
+          <option value="black" data-i18n="inspired.filter.color.black">Black &amp; Dark</option>
+          <option value="blue" data-i18n="inspired.filter.color.blue">Blue &amp; Green</option>
+          <option value="gold" data-i18n="inspired.filter.color.gold">Gold &amp; Warm</option>
         </select>
       </div>
     </div>
@@ -451,7 +477,7 @@
             <img src="../images/inspired/kitchen-quartzite-island.jpg" alt="Taj Mahal Quartzite Kitchen Island" style="height: 360px;">
             <div class="masonry-overlay">
               <h4>Taj Mahal Quartzite</h4>
-              <div class="meta"><span>Kitchen Island</span><span>Design by Rivera Studio</span></div>
+              <div class="meta"><span data-i18n="inspired.room.kitchenIsland">Kitchen Island</span><span>Design by Rivera Studio</span></div>
             </div>
           </div>
 
@@ -459,7 +485,7 @@
             <img src="../images/inspired/bathroom-marble.jpg" alt="Calacatta Gold Marble Bathroom" style="height: 280px;">
             <div class="masonry-overlay">
               <h4>Calacatta Gold Marble</h4>
-              <div class="meta"><span>Primary Bathroom</span><span>Design by Lux Interiors</span></div>
+              <div class="meta"><span data-i18n="inspired.room.primaryBathroom">Primary Bathroom</span><span>Design by Lux Interiors</span></div>
             </div>
           </div>
 
@@ -467,7 +493,7 @@
             <img src="../images/inspired/hotel-lobby-granite.jpg" alt="Black Galaxy Granite Hotel Lobby" style="height: 420px;">
             <div class="masonry-overlay">
               <h4>Black Galaxy Granite</h4>
-              <div class="meta"><span>Hotel Lobby</span><span>Design by Coastal Arch Group</span></div>
+              <div class="meta"><span data-i18n="inspired.room.hotelLobby">Hotel Lobby</span><span>Design by Coastal Arch Group</span></div>
             </div>
           </div>
 
@@ -475,7 +501,7 @@
             <img src="../images/inspired/kitchen-quartz-white.jpg" alt="Hanstone Tranquility Kitchen" style="height: 300px;">
             <div class="masonry-overlay">
               <h4>Hanstone Tranquility</h4>
-              <div class="meta"><span>Kitchen Countertops</span><span>Design by Forma Design</span></div>
+              <div class="meta"><span data-i18n="inspired.room.kitchenCountertops">Kitchen Countertops</span><span>Design by Forma Design</span></div>
             </div>
           </div>
 
@@ -483,7 +509,7 @@
             <img src="../images/inspired/outdoor-kitchen.jpg" alt="Outdoor Kitchen with Stone Surfaces" style="height: 380px;">
             <div class="masonry-overlay">
               <h4>Hard Marble Pavers</h4>
-              <div class="meta"><span>Outdoor Kitchen</span><span>Design by Tropical Living Co.</span></div>
+              <div class="meta"><span data-i18n="inspired.room.outdoorKitchen">Outdoor Kitchen</span><span>Design by Tropical Living Co.</span></div>
             </div>
           </div>
 
@@ -491,7 +517,7 @@
             <img src="../images/inspired/fireplace-marble.jpg" alt="Statuario Marble Fireplace Surround" style="height: 260px;">
             <div class="masonry-overlay">
               <h4>Statuario Marble</h4>
-              <div class="meta"><span>Fireplace Surround</span><span>Design by Casa Bella</span></div>
+              <div class="meta"><span data-i18n="inspired.room.fireplaceSurround">Fireplace Surround</span><span>Design by Casa Bella</span></div>
             </div>
           </div>
 
@@ -499,7 +525,7 @@
             <img src="../images/inspired/shower-quartzite.jpg" alt="Mont Blanc Quartzite Shower Walls" style="height: 340px;">
             <div class="masonry-overlay">
               <h4>Mont Blanc Quartzite</h4>
-              <div class="meta"><span>Shower Walls</span><span>Design by Blu Bathrooms</span></div>
+              <div class="meta"><span data-i18n="inspired.room.showerWalls">Shower Walls</span><span>Design by Blu Bathrooms</span></div>
             </div>
           </div>
 
@@ -507,7 +533,7 @@
             <img src="../images/inspired/kitchen-granite-dark.jpg" alt="Colonial White Granite Kitchen" style="height: 400px;">
             <div class="masonry-overlay">
               <h4>Colonial White Granite</h4>
-              <div class="meta"><span>Kitchen Perimeter</span><span>Design by MKDA Studio</span></div>
+              <div class="meta"><span data-i18n="inspired.room.kitchenPerimeter">Kitchen Perimeter</span><span>Design by MKDA Studio</span></div>
             </div>
           </div>
 
@@ -515,7 +541,7 @@
             <img src="../images/inspired/restaurant-bar.jpg" alt="Hanstone Cascina Restaurant Bar Top" style="height: 320px;">
             <div class="masonry-overlay">
               <h4>Hanstone Cascina</h4>
-              <div class="meta"><span>Restaurant Bar Top</span><span>Design by Nolita Design</span></div>
+              <div class="meta"><span data-i18n="inspired.room.restaurantBar">Restaurant Bar Top</span><span>Design by Nolita Design</span></div>
             </div>
           </div>
 
@@ -523,7 +549,7 @@
             <img src="../images/inspired/pool-deck.jpg" alt="Giallo Ornamental Granite Pool Deck" style="height: 290px;">
             <div class="masonry-overlay">
               <h4>Giallo Ornamental Granite</h4>
-              <div class="meta"><span>Pool Deck Coping</span><span>Design by Seabreeze Designs</span></div>
+              <div class="meta"><span data-i18n="inspired.room.poolDeck">Pool Deck Coping</span><span>Design by Seabreeze Designs</span></div>
             </div>
           </div>
 
@@ -531,7 +557,7 @@
             <img src="../images/inspired/living-feature-wall.jpg" alt="Dolomite Feature Wall" style="height: 350px;">
             <div class="masonry-overlay">
               <h4>Dolomite Feature Wall</h4>
-              <div class="meta"><span>Feature Wall</span><span>Design by Atelier South</span></div>
+              <div class="meta"><span data-i18n="inspired.room.featureWall">Feature Wall</span><span>Design by Atelier South</span></div>
             </div>
           </div>
 
@@ -539,7 +565,7 @@
             <img src="../images/inspired/kitchen-waterfall.jpg" alt="Fantasy Brown Quartzite Waterfall Island" style="height: 310px;">
             <div class="masonry-overlay">
               <h4>Fantasy Brown Quartzite</h4>
-              <div class="meta"><span>Waterfall Island</span><span>Design by Studio Dwell</span></div>
+              <div class="meta"><span data-i18n="inspired.room.waterfallIsland">Waterfall Island</span><span>Design by Studio Dwell</span></div>
             </div>
           </div>
 
@@ -551,9 +577,9 @@
     <section class="before-after-section">
       <div class="container">
         <div class="text-center reveal">
-          <span class="label label-dark">TRANSFORMATIONS</span>
-          <h2 style="margin-top: 16px; color: var(--color-text-dark, #1a1a1a);">Before &amp; After</h2>
-          <p class="text-muted" style="margin-top: 12px; max-width: 540px; margin-left: auto; margin-right: auto;">See how the right stone can completely transform a space. These are real renovations completed by our fabrication partners.</p>
+          <span class="label label-dark" data-i18n="inspired.beforeAfter.label">TRANSFORMATIONS</span>
+          <h2 style="margin-top: 16px; color: var(--color-text-dark, #1a1a1a);" data-i18n="inspired.beforeAfter.title">Before &amp; After</h2>
+          <p class="text-muted" style="margin-top: 12px; max-width: 540px; margin-left: auto; margin-right: auto;" data-i18n="inspired.beforeAfter.desc">See how the right stone can completely transform a space. These are real renovations completed by our fabrication partners.</p>
         </div>
 
         <div class="ba-grid">
@@ -561,12 +587,12 @@
             <div class="ba-images">
               <img src="../images/inspired/ba-kitchen-before.jpg" alt="Before - Coral Gables Kitchen">
               <img src="../images/inspired/ba-kitchen-after.jpg" alt="After - Taj Mahal Quartzite">
-              <span class="ba-label ba-label--before">Before</span>
-              <span class="ba-label ba-label--after">After</span>
+              <span class="ba-label ba-label--before" data-i18n="inspired.beforeAfter.before">Before</span>
+              <span class="ba-label ba-label--after" data-i18n="inspired.beforeAfter.after">After</span>
             </div>
             <div class="ba-card-body">
-              <h4>Coral Gables Kitchen Renovation</h4>
-              <p>Dated laminate countertops replaced with Taj Mahal Quartzite, paired with a full-height backsplash. The space went from outdated to timeless in under two weeks.</p>
+              <h4 data-i18n="inspired.beforeAfter.card1.title">Coral Gables Kitchen Renovation</h4>
+              <p data-i18n="inspired.beforeAfter.card1.desc">Dated laminate countertops replaced with Taj Mahal Quartzite, paired with a full-height backsplash. The space went from outdated to timeless in under two weeks.</p>
             </div>
           </div>
 
@@ -574,12 +600,12 @@
             <div class="ba-images">
               <img src="../images/inspired/ba-bath-before.jpg" alt="Before - Brickell Condo Bath">
               <img src="../images/inspired/ba-bath-after.jpg" alt="After - Calacatta Gold Marble">
-              <span class="ba-label ba-label--before">Before</span>
-              <span class="ba-label ba-label--after">After</span>
+              <span class="ba-label ba-label--before" data-i18n="inspired.beforeAfter.before">Before</span>
+              <span class="ba-label ba-label--after" data-i18n="inspired.beforeAfter.after">After</span>
             </div>
             <div class="ba-card-body">
-              <h4>Brickell Condo Primary Bath</h4>
-              <p>Builder-grade tile swapped for Calacatta Gold marble on floors, walls, and a floating vanity. A true spa-like retreat in the heart of the city.</p>
+              <h4 data-i18n="inspired.beforeAfter.card2.title">Brickell Condo Primary Bath</h4>
+              <p data-i18n="inspired.beforeAfter.card2.desc">Builder-grade tile swapped for Calacatta Gold marble on floors, walls, and a floating vanity. A true spa-like retreat in the heart of the city.</p>
             </div>
           </div>
 
@@ -587,12 +613,12 @@
             <div class="ba-images">
               <img src="../images/inspired/ba-bar-before.jpg" alt="Before - Wynwood Restaurant">
               <img src="../images/inspired/ba-bar-after.jpg" alt="After - Hanstone Cascina Quartz">
-              <span class="ba-label ba-label--before">Before</span>
-              <span class="ba-label ba-label--after">After</span>
+              <span class="ba-label ba-label--before" data-i18n="inspired.beforeAfter.before">Before</span>
+              <span class="ba-label ba-label--after" data-i18n="inspired.beforeAfter.after">After</span>
             </div>
             <div class="ba-card-body">
-              <h4>Wynwood Restaurant Bar</h4>
-              <p>A worn concrete bar top transformed with Hanstone Cascina quartz. Durable, stunning, and perfect for a high-traffic hospitality environment.</p>
+              <h4 data-i18n="inspired.beforeAfter.card3.title">Wynwood Restaurant Bar</h4>
+              <p data-i18n="inspired.beforeAfter.card3.desc">A worn concrete bar top transformed with Hanstone Cascina quartz. Durable, stunning, and perfect for a high-traffic hospitality environment.</p>
             </div>
           </div>
         </div>
@@ -603,8 +629,8 @@
     <section class="instagram-section section">
       <div class="container">
         <div class="text-center reveal">
-          <span class="label label-dark">ON INSTAGRAM</span>
-          <h2 style="margin-top: 16px; color: var(--color-text-dark, #1a1a1a);">Follow the Journey</h2>
+          <span class="label label-dark" data-i18n="inspired.instagram.label">ON INSTAGRAM</span>
+          <h2 style="margin-top: 16px; color: var(--color-text-dark, #1a1a1a);" data-i18n="inspired.instagram.title">Follow the Journey</h2>
         </div>
 
         <div class="insta-grid">
@@ -635,7 +661,7 @@
         </div>
 
         <div class="text-center" style="margin-top: 40px;">
-          <a href="#" class="btn btn--text" style="color: var(--color-cta, #c9a96e);">Follow Us @thestonesurfaces <span class="arrow">&rarr;</span></a>
+          <a href="#" class="btn btn--text" style="color: var(--color-cta, #c9a96e);" data-i18n-html="inspired.instagram.cta">Follow Us @thestonesurfaces <span class="arrow">&rarr;</span></a>
         </div>
       </div>
     </section>
@@ -645,27 +671,27 @@
       <div class="container">
         <div class="submit-grid">
           <div class="submit-info reveal">
-            <span class="label">GET FEATURED</span>
-            <h2 style="margin-top: 16px;">Submit Your Project</h2>
-            <p>Are you a designer or fabricator? Share your project and get featured in our gallery. We love showcasing the incredible work our partners create with our materials.</p>
-            <p style="margin-top: 16px;">Selected projects are featured on our website, social media, and marketing materials with full credit to the designer and fabricator.</p>
+            <span class="label" data-i18n="inspired.submit.label">GET FEATURED</span>
+            <h2 style="margin-top: 16px;" data-i18n="inspired.submit.title">Submit Your Project</h2>
+            <p data-i18n="inspired.submit.desc">Are you a designer or fabricator? Share your project and get featured in our gallery. We love showcasing the incredible work our partners create with our materials.</p>
+            <p style="margin-top: 16px;" data-i18n="inspired.submit.desc2">Selected projects are featured on our website, social media, and marketing materials with full credit to the designer and fabricator.</p>
           </div>
 
           <form class="submit-form reveal reveal-delay-1">
-            <input type="text" placeholder="Your name" required>
-            <input type="email" placeholder="Your email" required>
+            <input type="text" placeholder="Your name" data-i18n-placeholder="inspired.submit.namePlaceholder" required>
+            <input type="email" placeholder="Your email" data-i18n-placeholder="inspired.submit.emailPlaceholder" required>
 
             <div class="file-upload">
               <div class="file-upload-icon">
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
               </div>
-              <p><strong>Click to upload</strong> or drag and drop</p>
-              <p style="margin-top: 4px; font-size: 12px;">PNG, JPG up to 10MB</p>
+              <p data-i18n-html="inspired.submit.uploadText"><strong>Click to upload</strong> or drag and drop</p>
+              <p style="margin-top: 4px; font-size: 12px;" data-i18n="inspired.submit.uploadHint">PNG, JPG up to 10MB</p>
             </div>
 
-            <textarea placeholder="Tell us about the project — materials used, location, scope of work..." rows="4"></textarea>
+            <textarea placeholder="Tell us about the project — materials used, location, scope of work..." data-i18n-placeholder="inspired.submit.projectPlaceholder" rows="4"></textarea>
 
-            <button type="submit" class="btn btn--primary" style="align-self: flex-start;">Submit Project</button>
+            <button type="submit" class="btn btn--primary" style="align-self: flex-start;" data-i18n="inspired.submit.btn">Submit Project</button>
           </form>
         </div>
       </div>
@@ -679,13 +705,13 @@
       <div class="footer-grid">
         <div class="footer-col">
           <div class="footer-logo"><img src="../images/header/TSS_LOGO.png" alt="The Stone Surfaces" class="logo-img"></div>
-          <p class="tagline">South Florida's trusted source for premium natural and engineered stone surfaces since 2016.</p>
+          <p class="tagline" data-i18n="footer.tagline">South Florida's trusted source for premium natural and engineered stone surfaces since 2016.</p>
           <p class="contact-line">&#9679; 7980 NW 56th St, Doral, FL 33166</p>
           <p class="contact-line">&#9742; (305) 000-0000</p>
           <p class="contact-line">&#9993; info@thestonesurfaces.com</p>
         </div>
         <div class="footer-col">
-          <h4>Products</h4>
+          <h4 data-i18n="footer.products">Products</h4>
           <ul>
             <li><a href="products.html#granite">Granite</a></li>
             <li><a href="products.html#marble">Marble</a></li>
@@ -697,17 +723,17 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Resources</h4>
+          <h4 data-i18n="footer.resources">Resources</h4>
           <ul>
             <li><a href="blog.html">Blog</a></li>
             <li><a href="inspired.html">Get Inspired</a></li>
-            <li><a href="#">FAQs</a></li>
-            <li><a href="#">Warranty Info</a></li>
+            <li><a href="#" data-i18n="footer.faqs">FAQs</a></li>
+            <li><a href="#" data-i18n="footer.warranty">Warranty Info</a></li>
             <li><a href="trade.html">For The Trade</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Connect</h4>
+          <h4 data-i18n="footer.connect">Connect</h4>
           <div class="footer-social">
             <a href="#" aria-label="Instagram">IG</a>
             <a href="#" aria-label="Facebook">FB</a>
@@ -720,8 +746,8 @@
       <div class="footer-bottom">
         <span>&copy; 2026 The Stone Surfaces. All rights reserved.</span>
         <div class="footer-bottom-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
+          <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
+          <a href="#" data-i18n="footer.terms">Terms of Service</a>
         </div>
       </div>
     </div>
@@ -782,6 +808,7 @@
     <div id="n8n-chat-widget" data-webhook-url="YOUR_N8N_WEBHOOK_URL" style="display:none;"></div>
   </div>
 
+  <script src="../js/i18n.js"></script>
   <script src="../js/main.js"></script>
 </body>
 </html>

@@ -467,6 +467,27 @@
       </div>
 
       <div class="header-right">
+        <div class="lang-selector">
+          <button class="lang-selector-toggle" aria-label="Select language">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            <span class="lang-current">EN</span>
+            <svg class="lang-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+          </button>
+          <div class="lang-dropdown">
+            <div class="lang-option active" data-lang="en">
+              <span class="lang-option-label">English</span>
+              <span class="lang-option-code">EN</span>
+            </div>
+            <div class="lang-option" data-lang="es">
+              <span class="lang-option-label">Español</span>
+              <span class="lang-option-code">ES</span>
+            </div>
+            <div class="lang-option" data-lang="pt">
+              <span class="lang-option-label">Português</span>
+              <span class="lang-option-code">PT</span>
+            </div>
+          </div>
+        </div>
         <a href="contact.html" class="btn btn--primary">Request a Quote</a>
         <div class="nav-toggle" aria-label="Toggle navigation">
           <span></span><span></span><span></span>
@@ -484,6 +505,11 @@
     <a href="about.html" class="active">About</a>
     <a href="trade.html">For The Trade</a>
     <a href="contact.html">Contact</a>
+    <div class="lang-selector-mobile">
+      <button data-lang="en" class="active">EN</button>
+      <button data-lang="es">ES</button>
+      <button data-lang="pt">PT</button>
+    </div>
   </div>
 
   <main>
@@ -495,9 +521,9 @@
       </div>
       <div class="hero-overlay"></div>
       <div class="hero-content reveal">
-        <span class="label">ABOUT THE STONE SURFACES</span>
-        <h1>Our Story</h1>
-        <p class="subtext">A decade of excellence in natural and engineered stone.</p>
+        <span class="label" data-i18n="about.label">ABOUT THE STONE SURFACES</span>
+        <h1 data-i18n="about.title">Our Story</h1>
+        <p class="subtext" data-i18n="about.subtitle">A decade of excellence in natural and engineered stone.</p>
       </div>
     </section>
 
@@ -505,56 +531,56 @@
     <section class="timeline-section section--dark">
       <div class="container">
         <div class="section-heading reveal">
-          <span class="label">A DECADE OF GROWTH</span>
-          <h2>Our Journey</h2>
+          <span class="label" data-i18n="about.timeline.label">A DECADE OF GROWTH</span>
+          <h2 data-i18n="about.timeline.title">Our Journey</h2>
         </div>
 
         <div class="timeline">
           <div class="timeline-item reveal">
             <div class="timeline-marker">2016</div>
             <div class="timeline-content">
-              <h3>Founded in Doral</h3>
-              <p>Started with a small warehouse and a vision to bring the finest natural stone to South Florida's builders and homeowners.</p>
+              <h3 data-i18n="about.timeline.2016.title">Founded in Doral</h3>
+              <p data-i18n="about.timeline.2016.desc">Started with a small warehouse and a vision to bring the finest natural stone to South Florida's builders and homeowners.</p>
             </div>
           </div>
 
           <div class="timeline-item reveal reveal-delay-1">
             <div class="timeline-marker">2018</div>
             <div class="timeline-content">
-              <h3>Expanded Our Showroom</h3>
-              <p>Opened our 10,000 sq ft showroom, giving clients the ability to see and touch hundreds of slabs before making a decision.</p>
+              <h3 data-i18n="about.timeline.2018.title">Expanded Our Showroom</h3>
+              <p data-i18n="about.timeline.2018.desc">Opened our 10,000 sq ft showroom, giving clients the ability to see and touch hundreds of slabs before making a decision.</p>
             </div>
           </div>
 
           <div class="timeline-item reveal reveal-delay-2">
             <div class="timeline-marker">2020</div>
             <div class="timeline-content">
-              <h3>500+ Slab Varieties</h3>
-              <p>Became the largest stone selection in South Florida, curating premium materials from quarries around the world.</p>
+              <h3 data-i18n="about.timeline.2020.title">500+ Slab Varieties</h3>
+              <p data-i18n="about.timeline.2020.desc">Became the largest stone selection in South Florida, curating premium materials from quarries around the world.</p>
             </div>
           </div>
 
           <div class="timeline-item reveal reveal-delay-3">
             <div class="timeline-marker">2022</div>
             <div class="timeline-content">
-              <h3>Trade Program Launch</h3>
-              <p>Launched dedicated services for fabricators, designers, and contractors with wholesale pricing and priority access.</p>
+              <h3 data-i18n="about.timeline.2022.title">Trade Program Launch</h3>
+              <p data-i18n="about.timeline.2022.desc">Launched dedicated services for fabricators, designers, and contractors with wholesale pricing and priority access.</p>
             </div>
           </div>
 
           <div class="timeline-item reveal">
             <div class="timeline-marker">2024</div>
             <div class="timeline-content">
-              <h3>Regional Growth</h3>
-              <p>Expanded our delivery network to serve fabricators and builders across the entire state of Florida.</p>
+              <h3 data-i18n="about.timeline.2024.title">Regional Growth</h3>
+              <p data-i18n="about.timeline.2024.desc">Expanded our delivery network to serve fabricators and builders across the entire state of Florida.</p>
             </div>
           </div>
 
           <div class="timeline-item reveal reveal-delay-1">
             <div class="timeline-marker">2026</div>
             <div class="timeline-content">
-              <h3>Hanstone Partnership</h3>
-              <p>Became the official Hanstone Quartz distributor by Hyundai L&amp;C, bringing world-class engineered surfaces to our clients.</p>
+              <h3 data-i18n="about.timeline.2026.title">Hanstone Partnership</h3>
+              <p data-i18n="about.timeline.2026.desc">Became the official Hanstone Quartz distributor by Hyundai L&amp;C, bringing world-class engineered surfaces to our clients.</p>
             </div>
           </div>
         </div>
@@ -565,26 +591,26 @@
     <section class="values-section section--light">
       <div class="container">
         <div class="section-heading reveal">
-          <span class="label label-dark">WHAT DRIVES US</span>
-          <h2>Mission &amp; Values</h2>
-          <p>Every slab we source, every client we serve, and every project we support is guided by three foundational pillars.</p>
+          <span class="label label-dark" data-i18n="about.mission.label">WHAT DRIVES US</span>
+          <h2 data-i18n="about.mission.title">Mission &amp; Values</h2>
+          <p data-i18n="about.mission.desc">Every slab we source, every client we serve, and every project we support is guided by three foundational pillars.</p>
         </div>
 
         <div class="values-grid">
           <div class="value-card reveal">
             <div class="value-icon">&#9830;</div>
-            <h3>Quality</h3>
-            <p>We hand-select every slab from trusted quarries worldwide. No shortcuts, no compromises. Every surface that leaves our warehouse meets the highest standards for color, consistency, and structural integrity.</p>
+            <h3 data-i18n="about.mission.quality.title">Quality</h3>
+            <p data-i18n="about.mission.quality.desc">We hand-select every slab from trusted quarries worldwide. No shortcuts, no compromises. Every surface that leaves our warehouse meets the highest standards for color, consistency, and structural integrity.</p>
           </div>
           <div class="value-card reveal reveal-delay-1">
             <div class="value-icon">&#9733;</div>
-            <h3>Service</h3>
-            <p>From your first showroom visit to final delivery, our team provides expert guidance at every step. We answer the phone, we follow through, and we treat your project like our own.</p>
+            <h3 data-i18n="about.mission.service.title">Service</h3>
+            <p data-i18n="about.mission.service.desc">From your first showroom visit to final delivery, our team provides expert guidance at every step. We answer the phone, we follow through, and we treat your project like our own.</p>
           </div>
           <div class="value-card reveal reveal-delay-2">
             <div class="value-icon">&#9670;</div>
-            <h3>Integrity</h3>
-            <p>Transparent pricing, honest timelines, and straightforward advice. We build long-term relationships by doing what we say we'll do, every single time.</p>
+            <h3 data-i18n="about.mission.integrity.title">Integrity</h3>
+            <p data-i18n="about.mission.integrity.desc">Transparent pricing, honest timelines, and straightforward advice. We build long-term relationships by doing what we say we'll do, every single time.</p>
           </div>
         </div>
       </div>
@@ -594,8 +620,8 @@
     <section class="team-section section--dark">
       <div class="container">
         <div class="section-heading reveal">
-          <span class="label">THE PEOPLE BEHIND THE STONE</span>
-          <h2>Meet Our Team</h2>
+          <span class="label" data-i18n="about.team.label">THE PEOPLE BEHIND THE STONE</span>
+          <h2 data-i18n="about.team.title">Meet Our Team</h2>
         </div>
 
         <div class="team-grid">
@@ -603,12 +629,12 @@
             <div class="team-photo placeholder-bg" style="background: linear-gradient(135deg, #4a3a2a, #2a1a0a);"></div>
             <div class="team-info">
               <h4>Carlos Mendez</h4>
-              <p class="role">Founder &amp; CEO</p>
+              <p class="role" data-i18n="about.team.carlos.role">Founder &amp; CEO</p>
             </div>
             <div class="team-bio-overlay">
               <h4>Carlos Mendez</h4>
-              <p class="role">Founder &amp; CEO</p>
-              <p>With over 20 years in the stone industry, Carlos founded The Stone Surfaces with a mission to bring premium materials and honest service to South Florida.</p>
+              <p class="role" data-i18n="about.team.carlos.role">Founder &amp; CEO</p>
+              <p data-i18n="about.team.carlos.bio">With over 20 years in the stone industry, Carlos founded The Stone Surfaces with a mission to bring premium materials and honest service to South Florida.</p>
             </div>
           </div>
 
@@ -616,12 +642,12 @@
             <div class="team-photo placeholder-bg" style="background: linear-gradient(135deg, #3a4a3a, #1a2a1a);"></div>
             <div class="team-info">
               <h4>Ana Lucia Reyes</h4>
-              <p class="role">Director of Operations</p>
+              <p class="role" data-i18n="about.team.ana.role">Director of Operations</p>
             </div>
             <div class="team-bio-overlay">
               <h4>Ana Lucia Reyes</h4>
-              <p class="role">Director of Operations</p>
-              <p>Ana oversees logistics, inventory, and supplier relationships. Her attention to detail ensures every order is fulfilled accurately and on time.</p>
+              <p class="role" data-i18n="about.team.ana.role">Director of Operations</p>
+              <p data-i18n="about.team.ana.bio">Ana oversees logistics, inventory, and supplier relationships. Her attention to detail ensures every order is fulfilled accurately and on time.</p>
             </div>
           </div>
 
@@ -629,12 +655,12 @@
             <div class="team-photo placeholder-bg" style="background: linear-gradient(135deg, #3a3a4a, #1a1a2a);"></div>
             <div class="team-info">
               <h4>David Chen</h4>
-              <p class="role">Sales Manager</p>
+              <p class="role" data-i18n="about.team.david.role">Sales Manager</p>
             </div>
             <div class="team-bio-overlay">
               <h4>David Chen</h4>
-              <p class="role">Sales Manager</p>
-              <p>David leads our sales team with deep product knowledge and a consultative approach, helping clients find the perfect surface for every project.</p>
+              <p class="role" data-i18n="about.team.david.role">Sales Manager</p>
+              <p data-i18n="about.team.david.bio">David leads our sales team with deep product knowledge and a consultative approach, helping clients find the perfect surface for every project.</p>
             </div>
           </div>
 
@@ -642,12 +668,12 @@
             <div class="team-photo placeholder-bg" style="background: linear-gradient(135deg, #4a3a3a, #2a1a1a);"></div>
             <div class="team-info">
               <h4>Isabella Vargas</h4>
-              <p class="role">Design Consultant</p>
+              <p class="role" data-i18n="about.team.isabella.role">Design Consultant</p>
             </div>
             <div class="team-bio-overlay">
               <h4>Isabella Vargas</h4>
-              <p class="role">Design Consultant</p>
-              <p>A trained interior designer, Isabella helps homeowners and professionals visualize how different stones will transform their spaces.</p>
+              <p class="role" data-i18n="about.team.isabella.role">Design Consultant</p>
+              <p data-i18n="about.team.isabella.bio">A trained interior designer, Isabella helps homeowners and professionals visualize how different stones will transform their spaces.</p>
             </div>
           </div>
 
@@ -655,12 +681,12 @@
             <div class="team-photo placeholder-bg" style="background: linear-gradient(135deg, #3a4a4a, #1a2a2a);"></div>
             <div class="team-info">
               <h4>Marcus Johnson</h4>
-              <p class="role">Trade Program Lead</p>
+              <p class="role" data-i18n="about.team.marcus.role">Trade Program Lead</p>
             </div>
             <div class="team-bio-overlay">
               <h4>Marcus Johnson</h4>
-              <p class="role">Trade Program Lead</p>
-              <p>Marcus manages relationships with fabricators and contractors statewide, ensuring our trade partners get priority service and competitive pricing.</p>
+              <p class="role" data-i18n="about.team.marcus.role">Trade Program Lead</p>
+              <p data-i18n="about.team.marcus.bio">Marcus manages relationships with fabricators and contractors statewide, ensuring our trade partners get priority service and competitive pricing.</p>
             </div>
           </div>
 
@@ -668,12 +694,12 @@
             <div class="team-photo placeholder-bg" style="background: linear-gradient(135deg, #4a4a3a, #2a2a1a);"></div>
             <div class="team-info">
               <h4>Sofia Petrov</h4>
-              <p class="role">Marketing Director</p>
+              <p class="role" data-i18n="about.team.sofia.role">Marketing Director</p>
             </div>
             <div class="team-bio-overlay">
               <h4>Sofia Petrov</h4>
-              <p class="role">Marketing Director</p>
-              <p>Sofia drives our brand presence and digital strategy, connecting homeowners and trade professionals with the surfaces they need.</p>
+              <p class="role" data-i18n="about.team.sofia.role">Marketing Director</p>
+              <p data-i18n="about.team.sofia.bio">Sofia drives our brand presence and digital strategy, connecting homeowners and trade professionals with the surfaces they need.</p>
             </div>
           </div>
 
@@ -681,12 +707,12 @@
             <div class="team-photo placeholder-bg" style="background: linear-gradient(135deg, #3a3a3a, #1a1a1a);"></div>
             <div class="team-info">
               <h4>Roberto Silva</h4>
-              <p class="role">Warehouse Manager</p>
+              <p class="role" data-i18n="about.team.roberto.role">Warehouse Manager</p>
             </div>
             <div class="team-bio-overlay">
               <h4>Roberto Silva</h4>
-              <p class="role">Warehouse Manager</p>
-              <p>Roberto ensures every slab is properly stored, catalogued, and handled with care. His team manages our entire 10,000 sq ft facility.</p>
+              <p class="role" data-i18n="about.team.roberto.role">Warehouse Manager</p>
+              <p data-i18n="about.team.roberto.bio">Roberto ensures every slab is properly stored, catalogued, and handled with care. His team manages our entire 10,000 sq ft facility.</p>
             </div>
           </div>
 
@@ -694,12 +720,12 @@
             <div class="team-photo placeholder-bg" style="background: linear-gradient(135deg, #4a3a4a, #2a1a2a);"></div>
             <div class="team-info">
               <h4>Elena Torres</h4>
-              <p class="role">Client Relations</p>
+              <p class="role" data-i18n="about.team.elena.role">Client Relations</p>
             </div>
             <div class="team-bio-overlay">
               <h4>Elena Torres</h4>
-              <p class="role">Client Relations</p>
-              <p>Elena is the first point of contact for new clients, guiding them through the selection process and ensuring a seamless showroom experience.</p>
+              <p class="role" data-i18n="about.team.elena.role">Client Relations</p>
+              <p data-i18n="about.team.elena.bio">Elena is the first point of contact for new clients, guiding them through the selection process and ensuring a seamless showroom experience.</p>
             </div>
           </div>
         </div>
@@ -714,17 +740,17 @@
             <div class="placeholder-bg" style="background: linear-gradient(135deg, #3a3028 0%, #2a2018 40%, #1a1510 100%); width: 100%; height: 100%;"></div>
           </div>
           <div class="showroom-content reveal reveal-delay-1">
-            <span class="label label-dark">VISIT US</span>
-            <h2>Our Doral Showroom</h2>
-            <p>Step into our 10,000 sq ft showroom and experience hundreds of premium slabs in person. Our expert team is on-site to help you compare materials, match colors, and find the perfect surface for your project.</p>
-            <p>Whether you're a homeowner planning a renovation or a trade professional sourcing for your next build, we're here to help.</p>
+            <span class="label label-dark" data-i18n="about.showroom.label">VISIT US</span>
+            <h2 data-i18n="about.showroom.title">Our Doral Showroom</h2>
+            <p data-i18n="about.showroom.desc">Step into our 10,000 sq ft showroom and experience hundreds of premium slabs in person. Our expert team is on-site to help you compare materials, match colors, and find the perfect surface for your project.</p>
+            <p data-i18n="about.showroom.desc2">Whether you're a homeowner planning a renovation or a trade professional sourcing for your next build, we're here to help.</p>
             <ul class="showroom-details">
-              <li><span class="check">&#10003;</span> 500+ slabs on display</li>
-              <li><span class="check">&#10003;</span> Expert consultations available</li>
-              <li><span class="check">&#10003;</span> Mon&ndash;Fri 8am&ndash;5pm, Sat 9am&ndash;2pm</li>
+              <li><span class="check">&#10003;</span> <span data-i18n="about.showroom.detail1">500+ slabs on display</span></li>
+              <li><span class="check">&#10003;</span> <span data-i18n="about.showroom.detail2">Expert consultations available</span></li>
+              <li><span class="check">&#10003;</span> <span data-i18n="about.showroom.detail3">Mon&ndash;Fri 8am&ndash;5pm, Sat 9am&ndash;2pm</span></li>
               <li><span class="check">&#10003;</span> 7980 NW 56th St, Doral, FL 33166</li>
             </ul>
-            <a href="contact.html" class="btn btn--primary">Schedule a Visit</a>
+            <a href="contact.html" class="btn btn--primary" data-i18n="about.showroom.cta">Schedule a Visit</a>
           </div>
         </div>
       </div>
@@ -749,13 +775,13 @@
       <div class="footer-grid">
         <div class="footer-col">
           <div class="footer-logo"><img src="../images/header/TSS_LOGO.png" alt="The Stone Surfaces" class="logo-img"></div>
-          <p class="tagline">South Florida's trusted source for premium natural and engineered stone surfaces since 2016.</p>
+          <p class="tagline" data-i18n="footer.tagline">South Florida's trusted source for premium natural and engineered stone surfaces since 2016.</p>
           <p class="contact-line">&#9679; 7980 NW 56th St, Doral, FL 33166</p>
           <p class="contact-line">&#9742; (305) 000-0000</p>
           <p class="contact-line">&#9993; info@thestonesurfaces.com</p>
         </div>
         <div class="footer-col">
-          <h4>Products</h4>
+          <h4 data-i18n="footer.products">Products</h4>
           <ul>
             <li><a href="products.html#granite">Granite</a></li>
             <li><a href="products.html#marble">Marble</a></li>
@@ -767,17 +793,17 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Resources</h4>
+          <h4 data-i18n="footer.resources">Resources</h4>
           <ul>
             <li><a href="blog.html">Blog</a></li>
             <li><a href="inspired.html">Get Inspired</a></li>
-            <li><a href="#">FAQs</a></li>
-            <li><a href="#">Warranty Info</a></li>
+            <li><a href="#" data-i18n="footer.faqs">FAQs</a></li>
+            <li><a href="#" data-i18n="footer.warranty">Warranty Info</a></li>
             <li><a href="trade.html">For The Trade</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Connect</h4>
+          <h4 data-i18n="footer.connect">Connect</h4>
           <div class="footer-social">
             <a href="#" aria-label="Instagram">IG</a>
             <a href="#" aria-label="Facebook">FB</a>
@@ -790,8 +816,8 @@
       <div class="footer-bottom">
         <span>&copy; 2026 The Stone Surfaces. All rights reserved.</span>
         <div class="footer-bottom-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
+          <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
+          <a href="#" data-i18n="footer.terms">Terms of Service</a>
         </div>
       </div>
     </div>
@@ -851,6 +877,7 @@
     <div id="n8n-chat-widget" data-webhook-url="YOUR_N8N_WEBHOOK_URL" style="display:none;"></div>
   </div>
 
+  <script src="../js/i18n.js"></script>
   <script src="../js/main.js"></script>
 </body>
 </html>

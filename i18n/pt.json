@@ -1,0 +1,772 @@
+{
+  "nav": {
+    "products": "Produtos",
+    "hanstone": "Hanstone Quartz",
+    "lucciare": "Lucciare",
+    "inspired": "Inspire-se",
+    "blog": "Blog",
+    "about": "Sobre",
+    "trade": "Para Profissionais",
+    "contact": "Contato",
+    "cta": "Solicitar Orçamento",
+    "home": "Início",
+    "hanstone_short": "Hanstone",
+    "inspire": "Inspire-se",
+    "mega": {
+      "quartzite": "Quartzite",
+      "granite": "Granite",
+      "dolomite": "Dolomite & Marble Rígido",
+      "marble": "Marble",
+      "semiprecious": "Semipreciosas & Ônix",
+      "quartz": "Quartz"
+    }
+  },
+  "common": {
+    "explore": "Explorar →",
+    "home": "Início",
+    "learnMore": "Saiba Mais",
+    "viewDetails": "Ver Detalhes",
+    "readMore": "Leia Mais"
+  },
+  "home": {
+    "hero": {
+      "label": "DISTRIBUIDORA PREMIUM DE PEDRAS DO SUL DA FLÓRIDA",
+      "title": "Onde a Beleza Natural Encontra a Engenharia de Precisão",
+      "subtitle": "Chapas premium, orientação especializada e agora — a casa exclusiva do Hanstone Quartz no Sul da Flórida.",
+      "cta1": "Explore Nossa Coleção",
+      "cta2": "Visite Nosso Showroom"
+    },
+    "hanstone": {
+      "label": "APRESENTAMOS",
+      "tagline": "Criado pela Terra. Projetado para Você.",
+      "point1": "93% Quartz Natural — mais resistente que Granite",
+      "point2": "Garantia Vitalícia Residencial",
+      "point3": "60+ Cores, 3 Acabamentos Premium",
+      "point4": "Tecnologia Avançada Breton™",
+      "cta": "Descubra a Coleção Hanstone"
+    },
+    "lucciare": {
+      "label": "APRESENTAMOS",
+      "tagline": "A Arte das Veias Marmorizadas",
+      "point1": "Superfícies de Design Italiano, Feitas à Mão",
+      "point2": "Certificação GreenGuard Gold & NSF",
+      "point3": "3 Coleções — Signature, Genesis & Solstice",
+      "point4": "Resistente a Manchas, Não Poroso & Durável",
+      "cta": "Descubra a Coleção Lucciare"
+    },
+    "collections": {
+      "label": "NOSSAS COLEÇÕES",
+      "title": "Encontre a Pedra Ideal para Sua Visão",
+      "desc": "Todo projeto merece uma superfície à altura de sua ambição. Seja pela elegância atemporal do Marble, pela resistência do Granite ou pela precisão do Quartz engenheirado — a pedra certa transforma um espaço de comum para inesquecível.",
+      "cta": "Ver Todas as Coleções"
+    },
+    "trust": {
+      "years": "Anos de Excelência",
+      "slabs": "Variedades de Chapas em Estoque",
+      "consultation": "Consultoria Especializada Inclusa"
+    },
+    "inspired": {
+      "label": "INSPIRE-SE",
+      "title": "Veja o que é Possível",
+      "room1": "Cozinha Moderna",
+      "room2": "Banheiro de Luxo",
+      "room3": "Lobby Comercial",
+      "room4": "Cozinha Externa"
+    },
+    "testimonials": {
+      "label": "DEPOIMENTOS",
+      "title": "Confiança de Marmorarias & Designers em Toda a Flórida",
+      "quote1": "Este é o melhor fornecedor de pedras em Miami. Não apenas com preços muito bons, mas com as pedras mais procuradas disponíveis.",
+      "quote2": "Excelente atendimento ao cliente, muito proativo e eficiente. Ótimo trabalho!",
+      "quote3": "As melhores pessoas, os melhores materiais, os melhores preços!",
+      "role": "Cliente Verificado",
+      "source": "<span style=\"color: var(--color-accent-gold);\">★</span> Avaliação 5.0 — Avaliações do Google & plataformas verificadas"
+    },
+    "blog": {
+      "label": "DO NOSSO BLOG",
+      "title": "Insights & Inspiração",
+      "tag1": "Tendências de Design",
+      "tag2": "Cuidados com Pedras",
+      "tag3": "Novidades Hanstone",
+      "title1": "Tendências 2026 para Bancadas de Cozinha: O que os Designers Estão Escolhendo",
+      "title2": "Como Manter Suas Superfícies de Pedra Natural como um Profissional",
+      "title3": "Apresentando Hanstone Quartz: Por que Firmamos Parceria com a Hyundai L&C",
+      "excerpt1": "De veios dramáticos a acabamentos foscos, descubra as superfícies que estão definindo as cozinhas de luxo neste ano.",
+      "excerpt2": "Hábitos diários simples e tratamentos anuais que mantêm Granite, Marble e Quartzite impecáveis.",
+      "excerpt3": "A história por trás de nossa parceria exclusiva e o que ela significa para nossos clientes.",
+      "read1": "5 min de leitura",
+      "read2": "4 min de leitura",
+      "read3": "6 min de leitura",
+      "cta": "Leia Nosso Blog <span class=\"arrow\">→</span>"
+    },
+    "locations": {
+      "label": "NOSSAS LOCALIZAÇÕES",
+      "title": "Visite-nos Pessoalmente",
+      "desc": "Três showrooms na Flórida, cada um com chapas premium prontas para seu próximo projeto.",
+      "badge": "Showroom Principal",
+      "directions": "Como Chegar"
+    },
+    "newsletter": {
+      "title": "Receba Nosso Guia de Seleção de Pedras 2026",
+      "desc": "Dicas de especialistas para escolher a superfície perfeita para seu próximo projeto. Gratuito, direto no seu e-mail.",
+      "name": "Seu nome",
+      "email": "Seu e-mail",
+      "cta": "Baixar Guia Gratuito"
+    }
+  },
+  "footer": {
+    "tagline": "Fonte confiável do Sul da Flórida para superfícies premium de pedras naturais e engenheiradas desde 2016.",
+    "products": "Produtos",
+    "resources": "Recursos",
+    "connect": "Conecte-se",
+    "faqs": "Perguntas Frequentes",
+    "warranty": "Informações de Garantia",
+    "copyright": "© 2026 The Stone Surfaces. Todos os direitos reservados.",
+    "privacy": "Política de Privacidade",
+    "terms": "Termos de Serviço"
+  },
+  "chat": {
+    "title": "Assistente The Stone Surfaces",
+    "greeting": "Olá! Estou aqui para ajudar você a encontrar a pedra perfeita para seu projeto. O que você está procurando?",
+    "browse": "Ver Produtos",
+    "quote": "Solicitar Orçamento",
+    "hanstone_info": "Info Hanstone Quartz",
+    "showroom": "Visite Nosso Showroom",
+    "placeholder": "Digite sua mensagem..."
+  },
+  "products": {
+    "breadcrumb": "Nossas Coleções",
+    "title": "Nossas Coleções",
+    "desc": "Explore mais de 500 chapas premium de pedras e Quartz. Filtre por cor, acabamento, espessura e aplicação para encontrar a superfície perfeita para seu projeto.",
+    "filters": "Filtros",
+    "clearAll": "Limpar Tudo",
+    "filterLabel": {
+      "color": "Família de Cores",
+      "finish": "Acabamento",
+      "application": "Aplicação"
+    },
+    "filter": {
+      "material": "Tipo de Material",
+      "thickness": "Espessura",
+      "brand": "Marca",
+      "price": "Faixa de Preço",
+      "color": {
+        "white": "Branco & Creme",
+        "gray": "Cinza",
+        "black": "Preto",
+        "brown": "Marrom & Bege",
+        "blue": "Azul",
+        "green": "Verde",
+        "multi": "Multicolorido"
+      },
+      "finish": {
+        "polished": "Polido",
+        "honed": "Amaciado",
+        "leathered": "Couro",
+        "brushed": "Escovado"
+      },
+      "application": {
+        "kitchen": "Cozinha",
+        "bathroom": "Banheiro",
+        "commercial": "Comercial",
+        "outdoor": "Área Externa"
+      }
+    },
+    "sortBy": "Ordenar por",
+    "sort": {
+      "newest": "Mais Recentes",
+      "popular": "Populares",
+      "color": "Família de Cores",
+      "price": "Preço"
+    },
+    "viewDetails": "Ver Detalhes",
+    "compare": "Comparar",
+    "requestQuote": "Solicitar Orçamento",
+    "origin": "Origem:",
+    "compareNow": "Comparar Agora",
+    "productsSelected": "produtos selecionados",
+    "results": "resultados"
+  },
+  "hanstone": {
+    "breadcrumb": "Hanstone Quartz",
+    "hero": {
+      "title": "Hanstone Quartz — Criado pela Terra. Projetado para Você.",
+      "tagline": "O distribuidor oficial de Hanstone Quartz da Hyundai L&C no Sul da Flórida.",
+      "badge": "Distribuidor Oficial"
+    },
+    "story": {
+      "label": "NOSSA HERANÇA",
+      "title": "A História Hanstone",
+      "text1": "Desde 2009, a Hanstone produz superfícies premium de Quartz utilizando a avançada tecnologia Breton™. Feitas com 93% de Quartz natural, cada chapa oferece durabilidade e beleza incomparáveis.",
+      "text2": "Fabricadas em instalações de última geração com rigoroso controle de qualidade, as superfícies Hanstone atendem aos mais altos padrões de excelência e sustentabilidade.",
+      "point1": "Composição de 93% Quartz Natural",
+      "point2": "Fabricação Avançada Breton™",
+      "point3": "Qualidade Canadense Desde 2009",
+      "point4": "Rigorosos Padrões de Controle de Qualidade"
+    },
+    "collections": {
+      "label": "COLEÇÕES",
+      "title": "Explore as Coleções",
+      "signature": {
+        "tag": "Coleção Signature"
+      },
+      "pinnacle": {
+        "tag": "Coleção Pinnacle"
+      },
+      "connections": {
+        "tag": "Coleção Connections"
+      },
+      "opimo": {
+        "tag": "Coleção Opimo"
+      }
+    },
+    "palette": {
+      "label": "PALETA DE CORES",
+      "title": "Encontre Sua Cor Perfeita",
+      "all": "Todas",
+      "white": "Branco",
+      "warm": "Quentes",
+      "cool": "Frias",
+      "vibrant": "Vibrantes",
+      "grey": "Cinza",
+      "black": "Preto",
+      "polished": "Polido",
+      "leather": "Couro",
+      "riverWashed": "River Washed"
+    },
+    "benefits": {
+      "label": "POR QUE HANSTONE",
+      "title": "Por que Escolher Hanstone",
+      "card1": {
+        "title": "Mais Resistente que Granite",
+        "desc": "Feito com 93% de Quartz natural, as superfícies Hanstone são excepcionalmente duráveis e resistentes a riscos e lascas."
+      },
+      "card2": {
+        "title": "Nunca Precisa de Selamento",
+        "desc": "Diferente de pedras naturais, o Quartz Hanstone não necessita de selamento — nunca. Simplesmente limpe e aproveite."
+      },
+      "card3": {
+        "title": "Não Poroso & Higiênico",
+        "desc": "A superfície não porosa resiste a bactérias, manchas e mofo. Certificação NSF para preparação de alimentos."
+      },
+      "card4": {
+        "title": "Garantia Vitalícia",
+        "desc": "Toda superfície Hanstone possui garantia vitalícia limitada residencial para sua tranquilidade."
+      }
+    },
+    "resources": {
+      "label": "PARA PROFISSIONAIS",
+      "title": "Recursos Profissionais",
+      "desc": "Tudo que você precisa para seu próximo projeto — de especificações técnicas a educação continuada.",
+      "bim": {
+        "title": "Biblioteca BIM",
+        "desc": "Baixe famílias Revit e objetos BIM para seus projetos de arquitetura."
+      },
+      "cad": {
+        "title": "Arquivos CAD",
+        "desc": "Acesse desenhos AutoCAD e arquivos detalhados para planejamento preciso de projetos."
+      },
+      "ceu": {
+        "title": "Oportunidades CEU",
+        "desc": "Obtenha créditos de educação continuada por meio de cursos certificados Hanstone."
+      },
+      "specs": {
+        "title": "Fichas Técnicas",
+        "desc": "Dados técnicos completos e especificações de desempenho para cada cor Hanstone."
+      },
+      "care": {
+        "title": "Guia de Cuidados & Manutenção",
+        "desc": "Melhores práticas para manter suas superfícies Hanstone bonitas por toda a vida."
+      }
+    },
+    "cta": {
+      "title": "Pronto para ver Hanstone pessoalmente?",
+      "desc": "Visite nosso showroom para conhecer a coleção completa Hanstone. Toque, sinta e compare mais de 60 cores.",
+      "showroom": "Visite Nosso Showroom",
+      "quote": "Solicitar Amostras Hanstone"
+    }
+  },
+  "lucciare": {
+    "breadcrumb": "Lucciare Quartz",
+    "hero": {
+      "title": "Lucciare — A Arte das Veias Marmorizadas",
+      "tagline": "Superfícies de Quartz feitas à mão com design inspirado na Itália e qualidade incomparável.",
+      "badge": "Distribuidor Oficial",
+      "featured": "Coleção em Destaque"
+    },
+    "story": {
+      "label": "NOSSA HERANÇA",
+      "title": "A História Lucciare",
+      "text1": "Lucciare combina a arte italiana com engenharia avançada para criar superfícies de Quartz que capturam a beleza do Marble natural com desempenho superior.",
+      "text2": "Cada chapa é feita à mão para alcançar padrões únicos de veias, garantindo que duas superfícies nunca sejam exatamente iguais.",
+      "point1": "Design Artesanal Inspirado na Itália",
+      "point2": "Veias Únicas Feitas à Mão",
+      "point3": "Engenharia & Desempenho Superiores",
+      "point4": "Duas Superfícies Nunca São Iguais"
+    },
+    "collections": {
+      "label": "COLEÇÕES",
+      "title": "Explore as Coleções",
+      "signature": {
+        "tag": "Coleção Signature"
+      },
+      "genesis": {
+        "tag": "Coleção Genesis"
+      },
+      "solstice": {
+        "tag": "Coleção Solstice"
+      }
+    },
+    "genesis": {
+      "label": "A COLEÇÃO GENESIS",
+      "title": "Genesis — Onde Tudo Começa",
+      "text1": "A Coleção Genesis representa a fundação da arte Lucciare — designs atemporais inspirados nos mármores naturais mais cobiçados do mundo.",
+      "text2": "Cada superfície da Coleção Genesis é criada para capturar a essência da pedra natural enquanto entrega o desempenho e a consistência do Quartz engenheirado.",
+      "point1": "Inspirado nos Melhores Mármores do Mundo",
+      "point2": "Designs Atemporais & Clássicos",
+      "point3": "Qualidade & Beleza Consistentes",
+      "point4": "Ideal para Interiores de Luxo"
+    },
+    "benefits": {
+      "label": "POR QUE LUCCIARE",
+      "title": "Por que Escolher Lucciare",
+      "card1": {
+        "title": "Design Inspirado na Itália",
+        "desc": "Cada superfície é criada com atenção meticulosa aos detalhes, capturando a essência das veias do Marble natural."
+      },
+      "card2": {
+        "title": "Certificação GreenGuard Gold",
+        "desc": "Atende aos padrões mais rigorosos do mundo em emissões químicas para ambientes internos mais saudáveis."
+      },
+      "card3": {
+        "title": "Resistente a Manchas & Durável",
+        "desc": "Superfície não porosa resiste a manchas, riscos e calor — construído para o dia a dia."
+      },
+      "card4": {
+        "title": "Qualidade Garantida",
+        "desc": "Coberto por garantia abrangente para instalações residenciais e comerciais."
+      }
+    },
+    "cta": {
+      "title": "Pronto para ver Lucciare pessoalmente?",
+      "desc": "Visite nosso showroom para conhecer a coleção completa Lucciare. Toque, sinta e compare cada design.",
+      "showroom": "Visite Nosso Showroom",
+      "quote": "Solicitar Amostras Lucciare"
+    }
+  },
+  "inspired": {
+    "label": "INSPIRE-SE",
+    "title": "Inspire-se",
+    "subtitle": "Projetos reais, materiais reais, beleza real.",
+    "filter": {
+      "room": "Tipo de Ambiente",
+      "material": "Material",
+      "all": "Todos",
+      "allMaterials": "Todos os Materiais",
+      "allColors": "Todas as Cores",
+      "kitchen": "Cozinha",
+      "bathroom": "Banheiro",
+      "commercial": "Comercial",
+      "outdoor": "Área Externa",
+      "living": "Sala de Estar",
+      "color": {
+        "white": "Branco",
+        "gray": "Cinza",
+        "brown": "Marrom",
+        "black": "Preto",
+        "blue": "Azul",
+        "gold": "Dourado"
+      }
+    },
+    "room": {
+      "kitchenCountertops": "Bancadas de Cozinha",
+      "kitchenIsland": "Ilha de Cozinha",
+      "kitchenPerimeter": "Perímetro de Cozinha",
+      "primaryBathroom": "Banheiro Principal",
+      "showerWalls": "Paredes de Chuveiro",
+      "waterfallIsland": "Ilha Cascata",
+      "hotelLobby": "Lobby de Hotel",
+      "restaurantBar": "Bar de Restaurante",
+      "outdoorKitchen": "Cozinha Externa",
+      "poolDeck": "Deck de Piscina",
+      "featureWall": "Parede Destaque",
+      "fireplaceSurround": "Revestimento de Lareira"
+    },
+    "beforeAfter": {
+      "label": "TRANSFORMAÇÕES",
+      "title": "Transformações Antes & Depois",
+      "desc": "Veja como a superfície de pedra certa pode transformar completamente um espaço.",
+      "before": "Antes",
+      "after": "Depois",
+      "card1": {
+        "title": "Renovação de Cozinha Moderna",
+        "desc": "Bancadas de laminado ultrapassadas substituídas por um deslumbrante Quartz Calacatta."
+      },
+      "card2": {
+        "title": "Reforma de Banheiro de Luxo",
+        "desc": "Bancada padrão transformada com superfícies premium de Marble."
+      },
+      "card3": {
+        "title": "Modernização de Lobby Comercial",
+        "desc": "Área de recepção corporativa elevada com uma dramática parede destaque em Quartzite."
+      }
+    },
+    "instagram": {
+      "label": "SIGA-NOS",
+      "title": "Siga-nos no Instagram",
+      "cta": "Siga @thestonesurfaces"
+    },
+    "submit": {
+      "label": "COMPARTILHE SEU TRABALHO",
+      "title": "Compartilhe Seu Projeto",
+      "desc": "Você é designer ou marmorista? Compartilhe seu projeto e seja destaque em nossa galeria.",
+      "desc2": "Envie suas melhores fotos do projeto e conte-nos sobre os materiais utilizados.",
+      "namePlaceholder": "Seu Nome",
+      "emailPlaceholder": "Seu E-mail",
+      "projectPlaceholder": "Conte-nos sobre o projeto...",
+      "uploadText": "Enviar Fotos do Projeto",
+      "uploadHint": "Arraste e solte arquivos ou clique para navegar. Máx. 10MB por arquivo.",
+      "btn": "Enviar Seu Projeto"
+    }
+  },
+  "blog": {
+    "breadcrumb": "Blog",
+    "featured": {
+      "label": "Post em Destaque",
+      "title": "Tendências 2026 para Bancadas de Cozinha: O que os Designers Estão Escolhendo",
+      "excerpt": "De veios dramáticos a acabamentos foscos, descubra as superfícies que estão definindo as cozinhas de luxo neste ano.",
+      "readTime": "5 min de leitura"
+    },
+    "cat": {
+      "all": "Todos",
+      "news": "Notícias do Setor",
+      "trends": "Tendências de Design",
+      "care": "Cuidados com Pedras",
+      "spotlights": "Projetos em Destaque",
+      "hanstone": "Novidades Hanstone"
+    },
+    "card1": {
+      "title": "Como Manter Suas Superfícies de Pedra Natural como um Profissional",
+      "excerpt": "Hábitos diários simples e tratamentos anuais que mantêm Granite, Marble e Quartzite impecáveis.",
+      "readTime": "4 min de leitura"
+    },
+    "card2": {
+      "title": "Apresentando Hanstone Quartz: Por que Firmamos Parceria com a Hyundai L&C",
+      "excerpt": "A história por trás de nossa parceria exclusiva e o que ela significa para nossos clientes.",
+      "readTime": "6 min de leitura"
+    },
+    "card3": {
+      "title": "O Guia Completo de Quartzite: A Obra-Prima da Natureza",
+      "excerpt": "Tudo que você precisa saber sobre esta pedra natural deslumbrante — da formação à instalação.",
+      "readTime": "7 min de leitura"
+    },
+    "card4": {
+      "title": "Design Moderno de Banheiro: Superfícies de Pedra em Alta para 2026",
+      "excerpt": "Veios ousados, tons quentes e chapas book-matched estão definindo o design de banheiros de luxo.",
+      "readTime": "5 min de leitura"
+    },
+    "card5": {
+      "title": "Quartz vs. Quartzite: Entendendo as Principais Diferenças",
+      "excerpt": "Os nomes são parecidos, mas essas duas superfícies populares têm propriedades e necessidades de cuidado muito diferentes.",
+      "readTime": "4 min de leitura"
+    },
+    "card6": {
+      "title": "Bancadas para Cozinha Externa: O que Funciona e o que Não Funciona",
+      "excerpt": "Nem todas as pedras são iguais para uso externo. Veja o que procurar em aplicações ao ar livre.",
+      "readTime": "6 min de leitura"
+    },
+    "readTime": "min de leitura",
+    "by": "Por",
+    "sidebar": {
+      "popular": "Posts Populares",
+      "categories": "Categorias",
+      "cat": {
+        "news": "Notícias do Setor",
+        "trends": "Tendências de Design",
+        "care": "Cuidados com Pedras",
+        "spotlights": "Projetos em Destaque",
+        "hanstone": "Novidades Hanstone"
+      },
+      "newsletter": "Newsletter",
+      "newsletterDesc": "Receba as últimas novidades do setor de pedras e inspiração de design direto no seu e-mail.",
+      "emailPlaceholder": "Seu e-mail",
+      "subscribe": "Assinar",
+      "promoLabel": "Hanstone Quartz",
+      "promoCta": "Explore a Coleção"
+    }
+  },
+  "about": {
+    "label": "SOBRE NÓS",
+    "title": "Sobre Nós",
+    "subtitle": "Distribuidora confiável de pedras do Sul da Flórida desde 2016.",
+    "timeline": {
+      "label": "NOSSA TRAJETÓRIA",
+      "title": "Nossa Trajetória",
+      "2016": {
+        "title": "Fundada em Doral",
+        "desc": "A The Stone Surfaces inaugura seu primeiro showroom em Doral, Flórida, com a visão de fornecer superfícies premium de pedras para o Sul da Flórida."
+      },
+      "2018": {
+        "title": "Ampliando Nossa Coleção",
+        "desc": "Inventário expandido para mais de 200 variedades de chapas, estabelecendo parcerias com pedreiras ao redor do mundo."
+      },
+      "2020": {
+        "title": "Reconhecimento do Setor",
+        "desc": "Reconhecida como uma das principais distribuidoras de pedras do Sul da Flórida, atendendo mais de 100 marmorarias e designers."
+      },
+      "2022": {
+        "title": "Expansão do Showroom",
+        "desc": "Showroom de Doral renovado e ampliado para exibir mais de 500 variedades de chapas em um ambiente premium."
+      },
+      "2024": {
+        "title": "Crescimento Multi-Localização",
+        "desc": "Abertura de novos showrooms em Orlando e Sarasota para atender clientes em toda a Flórida."
+      },
+      "2026": {
+        "title": "Parceria Hanstone",
+        "desc": "Tornou-se distribuidora oficial do Hanstone Quartz da Hyundai L&C e do Lucciare Quartz Artesanal no Sul da Flórida."
+      }
+    },
+    "mission": {
+      "label": "NOSSOS VALORES",
+      "title": "Nossa Missão & Valores",
+      "desc": "Três pilares guiam tudo o que fazemos — da seleção das melhores chapas à entrega de um serviço excepcional.",
+      "quality": {
+        "title": "Qualidade",
+        "desc": "Inspecionamos cada chapa para garantir que atenda nossos padrões rigorosos antes de chegar ao seu projeto."
+      },
+      "service": {
+        "title": "Serviço",
+        "desc": "Orientação especializada da seleção à instalação. Nossa equipe está aqui para ajudar em cada etapa."
+      },
+      "integrity": {
+        "title": "Integridade",
+        "desc": "Preços transparentes, aconselhamento honesto e parcerias genuínas com cada cliente."
+      }
+    },
+    "team": {
+      "label": "NOSSA EQUIPE",
+      "title": "Nossa Equipe",
+      "roberto": {
+        "role": "Fundador & CEO",
+        "bio": "Com mais de 15 anos no setor de pedras, Roberto fundou a The Stone Surfaces com a visão de levar superfícies premium ao Sul da Flórida."
+      },
+      "isabella": {
+        "role": "Diretora de Operações",
+        "bio": "Isabella supervisiona as operações diárias e garante que cada cliente receba o mais alto nível de serviço e suporte."
+      },
+      "marcus": {
+        "role": "Diretor de Vendas",
+        "bio": "Marcus traz profundo conhecimento do setor e paixão por ajudar clientes a encontrar a superfície perfeita para seus projetos."
+      },
+      "sofia": {
+        "role": "Consultora de Design",
+        "bio": "Sofia ajuda arquitetos e designers a selecionar materiais que trazem suas visões criativas à vida."
+      },
+      "carlos": {
+        "role": "Gerente de Depósito",
+        "bio": "Carlos gerencia nossa instalação de 50.000 sq ft e garante que cada chapa seja armazenada, manuseada e entregue com cuidado."
+      },
+      "ana": {
+        "role": "Diretora de Marketing",
+        "bio": "Ana impulsiona o reconhecimento da marca e conecta a The Stone Surfaces com profissionais e proprietários em toda a Flórida."
+      },
+      "david": {
+        "role": "Gerente de Contas Profissionais",
+        "bio": "David é o ponto de contato dedicado para nossos profissionais do setor, oferecendo suporte prioritário e serviços exclusivos."
+      },
+      "elena": {
+        "role": "Gerente de Experiência do Cliente",
+        "bio": "Elena garante que cada ponto de contato — da primeira visita à instalação final — supere as expectativas do cliente."
+      }
+    },
+    "showroom": {
+      "label": "VISITE-NOS",
+      "title": "Visite Nosso Showroom",
+      "desc": "Conheça nossa coleção premium pessoalmente. Nosso showroom em Doral possui mais de 500 chapas prontas para você tocar, sentir e comparar.",
+      "desc2": "Nossos consultores especializados estão disponíveis para guiar você pelas nossas coleções e ajudar a encontrar a superfície perfeita.",
+      "detail1": "500+ Chapas em Exposição",
+      "detail2": "Consultoria Especializada Disponível",
+      "detail3": "Aberto Segunda - Sábado",
+      "cta": "Como Chegar"
+    }
+  },
+  "contact": {
+    "title": "Solicitar Orçamento",
+    "subtitle": "Conte-nos sobre seu projeto e retornaremos em até 24 horas.",
+    "form": {
+      "name": "Nome Completo",
+      "namePh": "Seu nome completo",
+      "company": "Nome da Empresa",
+      "companyPh": "Sua empresa (opcional)",
+      "email": "E-mail",
+      "emailPh": "seu@email.com",
+      "phone": "Telefone",
+      "phonePh": "(305) 000-0000",
+      "projectType": "Tipo de Projeto",
+      "projectTypePh": "Selecione o tipo de projeto",
+      "residential": "Cozinha Residencial",
+      "residentialBath": "Banheiro Residencial",
+      "commercial": "Comercial",
+      "outdoor": "Área Externa",
+      "other": "Outro",
+      "materials": "Materiais de Interesse",
+      "matGranite": "Granite",
+      "matMarble": "Marble",
+      "matQuartz": "Quartz",
+      "matQuartzite": "Quartzite",
+      "matHanstone": "Hanstone Quartz",
+      "matEngineered": "Pedra Engenheirada",
+      "matPorcelain": "Porcelanato",
+      "matTiles": "Azulejos",
+      "message": "Mensagem",
+      "messagePh": "Conte-nos sobre seu projeto...",
+      "upload": "Enviar Plantas do Projeto",
+      "uploadHint": "Arraste e solte arquivos ou clique para navegar",
+      "submit": "Enviar Sua Solicitação"
+    },
+    "info": {
+      "title": "Informações de Contato",
+      "phone": "Telefone",
+      "email": "E-mail",
+      "address": "Endereço"
+    },
+    "hours": {
+      "title": "Horário de Funcionamento",
+      "weekday": "Segunda - Sexta",
+      "weekdayTime": "8h - 17h",
+      "saturday": "Sábado",
+      "saturdayTime": "9h - 14h",
+      "sunday": "Domingo",
+      "sundayClosed": "Fechado"
+    },
+    "sent": "Enviado! Entraremos em contato."
+  },
+  "detail": {
+    "breadcrumb": "Detalhe do Produto",
+    "label": {
+      "collection": "Coleção:",
+      "material": "Material:",
+      "finishes": "Acabamentos Disponíveis:",
+      "thickness": "Espessura:",
+      "dimensions": "Dimensões:"
+    },
+    "cta": {
+      "quote": "Solicitar Orçamento",
+      "sample": "Solicitar Amostra"
+    },
+    "specs": {
+      "title": "Especificações Técnicas",
+      "composition": "Composição",
+      "hardness": "Dureza Mohs",
+      "absorption": "Absorção de Água",
+      "strength": "Resistência à Flexão",
+      "applications": "Aplicações Recomendadas"
+    },
+    "related": {
+      "title": "Produtos Relacionados"
+    },
+    "viewInRoom": {
+      "title": "Visualizar no Ambiente",
+      "desc": "Em Breve — Visualize esta superfície no seu espaço com nossa ferramenta de RA."
+    }
+  },
+  "trade": {
+    "title": "Feito para Profissionais",
+    "subtitle": "Preços exclusivos, suporte dedicado e as ferramentas que você precisa para crescer seu negócio.",
+    "benefits": {
+      "title": "Benefícios para Profissionais",
+      "pricing": {
+        "title": "Preços por Volume",
+        "desc": "Preços competitivos de atacado com descontos por volume para profissionais qualificados."
+      },
+      "inventory": {
+        "title": "Acesso Prioritário ao Inventário",
+        "desc": "Primeiro acesso a novidades e reservas exclusivas de chapas premium para seus projetos."
+      },
+      "manager": {
+        "title": "Gerente de Conta Dedicado",
+        "desc": "Seu ponto de contato pessoal para pedidos, orçamentos e suporte de projetos."
+      },
+      "marketing": {
+        "title": "Suporte de Marketing",
+        "desc": "Materiais co-branded, kits de amostras e recursos digitais para ajudar você a conquistar mais projetos."
+      }
+    },
+    "apply": {
+      "title": "Solicitar uma Conta Profissional",
+      "desc": "Junte-se à nossa rede de profissionais e desbloqueie benefícios exclusivos."
+    },
+    "form": {
+      "company": "Nome da Empresa",
+      "companyPh": "Nome da sua empresa",
+      "license": "Número da Licença",
+      "licensePh": "Sua licença comercial #",
+      "type": "Tipo de Negócio",
+      "typePh": "Selecione o tipo de negócio",
+      "fabricator": "Marmorista",
+      "designer": "Designer de Interiores",
+      "contractor": "Empreiteiro",
+      "showroom": "Showroom",
+      "other": "Outro",
+      "years": "Anos de Atuação",
+      "yearsPh": "ex.: 5",
+      "volume": "Volume Mensal Estimado",
+      "volumePh": "ex.: 20 chapas",
+      "references": "Referências",
+      "referencesPh": "Nomes de empresas e informações de contato",
+      "submit": "Enviar Candidatura"
+    },
+    "resources": {
+      "title": "Recursos Profissionais",
+      "specs": {
+        "title": "Fichas Técnicas",
+        "desc": "Dados técnicos completos e especificações de desempenho de todos os produtos."
+      },
+      "care": {
+        "title": "Guias de Cuidados",
+        "desc": "Melhores práticas para manutenção e proteção de superfícies de pedra."
+      },
+      "install": {
+        "title": "Manuais de Instalação",
+        "desc": "Guias passo a passo de instalação para todos os tipos de superfície."
+      },
+      "bim": {
+        "title": "Biblioteca BIM Hanstone",
+        "desc": "Baixe famílias Revit e objetos BIM para seus projetos de arquitetura."
+      },
+      "cad": {
+        "title": "Arquivos CAD",
+        "desc": "Acesse desenhos AutoCAD e arquivos detalhados para planejamento preciso de projetos."
+      },
+      "ceu": {
+        "title": "Créditos CEU",
+        "desc": "Obtenha créditos de educação continuada por meio de cursos certificados do setor de pedras."
+      },
+      "download": "Baixar",
+      "enroll": "Inscreva-se Agora"
+    },
+    "promo": {
+      "title": "Promoções Atuais",
+      "desc": "Volte regularmente para ofertas sazonais e anúncios de novidades para contas profissionais.",
+      "cta": "Ver Ofertas Atuais"
+    },
+    "rep": {
+      "title": "Seu Representante Profissional",
+      "desc": "Tem dúvidas? Nossa equipe de profissionais está pronta para ajudar.",
+      "call": {
+        "title": "Ligue Diretamente",
+        "hours": "Segunda - Sexta 8h - 17h EST"
+      },
+      "email": {
+        "title": "Envie um E-mail",
+        "desc": "trade@thestonesurfaces.com"
+      },
+      "schedule": {
+        "title": "Agende uma Reunião",
+        "desc": "Reserve um horário com seu representante profissional dedicado.",
+        "cta": "Agendar Reunião"
+      }
+    }
+  }
+}

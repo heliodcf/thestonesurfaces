@@ -1,0 +1,772 @@
+{
+  "nav": {
+    "products": "Products",
+    "hanstone": "Hanstone Quartz",
+    "lucciare": "Lucciare",
+    "inspired": "Get Inspired",
+    "blog": "Blog",
+    "about": "About",
+    "trade": "For The Trade",
+    "contact": "Contact",
+    "cta": "Request a Quote",
+    "home": "Home",
+    "hanstone_short": "Hanstone",
+    "inspire": "Inspire",
+    "mega": {
+      "quartzite": "Quartzite",
+      "granite": "Granite",
+      "dolomite": "Dolomite & Hard Marble",
+      "marble": "Marble",
+      "semiprecious": "Semi-Precious & Onyx",
+      "quartz": "Quartz"
+    }
+  },
+  "common": {
+    "explore": "Explore →",
+    "home": "Home",
+    "learnMore": "Learn More",
+    "viewDetails": "View Details",
+    "readMore": "Read More"
+  },
+  "home": {
+    "hero": {
+      "label": "SOUTH FLORIDA'S PREMIER STONE DISTRIBUTOR",
+      "title": "Where Natural Beauty Meets Precision Engineering",
+      "subtitle": "Premium slabs, expert guidance, and now — the exclusive home of Hanstone Quartz in South Florida.",
+      "cta1": "Explore Our Collection",
+      "cta2": "Visit Our Showroom"
+    },
+    "hanstone": {
+      "label": "NOW FEATURING",
+      "tagline": "Created by Earth. Designed for You.",
+      "point1": "93% Natural Quartz — harder than granite",
+      "point2": "Lifetime Residential Warranty",
+      "point3": "60+ Colors, 3 Premium Finishes",
+      "point4": "Advanced Breton™ Technology",
+      "cta": "Discover the Hanstone Collection"
+    },
+    "lucciare": {
+      "label": "NOW FEATURING",
+      "tagline": "The Art of Marbleized Veining",
+      "point1": "Italian-Designed, Handcrafted Surfaces",
+      "point2": "GreenGuard Gold & NSF Certified",
+      "point3": "3 Collections — Signature, Genesis & Solstice",
+      "point4": "Stain-Resistant, Non-Porous & Durable",
+      "cta": "Discover the Lucciare Collection"
+    },
+    "collections": {
+      "label": "OUR COLLECTIONS",
+      "title": "Find the Right Stone for Your Vision",
+      "desc": "Every project deserves a surface that matches its ambition. Whether you're drawn to the timeless elegance of marble, the strength of granite, or the precision of engineered quartz — the right stone transforms a space from ordinary to unforgettable.",
+      "cta": "View All Collections"
+    },
+    "trust": {
+      "years": "Years of Excellence",
+      "slabs": "Slab Varieties in Stock",
+      "consultation": "Expert Consultation Included"
+    },
+    "inspired": {
+      "label": "GET INSPIRED",
+      "title": "See What's Possible",
+      "room1": "Modern Kitchen",
+      "room2": "Luxury Bathroom",
+      "room3": "Commercial Lobby",
+      "room4": "Outdoor Kitchen"
+    },
+    "testimonials": {
+      "label": "CLIENT STORIES",
+      "title": "Trusted by Fabricators & Designers Across Florida",
+      "quote1": "This is the best Stone provider in Miami. Not only with very good prices, but with the trending stones available.",
+      "quote2": "Great customer service, very proactive and efficient. Great work!",
+      "quote3": "Best people, best material, best prices!",
+      "role": "Verified Customer",
+      "source": "<span style=\"color: var(--color-accent-gold);\">★</span> 5.0 Rating — Reviews sourced from Google & verified platforms"
+    },
+    "blog": {
+      "label": "FROM OUR BLOG",
+      "title": "Insights & Inspiration",
+      "tag1": "Design Trends",
+      "tag2": "Stone Care",
+      "tag3": "Hanstone Updates",
+      "title1": "2026 Kitchen Countertop Trends: What Designers Are Choosing",
+      "title2": "How to Maintain Your Natural Stone Surfaces Like a Pro",
+      "title3": "Introducing Hanstone Quartz: Why We Partnered with Hyundai L&C",
+      "excerpt1": "From dramatic veining to matte finishes, discover the surfaces defining luxury kitchens this year.",
+      "excerpt2": "Simple daily habits and annual treatments that keep granite, marble, and quartzite looking flawless.",
+      "excerpt3": "The story behind our exclusive partnership and what it means for our customers.",
+      "read1": "5 min read",
+      "read2": "4 min read",
+      "read3": "6 min read",
+      "cta": "Read Our Blog <span class=\"arrow\">→</span>"
+    },
+    "locations": {
+      "label": "OUR LOCATIONS",
+      "title": "Visit Us in Person",
+      "desc": "Three showrooms across Florida, each stocked with premium slabs ready for your next project.",
+      "badge": "Main Showroom",
+      "directions": "Get Directions"
+    },
+    "newsletter": {
+      "title": "Get Our 2026 Stone Selection Guide",
+      "desc": "Expert tips on choosing the perfect surface for your next project. Free, straight to your inbox.",
+      "name": "Your name",
+      "email": "Your email",
+      "cta": "Download Free Guide"
+    }
+  },
+  "footer": {
+    "tagline": "South Florida's trusted source for premium natural and engineered stone surfaces since 2016.",
+    "products": "Products",
+    "resources": "Resources",
+    "connect": "Connect",
+    "faqs": "FAQs",
+    "warranty": "Warranty Info",
+    "copyright": "© 2026 The Stone Surfaces. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "chat": {
+    "title": "The Stone Surfaces Assistant",
+    "greeting": "Hi! I'm here to help you find the perfect stone for your project. What are you looking for?",
+    "browse": "Browse Products",
+    "quote": "Request a Quote",
+    "hanstone_info": "Hanstone Quartz Info",
+    "showroom": "Visit Our Showroom",
+    "placeholder": "Type your message..."
+  },
+  "products": {
+    "breadcrumb": "Our Collections",
+    "title": "Our Collections",
+    "desc": "Explore 500+ premium stone and quartz slabs. Filter by color, finish, thickness, and application to find the perfect surface for your project.",
+    "filters": "Filters",
+    "clearAll": "Clear All",
+    "filterLabel": {
+      "color": "Color Family",
+      "finish": "Finish",
+      "application": "Application"
+    },
+    "filter": {
+      "material": "Material Type",
+      "thickness": "Thickness",
+      "brand": "Brand",
+      "price": "Price Range",
+      "color": {
+        "white": "White & Cream",
+        "gray": "Gray",
+        "black": "Black",
+        "brown": "Brown & Beige",
+        "blue": "Blue",
+        "green": "Green",
+        "multi": "Multi-Color"
+      },
+      "finish": {
+        "polished": "Polished",
+        "honed": "Honed",
+        "leathered": "Leathered",
+        "brushed": "Brushed"
+      },
+      "application": {
+        "kitchen": "Kitchen",
+        "bathroom": "Bathroom",
+        "commercial": "Commercial",
+        "outdoor": "Outdoor"
+      }
+    },
+    "sortBy": "Sort by",
+    "sort": {
+      "newest": "Newest",
+      "popular": "Popular",
+      "color": "Color Family",
+      "price": "Price"
+    },
+    "viewDetails": "View Details",
+    "compare": "Compare",
+    "requestQuote": "Request Quote",
+    "origin": "Origin:",
+    "compareNow": "Compare Now",
+    "productsSelected": "products selected",
+    "results": "results"
+  },
+  "hanstone": {
+    "breadcrumb": "Hanstone Quartz",
+    "hero": {
+      "title": "Hanstone Quartz — Created by Earth. Designed for You.",
+      "tagline": "The official South Florida distributor of Hanstone Quartz by Hyundai L&C.",
+      "badge": "Official Distributor"
+    },
+    "story": {
+      "label": "OUR HERITAGE",
+      "title": "The Hanstone Story",
+      "text1": "Since 2009, Hanstone has been crafting premium quartz surfaces using advanced Breton™ technology. Made from 93% natural quartz, every slab delivers unmatched durability and beauty.",
+      "text2": "Manufactured in state-of-the-art facilities with rigorous quality control, Hanstone surfaces meet the highest standards of craftsmanship and sustainability.",
+      "point1": "93% Natural Quartz Composition",
+      "point2": "Advanced Breton™ Manufacturing",
+      "point3": "Canadian-Made Quality Since 2009",
+      "point4": "Rigorous Quality Control Standards"
+    },
+    "collections": {
+      "label": "COLLECTIONS",
+      "title": "Explore the Collections",
+      "signature": {
+        "tag": "Signature Collection"
+      },
+      "pinnacle": {
+        "tag": "Pinnacle Collection"
+      },
+      "connections": {
+        "tag": "Connections Collection"
+      },
+      "opimo": {
+        "tag": "Opimo Collection"
+      }
+    },
+    "palette": {
+      "label": "COLOR PALETTE",
+      "title": "Find Your Perfect Color",
+      "all": "All",
+      "white": "White",
+      "warm": "Warm",
+      "cool": "Cool",
+      "vibrant": "Vibrant",
+      "grey": "Grey",
+      "black": "Black",
+      "polished": "Polished",
+      "leather": "Leather",
+      "riverWashed": "River Washed"
+    },
+    "benefits": {
+      "label": "WHY HANSTONE",
+      "title": "Why Choose Hanstone",
+      "card1": {
+        "title": "Harder Than Granite",
+        "desc": "Made from 93% natural quartz, Hanstone surfaces are exceptionally durable and resistant to scratches and chips."
+      },
+      "card2": {
+        "title": "Never Needs Sealing",
+        "desc": "Unlike natural stone, Hanstone quartz requires zero sealing — ever. Simply clean and enjoy."
+      },
+      "card3": {
+        "title": "Non-Porous & Hygienic",
+        "desc": "The non-porous surface resists bacteria, stains, and mold. NSF certified for food preparation."
+      },
+      "card4": {
+        "title": "Lifetime Warranty",
+        "desc": "Every Hanstone surface comes with a residential lifetime limited warranty for your peace of mind."
+      }
+    },
+    "resources": {
+      "label": "FOR PROFESSIONALS",
+      "title": "Professional Resources",
+      "desc": "Everything you need for your next project — from technical specifications to continuing education.",
+      "bim": {
+        "title": "BIM Library",
+        "desc": "Download Revit families and BIM objects for your architectural projects."
+      },
+      "cad": {
+        "title": "CAD Files",
+        "desc": "Access AutoCAD drawings and detail files for precise project planning."
+      },
+      "ceu": {
+        "title": "CEU Opportunities",
+        "desc": "Earn continuing education credits through Hanstone-certified courses."
+      },
+      "specs": {
+        "title": "Product Spec Sheets",
+        "desc": "Complete technical data and performance specifications for every Hanstone color."
+      },
+      "care": {
+        "title": "Care & Maintenance Guide",
+        "desc": "Best practices for keeping your Hanstone surfaces looking beautiful for a lifetime."
+      }
+    },
+    "cta": {
+      "title": "Ready to see Hanstone in person?",
+      "desc": "Visit our showroom to experience the full Hanstone collection. Touch, feel, and compare over 60 colors.",
+      "showroom": "Visit Our Showroom",
+      "quote": "Request Hanstone Samples"
+    }
+  },
+  "lucciare": {
+    "breadcrumb": "Lucciare Quartz",
+    "hero": {
+      "title": "Lucciare — The Art of Marbleized Veining",
+      "tagline": "Handcrafted quartz surfaces with Italian-inspired design and uncompromising quality.",
+      "badge": "Official Distributor",
+      "featured": "Featured Collection"
+    },
+    "story": {
+      "label": "OUR HERITAGE",
+      "title": "The Lucciare Story",
+      "text1": "Lucciare combines Italian artistry with advanced engineering to create quartz surfaces that capture the beauty of natural marble with superior performance.",
+      "text2": "Each slab is handcrafted to achieve unique veining patterns, ensuring no two surfaces are exactly alike.",
+      "point1": "Italian-Inspired Artisan Design",
+      "point2": "Handcrafted Unique Veining",
+      "point3": "Superior Engineering & Performance",
+      "point4": "No Two Surfaces Are Alike"
+    },
+    "collections": {
+      "label": "COLLECTIONS",
+      "title": "Explore the Collections",
+      "signature": {
+        "tag": "Signature Collection"
+      },
+      "genesis": {
+        "tag": "Genesis Collection"
+      },
+      "solstice": {
+        "tag": "Solstice Collection"
+      }
+    },
+    "genesis": {
+      "label": "THE GENESIS COLLECTION",
+      "title": "Genesis — Where It All Begins",
+      "text1": "The Genesis Collection represents the foundation of Lucciare's artistry — timeless designs inspired by the world's most coveted natural marbles.",
+      "text2": "Each surface in the Genesis Collection is crafted to capture the essence of natural stone while delivering the performance and consistency of engineered quartz.",
+      "point1": "Inspired by World's Finest Marbles",
+      "point2": "Timeless & Classic Designs",
+      "point3": "Consistent Quality & Beauty",
+      "point4": "Ideal for Luxury Interiors"
+    },
+    "benefits": {
+      "label": "WHY LUCCIARE",
+      "title": "Why Choose Lucciare",
+      "card1": {
+        "title": "Italian-Inspired Design",
+        "desc": "Each surface is crafted with meticulous attention to detail, capturing the essence of natural marble veining."
+      },
+      "card2": {
+        "title": "GreenGuard Gold Certified",
+        "desc": "Meets the world's most rigorous chemical emissions standards for healthier indoor environments."
+      },
+      "card3": {
+        "title": "Stain-Resistant & Durable",
+        "desc": "Non-porous surface resists stains, scratches, and heat — built for everyday life."
+      },
+      "card4": {
+        "title": "Quality Guaranteed",
+        "desc": "Backed by comprehensive warranty coverage for residential and commercial installations."
+      }
+    },
+    "cta": {
+      "title": "Ready to see Lucciare in person?",
+      "desc": "Visit our showroom to experience the full Lucciare collection. Touch, feel, and compare every design.",
+      "showroom": "Visit Our Showroom",
+      "quote": "Request Lucciare Samples"
+    }
+  },
+  "inspired": {
+    "label": "GET INSPIRED",
+    "title": "Get Inspired",
+    "subtitle": "Real projects, real materials, real beauty.",
+    "filter": {
+      "room": "Room Type",
+      "material": "Material",
+      "all": "All",
+      "allMaterials": "All Materials",
+      "allColors": "All Colors",
+      "kitchen": "Kitchen",
+      "bathroom": "Bathroom",
+      "commercial": "Commercial",
+      "outdoor": "Outdoor",
+      "living": "Living Space",
+      "color": {
+        "white": "White",
+        "gray": "Gray",
+        "brown": "Brown",
+        "black": "Black",
+        "blue": "Blue",
+        "gold": "Gold"
+      }
+    },
+    "room": {
+      "kitchenCountertops": "Kitchen Countertops",
+      "kitchenIsland": "Kitchen Island",
+      "kitchenPerimeter": "Kitchen Perimeter",
+      "primaryBathroom": "Primary Bathroom",
+      "showerWalls": "Shower Walls",
+      "waterfallIsland": "Waterfall Island",
+      "hotelLobby": "Hotel Lobby",
+      "restaurantBar": "Restaurant Bar",
+      "outdoorKitchen": "Outdoor Kitchen",
+      "poolDeck": "Pool Deck",
+      "featureWall": "Feature Wall",
+      "fireplaceSurround": "Fireplace Surround"
+    },
+    "beforeAfter": {
+      "label": "TRANSFORMATIONS",
+      "title": "Before & After Transformations",
+      "desc": "See how the right stone surface can completely transform a space.",
+      "before": "Before",
+      "after": "After",
+      "card1": {
+        "title": "Modern Kitchen Renovation",
+        "desc": "Outdated laminate countertops replaced with stunning Calacatta quartz."
+      },
+      "card2": {
+        "title": "Luxury Bathroom Remodel",
+        "desc": "Builder-grade vanity transformed with premium marble surfaces."
+      },
+      "card3": {
+        "title": "Commercial Lobby Upgrade",
+        "desc": "Corporate reception area elevated with dramatic quartzite feature wall."
+      }
+    },
+    "instagram": {
+      "label": "FOLLOW US",
+      "title": "Follow Us on Instagram",
+      "cta": "Follow @thestonesurfaces"
+    },
+    "submit": {
+      "label": "SHARE YOUR WORK",
+      "title": "Share Your Project",
+      "desc": "Are you a designer or fabricator? Share your project and get featured on our gallery.",
+      "desc2": "Upload your best project photos and tell us about the materials used.",
+      "namePlaceholder": "Your Name",
+      "emailPlaceholder": "Your Email",
+      "projectPlaceholder": "Tell us about the project...",
+      "uploadText": "Upload Project Photos",
+      "uploadHint": "Drag & drop files or click to browse. Max 10MB per file.",
+      "btn": "Submit Your Project"
+    }
+  },
+  "blog": {
+    "breadcrumb": "Blog",
+    "featured": {
+      "label": "Featured Post",
+      "title": "2026 Kitchen Countertop Trends: What Designers Are Choosing",
+      "excerpt": "From dramatic veining to matte finishes, discover the surfaces defining luxury kitchens this year.",
+      "readTime": "5 min read"
+    },
+    "cat": {
+      "all": "All",
+      "news": "Industry News",
+      "trends": "Design Trends",
+      "care": "Stone Care",
+      "spotlights": "Project Spotlights",
+      "hanstone": "Hanstone Updates"
+    },
+    "card1": {
+      "title": "How to Maintain Your Natural Stone Surfaces Like a Pro",
+      "excerpt": "Simple daily habits and annual treatments that keep granite, marble, and quartzite looking flawless.",
+      "readTime": "4 min read"
+    },
+    "card2": {
+      "title": "Introducing Hanstone Quartz: Why We Partnered with Hyundai L&C",
+      "excerpt": "The story behind our exclusive partnership and what it means for our customers.",
+      "readTime": "6 min read"
+    },
+    "card3": {
+      "title": "The Complete Guide to Quartzite: Nature's Masterpiece",
+      "excerpt": "Everything you need to know about this stunning natural stone — from formation to installation.",
+      "readTime": "7 min read"
+    },
+    "card4": {
+      "title": "Modern Bathroom Design: Trending Stone Surfaces for 2026",
+      "excerpt": "Bold veining, warm tones, and book-matched slabs are defining luxury bathroom design.",
+      "readTime": "5 min read"
+    },
+    "card5": {
+      "title": "Quartz vs. Quartzite: Understanding the Key Differences",
+      "excerpt": "They sound similar, but these two popular surfaces have very different properties and care needs.",
+      "readTime": "4 min read"
+    },
+    "card6": {
+      "title": "Outdoor Kitchen Countertops: What Works and What Doesn't",
+      "excerpt": "Not all stones are created equal for outdoor use. Here's what to look for in exterior applications.",
+      "readTime": "6 min read"
+    },
+    "readTime": "min read",
+    "by": "By",
+    "sidebar": {
+      "popular": "Popular Posts",
+      "categories": "Categories",
+      "cat": {
+        "news": "Industry News",
+        "trends": "Design Trends",
+        "care": "Stone Care",
+        "spotlights": "Project Spotlights",
+        "hanstone": "Hanstone Updates"
+      },
+      "newsletter": "Newsletter",
+      "newsletterDesc": "Get the latest stone industry insights and design inspiration delivered to your inbox.",
+      "emailPlaceholder": "Your email",
+      "subscribe": "Subscribe",
+      "promoLabel": "Hanstone Quartz",
+      "promoCta": "Explore the Collection"
+    }
+  },
+  "about": {
+    "label": "ABOUT US",
+    "title": "About Us",
+    "subtitle": "South Florida's trusted stone distributor since 2016.",
+    "timeline": {
+      "label": "OUR JOURNEY",
+      "title": "Our Journey",
+      "2016": {
+        "title": "Founded in Doral",
+        "desc": "The Stone Surfaces opens its first showroom in Doral, Florida, with a vision to provide premium stone surfaces to South Florida."
+      },
+      "2018": {
+        "title": "Growing Our Collection",
+        "desc": "Expanded inventory to over 200 slab varieties, establishing partnerships with quarries worldwide."
+      },
+      "2020": {
+        "title": "Industry Recognition",
+        "desc": "Named one of South Florida's top stone distributors, serving over 100 fabricators and designers."
+      },
+      "2022": {
+        "title": "Showroom Expansion",
+        "desc": "Renovated and expanded our Doral showroom to showcase 500+ slab varieties in a premium setting."
+      },
+      "2024": {
+        "title": "Multi-Location Growth",
+        "desc": "Opened new showrooms in Orlando and Sarasota to serve clients across Florida."
+      },
+      "2026": {
+        "title": "Hanstone Partnership",
+        "desc": "Became the official South Florida distributor of Hanstone Quartz by Hyundai L&C and Lucciare Handcrafted Quartz."
+      }
+    },
+    "mission": {
+      "label": "OUR VALUES",
+      "title": "Our Mission & Values",
+      "desc": "Three pillars guide everything we do — from selecting the finest slabs to delivering exceptional service.",
+      "quality": {
+        "title": "Quality",
+        "desc": "We inspect every slab to ensure it meets our exacting standards before it reaches your project."
+      },
+      "service": {
+        "title": "Service",
+        "desc": "Expert guidance from selection to installation. Our team is here to help at every step."
+      },
+      "integrity": {
+        "title": "Integrity",
+        "desc": "Transparent pricing, honest advice, and genuine partnerships with every client."
+      }
+    },
+    "team": {
+      "label": "OUR TEAM",
+      "title": "Our Team",
+      "roberto": {
+        "role": "Founder & CEO",
+        "bio": "With over 15 years in the stone industry, Roberto founded The Stone Surfaces with a vision of bringing premium surfaces to South Florida."
+      },
+      "isabella": {
+        "role": "Director of Operations",
+        "bio": "Isabella oversees daily operations and ensures every client receives the highest level of service and support."
+      },
+      "marcus": {
+        "role": "Head of Sales",
+        "bio": "Marcus brings deep industry knowledge and a passion for helping clients find the perfect surface for their projects."
+      },
+      "sofia": {
+        "role": "Design Consultant",
+        "bio": "Sofia helps architects and designers select materials that bring their creative visions to life."
+      },
+      "carlos": {
+        "role": "Warehouse Manager",
+        "bio": "Carlos manages our 50,000 sq ft facility and ensures every slab is stored, handled, and delivered with care."
+      },
+      "ana": {
+        "role": "Marketing Director",
+        "bio": "Ana drives brand awareness and connects The Stone Surfaces with professionals and homeowners across Florida."
+      },
+      "david": {
+        "role": "Trade Account Manager",
+        "bio": "David is the dedicated point of contact for our trade professionals, providing priority support and exclusive services."
+      },
+      "elena": {
+        "role": "Customer Experience Manager",
+        "bio": "Elena ensures every touchpoint — from first visit to final installation — exceeds client expectations."
+      }
+    },
+    "showroom": {
+      "label": "VISIT US",
+      "title": "Visit Our Showroom",
+      "desc": "Experience our premium collection in person. Our Doral showroom features 500+ slabs ready for you to touch, feel, and compare.",
+      "desc2": "Our expert consultants are available to guide you through our collections and help you find the perfect surface.",
+      "detail1": "500+ Slabs on Display",
+      "detail2": "Expert Consultation Available",
+      "detail3": "Open Monday - Saturday",
+      "cta": "Get Directions"
+    }
+  },
+  "contact": {
+    "title": "Request a Quote",
+    "subtitle": "Tell us about your project and we'll get back to you within 24 hours.",
+    "form": {
+      "name": "Full Name",
+      "namePh": "Your full name",
+      "company": "Company Name",
+      "companyPh": "Your company (optional)",
+      "email": "Email",
+      "emailPh": "your@email.com",
+      "phone": "Phone",
+      "phonePh": "(305) 000-0000",
+      "projectType": "Project Type",
+      "projectTypePh": "Select project type",
+      "residential": "Residential Kitchen",
+      "residentialBath": "Residential Bathroom",
+      "commercial": "Commercial",
+      "outdoor": "Outdoor",
+      "other": "Other",
+      "materials": "Materials of Interest",
+      "matGranite": "Granite",
+      "matMarble": "Marble",
+      "matQuartz": "Quartz",
+      "matQuartzite": "Quartzite",
+      "matHanstone": "Hanstone Quartz",
+      "matEngineered": "Engineered Stone",
+      "matPorcelain": "Porcelain",
+      "matTiles": "Tiles",
+      "message": "Message",
+      "messagePh": "Tell us about your project...",
+      "upload": "Upload Project Plans",
+      "uploadHint": "Drag & drop files or click to browse",
+      "submit": "Send Your Request"
+    },
+    "info": {
+      "title": "Contact Information",
+      "phone": "Phone",
+      "email": "Email",
+      "address": "Address"
+    },
+    "hours": {
+      "title": "Business Hours",
+      "weekday": "Monday - Friday",
+      "weekdayTime": "8:00 AM - 5:00 PM",
+      "saturday": "Saturday",
+      "saturdayTime": "9:00 AM - 2:00 PM",
+      "sunday": "Sunday",
+      "sundayClosed": "Closed"
+    },
+    "sent": "Sent! We'll be in touch."
+  },
+  "detail": {
+    "breadcrumb": "Product Detail",
+    "label": {
+      "collection": "Collection:",
+      "material": "Material:",
+      "finishes": "Available Finishes:",
+      "thickness": "Thickness:",
+      "dimensions": "Dimensions:"
+    },
+    "cta": {
+      "quote": "Request a Quote",
+      "sample": "Order a Sample"
+    },
+    "specs": {
+      "title": "Technical Specifications",
+      "composition": "Composition",
+      "hardness": "Mohs Hardness",
+      "absorption": "Water Absorption",
+      "strength": "Flexural Strength",
+      "applications": "Recommended Applications"
+    },
+    "related": {
+      "title": "Related Products"
+    },
+    "viewInRoom": {
+      "title": "View in Room",
+      "desc": "Coming Soon — Visualize this surface in your space with our AR tool."
+    }
+  },
+  "trade": {
+    "title": "Built for Professionals",
+    "subtitle": "Exclusive pricing, dedicated support, and the tools you need to grow your business.",
+    "benefits": {
+      "title": "Trade Benefits",
+      "pricing": {
+        "title": "Volume Pricing",
+        "desc": "Competitive wholesale pricing with volume discounts for qualified trade professionals."
+      },
+      "inventory": {
+        "title": "Priority Inventory Access",
+        "desc": "First access to new arrivals and exclusive holds on premium slabs for your projects."
+      },
+      "manager": {
+        "title": "Dedicated Account Manager",
+        "desc": "Your personal point of contact for orders, quotes, and project support."
+      },
+      "marketing": {
+        "title": "Marketing Support",
+        "desc": "Co-branded materials, sample kits, and digital assets to help you win more projects."
+      }
+    },
+    "apply": {
+      "title": "Apply for a Trade Account",
+      "desc": "Join our network of trade professionals and unlock exclusive benefits."
+    },
+    "form": {
+      "company": "Company Name",
+      "companyPh": "Your company name",
+      "license": "License Number",
+      "licensePh": "Your business license #",
+      "type": "Business Type",
+      "typePh": "Select business type",
+      "fabricator": "Fabricator",
+      "designer": "Interior Designer",
+      "contractor": "Contractor",
+      "showroom": "Showroom",
+      "other": "Other",
+      "years": "Years in Business",
+      "yearsPh": "e.g., 5",
+      "volume": "Estimated Monthly Volume",
+      "volumePh": "e.g., 20 slabs",
+      "references": "References",
+      "referencesPh": "Company names and contact info",
+      "submit": "Submit Application"
+    },
+    "resources": {
+      "title": "Professional Resources",
+      "specs": {
+        "title": "Spec Sheets",
+        "desc": "Complete technical data and performance specifications for all products."
+      },
+      "care": {
+        "title": "Care Guides",
+        "desc": "Best practices for maintaining and protecting stone surfaces."
+      },
+      "install": {
+        "title": "Installation Manuals",
+        "desc": "Step-by-step installation guides for all surface types."
+      },
+      "bim": {
+        "title": "Hanstone BIM Library",
+        "desc": "Download Revit families and BIM objects for your architectural projects."
+      },
+      "cad": {
+        "title": "CAD Files",
+        "desc": "Access AutoCAD drawings and detail files for precise project planning."
+      },
+      "ceu": {
+        "title": "CEU Credits",
+        "desc": "Earn continuing education credits through certified stone industry courses."
+      },
+      "download": "Download",
+      "enroll": "Enroll Now"
+    },
+    "promo": {
+      "title": "Current Promotions",
+      "desc": "Check back regularly for seasonal deals and new arrival announcements for trade accounts.",
+      "cta": "View Current Deals"
+    },
+    "rep": {
+      "title": "Your Trade Representative",
+      "desc": "Have questions? Our trade team is ready to help.",
+      "call": {
+        "title": "Call Direct",
+        "hours": "Mon-Fri 8am-5pm EST"
+      },
+      "email": {
+        "title": "Email Us",
+        "desc": "trade@thestonesurfaces.com"
+      },
+      "schedule": {
+        "title": "Schedule a Meeting",
+        "desc": "Book a time with your dedicated trade representative.",
+        "cta": "Book Appointment"
+      }
+    }
+  }
+}
