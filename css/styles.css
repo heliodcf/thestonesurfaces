@@ -627,12 +627,26 @@ p {
   z-index: 0;
 }
 
+.hero-bg video,
 .hero-bg img,
 .hero-bg .placeholder-bg {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.hero-bg video {
+  animation: none;
+}
+
+.hero-bg img,
+.hero-bg .placeholder-bg {
   animation: heroZoom 20s ease-in-out infinite alternate;
+}
+
+/* When video is present, hide the fallback image on desktop */
+.hero-bg video ~ .hero-fallback {
+  display: none;
 }
 
 .hero-bg .placeholder-bg {
@@ -2209,9 +2223,18 @@ p {
     transition-duration: 0.01ms !important;
   }
 
+  .hero-bg video,
   .hero-bg img,
   .hero-bg .placeholder-bg {
     animation: none;
+  }
+
+  /* Show fallback image instead of video for reduced-motion */
+  .hero-bg video {
+    display: none;
+  }
+  .hero-bg video ~ .hero-fallback {
+    display: block;
   }
 
   .reveal {
@@ -2302,6 +2325,14 @@ p {
 @media (max-width: 767px) {
   :root {
     --section-padding-desktop: 64px;
+  }
+
+  /* Mobile: hide video, show fallback image to save bandwidth */
+  .hero-bg video {
+    display: none;
+  }
+  .hero-bg video ~ .hero-fallback {
+    display: block;
   }
 
   h1 { font-size: 36px; }
