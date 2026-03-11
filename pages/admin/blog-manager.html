@@ -387,7 +387,7 @@
               <button class="action-btn edit-post-btn" data-id="${post.id}">Edit</button>
               <button class="action-btn" data-id="${post.id}" onclick="document.getElementById('preview-modal').classList.add('open');renderPreviewForId('${post.id}');">Preview</button>
               ${post.status === 'draft'
-                ? `<button class="action-btn" data-id="${post.id}" style="color:#34D399;" onclick="quickPublish('${post.id}')">Publish</button>`
+                ? `<button class="action-btn" data-id="${post.id}" style="color:#047857;" onclick="quickPublish('${post.id}')">Publish</button>`
                 : `<button class="action-btn" data-id="${post.id}" onclick="quickUnpublish('${post.id}')">Unpublish</button>`
               }
               <button class="action-btn action-btn--danger" data-id="${post.id}" onclick="deletePost('${post.id}')">Delete</button>
