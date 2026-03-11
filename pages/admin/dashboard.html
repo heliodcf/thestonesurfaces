@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | The Stone Surfaces Admin</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/admin.css">
+</head>
+<body class="admin-body">
+
+  <!-- Admin Header -->
+  <header class="admin-header">
+    <div class="admin-header-inner">
+      <a href="../../index.html" class="admin-logo">
+        <span class="logo-icon">S</span>TSS
+        <span class="admin-logo-badge">Admin</span>
+      </a>
+      <button class="admin-mobile-toggle" id="mobile-toggle">&#9776;</button>
+      <nav class="admin-nav" id="admin-nav">
+        <a href="dashboard.html" class="admin-nav-link active">&#9632; Dashboard</a>
+        <a href="blog-manager.html" class="admin-nav-link">&#9998; Blog Manager</a>
+        <button class="admin-nav-link admin-nav-link--logout" id="logout-btn">Logout</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content (hidden until auth check) -->
+  <main class="admin-main" style="display:none;">
+
+    <!-- Page Title -->
+    <h1 class="admin-page-title">Lead Dashboard</h1>
+    <p class="admin-page-subtitle">Manage leads from your AI chatbot, contact forms, and trade applications.</p>
+
+    <!-- Metrics -->
+    <div class="metric-grid" id="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-icon">&#9733;</div>
+        <div class="metric-value" id="metric-total">0</div>
+        <div class="metric-label">Total Leads</div>
+      </div>
+      <div class="metric-card metric-card--blue">
+        <div class="metric-icon">&#10043;</div>
+        <div class="metric-value" id="metric-new">0</div>
+        <div class="metric-label">New Leads</div>
+      </div>
+      <div class="metric-card metric-card--purple">
+        <div class="metric-icon">&#10004;</div>
+        <div class="metric-value" id="metric-qualified">0</div>
+        <div class="metric-label">Qualified</div>
+      </div>
+      <div class="metric-card metric-card--green">
+        <div class="metric-icon">&#10070;</div>
+        <div class="metric-value" id="metric-converted">0</div>
+        <div class="metric-label">Converted</div>
+      </div>
+    </div>
+
+    <!-- Filters Bar -->
+    <div class="filters-bar">
+      <div class="filter-group">
+        <label>Status</label>
+        <select class="filter-select" id="filter-status">
+          <option value="">All Statuses</option>
+          <option value="new">New</option>
+          <option value="contacted">Contacted</option>
+          <option value="qualified">Qualified</option>
+          <option value="converted">Converted</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>Source</label>
+        <select class="filter-select" id="filter-source">
+          <option value="">All Sources</option>
+          <option value="chatbot">AI Chatbot</option>
+          <option value="contact_form">Contact Form</option>
+          <option value="trade_form">Trade Form</option>
+          <option value="manual">Manual Entry</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <input type="text" class="filter-input filter-input--search" id="filter-search" placeholder="Search name, email, phone...">
+      </div>
+      <button class="btn btn--outline btn--small" id="export-btn">&#8681; Export CSV</button>
+      <button class="btn btn--primary btn--small" id="add-lead-btn">+ Add Lead</button>
+    </div>
+
+    <!-- Leads Table -->
+    <div class="table-wrapper">
+      <table class="admin-table" id="leads-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Contact</th>
+            <th>Interest</th>
+            <th>Source</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="leads-tbody"></tbody>
+      </table>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination" id="pagination"></div>
+
+    <!-- Empty State -->
+    <div class="empty-state" id="empty-state" style="display:none;">
+      <div class="empty-state-icon">&#128203;</div>
+      <div class="empty-state-title">No leads yet</div>
+      <div class="empty-state-text">Leads from your AI chatbot and forms will appear here.</div>
+      <button class="btn btn--primary" id="empty-add-btn">+ Add Your First Lead</button>
+    </div>
+
+  </main>
+
+  <!-- Detail Panel (slide-out) -->
+  <div class="detail-panel-overlay" id="detail-overlay">
+    <div class="detail-panel" id="detail-panel">
+      <div class="detail-panel-header">
+        <h2 class="detail-panel-title" id="detail-name">Lead Details</h2>
+        <button class="detail-panel-close" id="detail-close">&times;</button>
+      </div>
+      <div class="detail-panel-body" id="detail-body">
+        <!-- Populated by JS -->
+      </div>
+      <div class="detail-panel-footer">
+        <select class="filter-select" id="detail-status-select">
+          <option value="new">New</option>
+          <option value="contacted">Contacted</option>
+          <option value="qualified">Qualified</option>
+          <option value="converted">Converted</option>
+        </select>
+        <button class="btn btn--primary btn--small" id="detail-save-status">Update Status</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Lead Modal -->
+  <div class="admin-modal-overlay" id="add-lead-modal">
+    <div class="admin-modal">
+      <div class="admin-modal-header">
+        <h2 class="admin-modal-title">Add New Lead</h2>
+        <button class="admin-modal-close" id="add-lead-close">&times;</button>
+      </div>
+      <div class="admin-modal-body">
+        <form id="add-lead-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="lead-name">Full Name *</label>
+              <input type="text" id="lead-name" required>
+            </div>
+            <div class="form-group">
+              <label for="lead-email">Email *</label>
+              <input type="email" id="lead-email" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="lead-phone">Phone</label>
+              <input type="tel" id="lead-phone">
+            </div>
+            <div class="form-group">
+              <label for="lead-interest">Interest</label>
+              <select id="lead-interest">
+                <option value="">Select material</option>
+                <option value="Granite">Granite</option>
+                <option value="Marble">Marble</option>
+                <option value="Quartz">Quartz</option>
+                <option value="Quartzite">Quartzite</option>
+                <option value="Hanstone Quartz">Hanstone Quartz</option>
+                <option value="Porcelain">Porcelain</option>
+                <option value="Tiles">Tiles</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="lead-project">Project Type</label>
+              <select id="lead-project">
+                <option value="">Select type</option>
+                <option value="Residential Kitchen">Residential Kitchen</option>
+                <option value="Residential Bathroom">Residential Bathroom</option>
+                <option value="Commercial">Commercial</option>
+                <option value="Outdoor">Outdoor</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="lead-source">Source</label>
+              <select id="lead-source">
+                <option value="manual">Manual Entry</option>
+                <option value="chatbot">AI Chatbot</option>
+                <option value="contact_form">Contact Form</option>
+                <option value="trade_form">Trade Form</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="lead-note">Initial Note</label>
+            <textarea id="lead-note" rows="3" placeholder="Optional note about this lead..."></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="admin-modal-footer">
+        <button class="btn btn--outline" id="add-lead-cancel">Cancel</button>
+        <button class="btn btn--primary" id="add-lead-submit">Add Lead</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script src="../../js/admin-config.js"></script>
+  <script src="../../js/admin-auth.js"></script>
+  <script src="../../js/admin-data.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!AdminAuth.guard()) return;
+
+      // State
+      let allLeads = [];
+      let filteredLeads = [];
+      let currentPage = 1;
+      let selectedLeadId = null;
+
+      // DOM refs
+      const tbody = document.getElementById('leads-tbody');
+      const paginationEl = document.getElementById('pagination');
+      const emptyState = document.getElementById('empty-state');
+      const tableWrapper = document.querySelector('.table-wrapper');
+      const filtersBar = document.querySelector('.filters-bar');
+
+      // Init
+      loadLeads();
+
+      // ── Logout ─────────────────────────────
+      document.getElementById('logout-btn').addEventListener('click', () => AdminAuth.logout());
+
+      // ── Mobile nav toggle ──────────────────
+      document.getElementById('mobile-toggle').addEventListener('click', () => {
+        document.getElementById('admin-nav').classList.toggle('open');
+      });
+
+      // ── Filters ────────────────────────────
+      document.getElementById('filter-status').addEventListener('change', applyFilters);
+      document.getElementById('filter-source').addEventListener('change', applyFilters);
+      document.getElementById('filter-search').addEventListener('input', debounce(applyFilters, 300));
+
+      // ── Export CSV ─────────────────────────
+      document.getElementById('export-btn').addEventListener('click', exportCSV);
+
+      // ── Add Lead Modal ─────────────────────
+      document.getElementById('add-lead-btn').addEventListener('click', openAddModal);
+      document.getElementById('empty-add-btn').addEventListener('click', openAddModal);
+      document.getElementById('add-lead-close').addEventListener('click', closeAddModal);
+      document.getElementById('add-lead-cancel').addEventListener('click', closeAddModal);
+      document.getElementById('add-lead-submit').addEventListener('click', submitNewLead);
+      document.getElementById('add-lead-modal').addEventListener('click', (e) => {
+        if (e.target === e.currentTarget) closeAddModal();
+      });
+
+      // ── Detail Panel ───────────────────────
+      document.getElementById('detail-close').addEventListener('click', closeDetail);
+      document.getElementById('detail-overlay').addEventListener('click', (e) => {
+        if (e.target === e.currentTarget) closeDetail();
+      });
+      document.getElementById('detail-save-status').addEventListener('click', updateLeadStatus);
+
+      // ── Functions ──────────────────────────
+
+      async function loadLeads() {
+        allLeads = await AdminData.getLeads();
+        applyFilters();
+        updateMetrics();
+      }
+
+      function updateMetrics() {
+        document.getElementById('metric-total').textContent = allLeads.length;
+        document.getElementById('metric-new').textContent = allLeads.filter(l => l.status === 'new').length;
+        document.getElementById('metric-qualified').textContent = allLeads.filter(l => l.status === 'qualified').length;
+        document.getElementById('metric-converted').textContent = allLeads.filter(l => l.status === 'converted').length;
+      }
+
+      function applyFilters() {
+        const status = document.getElementById('filter-status').value;
+        const source = document.getElementById('filter-source').value;
+        const search = document.getElementById('filter-search').value.toLowerCase();
+
+        filteredLeads = allLeads.filter(l => {
+          if (status && l.status !== status) return false;
+          if (source && l.source !== source) return false;
+          if (search && !(
+            l.name.toLowerCase().includes(search) ||
+            l.email.toLowerCase().includes(search) ||
+            (l.phone && l.phone.includes(search))
+          )) return false;
+          return true;
+        });
+
+        currentPage = 1;
+        renderTable();
+      }
+
+      function renderTable() {
+        const perPage = ADMIN_CONFIG.LEADS_PER_PAGE;
+        const totalPages = Math.ceil(filteredLeads.length / perPage) || 1;
+        const start = (currentPage - 1) * perPage;
+        const pageLeads = filteredLeads.slice(start, start + perPage);
+
+        if (filteredLeads.length === 0 && allLeads.length === 0) {
+          tableWrapper.style.display = 'none';
+          filtersBar.style.display = 'none';
+          paginationEl.style.display = 'none';
+          emptyState.style.display = 'block';
+          return;
+        }
+
+        tableWrapper.style.display = '';
+        filtersBar.style.display = '';
+        emptyState.style.display = 'none';
+
+        tbody.innerHTML = pageLeads.map(lead => {
+          const statusCfg = ADMIN_CONFIG.LEAD_STATUSES.find(s => s.value === lead.status) || {};
+          const sourceCfg = ADMIN_CONFIG.LEAD_SOURCES.find(s => s.value === lead.source) || {};
+          const date = new Date(lead.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+          return `<tr data-id="${lead.id}">
+            <td>
+              <div class="lead-name">${escHtml(lead.name)}</div>
+            </td>
+            <td>
+              <div>${escHtml(lead.email)}</div>
+              <div class="lead-email">${escHtml(lead.phone || '—')}</div>
+            </td>
+            <td>${escHtml(lead.interest || '—')}</td>
+            <td>${escHtml(sourceCfg.label || lead.source)}</td>
+            <td><span class="status-badge status-badge--${lead.status}">${escHtml(statusCfg.label || lead.status)}</span></td>
+            <td>${date}</td>
+            <td class="actions-cell">
+              <button class="action-btn view-btn" data-id="${lead.id}">View</button>
+              <button class="action-btn action-btn--danger delete-btn" data-id="${lead.id}">Delete</button>
+            </td>
+          </tr>`;
+        }).join('');
+
+        // Bind row clicks
+        tbody.querySelectorAll('.view-btn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openDetail(btn.dataset.id);
+          });
+        });
+
+        tbody.querySelectorAll('.delete-btn').forEach(btn => {
+          btn.addEventListener('click', async (e) => {
+            e.stopPropagation();
+            if (confirm('Delete this lead?')) {
+              await AdminData.deleteLead(btn.dataset.id);
+              await loadLeads();
+              showToast('Lead deleted.');
+            }
+          });
+        });
+
+        tbody.querySelectorAll('tr').forEach(tr => {
+          tr.addEventListener('click', () => openDetail(tr.dataset.id));
+        });
+
+        // Pagination
+        renderPagination(totalPages);
+      }
+
+      function renderPagination(totalPages) {
+        if (totalPages <= 1) {
+          paginationEl.style.display = 'none';
+          return;
+        }
+        paginationEl.style.display = 'flex';
+
+        let html = `<button class="pagination-btn" data-page="${currentPage - 1}" ${currentPage === 1 ? 'disabled' : ''}>&laquo; Prev</button>`;
+        for (let i = 1; i <= totalPages; i++) {
+          html += `<button class="pagination-btn ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
+        }
+        html += `<button class="pagination-btn" data-page="${currentPage + 1}" ${currentPage === totalPages ? 'disabled' : ''}>Next &raquo;</button>`;
+        paginationEl.innerHTML = html;
+
+        paginationEl.querySelectorAll('.pagination-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const page = parseInt(btn.dataset.page);
+            if (page >= 1 && page <= totalPages) {
+              currentPage = page;
+              renderTable();
+            }
+          });
+        });
+      }
+
+      // ── Detail Panel ───────────────────────
+
+      function openDetail(id) {
+        const lead = allLeads.find(l => l.id === id);
+        if (!lead) return;
+        selectedLeadId = id;
+
+        document.getElementById('detail-name').textContent = lead.name;
+        document.getElementById('detail-status-select').value = lead.status;
+
+        const sourceCfg = ADMIN_CONFIG.LEAD_SOURCES.find(s => s.value === lead.source) || {};
+        const date = new Date(lead.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+
+        let notesHtml = '';
+        if (lead.notes && lead.notes.length > 0) {
+          notesHtml = lead.notes.map(n => `
+            <div class="note-item">
+              <div class="note-text">${escHtml(n.text)}</div>
+              <div class="note-date">${new Date(n.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</div>
+            </div>
+          `).join('');
+        } else {
+          notesHtml = '<p style="color:var(--color-text-muted);font-size:13px;">No notes yet.</p>';
+        }
+
+        document.getElementById('detail-body').innerHTML = `
+          <div class="detail-field">
+            <div class="detail-label">Email</div>
+            <div class="detail-value"><a href="mailto:${escHtml(lead.email)}">${escHtml(lead.email)}</a></div>
+          </div>
+          <div class="detail-field">
+            <div class="detail-label">Phone</div>
+            <div class="detail-value">${lead.phone ? `<a href="tel:${escHtml(lead.phone)}">${escHtml(lead.phone)}</a>` : '—'}</div>
+          </div>
+          <div class="detail-field">
+            <div class="detail-label">Interest</div>
+            <div class="detail-value">${escHtml(lead.interest || '—')}</div>
+          </div>
+          <div class="detail-field">
+            <div class="detail-label">Project Type</div>
+            <div class="detail-value">${escHtml(lead.projectType || '—')}</div>
+          </div>
+          <div class="detail-field">
+            <div class="detail-label">Source</div>
+            <div class="detail-value">${escHtml(sourceCfg.label || lead.source)}</div>
+          </div>
+          <div class="detail-field">
+            <div class="detail-label">Created</div>
+            <div class="detail-value">${date}</div>
+          </div>
+          <div class="detail-field">
+            <div class="detail-label">Notes</div>
+            <div class="notes-list">${notesHtml}</div>
+            <div class="add-note-form">
+              <textarea id="new-note-text" placeholder="Add a note..." rows="2"></textarea>
+              <button class="btn btn--small btn--gold" id="add-note-btn">Add</button>
+            </div>
+          </div>
+        `;
+
+        // Add note handler
+        document.getElementById('add-note-btn').addEventListener('click', addNote);
+
+        document.getElementById('detail-overlay').classList.add('open');
+      }
+
+      function closeDetail() {
+        document.getElementById('detail-overlay').classList.remove('open');
+        selectedLeadId = null;
+      }
+
+      async function addNote() {
+        const text = document.getElementById('new-note-text').value.trim();
+        if (!text || !selectedLeadId) return;
+
+        const lead = allLeads.find(l => l.id === selectedLeadId);
+        if (!lead) return;
+
+        lead.notes = lead.notes || [];
+        lead.notes.push({ text, date: new Date().toISOString() });
+        await AdminData.updateLead(selectedLeadId, { notes: lead.notes });
+        openDetail(selectedLeadId);
+        showToast('Note added.');
+      }
+
+      async function updateLeadStatus() {
+        if (!selectedLeadId) return;
+        const newStatus = document.getElementById('detail-status-select').value;
+        await AdminData.updateLead(selectedLeadId, { status: newStatus });
+        await loadLeads();
+        openDetail(selectedLeadId);
+        showToast('Status updated.');
+      }
+
+      // ── Add Lead Modal ─────────────────────
+
+      function openAddModal() {
+        document.getElementById('add-lead-modal').classList.add('open');
+      }
+
+      function closeAddModal() {
+        document.getElementById('add-lead-modal').classList.remove('open');
+        document.getElementById('add-lead-form').reset();
+      }
+
+      async function submitNewLead() {
+        const name = document.getElementById('lead-name').value.trim();
+        const email = document.getElementById('lead-email').value.trim();
+        if (!name || !email) {
+          showToast('Name and email are required.', 'error');
+          return;
+        }
+
+        const noteText = document.getElementById('lead-note').value.trim();
+        const lead = {
+          name,
+          email,
+          phone: document.getElementById('lead-phone').value.trim(),
+          interest: document.getElementById('lead-interest').value,
+          projectType: document.getElementById('lead-project').value,
+          source: document.getElementById('lead-source').value,
+          status: 'new',
+          notes: noteText ? [{ text: noteText, date: new Date().toISOString() }] : [],
+        };
+
+        await AdminData.saveLead(lead);
+        closeAddModal();
+        await loadLeads();
+        showToast('Lead added successfully.');
+      }
+
+      // ── Export CSV ─────────────────────────
+
+      function exportCSV() {
+        if (filteredLeads.length === 0) {
+          showToast('No leads to export.', 'warning');
+          return;
+        }
+
+        const headers = ['Name', 'Email', 'Phone', 'Interest', 'Project Type', 'Source', 'Status', 'Created'];
+        const rows = filteredLeads.map(l => [
+          l.name, l.email, l.phone || '', l.interest || '', l.projectType || '',
+          l.source, l.status, new Date(l.createdAt).toLocaleDateString()
+        ]);
+
+        const csv = [headers, ...rows].map(row =>
+          row.map(cell => '"' + String(cell).replace(/"/g, '""') + '"').join(',')
+        ).join('\n');
+
+        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'tss-leads-' + new Date().toISOString().slice(0, 10) + '.csv';
+        a.click();
+        URL.revokeObjectURL(url);
+        showToast('CSV exported.');
+      }
+
+      // ── Utilities ──────────────────────────
+
+      function escHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+      }
+
+      function debounce(fn, ms) {
+        let timer;
+        return function (...args) {
+          clearTimeout(timer);
+          timer = setTimeout(() => fn.apply(this, args), ms);
+        };
+      }
+
+      function showToast(message, type = 'success') {
+        const toast = document.getElementById('toast');
+        toast.textContent = message;
+        toast.className = 'toast' + (type !== 'success' ? ' toast--' + type : '');
+        toast.classList.add('visible');
+        setTimeout(() => toast.classList.remove('visible'), 3000);
+      }
+    });
+  </script>
+</body>
+</html>

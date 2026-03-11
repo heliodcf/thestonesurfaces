@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Manager | The Stone Surfaces Admin</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/admin.css">
+</head>
+<body class="admin-body">
+
+  <!-- Admin Header -->
+  <header class="admin-header">
+    <div class="admin-header-inner">
+      <a href="../../index.html" class="admin-logo">
+        <span class="logo-icon">S</span>TSS
+        <span class="admin-logo-badge">Admin</span>
+      </a>
+      <button class="admin-mobile-toggle" id="mobile-toggle">&#9776;</button>
+      <nav class="admin-nav" id="admin-nav">
+        <a href="dashboard.html" class="admin-nav-link">&#9632; Dashboard</a>
+        <a href="blog-manager.html" class="admin-nav-link active">&#9998; Blog Manager</a>
+        <button class="admin-nav-link admin-nav-link--logout" id="logout-btn">Logout</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content (hidden until auth) -->
+  <main class="admin-main" style="display:none;">
+
+    <h1 class="admin-page-title">Blog Manager</h1>
+    <p class="admin-page-subtitle">Create, edit, and publish blog posts with AI-powered content generation.</p>
+
+    <!-- Tabs -->
+    <div class="admin-tabs">
+      <button class="admin-tab active" data-tab="list" data-filter="">All Posts <span class="tab-count" id="count-all">0</span></button>
+      <button class="admin-tab" data-tab="list" data-filter="draft">Drafts <span class="tab-count" id="count-drafts">0</span></button>
+      <button class="admin-tab" data-tab="list" data-filter="published">Published <span class="tab-count" id="count-published">0</span></button>
+      <button class="admin-tab admin-tab--new" data-tab="editor" id="new-post-tab">+ New Post</button>
+    </div>
+
+    <!-- ═══ LIST VIEW ═══ -->
+    <div class="editor-section active" id="section-list">
+      <div class="table-wrapper">
+        <table class="admin-table" id="posts-table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Category</th>
+              <th>Status</th>
+              <th>Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="posts-tbody"></tbody>
+        </table>
+      </div>
+
+      <div class="empty-state" id="posts-empty" style="display:none;">
+        <div class="empty-state-icon">&#128221;</div>
+        <div class="empty-state-title">No posts yet</div>
+        <div class="empty-state-text">Create your first blog post with AI or write one manually.</div>
+        <button class="btn btn--primary" id="empty-new-btn">+ Create Post</button>
+      </div>
+    </div>
+
+    <!-- ═══ EDITOR VIEW ═══ -->
+    <div class="editor-section" id="section-editor">
+
+      <!-- AI Ideas Generator -->
+      <div style="margin-bottom:32px;">
+        <button class="btn btn--gold" id="generate-ideas-btn">&#9733; Generate 5 AI Ideas</button>
+        <span style="font-size:13px;color:var(--color-text-muted);margin-left:12px;">or write manually below</span>
+      </div>
+
+      <!-- Ideas Container -->
+      <div class="ideas-container" id="ideas-container">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+          <h3 style="font-family:var(--font-headline);font-size:20px;font-weight:700;color:var(--color-text-light);">AI-Generated Ideas</h3>
+          <button class="btn btn--ghost btn--small" id="dismiss-ideas">Dismiss</button>
+        </div>
+        <div class="ideas-grid" id="ideas-grid"></div>
+        <div class="ideas-actions">
+          <button class="btn btn--primary btn--small" id="use-idea-btn" disabled>Use Selected Idea</button>
+          <button class="btn btn--outline btn--small" id="regenerate-ideas-btn">Regenerate</button>
+        </div>
+      </div>
+
+      <!-- Post Editor Form -->
+      <form id="post-form">
+        <input type="hidden" id="post-id">
+
+        <div class="form-group">
+          <label for="post-title">Title *</label>
+          <input type="text" id="post-title" placeholder="Enter post title..." required style="font-size:18px;font-weight:600;padding:16px;">
+        </div>
+
+        <!-- Content Editor -->
+        <div class="form-group">
+          <label>Content *</label>
+          <div class="editor-toolbar">
+            <button type="button" class="toolbar-btn" data-action="bold" title="Bold"><b>B</b></button>
+            <button type="button" class="toolbar-btn" data-action="italic" title="Italic"><i>I</i></button>
+            <button type="button" class="toolbar-btn" data-action="underline" title="Underline"><u>U</u></button>
+            <div class="toolbar-separator"></div>
+            <button type="button" class="toolbar-btn" data-action="h2" title="Heading 2">H2</button>
+            <button type="button" class="toolbar-btn" data-action="h3" title="Heading 3">H3</button>
+            <div class="toolbar-separator"></div>
+            <button type="button" class="toolbar-btn" data-action="ul" title="Bullet List">&#8226;</button>
+            <button type="button" class="toolbar-btn" data-action="ol" title="Numbered List">1.</button>
+            <div class="toolbar-separator"></div>
+            <button type="button" class="toolbar-btn" data-action="link" title="Insert Link">&#128279;</button>
+            <button type="button" class="toolbar-btn" data-action="image" title="Insert Image">&#128247;</button>
+            <div class="toolbar-separator"></div>
+            <button type="button" class="toolbar-btn" data-action="blockquote" title="Blockquote">&#10077;</button>
+          </div>
+          <textarea class="editor-textarea" id="post-content" placeholder="Write your blog post content... (HTML supported)"></textarea>
+        </div>
+
+        <!-- Featured Image -->
+        <div class="form-group">
+          <label for="post-image">Featured Image URL</label>
+          <input type="url" id="post-image" placeholder="https://example.com/image.jpg">
+        </div>
+
+        <!-- Category & Tags -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="post-category">Category</label>
+            <select id="post-category">
+              <option value="design-trends">Design Trends</option>
+              <option value="stone-care">Stone Care</option>
+              <option value="industry-news">Industry News</option>
+              <option value="project-spotlights">Project Spotlights</option>
+              <option value="hanstone-updates">Hanstone Updates</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Tags</label>
+            <div class="tags-input-wrapper" id="tags-wrapper">
+              <input type="text" class="tags-input" id="tags-input" placeholder="Type a tag and press Enter...">
+            </div>
+          </div>
+        </div>
+
+        <!-- SEO Panel -->
+        <div class="seo-panel" id="seo-panel">
+          <div class="seo-panel-title">&#128270; SEO & Meta Tags</div>
+
+          <button type="button" class="btn btn--outline btn--small" id="generate-seo-btn" style="margin-bottom:20px;">&#9733; Auto-Generate SEO</button>
+
+          <div class="form-group">
+            <label for="seo-title">SEO Title</label>
+            <input type="text" id="seo-title" placeholder="Page title for search engines (50-60 chars)">
+            <div class="char-count" id="seo-title-count">0/60</div>
+          </div>
+          <div class="form-group">
+            <label for="seo-description">Meta Description</label>
+            <textarea id="seo-description" rows="3" placeholder="Description for search results (120-155 chars)"></textarea>
+            <div class="char-count" id="seo-desc-count">0/155</div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="seo-og-title">OG Title</label>
+              <input type="text" id="seo-og-title" placeholder="Social share title">
+            </div>
+            <div class="form-group">
+              <label for="seo-og-desc">OG Description</label>
+              <input type="text" id="seo-og-desc" placeholder="Social share description">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="seo-alt">Image Alt Text</label>
+            <input type="text" id="seo-alt" placeholder="Descriptive alt text for featured image">
+          </div>
+          <div class="form-group">
+            <label for="seo-canonical">Canonical URL</label>
+            <input type="text" id="seo-canonical" placeholder="/pages/blog/post-slug" readonly style="opacity:0.6;">
+          </div>
+
+          <!-- Google Preview -->
+          <div class="seo-preview" id="seo-preview">
+            <div class="seo-preview-title" id="preview-seo-title">Post Title | The Stone Surfaces Blog</div>
+            <div class="seo-preview-url" id="preview-seo-url">thestonesurfaces.com/pages/blog/post-slug</div>
+            <div class="seo-preview-description" id="preview-seo-desc">Your meta description will appear here...</div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div style="display:flex;gap:12px;margin-top:32px;padding-top:24px;border-top:1px solid var(--color-border-dark);">
+          <button type="button" class="btn btn--outline" id="save-draft-btn">Save as Draft</button>
+          <button type="button" class="btn btn--outline" id="preview-btn">Preview</button>
+          <button type="button" class="btn btn--primary" id="publish-btn">Publish</button>
+          <button type="button" class="btn btn--ghost" id="cancel-edit-btn" style="margin-left:auto;">Cancel</button>
+        </div>
+      </form>
+    </div>
+
+  </main>
+
+  <!-- Preview Modal -->
+  <div class="admin-modal-overlay" id="preview-modal">
+    <div class="admin-modal admin-modal--preview">
+      <div class="admin-modal-header">
+        <h2 class="admin-modal-title">Post Preview</h2>
+        <button class="admin-modal-close" id="preview-close">&times;</button>
+      </div>
+      <div class="admin-modal-body" style="padding:0;">
+        <div class="preview-article" id="preview-article"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script src="../../js/admin-config.js"></script>
+  <script src="../../js/admin-auth.js"></script>
+  <script src="../../js/admin-data.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!AdminAuth.guard()) return;
+
+      // State
+      let allPosts = [];
+      let currentFilter = '';
+      let selectedIdeaIdx = -1;
+      let ideas = [];
+      let tags = [];
+      let editingPostId = null;
+
+      // DOM refs
+      const sectionList = document.getElementById('section-list');
+      const sectionEditor = document.getElementById('section-editor');
+
+      // Init
+      loadPosts();
+
+      // ── Logout & Mobile Nav ────────────────
+      document.getElementById('logout-btn').addEventListener('click', () => AdminAuth.logout());
+      document.getElementById('mobile-toggle').addEventListener('click', () => {
+        document.getElementById('admin-nav').classList.toggle('open');
+      });
+
+      // ── Tabs ───────────────────────────────
+      document.querySelectorAll('.admin-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+
+          const section = tab.dataset.tab;
+          if (section === 'list') {
+            currentFilter = tab.dataset.filter || '';
+            showSection('list');
+            renderPostsTable();
+          } else {
+            resetEditor();
+            showSection('editor');
+          }
+        });
+      });
+
+      document.getElementById('empty-new-btn')?.addEventListener('click', () => {
+        resetEditor();
+        showSection('editor');
+        document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+        document.getElementById('new-post-tab').classList.add('active');
+      });
+
+      // ── AI Ideas ───────────────────────────
+      document.getElementById('generate-ideas-btn').addEventListener('click', generateIdeas);
+      document.getElementById('regenerate-ideas-btn').addEventListener('click', generateIdeas);
+      document.getElementById('dismiss-ideas').addEventListener('click', () => {
+        document.getElementById('ideas-container').classList.remove('visible');
+        selectedIdeaIdx = -1;
+      });
+      document.getElementById('use-idea-btn').addEventListener('click', useSelectedIdea);
+
+      // ── Editor Toolbar ─────────────────────
+      document.querySelectorAll('.toolbar-btn').forEach(btn => {
+        btn.addEventListener('click', () => applyFormat(btn.dataset.action));
+      });
+
+      // ── Tags Input ─────────────────────────
+      document.getElementById('tags-input').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ',') {
+          e.preventDefault();
+          const val = e.target.value.trim().replace(/,/g, '');
+          if (val && !tags.includes(val)) {
+            tags.push(val);
+            renderTags();
+          }
+          e.target.value = '';
+        }
+      });
+
+      document.getElementById('tags-wrapper').addEventListener('click', () => {
+        document.getElementById('tags-input').focus();
+      });
+
+      // ── SEO Character Counts ───────────────
+      document.getElementById('seo-title').addEventListener('input', (e) => {
+        updateCharCount('seo-title-count', e.target.value.length, 60);
+        document.getElementById('preview-seo-title').textContent = e.target.value || 'Post Title';
+      });
+
+      document.getElementById('seo-description').addEventListener('input', (e) => {
+        updateCharCount('seo-desc-count', e.target.value.length, 155);
+        document.getElementById('preview-seo-desc').textContent = e.target.value || 'Your meta description will appear here...';
+      });
+
+      document.getElementById('post-title').addEventListener('input', () => {
+        const slug = AdminData.slugify(document.getElementById('post-title').value);
+        document.getElementById('seo-canonical').value = '/pages/blog/' + slug;
+        document.getElementById('preview-seo-url').textContent = 'thestonesurfaces.com/pages/blog/' + slug;
+      });
+
+      // ── Generate SEO ───────────────────────
+      document.getElementById('generate-seo-btn').addEventListener('click', autoGenerateSEO);
+
+      // ── Save / Publish / Preview / Cancel ──
+      document.getElementById('save-draft-btn').addEventListener('click', () => savePost('draft'));
+      document.getElementById('publish-btn').addEventListener('click', () => savePost('published'));
+      document.getElementById('preview-btn').addEventListener('click', showPreview);
+      document.getElementById('cancel-edit-btn').addEventListener('click', () => {
+        showSection('list');
+        document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+        document.querySelector('.admin-tab[data-filter=""]').classList.add('active');
+      });
+
+      // ── Preview Modal ──────────────────────
+      document.getElementById('preview-close').addEventListener('click', () => {
+        document.getElementById('preview-modal').classList.remove('open');
+      });
+      document.getElementById('preview-modal').addEventListener('click', (e) => {
+        if (e.target === e.currentTarget) e.currentTarget.classList.remove('open');
+      });
+
+      // ═══ FUNCTIONS ═══════════════════════════
+
+      async function loadPosts() {
+        allPosts = await AdminData.getPosts();
+        updateCounts();
+        renderPostsTable();
+      }
+
+      function updateCounts() {
+        document.getElementById('count-all').textContent = allPosts.length;
+        document.getElementById('count-drafts').textContent = allPosts.filter(p => p.status === 'draft').length;
+        document.getElementById('count-published').textContent = allPosts.filter(p => p.status === 'published').length;
+      }
+
+      function showSection(name) {
+        sectionList.classList.toggle('active', name === 'list');
+        sectionEditor.classList.toggle('active', name === 'editor');
+      }
+
+      // ── Posts Table ─────────────────────────
+
+      function renderPostsTable() {
+        const filtered = currentFilter ? allPosts.filter(p => p.status === currentFilter) : allPosts;
+        const tbody = document.getElementById('posts-tbody');
+        const emptyEl = document.getElementById('posts-empty');
+
+        if (filtered.length === 0) {
+          document.querySelector('#section-list .table-wrapper').style.display = 'none';
+          emptyEl.style.display = 'block';
+          return;
+        }
+
+        document.querySelector('#section-list .table-wrapper').style.display = '';
+        emptyEl.style.display = 'none';
+
+        tbody.innerHTML = filtered.map(post => {
+          const catCfg = ADMIN_CONFIG.BLOG_CATEGORIES.find(c => c.value === post.category) || {};
+          const date = new Date(post.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+          return `<tr>
+            <td><strong>${escHtml(post.title)}</strong></td>
+            <td><span class="status-badge" style="background:rgba(196,163,90,0.15);color:var(--color-accent-gold);">${escHtml(catCfg.label || post.category)}</span></td>
+            <td><span class="status-badge status-badge--${post.status}">${capitalize(post.status)}</span></td>
+            <td>${date}</td>
+            <td class="actions-cell">
+              <button class="action-btn edit-post-btn" data-id="${post.id}">Edit</button>
+              <button class="action-btn" data-id="${post.id}" onclick="document.getElementById('preview-modal').classList.add('open');renderPreviewForId('${post.id}');">Preview</button>
+              ${post.status === 'draft'
+                ? `<button class="action-btn" data-id="${post.id}" style="color:#34D399;" onclick="quickPublish('${post.id}')">Publish</button>`
+                : `<button class="action-btn" data-id="${post.id}" onclick="quickUnpublish('${post.id}')">Unpublish</button>`
+              }
+              <button class="action-btn action-btn--danger" data-id="${post.id}" onclick="deletePost('${post.id}')">Delete</button>
+            </td>
+          </tr>`;
+        }).join('');
+
+        // Edit buttons
+        tbody.querySelectorAll('.edit-post-btn').forEach(btn => {
+          btn.addEventListener('click', () => editPost(btn.dataset.id));
+        });
+      }
+
+      // ── Edit Post ──────────────────────────
+
+      function editPost(id) {
+        const post = allPosts.find(p => p.id === id);
+        if (!post) return;
+
+        editingPostId = id;
+        document.getElementById('post-id').value = id;
+        document.getElementById('post-title').value = post.title;
+        document.getElementById('post-content').value = post.content || '';
+        document.getElementById('post-image').value = post.featuredImage || '';
+        document.getElementById('post-category').value = post.category || 'design-trends';
+
+        // Tags
+        tags = [...(post.tags || [])];
+        renderTags();
+
+        // SEO
+        if (post.seo) {
+          document.getElementById('seo-title').value = post.seo.titleTag || '';
+          document.getElementById('seo-description').value = post.seo.metaDescription || '';
+          document.getElementById('seo-og-title').value = post.seo.ogTitle || '';
+          document.getElementById('seo-og-desc').value = post.seo.ogDescription || '';
+          document.getElementById('seo-alt').value = post.seo.altText || '';
+          document.getElementById('seo-canonical').value = post.seo.canonicalUrl || '';
+          // Update previews
+          document.getElementById('preview-seo-title').textContent = post.seo.titleTag || '';
+          document.getElementById('preview-seo-url').textContent = 'thestonesurfaces.com' + (post.seo.canonicalUrl || '');
+          document.getElementById('preview-seo-desc').textContent = post.seo.metaDescription || '';
+          updateCharCount('seo-title-count', (post.seo.titleTag || '').length, 60);
+          updateCharCount('seo-desc-count', (post.seo.metaDescription || '').length, 155);
+        }
+
+        showSection('editor');
+        document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+      }
+
+      function resetEditor() {
+        editingPostId = null;
+        document.getElementById('post-form').reset();
+        document.getElementById('post-id').value = '';
+        tags = [];
+        renderTags();
+        selectedIdeaIdx = -1;
+        document.getElementById('ideas-container').classList.remove('visible');
+        document.getElementById('seo-title').value = '';
+        document.getElementById('seo-description').value = '';
+        document.getElementById('seo-og-title').value = '';
+        document.getElementById('seo-og-desc').value = '';
+        document.getElementById('seo-alt').value = '';
+        document.getElementById('seo-canonical').value = '';
+        document.getElementById('preview-seo-title').textContent = 'Post Title | The Stone Surfaces Blog';
+        document.getElementById('preview-seo-url').textContent = 'thestonesurfaces.com/pages/blog/post-slug';
+        document.getElementById('preview-seo-desc').textContent = 'Your meta description will appear here...';
+        updateCharCount('seo-title-count', 0, 60);
+        updateCharCount('seo-desc-count', 0, 155);
+      }
+
+      // ── AI Ideas ───────────────────────────
+
+      async function generateIdeas() {
+        const btn = document.getElementById('generate-ideas-btn');
+        btn.disabled = true;
+        btn.innerHTML = '<span class="spinner"></span> Generating...';
+
+        ideas = await AdminData.generateBlogIdeas();
+
+        btn.disabled = false;
+        btn.innerHTML = '&#9733; Generate 5 AI Ideas';
+
+        if (!ideas || ideas.length === 0) {
+          showToast('Could not generate ideas. Check n8n webhook configuration.', 'error');
+          return;
+        }
+
+        selectedIdeaIdx = -1;
+        document.getElementById('use-idea-btn').disabled = true;
+        document.getElementById('ideas-container').classList.add('visible');
+
+        document.getElementById('ideas-grid').innerHTML = ideas.map((idea, i) => `
+          <div class="idea-card" data-idx="${i}">
+            <div class="idea-title">${escHtml(idea.title)}</div>
+            <div class="idea-angle">${escHtml(idea.angle || '')}</div>
+          </div>
+        `).join('');
+
+        document.querySelectorAll('.idea-card').forEach(card => {
+          card.addEventListener('click', () => {
+            document.querySelectorAll('.idea-card').forEach(c => c.classList.remove('selected'));
+            card.classList.add('selected');
+            selectedIdeaIdx = parseInt(card.dataset.idx);
+            document.getElementById('use-idea-btn').disabled = false;
+          });
+        });
+      }
+
+      async function useSelectedIdea() {
+        if (selectedIdeaIdx < 0 || !ideas[selectedIdeaIdx]) return;
+
+        const idea = ideas[selectedIdeaIdx];
+        document.getElementById('post-title').value = idea.title;
+
+        // Trigger slug generation
+        document.getElementById('post-title').dispatchEvent(new Event('input'));
+
+        // Generate content via AI
+        const btn = document.getElementById('use-idea-btn');
+        btn.disabled = true;
+        btn.innerHTML = '<span class="spinner"></span> Generating content...';
+
+        const result = await AdminData.generateBlogContent(idea.title, idea.angle);
+
+        btn.disabled = false;
+        btn.innerHTML = 'Use Selected Idea';
+
+        if (result) {
+          document.getElementById('post-content').value = result.content || '';
+          if (result.category) document.getElementById('post-category').value = result.category;
+          if (result.tags && Array.isArray(result.tags)) {
+            tags = result.tags;
+            renderTags();
+          }
+          // Auto-generate SEO
+          await autoGenerateSEO();
+          showToast('Content generated! Review and edit before publishing.');
+        }
+
+        document.getElementById('ideas-container').classList.remove('visible');
+      }
+
+      // ── SEO Generation ─────────────────────
+
+      async function autoGenerateSEO() {
+        const title = document.getElementById('post-title').value;
+        const content = document.getElementById('post-content').value;
+
+        if (!title) {
+          showToast('Enter a title first.', 'warning');
+          return;
+        }
+
+        const btn = document.getElementById('generate-seo-btn');
+        btn.disabled = true;
+        btn.innerHTML = '<span class="spinner"></span> Generating SEO...';
+
+        const slug = AdminData.slugify(title);
+        const seo = await AdminData.generateBlogSEO(title, content, '/pages/blog/' + slug);
+
+        btn.disabled = false;
+        btn.innerHTML = '&#9733; Auto-Generate SEO';
+
+        if (seo) {
+          document.getElementById('seo-title').value = seo.titleTag || '';
+          document.getElementById('seo-description').value = seo.metaDescription || '';
+          document.getElementById('seo-og-title').value = seo.ogTitle || '';
+          document.getElementById('seo-og-desc').value = seo.ogDescription || '';
+          document.getElementById('seo-alt').value = seo.altText || '';
+          document.getElementById('seo-canonical').value = seo.canonicalUrl || '/pages/blog/' + slug;
+
+          // Update preview
+          document.getElementById('preview-seo-title').textContent = seo.titleTag || '';
+          document.getElementById('preview-seo-url').textContent = 'thestonesurfaces.com' + (seo.canonicalUrl || '/pages/blog/' + slug);
+          document.getElementById('preview-seo-desc').textContent = seo.metaDescription || '';
+          updateCharCount('seo-title-count', (seo.titleTag || '').length, 60);
+          updateCharCount('seo-desc-count', (seo.metaDescription || '').length, 155);
+
+          showToast('SEO fields generated.');
+        }
+      }
+
+      // ── Save Post ──────────────────────────
+
+      async function savePost(status) {
+        const title = document.getElementById('post-title').value.trim();
+        const content = document.getElementById('post-content').value.trim();
+
+        if (!title) {
+          showToast('Title is required.', 'error');
+          return;
+        }
+
+        const post = {
+          id: editingPostId || undefined,
+          title,
+          content,
+          featuredImage: document.getElementById('post-image').value.trim(),
+          category: document.getElementById('post-category').value,
+          tags: [...tags],
+          status,
+          seo: {
+            titleTag: document.getElementById('seo-title').value,
+            metaDescription: document.getElementById('seo-description').value,
+            canonicalUrl: document.getElementById('seo-canonical').value,
+            ogTitle: document.getElementById('seo-og-title').value,
+            ogDescription: document.getElementById('seo-og-desc').value,
+            altText: document.getElementById('seo-alt').value,
+            schemaArticle: {},
+          },
+        };
+
+        // Preserve existing fields if editing
+        if (editingPostId) {
+          const existing = allPosts.find(p => p.id === editingPostId);
+          if (existing) {
+            post.createdAt = existing.createdAt;
+            post.publishedAt = existing.publishedAt;
+            post.slug = existing.slug;
+          }
+        }
+
+        await AdminData.savePost(post);
+        await loadPosts();
+        showSection('list');
+        document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+        document.querySelector('.admin-tab[data-filter=""]').classList.add('active');
+        showToast(status === 'published' ? 'Post published!' : 'Draft saved.');
+        resetEditor();
+      }
+
+      // ── Preview ────────────────────────────
+
+      function showPreview() {
+        const title = document.getElementById('post-title').value || 'Untitled Post';
+        const content = document.getElementById('post-content').value || '<p>No content yet.</p>';
+        const category = document.getElementById('post-category').value;
+        const catCfg = ADMIN_CONFIG.BLOG_CATEGORIES.find(c => c.value === category) || {};
+        const image = document.getElementById('post-image').value;
+
+        renderPreview(title, content, catCfg.label || category, tags, image);
+        document.getElementById('preview-modal').classList.add('open');
+      }
+
+      function renderPreview(title, content, categoryLabel, postTags, image) {
+        const readTime = AdminData.calcReadTime(content);
+        const date = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+
+        let imageHtml = '';
+        if (image) {
+          imageHtml = `<div style="margin-bottom:24px;max-height:400px;overflow:hidden;"><img src="${escHtml(image)}" alt="${escHtml(title)}" style="width:100%;height:auto;object-fit:cover;"></div>`;
+        }
+
+        const tagsHtml = postTags.length > 0
+          ? `<div class="preview-tags">${postTags.map(t => `<span class="preview-tag">${escHtml(t)}</span>`).join('')}</div>`
+          : '';
+
+        document.getElementById('preview-article').innerHTML = `
+          ${imageHtml}
+          <div class="preview-article-header">
+            <div class="preview-category-tag">${escHtml(categoryLabel)}</div>
+            <h1 class="preview-title">${escHtml(title)}</h1>
+            <div class="preview-meta">
+              <span>The Stone Surfaces</span>
+              <span>${date}</span>
+              <span>${readTime}</span>
+            </div>
+          </div>
+          <div class="preview-content">${content}</div>
+          ${tagsHtml}
+        `;
+      }
+
+      // Global functions for inline onclick handlers
+      window.renderPreviewForId = function(id) {
+        const post = allPosts.find(p => p.id === id);
+        if (!post) return;
+        const catCfg = ADMIN_CONFIG.BLOG_CATEGORIES.find(c => c.value === post.category) || {};
+        renderPreview(post.title, post.content, catCfg.label || post.category, post.tags || [], post.featuredImage);
+      };
+
+      window.quickPublish = async function(id) {
+        await AdminData.savePost({ ...allPosts.find(p => p.id === id), status: 'published' });
+        await loadPosts();
+        showToast('Post published!');
+      };
+
+      window.quickUnpublish = async function(id) {
+        await AdminData.savePost({ ...allPosts.find(p => p.id === id), status: 'draft' });
+        await loadPosts();
+        showToast('Post unpublished.');
+      };
+
+      window.deletePost = async function(id) {
+        if (!confirm('Delete this post?')) return;
+        await AdminData.deletePost(id);
+        await loadPosts();
+        showToast('Post deleted.');
+      };
+
+      // ── Editor Toolbar Formatting ──────────
+
+      function applyFormat(action) {
+        const textarea = document.getElementById('post-content');
+        const start = textarea.selectionStart;
+        const end = textarea.selectionEnd;
+        const selected = textarea.value.substring(start, end);
+        let replacement = '';
+
+        switch (action) {
+          case 'bold': replacement = `<strong>${selected || 'bold text'}</strong>`; break;
+          case 'italic': replacement = `<em>${selected || 'italic text'}</em>`; break;
+          case 'underline': replacement = `<u>${selected || 'underlined text'}</u>`; break;
+          case 'h2': replacement = `<h2>${selected || 'Heading'}</h2>`; break;
+          case 'h3': replacement = `<h3>${selected || 'Subheading'}</h3>`; break;
+          case 'ul': replacement = `<ul>\n  <li>${selected || 'List item'}</li>\n</ul>`; break;
+          case 'ol': replacement = `<ol>\n  <li>${selected || 'List item'}</li>\n</ol>`; break;
+          case 'link': {
+            const url = prompt('Enter URL:', 'https://');
+            if (url) replacement = `<a href="${url}">${selected || 'Link text'}</a>`;
+            else return;
+            break;
+          }
+          case 'image': {
+            const src = prompt('Enter image URL:', 'https://');
+            if (src) replacement = `<img src="${src}" alt="${selected || 'Image description'}">`;
+            else return;
+            break;
+          }
+          case 'blockquote': replacement = `<blockquote>${selected || 'Quote text'}</blockquote>`; break;
+          default: return;
+        }
+
+        textarea.value = textarea.value.substring(0, start) + replacement + textarea.value.substring(end);
+        textarea.focus();
+        textarea.selectionStart = start;
+        textarea.selectionEnd = start + replacement.length;
+      }
+
+      // ── Tags ───────────────────────────────
+
+      function renderTags() {
+        const wrapper = document.getElementById('tags-wrapper');
+        const input = document.getElementById('tags-input');
+        wrapper.querySelectorAll('.tag-pill').forEach(el => el.remove());
+
+        tags.forEach((tag, i) => {
+          const pill = document.createElement('span');
+          pill.className = 'tag-pill';
+          pill.innerHTML = `${escHtml(tag)} <span class="tag-pill-remove" data-idx="${i}">&times;</span>`;
+          wrapper.insertBefore(pill, input);
+        });
+
+        wrapper.querySelectorAll('.tag-pill-remove').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            tags.splice(parseInt(btn.dataset.idx), 1);
+            renderTags();
+          });
+        });
+      }
+
+      // ── Utilities ──────────────────────────
+
+      function updateCharCount(elId, length, max) {
+        const el = document.getElementById(elId);
+        el.textContent = length + '/' + max;
+        el.classList.toggle('over', length > max);
+      }
+
+      function capitalize(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+      }
+
+      function escHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str || '';
+        return div.innerHTML;
+      }
+
+      function showToast(message, type = 'success') {
+        const toast = document.getElementById('toast');
+        toast.textContent = message;
+        toast.className = 'toast' + (type !== 'success' ? ' toast--' + type : '');
+        toast.classList.add('visible');
+        setTimeout(() => toast.classList.remove('visible'), 3000);
+      }
+    });
+  </script>
+</body>
+</html>

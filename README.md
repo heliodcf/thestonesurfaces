@@ -28,16 +28,24 @@ thestonesurfaces/
 ├── claude.md               # Spec completa de design/build (Google Stitch prompt)
 ├── README.md               # Este arquivo
 ├── css/
-│   └── styles.css          # Design system completo + responsivo
+│   ├── styles.css          # Design system completo + responsivo
+│   └── admin.css           # Estilos da area admin
 ├── js/
-│   └── main.js             # Animacoes, carrossel, navegacao, chat
+│   ├── main.js             # Animacoes, carrossel, navegacao, chat
+│   ├── admin-config.js     # Config admin: endpoints, auth, constantes
+│   ├── admin-auth.js       # Autenticacao (SHA-256, session, guard)
+│   └── admin-data.js       # Data layer CRUD (leads, posts, AI gen)
 ├── pages/
+│   ├── admin-login.html    # Login do admin
+│   ├── admin/
+│   │   ├── dashboard.html  # CRM Dashboard de leads
+│   │   └── blog-manager.html # Blog Manager com AI
 │   ├── products.html       # Catalogo com filtros e grid
 │   ├── product-detail.html # Detalhe do produto com specs
 │   ├── hanstone.html       # Pagina dedicada Hanstone Quartz
 │   ├── lucciare.html       # Pagina dedicada Lucciare Quartz
 │   ├── inspired.html       # Galeria de projetos + Before/After
-│   ├── blog.html           # Blog com categorias
+│   ├── blog.html           # Blog com categorias + posts dinamicos
 │   ├── about.html          # Historia, equipe, showroom
 │   ├── contact.html        # Formulario de contato/quote
 │   └── trade.html          # Portal para profissionais
@@ -67,6 +75,9 @@ thestonesurfaces/
 | 12. Chat Widget | n8n integration placeholder | `senior-frontend` | done |
 | 13. n8n AI Agent | Backend do chat com webhook real | `n8n-mcp-tools-expert` | todo |
 | 14. SEO & Performance | Structured data, meta tags, lazy loading, CLS | `seo-copywriter-pro` | in-progress |
+| 15. Admin Login | Autenticacao SHA-256, sessao 8h, guard | `senior-frontend` | done |
+| 16. CRM Dashboard | Metricas, tabela de leads, filtros, export CSV | `senior-frontend` | done |
+| 17. Blog Manager AI | Geracao de conteudo via n8n, editor, SEO auto | `senior-frontend` | done |
 
 ## Decisoes de Arquitetura
 - **Vanilla HTML/CSS/JS** — sem frameworks. Site estatico, focado em performance e simplicidade de deploy.
@@ -75,6 +86,11 @@ thestonesurfaces/
 - **3 locacoes** — Doral (main showroom), Orlando, Sarasota. Cada uma com mapa embeddado.
 - **Chat widget placeholder** — estrutura HTML/CSS pronta, aguardando webhook real do n8n.
 - **Spec completa em `claude.md`** — documento de referencia para qualquer ajuste ou nova feature.
+
+- **Admin area separada** — CSS e JS proprios (`admin.css`, `admin-*.js`), nao polui os arquivos publicos.
+- **Data layer com dual mode** — `admin-data.js` suporta localStorage (fallback) e n8n API (producao). Troca via `ADMIN_CONFIG.API_MODE`.
+- **Blog dinamico** — Posts publicados no admin aparecem automaticamente em `blog.html` via localStorage.
+- **n8n webhooks prontos** — Endpoints definidos em `admin-config.js`, basta preencher as URLs quando os workflows estiverem no ar.
 
 ## Aprendizados
 - O `claude.md` funciona como spec de design (originalmente prompt para Google Stitch). Ler ANTES de qualquer alteracao visual.

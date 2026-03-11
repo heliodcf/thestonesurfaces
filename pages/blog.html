@@ -1068,5 +1068,62 @@
 
   <script src="../js/i18n.js"></script>
   <script src="../js/main.js"></script>
+
+  <!-- Dynamic Blog Posts from Admin -->
+  <script>
+    (function() {
+      try {
+        var posts = JSON.parse(localStorage.getItem('tss-blog-posts') || '[]');
+        var published = posts.filter(function(p) { return p.status === 'published'; });
+        if (published.length === 0) return;
+
+        var grid = document.querySelector('.blog-grid');
+        if (!grid) return;
+
+        var catLabels = {
+          'design-trends': 'DESIGN TRENDS',
+          'stone-care': 'STONE CARE',
+          'industry-news': 'INDUSTRY NEWS',
+          'project-spotlights': 'PROJECT SPOTLIGHTS',
+          'hanstone-updates': 'HANSTONE UPDATES'
+        };
+
+        published.sort(function(a, b) { return new Date(b.publishedAt || b.createdAt) - new Date(a.publishedAt || a.createdAt); });
+
+        published.forEach(function(post) {
+          var date = new Date(post.publishedAt || post.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+          var initials = (post.author && post.author.avatar) || 'TS';
+          var authorName = (post.author && post.author.name) || 'The Stone Surfaces';
+          var catLabel = catLabels[post.category] || post.category.toUpperCase();
+          var excerpt = (post.excerpt || (post.content || '').replace(/<[^>]*>/g, '').slice(0, 120) + '...') || '';
+          var bgStyle = post.featuredImage
+            ? 'background-image:url(' + post.featuredImage + ');background-size:cover;background-position:center;height:100%;'
+            : 'background:linear-gradient(135deg,#c4a35a33,#8b735533);height:100%;';
+
+          var card = document.createElement('article');
+          card.className = 'blog-card reveal';
+          card.setAttribute('data-dynamic', 'true');
+          card.innerHTML = '<div class="card-image">' +
+            '<div class="placeholder-bg" style="' + bgStyle + '"></div>' +
+            '<span class="tag">' + catLabel + '</span>' +
+            '</div>' +
+            '<div class="card-body">' +
+            '<h4>' + (post.title || '') + '</h4>' +
+            '<p class="excerpt">' + excerpt + '</p>' +
+            '<div class="card-footer">' +
+            '<div class="card-author">' +
+            '<div class="author-avatar-sm">' + initials + '</div>' +
+            '<span class="author-name-sm">' + authorName + '</span>' +
+            '</div>' +
+            '<div class="card-meta-right">' +
+            '<span>' + date + '</span>' +
+            '<span>' + (post.readTime || '3 min read') + '</span>' +
+            '</div></div></div>';
+
+          grid.insertBefore(card, grid.firstChild);
+        });
+      } catch(e) { /* silently fail */ }
+    })();
+  </script>
 </body>
 </html>
