@@ -188,6 +188,90 @@
       height: 100%;
     }
 
+    /* --- Brand Story Carousel --- */
+    .brand-carousel {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .brand-carousel img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+    .brand-carousel img.active {
+      opacity: 1;
+    }
+
+    /* --- Lightbox --- */
+    .lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      cursor: pointer;
+    }
+    .lightbox-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .lightbox-content {
+      position: relative;
+      max-width: 85vw;
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: default;
+    }
+    .lightbox-content img {
+      max-width: 100%;
+      max-height: 75vh;
+      object-fit: contain;
+    }
+    .lightbox-info {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .lightbox-info .lightbox-name {
+      font-family: var(--font-headline);
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--hs-pink);
+    }
+    .lightbox-info .lightbox-ref {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--color-text-muted);
+      margin-top: 4px;
+      letter-spacing: 1px;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 32px;
+      cursor: pointer;
+      line-height: 1;
+      padding: 4px 8px;
+    }
+    .lightbox-close:hover {
+      color: var(--hs-pink);
+    }
+
     /* --- Collections Browser --- */
     .collections-section {
       padding: var(--section-padding-desktop) 0;
@@ -261,7 +345,14 @@
       height: 100%;
       transition: transform var(--transition-default);
     }
-    .swatch-card:hover .swatch-preview .placeholder-bg {
+    .swatch-card .swatch-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-default);
+    }
+    .swatch-card:hover .swatch-preview .placeholder-bg,
+    .swatch-card:hover .swatch-preview img {
       transform: scale(1.05);
     }
     .swatch-card .swatch-name {
@@ -662,315 +753,228 @@
             </ul>
           </div>
           <div class="brand-story-image reveal reveal-delay-1">
-            <div class="placeholder-bg" style="background: linear-gradient(135deg, #3a3228 0%, #2a2018 40%, #1a1510 100%);"></div>
+            <div class="brand-carousel">
+              <img src="../images/hanstone/galeria/antello-kitchen-side-view.png" alt="Antello kitchen" class="active">
+              <img src="../images/hanstone/galeria/aspen-conference-table.jpg" alt="Aspen conference table">
+              <img src="../images/hanstone/galeria/aura_bar-max-1800x1800-format-jpeg.jpg" alt="Aura bar">
+              <img src="../images/hanstone/galeria/cremosa3.jpg" alt="Cremosa">
+              <img src="../images/hanstone/galeria/markina1.jpg" alt="Markina">
+              <img src="../images/hanstone/galeria/shutterstock_2039046035-copy.jpg" alt="Hanstone lifestyle">
+              <img src="../images/hanstone/galeria/storm-2.jpg" alt="Storm">
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== SECTION 3: COLLECTIONS BROWSER ===== -->
-    <section class="collections-section" id="collections">
-      <div class="section-header">
-        <span class="label reveal" data-i18n="hanstone.collections.label">EXPLORE THE COLLECTIONS</span>
-        <h2 class="reveal" style="margin-top: 16px; font-family: var(--font-headline); font-size: clamp(28px, 3.5vw, 42px); font-weight: 300;" data-i18n="hanstone.collections.title">Four Collections. Endless Possibilities.</h2>
-      </div>
-
-      <!-- Signature Collection -->
-      <div class="collection-band reveal">
-        <div class="collection-band-header">
-          <h3>Signature</h3>
-          <span class="collection-tag" data-i18n="hanstone.collections.signature.tag">Premium Tier</span>
-        </div>
-        <div class="collection-scroll">
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e8e2dc, #d0c8c0);"></div></div>
-            <div class="swatch-name">Montauk</div>
-            <div class="swatch-id">HS-SM001</div>
-          </div>
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #f0ebe5, #c8bfb5);"></div></div>
-            <div class="swatch-name">Cascina</div>
-            <div class="swatch-id">HS-SM002</div>
-          </div>
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #ddd5cd, #b8aea5);"></div></div>
-            <div class="swatch-name">Tranquility</div>
-            <div class="swatch-id">HS-SM003</div>
-          </div>
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #c5bdb5, #a8a098);"></div></div>
-            <div class="swatch-name">Champagne</div>
-            <div class="swatch-id">HS-SM004</div>
-          </div>
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e0ddd8, #bab5ae);"></div></div>
-            <div class="swatch-name">Aspen</div>
-            <div class="swatch-id">HS-SM005</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Pinnacle Collection -->
-      <div class="collection-band reveal">
-        <div class="collection-band-header">
-          <h3>Pinnacle</h3>
-          <span class="collection-tag" data-i18n="hanstone.collections.pinnacle.tag">Statement Veining</span>
-        </div>
-        <div class="collection-scroll">
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #f5f0ea, #d8cfc5);"></div></div>
-            <div class="swatch-name">Calacatta Luccia</div>
-            <div class="swatch-id">HS-PN001</div>
-          </div>
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #ede8e2, #c8c0b8);"></div></div>
-            <div class="swatch-name">Bianca Statuario</div>
-            <div class="swatch-id">HS-PN002</div>
-          </div>
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e5dfd8, #bfb8b0);"></div></div>
-            <div class="swatch-name">Tuscany</div>
-            <div class="swatch-id">HS-PN003</div>
-          </div>
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #eae5df, #d0c8c0);"></div></div>
-            <div class="swatch-name">Cortina</div>
-            <div class="swatch-id">HS-PN004</div>
-          </div>
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #f2ede7, #cec5bc);"></div></div>
-            <div class="swatch-name">Liatris</div>
-            <div class="swatch-id">HS-PN005</div>
-          </div>
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e8e0d8, #bab2a8);"></div></div>
-            <div class="swatch-name">Ravenna</div>
-            <div class="swatch-id">HS-PN006</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Connections Collection -->
-      <div class="collection-band reveal">
-        <div class="collection-band-header">
-          <h3>Connections</h3>
-          <span class="collection-tag" data-i18n="hanstone.collections.connections.tag">Modern Essentials</span>
-        </div>
-        <div class="collection-scroll">
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #f8f5f0, #e0dcd5);"></div></div>
-            <div class="swatch-name">Cotton White</div>
-            <div class="swatch-id">HS-CN001</div>
-          </div>
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #d5cfc8, #b0a8a0);"></div></div>
-            <div class="swatch-name">Steel</div>
-            <div class="swatch-id">HS-CN002</div>
-          </div>
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #c8c0b5, #988f85);"></div></div>
-            <div class="swatch-name">Tundra</div>
-            <div class="swatch-id">HS-CN003</div>
-          </div>
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e2ddd5, #c0b8b0);"></div></div>
-            <div class="swatch-name">Walden</div>
-            <div class="swatch-id">HS-CN004</div>
-          </div>
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #8a8a8a, #5a5a5a);"></div></div>
-            <div class="swatch-name">Carbon</div>
-            <div class="swatch-id">HS-CN005</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Opimo Collection -->
-      <div class="collection-band reveal">
-        <div class="collection-band-header">
-          <h3>Opimo</h3>
-          <span class="collection-tag" data-i18n="hanstone.collections.opimo.tag">Best Value</span>
-        </div>
-        <div class="collection-scroll">
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #f0ece5, #d8d2ca);"></div></div>
-            <div class="swatch-name">Aurora Snow</div>
-            <div class="swatch-id">HS-OP001</div>
-          </div>
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #dcd5cc, #bab2a8);"></div></div>
-            <div class="swatch-name">Sand Palace</div>
-            <div class="swatch-id">HS-OP002</div>
-          </div>
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #c0b8ae, #908880);"></div></div>
-            <div class="swatch-name">Strato</div>
-            <div class="swatch-id">HS-OP003</div>
-          </div>
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e8e5e0, #c8c2ba);"></div></div>
-            <div class="swatch-name">Ivory</div>
-            <div class="swatch-id">HS-OP004</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== SECTION 4: COLOR PALETTE EXPLORER ===== -->
-    <section class="section section--surface noise-overlay palette-section" id="colors">
+    <!-- ===== SECTION 3: HANSTONE QUARTZ COLLECTION ===== -->
+    <section class="section section--surface noise-overlay palette-section" id="collections">
       <div class="container">
         <div class="reveal" style="margin-bottom: 16px;">
-          <span class="label" data-i18n="hanstone.palette.label">COLOR PALETTE EXPLORER</span>
-          <h2 style="margin-top: 16px; font-family: var(--font-headline); font-size: clamp(28px, 3.5vw, 42px); font-weight: 300;" data-i18n="hanstone.palette.title">Find Your Perfect Shade</h2>
+          <span class="label" data-i18n="hanstone.palette.label">HANSTONE QUARTZ COLLECTION</span>
+          <h2 style="margin-top: 16px; font-family: var(--font-headline); font-size: clamp(28px, 3.5vw, 42px); font-weight: 300;" data-i18n="hanstone.palette.title">40 Colors. Endless Possibilities.</h2>
         </div>
 
-        <div class="filter-tabs reveal">
-          <button class="tab active" data-filter="all" data-i18n="hanstone.palette.all">All</button>
-          <button class="tab" data-filter="white" data-i18n="hanstone.palette.white">White</button>
-          <button class="tab" data-filter="warm" data-i18n="hanstone.palette.warm">Warm</button>
-          <button class="tab" data-filter="cool" data-i18n="hanstone.palette.cool">Cool</button>
-          <button class="tab" data-filter="vibrant" data-i18n="hanstone.palette.vibrant">Vibrant</button>
-          <button class="tab" data-filter="grey" data-i18n="hanstone.palette.grey">Grey</button>
-          <button class="tab" data-filter="black" data-i18n="hanstone.palette.black">Black</button>
-        </div>
-
-        <div class="swatch-grid reveal">
-          <!-- White -->
-          <div class="swatch-card" data-category="white">
-            <div class="swatch-preview">
-              <div class="placeholder-bg" style="background: linear-gradient(135deg, #f8f5f0, #eae5de);"></div>
-              <span class="collection-badge">Connections</span>
-            </div>
-            <div class="swatch-name">Cotton White</div>
+        <div class="swatch-grid reveal" id="colors">
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/1 ANTELLO - LO804.jpg" alt="Antello LO804" loading="lazy"></div>
+            <div class="swatch-name">Antello</div>
+            <div class="swatch-id">LO804</div>
           </div>
-          <div class="swatch-card" data-category="white">
-            <div class="swatch-preview">
-              <div class="placeholder-bg" style="background: linear-gradient(135deg, #f5f2ed, #e5e0d8);"></div>
-              <span class="collection-badge">Pinnacle</span>
-            </div>
-            <div class="swatch-name">Bianca Statuario</div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/2 AURELIA - CA821.jpg" alt="Aurelia CA821" loading="lazy"></div>
+            <div class="swatch-name">Aurelia</div>
+            <div class="swatch-id">CA821</div>
           </div>
-          <div class="swatch-card" data-category="white">
-            <div class="swatch-preview">
-              <div class="placeholder-bg" style="background: linear-gradient(135deg, #f0ece5, #ddd8d0);"></div>
-              <span class="collection-badge">Opimo</span>
-            </div>
-            <div class="swatch-name">Aurora Snow</div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/3 CALACATTA MONT - BG817.png" alt="Calacatta Mont BG817" loading="lazy"></div>
+            <div class="swatch-name">Calacatta Mont</div>
+            <div class="swatch-id">BG817</div>
           </div>
-
-          <!-- Warm -->
-          <div class="swatch-card" data-category="warm">
-            <div class="swatch-preview">
-              <div class="placeholder-bg" style="background: linear-gradient(135deg, #e8ddd2, #c8b8a5);"></div>
-              <span class="collection-badge">Signature</span>
-            </div>
-            <div class="swatch-name">Champagne</div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/4 CREMOSA - K5408.jpg" alt="Cremosa K5408" loading="lazy"></div>
+            <div class="swatch-name">Cremosa</div>
+            <div class="swatch-id">K5408</div>
           </div>
-          <div class="swatch-card" data-category="warm">
-            <div class="swatch-preview">
-              <div class="placeholder-bg" style="background: linear-gradient(135deg, #ddd2c5, #bfb0a0);"></div>
-              <span class="collection-badge">Opimo</span>
-            </div>
-            <div class="swatch-name">Sand Palace</div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/5 EDEN - SK503.jpg" alt="Eden SK503" loading="lazy"></div>
+            <div class="swatch-name">Eden</div>
+            <div class="swatch-id">SK503</div>
           </div>
-          <div class="swatch-card" data-category="warm">
-            <div class="swatch-preview">
-              <div class="placeholder-bg" style="background: linear-gradient(135deg, #e5dcd2, #c5b8a8);"></div>
-              <span class="collection-badge">Pinnacle</span>
-            </div>
-            <div class="swatch-name">Tuscany</div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/6 ELBA WHITE - K5401.jpg" alt="Elba White K5401" loading="lazy"></div>
+            <div class="swatch-name">Elba White</div>
+            <div class="swatch-id">K5401</div>
           </div>
-          <div class="swatch-card" data-category="warm">
-            <div class="swatch-preview">
-              <div class="placeholder-bg" style="background: linear-gradient(135deg, #f0e8de, #d0c5b8);"></div>
-              <span class="collection-badge">Signature</span>
-            </div>
-            <div class="swatch-name">Cascina</div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/7 LE BLANC - K5402.jpg" alt="Le Blanc K5402" loading="lazy"></div>
+            <div class="swatch-name">Le Blanc</div>
+            <div class="swatch-id">K5402</div>
           </div>
-
-          <!-- Cool -->
-          <div class="swatch-card" data-category="cool">
-            <div class="swatch-preview">
-              <div class="placeholder-bg" style="background: linear-gradient(135deg, #e0ddd8, #bfbab5);"></div>
-              <span class="collection-badge">Signature</span>
-            </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/8 MARKINA - LO805.jpeg" alt="Markina LO805" loading="lazy"></div>
+            <div class="swatch-name">Markina</div>
+            <div class="swatch-id">LO805</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/9 MATTERHORN - K5403.jpg" alt="Matterhorn K5403" loading="lazy"></div>
+            <div class="swatch-name">Matterhorn</div>
+            <div class="swatch-id">K5403</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/10 RIDGE - MV516.jpg" alt="Ridge MV516" loading="lazy"></div>
+            <div class="swatch-name">Ridge</div>
+            <div class="swatch-id">MV516</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/11 ROYALE BLANC - BA205.jpg" alt="Royale Blanc BA205" loading="lazy"></div>
+            <div class="swatch-name">Royale Blanc</div>
+            <div class="swatch-id">BA205</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/12 TAHITIAN CREAM - K5407.jpg" alt="Tahitian Cream K5407" loading="lazy"></div>
+            <div class="swatch-name">Tahitian Cream</div>
+            <div class="swatch-id">K5407</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/13 WHISTLER GOLD - BA253.jpg" alt="Whistler Gold BA253" loading="lazy"></div>
+            <div class="swatch-name">Whistler Gold</div>
+            <div class="swatch-id">BA253</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/14 TRANQUILITY - RU613.jpg" alt="Tranquility RU613" loading="lazy"></div>
             <div class="swatch-name">Tranquility</div>
+            <div class="swatch-id">RU613</div>
           </div>
-          <div class="swatch-card" data-category="cool">
-            <div class="swatch-preview">
-              <div class="placeholder-bg" style="background: linear-gradient(135deg, #dcdad5, #b8b5b0);"></div>
-              <span class="collection-badge">Connections</span>
-            </div>
-            <div class="swatch-name">Walden</div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/15 CALACATTA EXTRA - BG884.png" alt="Calacatta Extra BG884" loading="lazy"></div>
+            <div class="swatch-name">Calacatta Extra</div>
+            <div class="swatch-id">BG884</div>
           </div>
-          <div class="swatch-card" data-category="cool">
-            <div class="swatch-preview">
-              <div class="placeholder-bg" style="background: linear-gradient(135deg, #e2e0dc, #c0bdb8);"></div>
-              <span class="collection-badge">Signature</span>
-            </div>
-            <div class="swatch-name">Aspen</div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/16 CHANTILLY - BG873.jpg" alt="Chantilly BG873" loading="lazy"></div>
+            <div class="swatch-name">Chantilly</div>
+            <div class="swatch-id">BG873</div>
           </div>
-
-          <!-- Vibrant -->
-          <div class="swatch-card" data-category="vibrant">
-            <div class="swatch-preview">
-              <div class="placeholder-bg" style="background: linear-gradient(135deg, #f0e5d5, #c8b898);"></div>
-              <span class="collection-badge">Pinnacle</span>
-            </div>
-            <div class="swatch-name">Calacatta Luccia</div>
-          </div>
-          <div class="swatch-card" data-category="vibrant">
-            <div class="swatch-preview">
-              <div class="placeholder-bg" style="background: linear-gradient(135deg, #e8ddd0, #c0b5a5);"></div>
-              <span class="collection-badge">Pinnacle</span>
-            </div>
-            <div class="swatch-name">Cortina</div>
-          </div>
-
-          <!-- Grey -->
-          <div class="swatch-card" data-category="grey">
-            <div class="swatch-preview">
-              <div class="placeholder-bg" style="background: linear-gradient(135deg, #d0ccc5, #a8a49d);"></div>
-              <span class="collection-badge">Connections</span>
-            </div>
-            <div class="swatch-name">Steel</div>
-          </div>
-          <div class="swatch-card" data-category="grey">
-            <div class="swatch-preview">
-              <div class="placeholder-bg" style="background: linear-gradient(135deg, #c5c0b8, #9a958d);"></div>
-              <span class="collection-badge">Connections</span>
-            </div>
-            <div class="swatch-name">Tundra</div>
-          </div>
-          <div class="swatch-card" data-category="grey">
-            <div class="swatch-preview">
-              <div class="placeholder-bg" style="background: linear-gradient(135deg, #bab5ad, #8a8580);"></div>
-              <span class="collection-badge">Opimo</span>
-            </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/17 STRATO - CA701.jpeg" alt="Strato CA701" loading="lazy"></div>
             <div class="swatch-name">Strato</div>
+            <div class="swatch-id">CA701</div>
           </div>
-          <div class="swatch-card" data-category="grey">
-            <div class="swatch-preview">
-              <div class="placeholder-bg" style="background: linear-gradient(135deg, #e0dcd5, #c0b8b0);"></div>
-              <span class="collection-badge">Signature</span>
-            </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/18 DRIFT - BA271.jpg" alt="Drift BA271" loading="lazy"></div>
+            <div class="swatch-name">Drift</div>
+            <div class="swatch-id">BA271</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/19 ITALIAN WAVES - RU701.jpg" alt="Italian Waves RU701" loading="lazy"></div>
+            <div class="swatch-name">Italian Waves</div>
+            <div class="swatch-id">RU701</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/20 PAROS - MV548.png" alt="Paros MV548" loading="lazy"></div>
+            <div class="swatch-name">Paros</div>
+            <div class="swatch-id">MV548</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/21 SPECCHIO WHITE - CT402.jpg" alt="Specchio White CT402" loading="lazy"></div>
+            <div class="swatch-name">Specchio White</div>
+            <div class="swatch-id">CT402</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/22 WHISTLER - BA252.png" alt="Whistler BA252" loading="lazy"></div>
+            <div class="swatch-name">Whistler</div>
+            <div class="swatch-id">BA252</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/23 TOFINO - CL119.jpg" alt="Tofino CL119" loading="lazy"></div>
+            <div class="swatch-name">Tofino</div>
+            <div class="swatch-id">CL119</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/24 SOHO - BG872.jpg" alt="Soho BG872" loading="lazy"></div>
+            <div class="swatch-name">Soho</div>
+            <div class="swatch-id">BG872</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/25 CALACATTA GOLD - BG812.jpg" alt="Calacatta Gold BG812" loading="lazy"></div>
+            <div class="swatch-name">Calacatta Gold</div>
+            <div class="swatch-id">BG812</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/26 MONTAUK - BG871.jpg" alt="Montauk BG871" loading="lazy"></div>
             <div class="swatch-name">Montauk</div>
+            <div class="swatch-id">BG871</div>
           </div>
-
-          <!-- Black -->
-          <div class="swatch-card" data-category="black">
-            <div class="swatch-preview">
-              <div class="placeholder-bg" style="background: linear-gradient(135deg, #8a8a8a, #5a5a5a);"></div>
-              <span class="collection-badge">Connections</span>
-            </div>
-            <div class="swatch-name">Carbon</div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/27 CALACATTA VENATO - BG883.png" alt="Calacatta Venato BG883" loading="lazy"></div>
+            <div class="swatch-name">Calacatta Venato</div>
+            <div class="swatch-id">BG883</div>
           </div>
-          <div class="swatch-card" data-category="black">
-            <div class="swatch-preview">
-              <div class="placeholder-bg" style="background: linear-gradient(135deg, #6a6a6a, #3a3a3a);"></div>
-              <span class="collection-badge">Pinnacle</span>
-            </div>
-            <div class="swatch-name">Ravenna</div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/28 ASPEN - RU601.jpg" alt="Aspen RU601" loading="lazy"></div>
+            <div class="swatch-name">Aspen</div>
+            <div class="swatch-id">RU601</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/29 COAST - MV514.jpg" alt="Coast MV514" loading="lazy"></div>
+            <div class="swatch-name">Coast</div>
+            <div class="swatch-id">MV514</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/30 OCEANA - MV529.jpg" alt="Oceana MV529" loading="lazy"></div>
+            <div class="swatch-name">Oceana</div>
+            <div class="swatch-id">MV529</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/31 FUSION - MV623.jpeg" alt="Fusion MV623" loading="lazy"></div>
+            <div class="swatch-name">Fusion</div>
+            <div class="swatch-id">MV623</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/32 ROCKY SHORES - RS463.jpg" alt="Rocky Shores RS463" loading="lazy"></div>
+            <div class="swatch-name">Rocky Shores</div>
+            <div class="swatch-id">RS463</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/33 AURA - MV531.jpg" alt="Aura MV531" loading="lazy"></div>
+            <div class="swatch-name">Aura</div>
+            <div class="swatch-id">MV531</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/34 METROPOLITAN - RU611.jpeg" alt="Metropolitan RU611" loading="lazy"></div>
+            <div class="swatch-name">Metropolitan</div>
+            <div class="swatch-id">RU611</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/35 ARTISAN GREY - RC104.jpg" alt="Artisan Grey RC104" loading="lazy"></div>
+            <div class="swatch-name">Artisan Grey</div>
+            <div class="swatch-id">RC104</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/36 UPTOWN GREY - RU609.jpg" alt="Uptown Grey RU609" loading="lazy"></div>
+            <div class="swatch-name">Uptown Grey</div>
+            <div class="swatch-id">RU609</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/37 LEADEN - CC104.jpg" alt="Leaden CC104" loading="lazy"></div>
+            <div class="swatch-name">Leaden</div>
+            <div class="swatch-id">CC104</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/38 BLACKBURN - RS401.jpg" alt="Blackburn RS401" loading="lazy"></div>
+            <div class="swatch-name">Blackburn</div>
+            <div class="swatch-id">RS401</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/39 STORM - MV513.jpg" alt="Storm MV513" loading="lazy"></div>
+            <div class="swatch-name">Storm</div>
+            <div class="swatch-id">MV513</div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview"><img src="../images/hanstone/images-hanstone/40 SILHOUETTE - MV628.jpg" alt="Silhouette MV628" loading="lazy"></div>
+            <div class="swatch-name">Silhouette</div>
+            <div class="swatch-id">MV628</div>
           </div>
         </div>
       </div>
@@ -1205,7 +1209,76 @@
     <div id="n8n-chat-widget" data-webhook-url="YOUR_N8N_WEBHOOK_URL" style="display:none;"></div>
   </div>
 
+  <!-- Lightbox -->
+  <div class="lightbox-overlay" id="lightbox">
+    <div class="lightbox-content">
+      <button class="lightbox-close">&times;</button>
+      <img id="lightbox-img" src="" alt="">
+      <div class="lightbox-info">
+        <div class="lightbox-name" id="lightbox-name"></div>
+        <div class="lightbox-ref" id="lightbox-ref"></div>
+      </div>
+    </div>
+  </div>
+
   <script src="../js/i18n.js"></script>
   <script src="../js/main.js"></script>
+
+  <script>
+  // --- Brand Story Carousel (auto-rotate every 4s) ---
+  (function() {
+    const imgs = document.querySelectorAll('.brand-carousel img');
+    if (!imgs.length) return;
+    let current = 0;
+    setInterval(function() {
+      imgs[current].classList.remove('active');
+      current = (current + 1) % imgs.length;
+      imgs[current].classList.add('active');
+    }, 4000);
+  })();
+
+  // --- Collection Lightbox ---
+  (function() {
+    const overlay = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    const lbName = document.getElementById('lightbox-name');
+    const lbRef = document.getElementById('lightbox-ref');
+    const closeBtn = overlay.querySelector('.lightbox-close');
+
+    document.querySelectorAll('.swatch-grid .swatch-card').forEach(function(card) {
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', function() {
+        var img = card.querySelector('.swatch-preview img');
+        var name = card.querySelector('.swatch-name');
+        var ref = card.querySelector('.swatch-id');
+        if (!img) return;
+        lbImg.src = img.src;
+        lbImg.alt = img.alt;
+        lbName.textContent = name ? name.textContent : '';
+        lbRef.textContent = ref ? ref.textContent : '';
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    function closeLightbox() {
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    closeBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      closeLightbox();
+    });
+
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) closeLightbox();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  })();
+  </script>
 </body>
 </html>
