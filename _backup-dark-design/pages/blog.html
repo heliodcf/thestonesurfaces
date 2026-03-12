@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — The Stone Surfaces | Stone Industry Insights & Design Trends</title>
+  <meta name="description" content="Expert insights on stone countertops, design trends, care tips, and Hanstone Quartz updates from South Florida's premier stone distributor.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Blog — The Stone Surfaces">
+  <meta property="og:description" content="Expert insights on stone countertops, design trends, care tips, and industry news from South Florida's premier stone distributor.">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/styles.css">
+
+  <style>
+    /* ===== BLOG PAGE STYLES ===== */
+
+    /* Featured Post Hero */
+    .blog-hero {
+      position: relative;
+      min-height: 520px;
+      display: flex;
+      align-items: flex-end;
+      padding: 80px 0 60px;
+      overflow: hidden;
+    }
+
+    .blog-hero .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .blog-hero .hero-bg .placeholder-bg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .blog-hero .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10, 8, 6, 0.92) 0%, rgba(10, 8, 6, 0.6) 50%, rgba(10, 8, 6, 0.3) 100%);
+      z-index: 1;
+    }
+
+    .blog-hero .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+    }
+
+    .blog-hero .featured-tag {
+      display: inline-block;
+      background: var(--color-cta, #b8956a);
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 2px;
+      margin-bottom: 20px;
+    }
+
+    .blog-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .blog-hero .hero-excerpt {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 17px;
+      color: rgba(255, 255, 255, 0.75);
+      line-height: 1.6;
+      margin-bottom: 24px;
+      max-width: 600px;
+    }
+
+    .blog-hero .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .blog-hero .author-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .blog-hero .author-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--color-cta, #b8956a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: #fff;
+    }
+
+    .blog-hero .author-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    .blog-hero .meta-separator {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .blog-hero .meta-item {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* Category Tabs */
+    .blog-categories {
+      padding: 32px 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      background: var(--color-surface, #f5f0eb);
+    }
+
+    .category-tabs {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding-bottom: 4px;
+    }
+
+    .category-tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .category-tab {
+      display: inline-block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-text-dark, #1a1510);
+      background: transparent;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      padding: 8px 20px;
+      border-radius: 100px;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .category-tab:hover {
+      border-color: var(--color-cta, #b8956a);
+      color: var(--color-cta, #b8956a);
+    }
+
+    .category-tab.active {
+      background: var(--color-text-dark, #1a1510);
+      color: #fff;
+      border-color: var(--color-text-dark, #1a1510);
+    }
+
+    /* Blog Layout */
+    .blog-section {
+      padding: 60px 0 80px;
+      background: var(--color-surface, #f5f0eb);
+    }
+
+    .blog-layout {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 48px;
+    }
+
+    /* Blog Cards */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+
+    .blog-card {
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .blog-card .card-image {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .blog-card .card-image .placeholder-bg {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.5s ease;
+    }
+
+    .blog-card:hover .card-image .placeholder-bg {
+      transform: scale(1.05);
+    }
+
+    .blog-card .card-image .tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: var(--color-cta, #b8956a);
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 2px;
+    }
+
+    .blog-card .card-body {
+      padding: 24px;
+    }
+
+    .blog-card .card-body h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--color-text-dark, #1a1510);
+      line-height: 1.35;
+      margin-bottom: 10px;
+    }
+
+    .blog-card .card-body .excerpt {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      color: #6b6560;
+      line-height: 1.55;
+      margin-bottom: 20px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .blog-card .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 16px;
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .blog-card .card-author {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .blog-card .author-avatar-sm {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--color-text-dark, #1a1510);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      color: #fff;
+    }
+
+    .blog-card .author-name-sm {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--color-text-dark, #1a1510);
+    }
+
+    .blog-card .card-meta-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .blog-card .card-meta-right span {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      color: #9a9590;
+    }
+
+    /* Sidebar */
+    .blog-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .sidebar-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 28px;
+    }
+
+    .sidebar-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-text-dark, #1a1510);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--color-cta, #b8956a);
+    }
+
+    /* Popular Posts */
+    .popular-posts-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .popular-posts-list li {
+      display: flex;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .popular-posts-list li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .popular-posts-list li:first-child {
+      padding-top: 0;
+    }
+
+    .popular-posts-list .post-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--color-cta, #b8956a);
+      line-height: 1;
+      min-width: 28px;
+    }
+
+    .popular-posts-list .post-info h5 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-text-dark, #1a1510);
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .popular-posts-list .post-info span {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      color: #9a9590;
+    }
+
+    /* Category Links */
+    .category-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .category-links li {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .category-links li:last-child {
+      border-bottom: none;
+    }
+
+    .category-links a {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      color: var(--color-text-dark, #1a1510);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .category-links a:hover {
+      color: var(--color-cta, #b8956a);
+    }
+
+    .category-links .count-badge {
+      font-size: 12px;
+      color: #9a9590;
+      background: rgba(0, 0, 0, 0.04);
+      padding: 2px 10px;
+      border-radius: 100px;
+    }
+
+    /* Newsletter Sidebar Card */
+    .sidebar-newsletter {
+      background: var(--color-text-dark, #1a1510);
+      border-radius: 8px;
+      padding: 32px 28px;
+      text-align: center;
+    }
+
+    .sidebar-newsletter h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .sidebar-newsletter p {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .sidebar-newsletter input[type="email"] {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      margin-bottom: 12px;
+      outline: none;
+      transition: border-color 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    .sidebar-newsletter input[type="email"]::placeholder {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .sidebar-newsletter input[type="email"]:focus {
+      border-color: var(--color-cta, #b8956a);
+    }
+
+    .sidebar-newsletter .btn-subscribe {
+      width: 100%;
+      padding: 12px 24px;
+      background: var(--color-cta, #b8956a);
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .sidebar-newsletter .btn-subscribe:hover {
+      background: #a07d55;
+    }
+
+    /* Hanstone Promo Banner */
+    .sidebar-promo {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      min-height: 260px;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .sidebar-promo .promo-bg {
+      position: absolute;
+      inset: 0;
+    }
+
+    .sidebar-promo .promo-bg .placeholder-bg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .sidebar-promo .promo-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10, 8, 6, 0.9) 0%, rgba(10, 8, 6, 0.3) 100%);
+    }
+
+    .sidebar-promo .promo-content {
+      position: relative;
+      z-index: 2;
+      padding: 28px;
+    }
+
+    .sidebar-promo .promo-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--color-cta, #b8956a);
+      margin-bottom: 8px;
+    }
+
+    .sidebar-promo h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .sidebar-promo .btn-promo {
+      display: inline-block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+      border-bottom: 1px solid var(--color-cta, #b8956a);
+      padding-bottom: 2px;
+      transition: color 0.3s ease;
+    }
+
+    .sidebar-promo .btn-promo:hover {
+      color: var(--color-cta, #b8956a);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .blog-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .blog-sidebar {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .blog-hero {
+        min-height: 420px;
+        padding: 100px 0 40px;
+      }
+
+      .blog-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .blog-sidebar {
+        grid-template-columns: 1fr;
+      }
+
+      .blog-hero h1 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <div class="container">
+      <a href="../index.html" class="logo">
+        <img src="../images/header/TSS_LOGO.png" alt="The Stone Surfaces" class="logo-img">
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="products.html" data-mega-menu>Products</a>
+        <a href="hanstone.html">Hanstone Quartz</a>
+        <a href="inspired.html">Get Inspired</a>
+        <a href="blog.html" class="active">Blog</a>
+        <a href="about.html">About</a>
+        <a href="trade.html">For The Trade</a>
+      </nav>
+
+      <!-- Mega Menu -->
+      <div class="mega-menu">
+        <div class="container">
+          <div class="mega-menu-grid">
+            <a href="products.html#granite" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/Granite.jpg" alt="Granite"></div>
+              <h4>Granite</h4>
+            </a>
+            <a href="products.html#marble" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/marble.jpg" alt="Marble"></div>
+              <h4>Marble</h4>
+            </a>
+            <a href="products.html#quartz" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/Quartz.jpg" alt="Quartz"></div>
+              <h4>Quartz</h4>
+            </a>
+            <a href="products.html#quartzite" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/Quartzite.jpg" alt="Quartzite"></div>
+              <h4>Quartzite</h4>
+            </a>
+            <a href="products.html#dolomite" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/Dolomite.jpg" alt="Dolomite"></div>
+              <h4>Dolomite</h4>
+            </a>
+            <a href="products.html#hard-marble" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/Hard_Marble.jpg" alt="Hard Marble"></div>
+              <h4>Hard Marble</h4>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <div class="lang-selector">
+          <button class="lang-selector-toggle" aria-label="Select language">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            <span class="lang-current">EN</span>
+            <svg class="lang-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+          </button>
+          <div class="lang-dropdown">
+            <div class="lang-option active" data-lang="en">
+              <span class="lang-option-label">English</span>
+              <span class="lang-option-code">EN</span>
+            </div>
+            <div class="lang-option" data-lang="es">
+              <span class="lang-option-label">Español</span>
+              <span class="lang-option-code">ES</span>
+            </div>
+            <div class="lang-option" data-lang="pt">
+              <span class="lang-option-label">Português</span>
+              <span class="lang-option-code">PT</span>
+            </div>
+          </div>
+        </div>
+        <a href="contact.html" class="btn btn--primary">Request a Quote</a>
+        <div class="nav-toggle" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu">
+    <a href="products.html">Products</a>
+    <a href="hanstone.html">Hanstone Quartz</a>
+    <a href="inspired.html">Get Inspired</a>
+    <a href="blog.html" class="active">Blog</a>
+    <a href="about.html">About</a>
+    <a href="trade.html">For The Trade</a>
+    <a href="contact.html">Contact</a>
+    <div class="lang-selector-mobile">
+      <button data-lang="en" class="active">EN</button>
+      <button data-lang="es">ES</button>
+      <button data-lang="pt">PT</button>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ===== FEATURED POST HERO ===== -->
+    <section class="blog-hero">
+      <div class="hero-bg">
+        <div class="placeholder-bg" style="background: linear-gradient(135deg, #3a3028 0%, #2a2018 30%, #1a1510 60%, #0f0d0a 100%);"></div>
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="container">
+        <div class="hero-content reveal">
+          <span class="featured-tag" data-i18n="blog.featured.label">FEATURED POST</span>
+          <h1 data-i18n="blog.featured.title">2026 Kitchen Countertop Trends: What Designers Are Choosing</h1>
+          <p class="hero-excerpt" data-i18n="blog.featured.excerpt">From dramatic veining and warm-toned marbles to matte quartz finishes, discover the surfaces that are defining luxury kitchens this year and why South Florida designers can't get enough.</p>
+          <div class="hero-meta">
+            <div class="author-info">
+              <div class="author-avatar">SM</div>
+              <span class="author-name">Sarah Mitchell</span>
+            </div>
+            <span class="meta-separator"></span>
+            <span class="meta-item">March 1, 2026</span>
+            <span class="meta-separator"></span>
+            <span class="meta-item" data-i18n="blog.featured.readTime">5 min read</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CATEGORY TABS ===== -->
+    <div class="blog-categories">
+      <div class="container">
+        <div class="category-tabs reveal">
+          <button class="category-tab active" data-i18n="blog.cat.all">All</button>
+          <button class="category-tab" data-i18n="blog.cat.news">Industry News</button>
+          <button class="category-tab" data-i18n="blog.cat.trends">Design Trends</button>
+          <button class="category-tab" data-i18n="blog.cat.care">Stone Care</button>
+          <button class="category-tab" data-i18n="blog.cat.spotlights">Project Spotlights</button>
+          <button class="category-tab" data-i18n="blog.cat.hanstone">Hanstone Updates</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== BLOG GRID + SIDEBAR ===== -->
+    <section class="blog-section">
+      <div class="container">
+        <div class="blog-layout">
+
+          <!-- Main Blog Grid -->
+          <div class="blog-grid">
+
+            <!-- Card 1 -->
+            <article class="blog-card reveal">
+              <div class="card-image">
+                <div class="placeholder-bg" style="background: linear-gradient(135deg, #c8b8a8, #a89888); height: 100%;"></div>
+                <span class="tag" data-i18n="blog.cat.trends">DESIGN TRENDS</span>
+              </div>
+              <div class="card-body">
+                <h4 data-i18n="blog.card1.title">Why Warm-Toned Marble Is Dominating Miami Luxury Homes</h4>
+                <p class="excerpt" data-i18n="blog.card1.excerpt">Designers are moving away from cool whites toward honey, caramel, and terracotta marble varieties that bring warmth to contemporary spaces.</p>
+                <div class="card-footer">
+                  <div class="card-author">
+                    <div class="author-avatar-sm">SM</div>
+                    <span class="author-name-sm">Sarah Mitchell</span>
+                  </div>
+                  <div class="card-meta-right">
+                    <span>Feb 24, 2026</span>
+                    <span data-i18n="blog.card1.readTime">4 min</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="blog-card reveal reveal-delay-1">
+              <div class="card-image">
+                <div class="placeholder-bg" style="background: linear-gradient(135deg, #b0a090, #908070); height: 100%;"></div>
+                <span class="tag" data-i18n="blog.cat.care">STONE CARE</span>
+              </div>
+              <div class="card-body">
+                <h4 data-i18n="blog.card2.title">The Complete Guide to Sealing Natural Stone Countertops</h4>
+                <p class="excerpt" data-i18n="blog.card2.excerpt">Everything you need to know about when to seal, which sealers to use, and the mistakes that void your warranty.</p>
+                <div class="card-footer">
+                  <div class="card-author">
+                    <div class="author-avatar-sm">DR</div>
+                    <span class="author-name-sm">David Reyes</span>
+                  </div>
+                  <div class="card-meta-right">
+                    <span>Feb 18, 2026</span>
+                    <span data-i18n="blog.card2.readTime">6 min</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="blog-card reveal">
+              <div class="card-image">
+                <div class="placeholder-bg" style="background: linear-gradient(135deg, #d8c8b8, #b8a898); height: 100%;"></div>
+                <span class="tag" data-i18n="blog.cat.hanstone">HANSTONE UPDATES</span>
+              </div>
+              <div class="card-body">
+                <h4 data-i18n="blog.card3.title">Hanstone Quartz Introduces 12 New Colors for Spring 2026</h4>
+                <p class="excerpt" data-i18n="blog.card3.excerpt">Hyundai L&C expands its Hanstone collection with nature-inspired tones and advanced veining technology now available at our showroom.</p>
+                <div class="card-footer">
+                  <div class="card-author">
+                    <div class="author-avatar-sm">AL</div>
+                    <span class="author-name-sm">Ana Lopez</span>
+                  </div>
+                  <div class="card-meta-right">
+                    <span>Feb 12, 2026</span>
+                    <span data-i18n="blog.card3.readTime">3 min</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 4 -->
+            <article class="blog-card reveal reveal-delay-1">
+              <div class="card-image">
+                <div class="placeholder-bg" style="background: linear-gradient(135deg, #a89080, #887060); height: 100%;"></div>
+                <span class="tag" data-i18n="blog.cat.spotlights">PROJECT SPOTLIGHTS</span>
+              </div>
+              <div class="card-body">
+                <h4 data-i18n="blog.card4.title">Inside a $4M Coral Gables Renovation: Choosing the Right Stone</h4>
+                <p class="excerpt" data-i18n="blog.card4.excerpt">How one design team used five different stone varieties to create a cohesive look across a 6,000 sq ft waterfront estate.</p>
+                <div class="card-footer">
+                  <div class="card-author">
+                    <div class="author-avatar-sm">SM</div>
+                    <span class="author-name-sm">Sarah Mitchell</span>
+                  </div>
+                  <div class="card-meta-right">
+                    <span>Feb 5, 2026</span>
+                    <span data-i18n="blog.card4.readTime">7 min</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 5 -->
+            <article class="blog-card reveal">
+              <div class="card-image">
+                <div class="placeholder-bg" style="background: linear-gradient(135deg, #c0b0a0, #a09080); height: 100%;"></div>
+                <span class="tag" data-i18n="blog.cat.news">INDUSTRY NEWS</span>
+              </div>
+              <div class="card-body">
+                <h4 data-i18n="blog.card5.title">Natural Stone Supply Chains in 2026: What Contractors Need to Know</h4>
+                <p class="excerpt" data-i18n="blog.card5.excerpt">Global quarry updates, shipping timelines, and how to plan ahead for your next project to avoid costly delays.</p>
+                <div class="card-footer">
+                  <div class="card-author">
+                    <div class="author-avatar-sm">DR</div>
+                    <span class="author-name-sm">David Reyes</span>
+                  </div>
+                  <div class="card-meta-right">
+                    <span>Jan 28, 2026</span>
+                    <span data-i18n="blog.card5.readTime">5 min</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 6 -->
+            <article class="blog-card reveal reveal-delay-1">
+              <div class="card-image">
+                <div class="placeholder-bg" style="background: linear-gradient(135deg, #b8a898, #988878); height: 100%;"></div>
+                <span class="tag" data-i18n="blog.cat.care">STONE CARE</span>
+              </div>
+              <div class="card-body">
+                <h4 data-i18n="blog.card6.title">Quartz vs. Quartzite: The Differences Every Homeowner Should Know</h4>
+                <p class="excerpt" data-i18n="blog.card6.excerpt">They sound alike, but these two surfaces couldn't be more different. Here's how to pick the right one for your lifestyle.</p>
+                <div class="card-footer">
+                  <div class="card-author">
+                    <div class="author-avatar-sm">AL</div>
+                    <span class="author-name-sm">Ana Lopez</span>
+                  </div>
+                  <div class="card-meta-right">
+                    <span>Jan 20, 2026</span>
+                    <span data-i18n="blog.card6.readTime">4 min</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+          </div>
+
+          <!-- Sidebar -->
+          <aside class="blog-sidebar">
+
+            <!-- Popular Posts -->
+            <div class="sidebar-card reveal">
+              <h3 data-i18n="blog.sidebar.popular">Popular Posts</h3>
+              <ul class="popular-posts-list">
+                <li>
+                  <span class="post-number">1</span>
+                  <div class="post-info">
+                    <h5>2026 Kitchen Countertop Trends: What Designers Are Choosing</h5>
+                    <span>March 1, 2026</span>
+                  </div>
+                </li>
+                <li>
+                  <span class="post-number">2</span>
+                  <div class="post-info">
+                    <h5>Quartz vs. Quartzite: The Differences Every Homeowner Should Know</h5>
+                    <span>Jan 20, 2026</span>
+                  </div>
+                </li>
+                <li>
+                  <span class="post-number">3</span>
+                  <div class="post-info">
+                    <h5>The Complete Guide to Sealing Natural Stone Countertops</h5>
+                    <span>Feb 18, 2026</span>
+                  </div>
+                </li>
+                <li>
+                  <span class="post-number">4</span>
+                  <div class="post-info">
+                    <h5>Inside a $4M Coral Gables Renovation: Choosing the Right Stone</h5>
+                    <span>Feb 5, 2026</span>
+                  </div>
+                </li>
+                <li>
+                  <span class="post-number">5</span>
+                  <div class="post-info">
+                    <h5>Why Warm-Toned Marble Is Dominating Miami Luxury Homes</h5>
+                    <span>Feb 24, 2026</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Categories -->
+            <div class="sidebar-card reveal">
+              <h3 data-i18n="blog.sidebar.categories">Categories</h3>
+              <ul class="category-links">
+                <li><a href="#" data-i18n-html="blog.sidebar.cat.news">Industry News <span class="count-badge">8</span></a></li>
+                <li><a href="#" data-i18n-html="blog.sidebar.cat.trends">Design Trends <span class="count-badge">14</span></a></li>
+                <li><a href="#" data-i18n-html="blog.sidebar.cat.care">Stone Care <span class="count-badge">11</span></a></li>
+                <li><a href="#" data-i18n-html="blog.sidebar.cat.spotlights">Project Spotlights <span class="count-badge">9</span></a></li>
+                <li><a href="#" data-i18n-html="blog.sidebar.cat.hanstone">Hanstone Updates <span class="count-badge">6</span></a></li>
+              </ul>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="sidebar-newsletter reveal">
+              <h3 data-i18n="blog.sidebar.newsletter">Stay in the Loop</h3>
+              <p data-i18n="blog.sidebar.newsletterDesc">Get design inspiration, stone care tips, and exclusive updates delivered to your inbox.</p>
+              <form>
+                <input type="email" placeholder="Your email address" data-i18n-placeholder="blog.sidebar.emailPlaceholder" required>
+                <button type="submit" class="btn-subscribe" data-i18n="blog.sidebar.subscribe">Subscribe</button>
+              </form>
+            </div>
+
+            <!-- Hanstone Promo -->
+            <div class="sidebar-promo reveal">
+              <div class="promo-bg">
+                <div class="placeholder-bg" style="background: linear-gradient(135deg, #3a3028 0%, #2a2018 50%, #1a1510 100%);"></div>
+              </div>
+              <div class="promo-overlay"></div>
+              <div class="promo-content">
+                <div class="promo-label" data-i18n="blog.sidebar.promoLabel">OFFICIAL DISTRIBUTOR</div>
+                <h4>Discover Hanstone Quartz by Hyundai L&C</h4>
+                <a href="hanstone.html" class="btn-promo" data-i18n-html="blog.sidebar.promoCta">Explore Collection &rarr;</a>
+              </div>
+            </div>
+
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-logo"><img src="../images/header/TSS_LOGO.png" alt="The Stone Surfaces" class="logo-img"></div>
+          <p class="tagline" data-i18n="footer.tagline">South Florida's trusted source for premium natural and engineered stone surfaces since 2016.</p>
+          <p class="contact-line">&#9679; 7980 NW 56th St, Doral, FL 33166</p>
+          <p class="contact-line">&#9742; (305) 000-0000</p>
+          <p class="contact-line">&#9993; info@thestonesurfaces.com</p>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footer.products">Products</h4>
+          <ul>
+            <li><a href="products.html#granite">Granite</a></li>
+            <li><a href="products.html#marble">Marble</a></li>
+            <li><a href="products.html#quartz">Quartz</a></li>
+            <li><a href="products.html#quartzite">Quartzite</a></li>
+            <li><a href="products.html#dolomite">Dolomite</a></li>
+            <li><a href="products.html#hard-marble">Hard Marble</a></li>
+            <li><a href="hanstone.html">Hanstone Quartz</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footer.resources">Resources</h4>
+          <ul>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="inspired.html">Get Inspired</a></li>
+            <li><a href="#" data-i18n="footer.faqs">FAQs</a></li>
+            <li><a href="#" data-i18n="footer.warranty">Warranty Info</a></li>
+            <li><a href="trade.html">For The Trade</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footer.connect">Connect</h4>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="Pinterest">PI</a>
+            <a href="#" aria-label="LinkedIn">LI</a>
+            <a href="#" aria-label="Houzz">HZ</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 The Stone Surfaces. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
+          <a href="#" data-i18n="footer.terms">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== MOBILE TAB BAR ===== -->
+  <nav class="mobile-tab-bar">
+    <div class="container">
+      <a href="../index.html" class="tab-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+        <span>Home</span>
+      </a>
+      <a href="products.html" class="tab-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        <span>Products</span>
+      </a>
+      <a href="hanstone.html" class="tab-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <span>Hanstone</span>
+      </a>
+      <a href="inspired.html" class="tab-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span>Inspire</span>
+      </a>
+      <a href="contact.html" class="tab-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span>Contact</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ===== CHAT WIDGET ===== -->
+  <button class="chat-widget-btn" aria-label="Open chat">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+  </button>
+
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <h4>The Stone Surfaces Assistant</h4>
+      <div class="close-btn">&times;</div>
+    </div>
+    <div class="chat-messages">
+      <div class="chat-message bot">
+        Hi! I'm here to help you find the perfect stone for your project. What are you looking for?
+        <div class="quick-actions">
+          <button>Browse Products</button>
+          <button>Request a Quote</button>
+          <button>Hanstone Quartz Info</button>
+          <button>Visit Our Showroom</button>
+        </div>
+      </div>
+    </div>
+    <div class="chat-input">
+      <input type="text" placeholder="Type your message...">
+      <button aria-label="Send">&uarr;</button>
+    </div>
+    <div id="n8n-chat-widget" data-webhook-url="YOUR_N8N_WEBHOOK_URL" style="display:none;"></div>
+  </div>
+
+  <script src="../js/i18n.js"></script>
+  <script src="../js/main.js"></script>
+
+  <!-- Dynamic Blog Posts from Admin -->
+  <script>
+    (function() {
+      try {
+        var posts = JSON.parse(localStorage.getItem('tss-blog-posts') || '[]');
+        var published = posts.filter(function(p) { return p.status === 'published'; });
+        if (published.length === 0) return;
+
+        var grid = document.querySelector('.blog-grid');
+        if (!grid) return;
+
+        var catLabels = {
+          'design-trends': 'DESIGN TRENDS',
+          'stone-care': 'STONE CARE',
+          'industry-news': 'INDUSTRY NEWS',
+          'project-spotlights': 'PROJECT SPOTLIGHTS',
+          'hanstone-updates': 'HANSTONE UPDATES'
+        };
+
+        published.sort(function(a, b) { return new Date(b.publishedAt || b.createdAt) - new Date(a.publishedAt || a.createdAt); });
+
+        published.forEach(function(post) {
+          var date = new Date(post.publishedAt || post.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+          var initials = (post.author && post.author.avatar) || 'TS';
+          var authorName = (post.author && post.author.name) || 'The Stone Surfaces';
+          var catLabel = catLabels[post.category] || post.category.toUpperCase();
+          var excerpt = (post.excerpt || (post.content || '').replace(/<[^>]*>/g, '').slice(0, 120) + '...') || '';
+          var bgStyle = post.featuredImage
+            ? 'background-image:url(' + post.featuredImage + ');background-size:cover;background-position:center;height:100%;'
+            : 'background:linear-gradient(135deg,#c4a35a33,#8b735533);height:100%;';
+
+          var card = document.createElement('article');
+          card.className = 'blog-card reveal';
+          card.setAttribute('data-dynamic', 'true');
+          card.innerHTML = '<div class="card-image">' +
+            '<div class="placeholder-bg" style="' + bgStyle + '"></div>' +
+            '<span class="tag">' + catLabel + '</span>' +
+            '</div>' +
+            '<div class="card-body">' +
+            '<h4>' + (post.title || '') + '</h4>' +
+            '<p class="excerpt">' + excerpt + '</p>' +
+            '<div class="card-footer">' +
+            '<div class="card-author">' +
+            '<div class="author-avatar-sm">' + initials + '</div>' +
+            '<span class="author-name-sm">' + authorName + '</span>' +
+            '</div>' +
+            '<div class="card-meta-right">' +
+            '<span>' + date + '</span>' +
+            '<span>' + (post.readTime || '3 min read') + '</span>' +
+            '</div></div></div>';
+
+          grid.insertBefore(card, grid.firstChild);
+        });
+      } catch(e) { /* silently fail */ }
+    })();
+  </script>
+</body>
+</html>

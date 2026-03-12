@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login | The Stone Surfaces</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+  <div class="login-page">
+    <div class="login-card">
+      <div class="login-logo">
+        <a href="../index.html">
+          <span class="logo-icon">S</span>The Stone Surfaces
+        </a>
+      </div>
+
+      <h1 class="login-title">Admin Access</h1>
+      <p class="login-subtitle">Enter your password to access the admin area.</p>
+
+      <div id="login-error" class="login-error"></div>
+
+      <form id="login-form" class="login-form">
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter admin password" required autocomplete="current-password">
+        </div>
+        <button type="submit" class="btn btn--primary" id="login-btn">Sign In</button>
+      </form>
+
+      <div class="login-back">
+        <a href="../index.html">&larr; Back to website</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/admin-config.js"></script>
+  <script src="../js/admin-auth.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // If already authenticated, redirect to dashboard
+      if (AdminAuth.isAuthenticated()) {
+        window.location.href = 'admin/dashboard.html';
+        return;
+      }
+
+      const form = document.getElementById('login-form');
+      const errorEl = document.getElementById('login-error');
+      const loginBtn = document.getElementById('login-btn');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        errorEl.classList.remove('visible');
+        loginBtn.disabled = true;
+        loginBtn.innerHTML = '<span class="spinner"></span> Signing in...';
+
+        const password = document.getElementById('password').value;
+        const result = await AdminAuth.login(password);
+
+        if (result.success) {
+          window.location.href = 'admin/dashboard.html';
+        } else {
+          errorEl.textContent = result.error;
+          errorEl.classList.add('visible');
+          loginBtn.disabled = false;
+          loginBtn.textContent = 'Sign In';
+          document.getElementById('password').value = '';
+          document.getElementById('password').focus();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
