@@ -84,7 +84,7 @@
 
 .admin-nav-link:hover {
   color: var(--color-text-light);
-  background: rgba(44,37,32,0.05);
+  background: rgba(26,26,30,0.05);
 }
 
 .admin-nav-link.active {
@@ -375,7 +375,7 @@
 }
 
 .admin-table tbody tr:hover {
-  background: rgba(44,37,32,0.03);
+  background: rgba(26,26,30,0.03);
 }
 
 .admin-table .lead-name {
@@ -510,7 +510,7 @@
 .detail-panel-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(44,37,32,0.5);
+  background: rgba(26,26,30,0.5);
   z-index: 200;
   opacity: 0;
   visibility: hidden;
@@ -574,7 +574,7 @@
 
 .detail-panel-close:hover {
   color: var(--color-text-light);
-  background: rgba(44,37,32,0.05);
+  background: rgba(26,26,30,0.05);
 }
 
 .detail-panel-body {
@@ -612,7 +612,7 @@
 
 .note-item {
   padding: 12px;
-  background: rgba(44,37,32,0.03);
+  background: rgba(26,26,30,0.03);
   border-left: 2px solid var(--color-accent-gold);
   margin-bottom: 8px;
 }
@@ -661,7 +661,7 @@
 .admin-modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(44,37,32,0.6);
+  background: rgba(26,26,30,0.6);
   z-index: 300;
   display: flex;
   align-items: center;
@@ -732,7 +732,7 @@
 
 .admin-modal-close:hover {
   color: var(--color-text-light);
-  background: rgba(44,37,32,0.05);
+  background: rgba(26,26,30,0.05);
 }
 
 .admin-modal-body {
@@ -790,7 +790,7 @@
 
 .tab-count {
   font-size: 11px;
-  background: rgba(44,37,32,0.08);
+  background: rgba(26,26,30,0.08);
   padding: 2px 6px;
   border-radius: 8px;
   margin-left: 6px;
@@ -809,7 +809,7 @@
   display: flex;
   gap: 4px;
   padding: 8px;
-  background: rgba(44,37,32,0.03);
+  background: rgba(26,26,30,0.03);
   border: 1px solid var(--color-border-dark);
   border-bottom: none;
   flex-wrap: wrap;
@@ -833,7 +833,7 @@
 
 .toolbar-btn:hover {
   color: var(--color-text-light);
-  background: rgba(44,37,32,0.05);
+  background: rgba(26,26,30,0.05);
   border-color: var(--color-border-dark);
 }
 
@@ -847,7 +847,7 @@
   width: 100%;
   min-height: 300px;
   padding: 16px;
-  background: rgba(44,37,32,0.04);
+  background: rgba(26,26,30,0.04);
   border: 1px solid var(--color-border-dark);
   border-radius: 0 0 var(--radius-button) var(--radius-button);
   color: var(--color-text-light);
@@ -919,7 +919,7 @@
 .seo-panel {
   margin-top: 24px;
   padding: 24px;
-  background: rgba(44,37,32,0.02);
+  background: rgba(26,26,30,0.02);
   border: 1px solid var(--color-border-dark);
 }
 
@@ -1251,7 +1251,7 @@
 
 .btn--ghost:hover {
   color: var(--color-text-light);
-  background: rgba(44,37,32,0.05);
+  background: rgba(26,26,30,0.05);
 }
 
 .btn--small {
@@ -1278,7 +1278,7 @@
   display: inline-block;
   width: 18px;
   height: 18px;
-  border: 2px solid rgba(44,37,32,0.2);
+  border: 2px solid rgba(26,26,30,0.2);
   border-top-color: var(--color-accent-gold);
   border-radius: 50%;
   animation: spin 0.6s linear infinite;

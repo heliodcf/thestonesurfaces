@@ -83,6 +83,8 @@ thestonesurfaces/
 │   ├── hero/                     # Imagens hero + badges distribuidores
 │   ├── collections/              # Thumbnails das categorias de pedra
 │   ├── hanstone/                 # Assets da marca Hanstone
+│   │   ├── images-hanstone/      # 40 imagens reais do catalogo Hanstone (1-Antello a 40-Silhouette)
+│   │   └── galeria/              # 7 fotos lifestyle para carrossel Brand Story
 │   ├── lucciare/                 # Assets da marca Lucciare
 │   └── inspired/                 # Galeria de projetos + Instagram
 │
@@ -100,11 +102,11 @@ thestonesurfaces/
 
 | # | Etapa | Descricao | Status |
 |---|-------|-----------|--------|
-| 1 | Design System | Paleta dark premium, tipografia, spacing, motion, CSS custom properties | done |
-| 2 | Homepage | 9 secoes: hero cinematico, spotlights Hanstone/Lucciare, collections grid, trust pillars, galeria, reviews, blog preview, newsletter, footer | done |
+| 1 | Design System | Paleta Cool Gray Monochrome, tipografia, spacing, motion, CSS custom properties | done |
+| 2 | Homepage | 9 secoes: hero cinematico, spotlights Hanstone/Lucciare, collections grid, trust strip inline, galeria, reviews, blog preview, newsletter, footer com 3 locacoes | done |
 | 3 | Products | Grid com filtros (cor, finish, marca, espessura), comparison bar (ate 3 produtos) | done |
 | 4 | Product Detail | Zoom on hover, accordion de specs tecnicas, produtos relacionados | done |
-| 5 | Hanstone Page | Brand page: hero, brand story, collections browser, color palette explorer, beneficios, recursos profissionais | done |
+| 5 | Hanstone Page | Brand page: hero, brand story com carrossel auto-rotativo (7 fotos lifestyle), catalogo real 40 cores Hanstone com imagens oficiais, lightbox popup com nome em rosa Hanstone + codigo referencia, beneficios, recursos profissionais | done |
 | 6 | Lucciare Page | Brand page dedicada com spotlight e collections | done |
 | 7 | Get Inspired | Masonry gallery, Before/After slider, Instagram feed, submit project form | done |
 | 8 | Blog | Featured post hero, category tabs, grid 2-col + sidebar, newsletter signup | done |
@@ -188,19 +190,23 @@ admin.css        →  Estilos separados (reutiliza :root custom properties de st
 
 ## Design System
 
-### Paleta de Cores
+### Paleta de Cores (Cool Gray Monochrome)
 | Variavel | Valor | Uso |
 |----------|-------|-----|
-| `--color-bg-primary` | `#0F0F0F` | Background principal (near-black) |
-| `--color-bg-surface` | `#1A1A1A` | Cards e secoes elevadas |
-| `--color-bg-light` | `#F5F2ED` | Secoes de contraste (stone-white) |
-| `--color-accent-gold` | `#C4A35A` | Accent principal — luxury cue |
-| `--color-accent-bronze` | `#8B7355` | Hover states, accent secundario |
-| `--color-cta` | `#D97706` | Botoes CTA (amber-orange) |
-| `--color-cta-hover` | `#B45309` | Hover dos CTAs |
-| `--color-text-light` | `#FAFAF9` | Texto sobre dark bg |
-| `--color-text-muted` | `#A8A29E` | Texto secundario |
-| `--color-text-dark` | `#1C1917` | Texto sobre light bg |
+| `--color-bg-primary` | `#F7F7F8` | Background principal (quase branco frio) |
+| `--color-bg-surface` | `#EDEDEF` | Cards e secoes elevadas (cinza muito claro) |
+| `--color-bg-accent` | `#E0E0E3` | Background accent (cinza claro) |
+| `--color-bg-feature` | `#D1D1D6` | Background feature (cinza medio claro) |
+| `--color-bg-light` | `#FFFFFF` | Branco puro |
+| `--color-accent-gold` | `#6B6B6B` | Accent principal (cinza medio) |
+| `--color-accent-bronze` | `#525252` | Hover states, accent secundario (cinza escuro) |
+| `--color-accent-gold-light` | `#9E9E9E` | Accent light |
+| `--color-accent-gold-bg` | `#F0F0F2` | Accent background |
+| `--color-cta` | `#6B6B6B` | Botoes CTA (cinza medio) |
+| `--color-cta-hover` | `#525252` | Hover dos CTAs |
+| `--color-text-light` | `#1A1A1E` | Texto principal |
+| `--color-text-muted` | `#6B6B72` | Texto secundario |
+| `--color-text-dark` | `#1A1A1E` | Texto sobre light bg |
 | `--color-trust` | `#059669` | Badges de garantia/trust |
 
 ### Tipografia
@@ -228,6 +234,26 @@ admin.css        →  Estilos separados (reutiliza :root custom properties de st
 | `.seo-preview` | Preview Google snippet |
 | `.reveal` | Fade-up scroll animation |
 | `.toast` | Notificacao toast (success/error/warning) |
+
+### Hanstone Quartz Page — Detalhes Tecnicos
+
+A pagina Hanstone (`pages/hanstone.html`) foi atualizada com dados reais do catalogo oficial:
+
+**Catalogo de 40 Cores Reais:**
+Grid responsivo com 40 swatch cards, cada um com imagem real do produto. Ordem numerica (1-Antello ate 40-Silhouette). Cada card mostra: imagem com `object-fit: cover`, nome da pedra e codigo de referencia (ex: LO804).
+
+**Carrossel Brand Story:**
+7 fotos lifestyle na secao "The Hanstone Story" com rotacao automatica a cada 4s. CSS crossfade usando `position: absolute` + transicao de `opacity`. Imagens em `images/hanstone/galeria/`.
+
+**Lightbox Popup:**
+Ao clicar em qualquer swatch card, abre overlay com imagem ampliada, nome da pedra em rosa Hanstone (`--hs-pink: #c44398`) e codigo de referencia. Fecha via botao X, click fora ou tecla Escape.
+
+**CSS Custom Properties Hanstone:**
+| Variavel | Valor | Uso |
+|----------|-------|-----|
+| `--hs-pink` | `#c44398` | Cor oficial Hanstone — nome no lightbox, accents |
+| `--hs-dark` | `#1a1a2e` | Background escuro da pagina |
+| `--hs-light` | `#f8f5f0` | Secoes claras |
 
 ---
 
@@ -300,13 +326,20 @@ admin.css        →  Estilos separados (reutiliza :root custom properties de st
 | `96e28e4` | Add hero video, update categories, create README |
 | `326b606` | Add i18n system (EN/ES/PT) + hero visual design update |
 | `7747a88` | Add admin area: CRM dashboard + AI blog manager |
+| `fdcb21b` | Change header logo to black color using CSS invert filter |
+| `486b02d` | Hanstone page: real 40-color catalog, brand story carousel, lightbox popup |
+| — | Hanstone grid: 4 colunas fixas, pedras 25% maiores, fonte proporcional |
+| — | Trust section: refatorado de video+data layout para trust-strip inline com spans |
+| — | Paleta de cores: migrado de warm beige/gold para Cool Gray Monochrome |
+| — | Locations section: adicionado logo TSS em preto acima do heading |
+| — | Footer: logo em preto, 3 enderecos (Doral, Orlando, Sarasota), telefone padrao |
 
 ---
 
 ## Decisoes de Arquitetura
 
 1. **Vanilla HTML/CSS/JS** — sem frameworks, sem build tools. Performance maxima, simplicidade de deploy.
-2. **Design system via CSS custom properties** — paleta dark premium com gold accents. Todas as paginas reutilizam as mesmas variaveis.
+2. **Design system via CSS custom properties** — paleta Cool Gray Monochrome (cinza medio, cinza claro, branco). Todas as paginas reutilizam as mesmas variaveis.
 3. **Admin separado do publico** — CSS e JS proprios. Nenhum arquivo publico modificado para admin (exceto footer link + blog integration script).
 4. **Data layer com dual mode** — `admin-data.js` verifica `ADMIN_CONFIG.API_MODE`. Se `'api'` + endpoint: fetch para n8n. Se falha: fallback localStorage. Zero mudanca no frontend ao alternar.
 5. **Autenticacao client-side (MVP)** — SHA-256 via Web Crypto API. Hash no config, sessao em sessionStorage. Upgrade para JWT via n8n quando backend existir.
@@ -329,6 +362,16 @@ admin.css        →  Estilos separados (reutiliza :root custom properties de st
 - Export CSV usa `Blob` + `URL.createObjectURL` para download sem backend.
 - Tags input usa Enter/virgula para criar pills com botao de remover.
 - Debounce no filtro de busca (300ms) para evitar re-renders excessivos.
+- Header logo usa `filter: invert(1)` para converter PNG branco em preto — funciona tanto no estado transparente quanto no solido.
+- Trust strip: `.section` class causava conflito de CSS specificity com padding. Solucao: classe independente `.trust-strip` com `<span>` elements (inline por natureza) em vez de `<div>/<p>` dentro de flex container.
+- Migracao de paleta de cores: alterar `:root` custom properties primeiro, depois hardcoded CSS, depois bulk replacement via sed em todos os HTMLs, depois valores `rgba()` de tint/shadow.
+- Locations logo usa `filter: brightness(0)` para renderizar em preto. Footer logo usa inline style `filter: brightness(0)`.
+- Hanstone grid com `repeat(4, 1fr)` em vez de `auto-fill` para garantir exatamente 4 colunas. Mobile usa `repeat(2, 1fr)`.
+- Pagina Hanstone: dados originais de collections eram placeholder/fake (nomes inventados, gradientes CSS como swatches). Substituido por catalogo real de 40 cores com imagens oficiais.
+- Brand Story carousel: CSS crossfade com `position: absolute` + `opacity` transitions, JS auto-rotativo a cada 4s usando IIFE.
+- Lightbox: overlay com `pointer-events: none/all` toggle, fecha com X, click no overlay ou tecla Escape.
+- Cor rosa Hanstone (`--hs-pink: #c44398`) usada no nome da pedra no lightbox para manter identidade visual da marca.
+- Imagens com espacos no nome do arquivo (ex: "1 ANTELLO - LO804.jpg") funcionam em HTML src mas devem ser URL-encoded em alguns contextos.
 
 ---
 

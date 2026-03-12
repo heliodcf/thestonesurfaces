@@ -213,7 +213,11 @@
       <div class="lucciare-flare lucciare-flare--bottom-left"></div>
       <div class="container" style="position: relative; z-index: 2;">
         <div class="spotlight-grid spotlight-grid--reverse">
-          <div class="spotlight-content reveal">
+          <div class="spotlight-image reveal" style="position: relative;">
+            <img src="images/lucciare/lucciare_Image.jpg" alt="Lucciare Handcrafted Quartz — luxury kitchen with premium quartz surface">
+            <img src="images/lucciare/lucciare_distributor_logo.jpg" alt="Lucciare Logo" style="position: absolute; bottom: 24px; left: 24px; max-height: 100px; width: auto;">
+          </div>
+          <div class="spotlight-content reveal reveal-delay-1">
             <span class="label lucciare-label" data-i18n="home.lucciare.label">NOW FEATURING</span>
             <h2 style="font-weight: 700;">Lucciare Handcrafted Quartz</h2>
             <p class="text-body text-italic text-muted" data-i18n="home.lucciare.tagline">The Art of Marbleized Veining</p>
@@ -236,10 +240,6 @@
               </div>
             </div>
             <a href="pages/lucciare.html" class="btn btn--lucciare" data-i18n="home.lucciare.cta">Discover the Lucciare Collection</a>
-          </div>
-          <div class="spotlight-image reveal reveal-delay-1" style="position: relative;">
-            <img src="images/lucciare/lucciare_Image.jpg" alt="Lucciare Handcrafted Quartz — luxury kitchen with premium quartz surface">
-            <img src="images/lucciare/lucciare_distributor_logo.jpg" alt="Lucciare Logo" style="position: absolute; bottom: 24px; left: 24px; max-height: 80px; width: auto;">
           </div>
         </div>
       </div>
@@ -306,32 +306,21 @@
     </section>
 
     <!-- ===== SECTION 4: TRUST PILLARS ===== -->
-    <section class="section trust-section">
-      <div class="container trust-layout">
-        <div class="trust-video-col">
-          <div class="trust-video-wrapper" data-scroll-video>
-            <video muted playsinline preload="auto" aria-hidden="true">
-              <source src="images/data/Data-hero.mp4" type="video/mp4">
-            </video>
-          </div>
-        </div>
-        <div class="trust-data-col">
-          <div class="trust-grid">
-            <div class="trust-item reveal">
-              <div class="number" data-count="10" data-suffix="+">0</div>
-              <p class="desc" data-i18n="home.trust.years">Years of Excellence</p>
-            </div>
-            <div class="trust-item reveal reveal-delay-1">
-              <div class="number" data-count="500" data-suffix="+">0</div>
-              <p class="desc" data-i18n="home.trust.slabs">Slab Varieties in Stock</p>
-            </div>
-            <div class="trust-item reveal reveal-delay-2">
-              <div class="number" data-count="100" data-suffix="%">0</div>
-              <p class="desc" data-i18n="home.trust.consultation">Expert Consultation Included</p>
-            </div>
-          </div>
-        </div>
-      </div>
+    <section class="trust-strip">
+      <span class="trust-item reveal">
+        <span class="number" data-count="10" data-suffix="+">0</span>
+        <span class="desc" data-i18n="home.trust.years">Years of Excellence</span>
+      </span>
+      <span class="trust-sep"></span>
+      <span class="trust-item reveal reveal-delay-1">
+        <span class="number" data-count="500" data-suffix="+">0</span>
+        <span class="desc" data-i18n="home.trust.slabs">Slab Varieties in Stock</span>
+      </span>
+      <span class="trust-sep"></span>
+      <span class="trust-item reveal reveal-delay-2">
+        <span class="number" data-count="100" data-suffix="+">0</span>
+        <span class="desc" data-i18n="home.trust.consultation">Expert Consultation Included</span>
+      </span>
     </section>
 
     <!-- ===== SECTION 5: GET INSPIRED CAROUSEL ===== -->
@@ -343,14 +332,14 @@
       <div class="carousel-wrapper">
         <div class="carousel-track">
           <a href="pages/inspired.html" class="carousel-card reveal" style="text-decoration: none; color: inherit; cursor: pointer;">
-            <div class="card-bg"><div class="placeholder-bg" style="background: linear-gradient(135deg, #E8E0D4, #DDD5C8);"></div></div>
+            <div class="card-bg"><div class="placeholder-bg" style="background: linear-gradient(135deg, #E0E0E3, #D1D1D6);"></div></div>
             <div class="card-overlay">
               <span class="room-type" data-i18n="home.inspired.room1">Modern Kitchen</span>
               <span class="material-name">Calacatta Gold Marble</span>
             </div>
           </a>
           <a href="pages/inspired.html" class="carousel-card reveal reveal-delay-1" style="text-decoration: none; color: inherit; cursor: pointer;">
-            <div class="card-bg"><div class="placeholder-bg" style="background: linear-gradient(135deg, #DDD5C8, #D0C8BC);"></div></div>
+            <div class="card-bg"><div class="placeholder-bg" style="background: linear-gradient(135deg, #D1D1D6, #D0C8BC);"></div></div>
             <div class="card-overlay">
               <span class="room-type" data-i18n="home.inspired.room2">Luxury Bathroom</span>
               <span class="material-name">Hanstone Montauk</span>
@@ -496,6 +485,7 @@
     <section id="locations" class="section section--dark locations-section">
       <div class="container">
         <div class="text-center reveal" style="margin-bottom: 56px;">
+          <img src="images/header/TSS_LOGO.png" alt="The Stone Surfaces" class="locations-logo">
           <span class="label" data-i18n="home.locations.label">OUR LOCATIONS</span>
           <h2 style="margin-top: 16px;" data-i18n="home.locations.title">Visit Us in Person</h2>
           <p class="text-muted" style="margin-top: 12px; font-size: 16px; max-width: 600px; margin-left: auto; margin-right: auto;" data-i18n="home.locations.desc">Three showrooms across Florida, each stocked with premium slabs ready for your next project.</p>
@@ -611,10 +601,12 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-col">
-          <div class="footer-logo"><img src="images/header/TSS_LOGO.png" alt="The Stone Surfaces" class="logo-img"></div>
+          <div class="footer-logo"><img src="images/header/TSS_LOGO.png" alt="The Stone Surfaces" class="logo-img" style="filter: brightness(0);"></div>
           <p class="tagline" data-i18n="footer.tagline">South Florida's trusted source for premium natural and engineered stone surfaces since 2016.</p>
-          <p class="contact-line">&#9679; 7980 NW 56th St, Doral, FL 33166</p>
-          <p class="contact-line">&#9742; (305) 000-0000</p>
+          <p class="contact-line"><strong>Doral</strong> — 7972 NW 56th St, Doral, FL 33166</p>
+          <p class="contact-line"><strong>Orlando</strong> — 3924 N John Young Pkwy, Orlando, FL 32804</p>
+          <p class="contact-line"><strong>Sarasota</strong> — 1695 12th St, Sarasota, FL 34236</p>
+          <p class="contact-line" style="margin-top: 8px;">&#9742; 1.866.960.8579</p>
           <p class="contact-line">&#9993; info@thestonesurfaces.com</p>
         </div>
         <div class="footer-col">
