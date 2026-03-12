@@ -1,0 +1,772 @@
+{
+  "nav": {
+    "products": "Produits",
+    "hanstone": "Hanstone Quartz",
+    "lucciare": "Lucciare",
+    "inspired": "Inspirations",
+    "blog": "Blog",
+    "about": "À Propos",
+    "trade": "Professionnels",
+    "contact": "Contact",
+    "cta": "Demander un Devis",
+    "home": "Accueil",
+    "hanstone_short": "Hanstone",
+    "inspire": "Inspirations",
+    "mega": {
+      "quartzite": "Quartzite",
+      "granite": "Granite",
+      "dolomite": "Dolomite & Marble Dur",
+      "marble": "Marble",
+      "semiprecious": "Semi-Précieuses & Onyx",
+      "quartz": "Quartz"
+    }
+  },
+  "common": {
+    "explore": "Explorer →",
+    "home": "Accueil",
+    "learnMore": "En Savoir Plus",
+    "viewDetails": "Voir les Détails",
+    "readMore": "Lire la Suite"
+  },
+  "home": {
+    "hero": {
+      "label": "DISTRIBUTEUR PREMIUM DE PIERRE DU SUD DE LA FLORIDE",
+      "title": "Où la Beauté Naturelle Rencontre l'Ingénierie de Précision",
+      "subtitle": "Dalles premium, conseils d'experts, et désormais — la maison exclusive de Hanstone Quartz dans le Sud de la Floride.",
+      "cta1": "Explorez Notre Collection",
+      "cta2": "Visitez Notre Showroom"
+    },
+    "hanstone": {
+      "label": "NOUVEAUTÉ",
+      "tagline": "Créé par la Terre. Conçu pour Vous.",
+      "point1": "93% Quartz Naturel — plus dur que le Granite",
+      "point2": "Garantie Résidentielle à Vie",
+      "point3": "60+ Coloris, 3 Finitions Premium",
+      "point4": "Technologie Avancée Breton™",
+      "cta": "Découvrez la Collection Hanstone"
+    },
+    "lucciare": {
+      "label": "NOUVEAUTÉ",
+      "tagline": "L'Art du Veinage Marbré",
+      "point1": "Surfaces Artisanales de Design Italien",
+      "point2": "Certifications GreenGuard Gold & NSF",
+      "point3": "3 Collections — Signature, Genesis & Solstice",
+      "point4": "Résistant aux Taches, Non Poreux & Durable",
+      "cta": "Découvrez la Collection Lucciare"
+    },
+    "collections": {
+      "label": "NOS COLLECTIONS",
+      "title": "Trouvez la Pierre Idéale pour Votre Vision",
+      "desc": "Chaque projet mérite une surface à la hauteur de son ambition. Que vous soyez attiré par l'élégance intemporelle du Marble, la résistance du Granite ou la précision du Quartz — la bonne pierre transforme un espace d'ordinaire en inoubliable.",
+      "cta": "Voir Toutes les Collections"
+    },
+    "trust": {
+      "years": "Années d'Excellence",
+      "slabs": "Variétés de Dalles en Stock",
+      "consultation": "Consultation d'Experts Incluse"
+    },
+    "inspired": {
+      "label": "INSPIREZ-VOUS",
+      "title": "Découvrez les Possibilités",
+      "room1": "Cuisine Moderne",
+      "room2": "Salle de Bain de Luxe",
+      "room3": "Hall Commercial",
+      "room4": "Cuisine Extérieure"
+    },
+    "testimonials": {
+      "label": "TÉMOIGNAGES CLIENTS",
+      "title": "La Confiance des Marbriers & Designers de Toute la Floride",
+      "quote1": "C'est le meilleur fournisseur de pierre à Miami. Non seulement avec de très bons prix, mais avec les pierres les plus tendance disponibles.",
+      "quote2": "Excellent service client, très proactif et efficace. Excellent travail !",
+      "quote3": "Les meilleures personnes, les meilleurs matériaux, les meilleurs prix !",
+      "role": "Client Vérifié",
+      "source": "<span style=\"color: var(--color-accent-gold);\">★</span> Note 5.0 — Avis provenant de Google & plateformes vérifiées"
+    },
+    "blog": {
+      "label": "NOTRE BLOG",
+      "title": "Idées & Inspirations",
+      "tag1": "Tendances Design",
+      "tag2": "Entretien de la Pierre",
+      "tag3": "Actualités Hanstone",
+      "title1": "Tendances 2026 des Plans de Travail : Ce que Choisissent les Designers",
+      "title2": "Comment Entretenir Vos Surfaces en Pierre Naturelle comme un Pro",
+      "title3": "Présentation de Hanstone Quartz : Pourquoi Nous Avons Choisi Hyundai L&C",
+      "excerpt1": "Des veinages spectaculaires aux finitions mates, découvrez les surfaces qui définissent les cuisines de luxe cette année.",
+      "excerpt2": "Des gestes quotidiens simples et des traitements annuels pour garder Granite, Marble et Quartzite impeccables.",
+      "excerpt3": "L'histoire de notre partenariat exclusif et ce qu'il signifie pour nos clients.",
+      "read1": "5 min de lecture",
+      "read2": "4 min de lecture",
+      "read3": "6 min de lecture",
+      "cta": "Lire Notre Blog <span class=\"arrow\">→</span>"
+    },
+    "locations": {
+      "label": "NOS EMPLACEMENTS",
+      "title": "Rendez-nous Visite",
+      "desc": "Trois showrooms en Floride, chacun approvisionné en dalles premium pour votre prochain projet.",
+      "badge": "Showroom Principal",
+      "directions": "Itinéraire"
+    },
+    "newsletter": {
+      "title": "Recevez Notre Guide de Sélection de Pierre 2026",
+      "desc": "Conseils d'experts pour choisir la surface parfaite pour votre prochain projet. Gratuit, directement dans votre boîte mail.",
+      "name": "Votre nom",
+      "email": "Votre e-mail",
+      "cta": "Télécharger le Guide Gratuit"
+    }
+  },
+  "footer": {
+    "tagline": "La source de confiance du Sud de la Floride pour les surfaces premium en pierre naturelle et composite depuis 2016.",
+    "products": "Produits",
+    "resources": "Ressources",
+    "connect": "Suivez-nous",
+    "faqs": "FAQ",
+    "warranty": "Informations de Garantie",
+    "copyright": "© 2026 The Stone Surfaces. Tous droits réservés.",
+    "privacy": "Politique de Confidentialité",
+    "terms": "Conditions d'Utilisation"
+  },
+  "chat": {
+    "title": "Assistant The Stone Surfaces",
+    "greeting": "Bonjour ! Je suis là pour vous aider à trouver la pierre parfaite pour votre projet. Que recherchez-vous ?",
+    "browse": "Parcourir les Produits",
+    "quote": "Demander un Devis",
+    "hanstone_info": "Info Hanstone Quartz",
+    "showroom": "Visitez Notre Showroom",
+    "placeholder": "Tapez votre message..."
+  },
+  "products": {
+    "breadcrumb": "Nos Collections",
+    "title": "Nos Collections",
+    "desc": "Explorez plus de 500 dalles premium de pierre et Quartz. Filtrez par couleur, finition, épaisseur et application pour trouver la surface parfaite pour votre projet.",
+    "filters": "Filtres",
+    "clearAll": "Tout Effacer",
+    "filterLabel": {
+      "color": "Famille de Couleurs",
+      "finish": "Finition",
+      "application": "Application"
+    },
+    "filter": {
+      "material": "Type de Matériau",
+      "thickness": "Épaisseur",
+      "brand": "Marque",
+      "price": "Gamme de Prix",
+      "color": {
+        "white": "Blanc & Crème",
+        "gray": "Gris",
+        "black": "Noir",
+        "brown": "Marron & Beige",
+        "blue": "Bleu",
+        "green": "Vert",
+        "multi": "Multicolore"
+      },
+      "finish": {
+        "polished": "Poli",
+        "honed": "Adouci",
+        "leathered": "Cuir",
+        "brushed": "Brossé"
+      },
+      "application": {
+        "kitchen": "Cuisine",
+        "bathroom": "Salle de Bain",
+        "commercial": "Commercial",
+        "outdoor": "Extérieur"
+      }
+    },
+    "sortBy": "Trier par",
+    "sort": {
+      "newest": "Plus Récents",
+      "popular": "Populaires",
+      "color": "Famille de Couleurs",
+      "price": "Prix"
+    },
+    "viewDetails": "Voir les Détails",
+    "compare": "Comparer",
+    "requestQuote": "Demander un Devis",
+    "origin": "Origine :",
+    "compareNow": "Comparer Maintenant",
+    "productsSelected": "produits sélectionnés",
+    "results": "résultats"
+  },
+  "hanstone": {
+    "breadcrumb": "Hanstone Quartz",
+    "hero": {
+      "title": "Hanstone Quartz — Créé par la Terre. Conçu pour Vous.",
+      "tagline": "Le distributeur officiel de Hanstone Quartz par Hyundai L&C dans le Sud de la Floride.",
+      "badge": "Distributeur Officiel"
+    },
+    "story": {
+      "label": "NOTRE HÉRITAGE",
+      "title": "L'Histoire Hanstone",
+      "text1": "Depuis 2009, Hanstone crée des surfaces premium en Quartz grâce à la technologie avancée Breton™. Composées à 93% de Quartz naturel, chaque dalle offre une durabilité et une beauté incomparables.",
+      "text2": "Fabriquées dans des installations à la pointe de la technologie avec un contrôle qualité rigoureux, les surfaces Hanstone répondent aux plus hauts standards d'excellence et de durabilité.",
+      "point1": "Composition à 93% de Quartz Naturel",
+      "point2": "Fabrication Avancée Breton™",
+      "point3": "Qualité Canadienne Depuis 2009",
+      "point4": "Normes Rigoureuses de Contrôle Qualité"
+    },
+    "collections": {
+      "label": "COLLECTIONS",
+      "title": "Explorez les Collections",
+      "signature": {
+        "tag": "Collection Signature"
+      },
+      "pinnacle": {
+        "tag": "Collection Pinnacle"
+      },
+      "connections": {
+        "tag": "Collection Connections"
+      },
+      "opimo": {
+        "tag": "Collection Opimo"
+      }
+    },
+    "palette": {
+      "label": "PALETTE DE COULEURS",
+      "title": "Trouvez Votre Couleur Idéale",
+      "all": "Toutes",
+      "white": "Blanc",
+      "warm": "Chaud",
+      "cool": "Froid",
+      "vibrant": "Vibrant",
+      "grey": "Gris",
+      "black": "Noir",
+      "polished": "Poli",
+      "leather": "Cuir",
+      "riverWashed": "River Washed"
+    },
+    "benefits": {
+      "label": "POURQUOI HANSTONE",
+      "title": "Pourquoi Choisir Hanstone",
+      "card1": {
+        "title": "Plus Dur que le Granite",
+        "desc": "Composé de 93% de Quartz naturel, les surfaces Hanstone sont exceptionnellement durables et résistantes aux rayures et éclats."
+      },
+      "card2": {
+        "title": "Aucun Scellement Nécessaire",
+        "desc": "Contrairement à la pierre naturelle, le Quartz Hanstone ne nécessite aucun scellement — jamais. Nettoyez simplement et profitez."
+      },
+      "card3": {
+        "title": "Non Poreux & Hygiénique",
+        "desc": "La surface non poreuse résiste aux bactéries, taches et moisissures. Certifié NSF pour la préparation alimentaire."
+      },
+      "card4": {
+        "title": "Garantie à Vie",
+        "desc": "Chaque surface Hanstone est accompagnée d'une garantie résidentielle limitée à vie pour votre tranquillité d'esprit."
+      }
+    },
+    "resources": {
+      "label": "POUR LES PROFESSIONNELS",
+      "title": "Ressources Professionnelles",
+      "desc": "Tout ce dont vous avez besoin pour votre prochain projet — des spécifications techniques à la formation continue.",
+      "bim": {
+        "title": "Bibliothèque BIM",
+        "desc": "Téléchargez des familles Revit et objets BIM pour vos projets architecturaux."
+      },
+      "cad": {
+        "title": "Fichiers CAD",
+        "desc": "Accédez aux dessins AutoCAD et fichiers détaillés pour une planification précise de vos projets."
+      },
+      "ceu": {
+        "title": "Opportunités CEU",
+        "desc": "Obtenez des crédits de formation continue grâce aux cours certifiés Hanstone."
+      },
+      "specs": {
+        "title": "Fiches Techniques Produit",
+        "desc": "Données techniques complètes et spécifications de performance pour chaque coloris Hanstone."
+      },
+      "care": {
+        "title": "Guide d'Entretien & Maintenance",
+        "desc": "Les meilleures pratiques pour garder vos surfaces Hanstone belles toute une vie."
+      }
+    },
+    "cta": {
+      "title": "Prêt à voir Hanstone en personne ?",
+      "desc": "Visitez notre showroom pour découvrir la collection complète Hanstone. Touchez, ressentez et comparez plus de 60 coloris.",
+      "showroom": "Visitez Notre Showroom",
+      "quote": "Demander des Échantillons Hanstone"
+    }
+  },
+  "lucciare": {
+    "breadcrumb": "Lucciare Quartz",
+    "hero": {
+      "title": "Lucciare — L'Art du Veinage Marbré",
+      "tagline": "Surfaces en Quartz artisanales avec un design d'inspiration italienne et une qualité sans compromis.",
+      "badge": "Distributeur Officiel",
+      "featured": "Collection Vedette"
+    },
+    "story": {
+      "label": "NOTRE HÉRITAGE",
+      "title": "L'Histoire Lucciare",
+      "text1": "Lucciare allie l'art italien à l'ingénierie avancée pour créer des surfaces en Quartz qui capturent la beauté du Marble naturel avec des performances supérieures.",
+      "text2": "Chaque dalle est façonnée artisanalement pour obtenir des motifs de veinage uniques, garantissant que deux surfaces ne soient jamais exactement identiques.",
+      "point1": "Design Artisanal d'Inspiration Italienne",
+      "point2": "Veinage Unique Fait Main",
+      "point3": "Ingénierie & Performances Supérieures",
+      "point4": "Deux Surfaces Ne Sont Jamais Identiques"
+    },
+    "collections": {
+      "label": "COLLECTIONS",
+      "title": "Explorez les Collections",
+      "signature": {
+        "tag": "Collection Signature"
+      },
+      "genesis": {
+        "tag": "Collection Genesis"
+      },
+      "solstice": {
+        "tag": "Collection Solstice"
+      }
+    },
+    "genesis": {
+      "label": "LA COLLECTION GENESIS",
+      "title": "Genesis — Là Où Tout Commence",
+      "text1": "La Collection Genesis représente le fondement de l'art Lucciare — des designs intemporels inspirés des marbres naturels les plus convoités au monde.",
+      "text2": "Chaque surface de la Collection Genesis est conçue pour capturer l'essence de la pierre naturelle tout en offrant les performances et la régularité du Quartz composite.",
+      "point1": "Inspiré des Plus Beaux Marbres du Monde",
+      "point2": "Designs Intemporels & Classiques",
+      "point3": "Qualité & Beauté Constantes",
+      "point4": "Idéal pour les Intérieurs de Luxe"
+    },
+    "benefits": {
+      "label": "POURQUOI LUCCIARE",
+      "title": "Pourquoi Choisir Lucciare",
+      "card1": {
+        "title": "Design d'Inspiration Italienne",
+        "desc": "Chaque surface est façonnée avec une attention méticuleuse aux détails, capturant l'essence du veinage naturel du Marble."
+      },
+      "card2": {
+        "title": "Certification GreenGuard Gold",
+        "desc": "Répond aux normes les plus strictes au monde en matière d'émissions chimiques pour des environnements intérieurs plus sains."
+      },
+      "card3": {
+        "title": "Résistant aux Taches & Durable",
+        "desc": "Surface non poreuse résistante aux taches, rayures et à la chaleur — conçue pour le quotidien."
+      },
+      "card4": {
+        "title": "Qualité Garantie",
+        "desc": "Couverte par une garantie complète pour les installations résidentielles et commerciales."
+      }
+    },
+    "cta": {
+      "title": "Prêt à voir Lucciare en personne ?",
+      "desc": "Visitez notre showroom pour découvrir la collection complète Lucciare. Touchez, ressentez et comparez chaque design.",
+      "showroom": "Visitez Notre Showroom",
+      "quote": "Demander des Échantillons Lucciare"
+    }
+  },
+  "inspired": {
+    "label": "INSPIREZ-VOUS",
+    "title": "Inspirez-vous",
+    "subtitle": "Projets réels, matériaux réels, beauté réelle.",
+    "filter": {
+      "room": "Type de Pièce",
+      "material": "Matériau",
+      "all": "Tous",
+      "allMaterials": "Tous les Matériaux",
+      "allColors": "Toutes les Couleurs",
+      "kitchen": "Cuisine",
+      "bathroom": "Salle de Bain",
+      "commercial": "Commercial",
+      "outdoor": "Extérieur",
+      "living": "Salon",
+      "color": {
+        "white": "Blanc",
+        "gray": "Gris",
+        "brown": "Marron",
+        "black": "Noir",
+        "blue": "Bleu",
+        "gold": "Doré"
+      }
+    },
+    "room": {
+      "kitchenCountertops": "Plans de Travail Cuisine",
+      "kitchenIsland": "Îlot de Cuisine",
+      "kitchenPerimeter": "Périmètre de Cuisine",
+      "primaryBathroom": "Salle de Bain Principale",
+      "showerWalls": "Parois de Douche",
+      "waterfallIsland": "Îlot Cascade",
+      "hotelLobby": "Hall d'Hôtel",
+      "restaurantBar": "Bar de Restaurant",
+      "outdoorKitchen": "Cuisine Extérieure",
+      "poolDeck": "Terrasse de Piscine",
+      "featureWall": "Mur d'Accent",
+      "fireplaceSurround": "Habillage de Cheminée"
+    },
+    "beforeAfter": {
+      "label": "TRANSFORMATIONS",
+      "title": "Transformations Avant & Après",
+      "desc": "Découvrez comment la bonne surface en pierre peut transformer complètement un espace.",
+      "before": "Avant",
+      "after": "Après",
+      "card1": {
+        "title": "Rénovation de Cuisine Moderne",
+        "desc": "Plans de travail en stratifié démodés remplacés par un superbe Quartz Calacatta."
+      },
+      "card2": {
+        "title": "Rénovation de Salle de Bain de Luxe",
+        "desc": "Meuble vasque standard transformé avec des surfaces premium en Marble."
+      },
+      "card3": {
+        "title": "Modernisation de Hall Commercial",
+        "desc": "Espace d'accueil d'entreprise sublimé par un spectaculaire mur d'accent en Quartzite."
+      }
+    },
+    "instagram": {
+      "label": "SUIVEZ-NOUS",
+      "title": "Suivez-nous sur Instagram",
+      "cta": "Suivre @thestonesurfaces"
+    },
+    "submit": {
+      "label": "PARTAGEZ VOTRE TRAVAIL",
+      "title": "Partagez Votre Projet",
+      "desc": "Vous êtes designer ou marbrier ? Partagez votre projet et soyez mis en avant dans notre galerie.",
+      "desc2": "Envoyez vos meilleures photos de projet et décrivez-nous les matériaux utilisés.",
+      "namePlaceholder": "Votre Nom",
+      "emailPlaceholder": "Votre E-mail",
+      "projectPlaceholder": "Parlez-nous du projet...",
+      "uploadText": "Envoyer des Photos du Projet",
+      "uploadHint": "Glissez-déposez des fichiers ou cliquez pour parcourir. Max 10 Mo par fichier.",
+      "btn": "Soumettre Votre Projet"
+    }
+  },
+  "blog": {
+    "breadcrumb": "Blog",
+    "featured": {
+      "label": "Article Vedette",
+      "title": "Tendances 2026 des Plans de Travail : Ce que Choisissent les Designers",
+      "excerpt": "Des veinages spectaculaires aux finitions mates, découvrez les surfaces qui définissent les cuisines de luxe cette année.",
+      "readTime": "5 min de lecture"
+    },
+    "cat": {
+      "all": "Tous",
+      "news": "Actualités du Secteur",
+      "trends": "Tendances Design",
+      "care": "Entretien de la Pierre",
+      "spotlights": "Projets à la Une",
+      "hanstone": "Actualités Hanstone"
+    },
+    "card1": {
+      "title": "Comment Entretenir Vos Surfaces en Pierre Naturelle comme un Pro",
+      "excerpt": "Des gestes quotidiens simples et des traitements annuels pour garder Granite, Marble et Quartzite impeccables.",
+      "readTime": "4 min de lecture"
+    },
+    "card2": {
+      "title": "Présentation de Hanstone Quartz : Pourquoi Nous Avons Choisi Hyundai L&C",
+      "excerpt": "L'histoire de notre partenariat exclusif et ce qu'il signifie pour nos clients.",
+      "readTime": "6 min de lecture"
+    },
+    "card3": {
+      "title": "Le Guide Complet du Quartzite : Le Chef-d'Œuvre de la Nature",
+      "excerpt": "Tout ce que vous devez savoir sur cette magnifique pierre naturelle — de sa formation à son installation.",
+      "readTime": "7 min de lecture"
+    },
+    "card4": {
+      "title": "Design de Salle de Bain Moderne : Surfaces en Pierre Tendance pour 2026",
+      "excerpt": "Veinages audacieux, tons chauds et dalles book-matched définissent le design de salles de bain de luxe.",
+      "readTime": "5 min de lecture"
+    },
+    "card5": {
+      "title": "Quartz vs. Quartzite : Comprendre les Différences Clés",
+      "excerpt": "Leurs noms se ressemblent, mais ces deux surfaces populaires ont des propriétés et des besoins d'entretien très différents.",
+      "readTime": "4 min de lecture"
+    },
+    "card6": {
+      "title": "Plans de Travail pour Cuisine Extérieure : Ce qui Fonctionne et Ce qui Ne Fonctionne Pas",
+      "excerpt": "Toutes les pierres ne se valent pas pour un usage extérieur. Voici ce qu'il faut rechercher pour les applications en extérieur.",
+      "readTime": "6 min de lecture"
+    },
+    "readTime": "min de lecture",
+    "by": "Par",
+    "sidebar": {
+      "popular": "Articles Populaires",
+      "categories": "Catégories",
+      "cat": {
+        "news": "Actualités du Secteur",
+        "trends": "Tendances Design",
+        "care": "Entretien de la Pierre",
+        "spotlights": "Projets à la Une",
+        "hanstone": "Actualités Hanstone"
+      },
+      "newsletter": "Newsletter",
+      "newsletterDesc": "Recevez les dernières actualités du secteur de la pierre et l'inspiration design directement dans votre boîte mail.",
+      "emailPlaceholder": "Votre e-mail",
+      "subscribe": "S'abonner",
+      "promoLabel": "Hanstone Quartz",
+      "promoCta": "Explorez la Collection"
+    }
+  },
+  "about": {
+    "label": "À PROPOS",
+    "title": "À Propos",
+    "subtitle": "Le distributeur de pierre de confiance du Sud de la Floride depuis 2016.",
+    "timeline": {
+      "label": "NOTRE PARCOURS",
+      "title": "Notre Parcours",
+      "2016": {
+        "title": "Fondation à Doral",
+        "desc": "The Stone Surfaces ouvre son premier showroom à Doral, en Floride, avec la vision de fournir des surfaces en pierre premium au Sud de la Floride."
+      },
+      "2018": {
+        "title": "Élargissement de Notre Collection",
+        "desc": "Inventaire élargi à plus de 200 variétés de dalles, en établissant des partenariats avec des carrières du monde entier."
+      },
+      "2020": {
+        "title": "Reconnaissance du Secteur",
+        "desc": "Reconnu comme l'un des principaux distributeurs de pierre du Sud de la Floride, au service de plus de 100 marbriers et designers."
+      },
+      "2022": {
+        "title": "Expansion du Showroom",
+        "desc": "Showroom de Doral rénové et agrandi pour présenter plus de 500 variétés de dalles dans un cadre premium."
+      },
+      "2024": {
+        "title": "Croissance Multi-Sites",
+        "desc": "Ouverture de nouveaux showrooms à Orlando et Sarasota pour servir nos clients dans toute la Floride."
+      },
+      "2026": {
+        "title": "Partenariat Hanstone",
+        "desc": "Devenu le distributeur officiel de Hanstone Quartz par Hyundai L&C et Lucciare Handcrafted Quartz dans le Sud de la Floride."
+      }
+    },
+    "mission": {
+      "label": "NOS VALEURS",
+      "title": "Notre Mission & Nos Valeurs",
+      "desc": "Trois piliers guident tout ce que nous faisons — de la sélection des meilleures dalles à la fourniture d'un service exceptionnel.",
+      "quality": {
+        "title": "Qualité",
+        "desc": "Nous inspectons chaque dalle pour garantir qu'elle répond à nos exigences rigoureuses avant d'arriver sur votre projet."
+      },
+      "service": {
+        "title": "Service",
+        "desc": "Des conseils d'experts de la sélection à l'installation. Notre équipe est là pour vous accompagner à chaque étape."
+      },
+      "integrity": {
+        "title": "Intégrité",
+        "desc": "Des prix transparents, des conseils honnêtes et des partenariats authentiques avec chaque client."
+      }
+    },
+    "team": {
+      "label": "NOTRE ÉQUIPE",
+      "title": "Notre Équipe",
+      "roberto": {
+        "role": "Fondateur & PDG",
+        "bio": "Avec plus de 15 ans dans l'industrie de la pierre, Roberto a fondé The Stone Surfaces avec la vision d'apporter des surfaces premium au Sud de la Floride."
+      },
+      "isabella": {
+        "role": "Directrice des Opérations",
+        "bio": "Isabella supervise les opérations quotidiennes et veille à ce que chaque client bénéficie du plus haut niveau de service et d'accompagnement."
+      },
+      "marcus": {
+        "role": "Directeur Commercial",
+        "bio": "Marcus apporte une connaissance approfondie du secteur et une passion pour aider les clients à trouver la surface parfaite pour leurs projets."
+      },
+      "sofia": {
+        "role": "Consultante en Design",
+        "bio": "Sofia aide les architectes et designers à sélectionner les matériaux qui donnent vie à leurs visions créatives."
+      },
+      "carlos": {
+        "role": "Responsable d'Entrepôt",
+        "bio": "Carlos gère notre installation de 4 600 m² et veille à ce que chaque dalle soit stockée, manipulée et livrée avec soin."
+      },
+      "ana": {
+        "role": "Directrice Marketing",
+        "bio": "Ana développe la notoriété de la marque et connecte The Stone Surfaces avec les professionnels et propriétaires de toute la Floride."
+      },
+      "david": {
+        "role": "Responsable Comptes Professionnels",
+        "bio": "David est le point de contact dédié pour nos professionnels du secteur, offrant un support prioritaire et des services exclusifs."
+      },
+      "elena": {
+        "role": "Responsable Expérience Client",
+        "bio": "Elena veille à ce que chaque interaction — de la première visite à l'installation finale — dépasse les attentes du client."
+      }
+    },
+    "showroom": {
+      "label": "VISITEZ-NOUS",
+      "title": "Visitez Notre Showroom",
+      "desc": "Découvrez notre collection premium en personne. Notre showroom de Doral présente plus de 500 dalles prêtes à être touchées, ressenties et comparées.",
+      "desc2": "Nos consultants experts sont disponibles pour vous guider à travers nos collections et vous aider à trouver la surface parfaite.",
+      "detail1": "500+ Dalles Exposées",
+      "detail2": "Consultation d'Experts Disponible",
+      "detail3": "Ouvert du Lundi au Samedi",
+      "cta": "Itinéraire"
+    }
+  },
+  "contact": {
+    "title": "Demander un Devis",
+    "subtitle": "Parlez-nous de votre projet et nous vous répondrons sous 24 heures.",
+    "form": {
+      "name": "Nom Complet",
+      "namePh": "Votre nom complet",
+      "company": "Nom de l'Entreprise",
+      "companyPh": "Votre entreprise (facultatif)",
+      "email": "E-mail",
+      "emailPh": "votre@email.com",
+      "phone": "Téléphone",
+      "phonePh": "(305) 000-0000",
+      "projectType": "Type de Projet",
+      "projectTypePh": "Sélectionnez le type de projet",
+      "residential": "Cuisine Résidentielle",
+      "residentialBath": "Salle de Bain Résidentielle",
+      "commercial": "Commercial",
+      "outdoor": "Extérieur",
+      "other": "Autre",
+      "materials": "Matériaux d'Intérêt",
+      "matGranite": "Granite",
+      "matMarble": "Marble",
+      "matQuartz": "Quartz",
+      "matQuartzite": "Quartzite",
+      "matHanstone": "Hanstone Quartz",
+      "matEngineered": "Pierre Composite",
+      "matPorcelain": "Porcelaine",
+      "matTiles": "Carrelage",
+      "message": "Message",
+      "messagePh": "Parlez-nous de votre projet...",
+      "upload": "Envoyer les Plans du Projet",
+      "uploadHint": "Glissez-déposez des fichiers ou cliquez pour parcourir",
+      "submit": "Envoyer Votre Demande"
+    },
+    "info": {
+      "title": "Coordonnées",
+      "phone": "Téléphone",
+      "email": "E-mail",
+      "address": "Adresse"
+    },
+    "hours": {
+      "title": "Heures d'Ouverture",
+      "weekday": "Lundi - Vendredi",
+      "weekdayTime": "8h00 - 17h00",
+      "saturday": "Samedi",
+      "saturdayTime": "9h00 - 14h00",
+      "sunday": "Dimanche",
+      "sundayClosed": "Fermé"
+    },
+    "sent": "Envoyé ! Nous vous contacterons bientôt."
+  },
+  "detail": {
+    "breadcrumb": "Détail du Produit",
+    "label": {
+      "collection": "Collection :",
+      "material": "Matériau :",
+      "finishes": "Finitions Disponibles :",
+      "thickness": "Épaisseur :",
+      "dimensions": "Dimensions :"
+    },
+    "cta": {
+      "quote": "Demander un Devis",
+      "sample": "Commander un Échantillon"
+    },
+    "specs": {
+      "title": "Spécifications Techniques",
+      "composition": "Composition",
+      "hardness": "Dureté Mohs",
+      "absorption": "Absorption d'Eau",
+      "strength": "Résistance à la Flexion",
+      "applications": "Applications Recommandées"
+    },
+    "related": {
+      "title": "Produits Associés"
+    },
+    "viewInRoom": {
+      "title": "Voir dans la Pièce",
+      "desc": "Bientôt Disponible — Visualisez cette surface dans votre espace grâce à notre outil de réalité augmentée."
+    }
+  },
+  "trade": {
+    "title": "Conçu pour les Professionnels",
+    "subtitle": "Prix exclusifs, support dédié et les outils dont vous avez besoin pour développer votre activité.",
+    "benefits": {
+      "title": "Avantages Professionnels",
+      "pricing": {
+        "title": "Tarifs Volume",
+        "desc": "Tarifs grossiste compétitifs avec remises sur volume pour les professionnels qualifiés du secteur."
+      },
+      "inventory": {
+        "title": "Accès Prioritaire au Stock",
+        "desc": "Premier accès aux nouveautés et réservations exclusives de dalles premium pour vos projets."
+      },
+      "manager": {
+        "title": "Responsable de Compte Dédié",
+        "desc": "Votre point de contact personnel pour les commandes, devis et support de projets."
+      },
+      "marketing": {
+        "title": "Support Marketing",
+        "desc": "Matériaux co-brandés, kits d'échantillons et ressources numériques pour vous aider à remporter plus de projets."
+      }
+    },
+    "apply": {
+      "title": "Demander un Compte Professionnel",
+      "desc": "Rejoignez notre réseau de professionnels et accédez à des avantages exclusifs."
+    },
+    "form": {
+      "company": "Nom de l'Entreprise",
+      "companyPh": "Nom de votre entreprise",
+      "license": "Numéro de Licence",
+      "licensePh": "Votre licence commerciale #",
+      "type": "Type d'Activité",
+      "typePh": "Sélectionnez le type d'activité",
+      "fabricator": "Marbrier",
+      "designer": "Architecte d'Intérieur",
+      "contractor": "Entrepreneur",
+      "showroom": "Showroom",
+      "other": "Autre",
+      "years": "Années d'Activité",
+      "yearsPh": "ex. : 5",
+      "volume": "Volume Mensuel Estimé",
+      "volumePh": "ex. : 20 dalles",
+      "references": "Références",
+      "referencesPh": "Noms d'entreprises et coordonnées",
+      "submit": "Soumettre la Candidature"
+    },
+    "resources": {
+      "title": "Ressources Professionnelles",
+      "specs": {
+        "title": "Fiches Techniques",
+        "desc": "Données techniques complètes et spécifications de performance pour tous les produits."
+      },
+      "care": {
+        "title": "Guides d'Entretien",
+        "desc": "Les meilleures pratiques pour l'entretien et la protection des surfaces en pierre."
+      },
+      "install": {
+        "title": "Manuels d'Installation",
+        "desc": "Guides d'installation étape par étape pour tous les types de surfaces."
+      },
+      "bim": {
+        "title": "Bibliothèque BIM Hanstone",
+        "desc": "Téléchargez des familles Revit et objets BIM pour vos projets architecturaux."
+      },
+      "cad": {
+        "title": "Fichiers CAD",
+        "desc": "Accédez aux dessins AutoCAD et fichiers détaillés pour une planification précise de vos projets."
+      },
+      "ceu": {
+        "title": "Crédits CEU",
+        "desc": "Obtenez des crédits de formation continue grâce aux cours certifiés du secteur de la pierre."
+      },
+      "download": "Télécharger",
+      "enroll": "S'inscrire"
+    },
+    "promo": {
+      "title": "Promotions en Cours",
+      "desc": "Consultez régulièrement nos offres saisonnières et annonces de nouveautés pour les comptes professionnels.",
+      "cta": "Voir les Offres en Cours"
+    },
+    "rep": {
+      "title": "Votre Représentant Professionnel",
+      "desc": "Des questions ? Notre équipe professionnelle est prête à vous aider.",
+      "call": {
+        "title": "Appel Direct",
+        "hours": "Lundi - Vendredi 8h - 17h EST"
+      },
+      "email": {
+        "title": "Envoyez-nous un E-mail",
+        "desc": "trade@thestonesurfaces.com"
+      },
+      "schedule": {
+        "title": "Planifier un Rendez-vous",
+        "desc": "Réservez un créneau avec votre représentant professionnel dédié.",
+        "cta": "Prendre Rendez-vous"
+      }
+    }
+  }
+}

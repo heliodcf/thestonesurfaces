@@ -5,7 +5,7 @@
 (function () {
   'use strict';
 
-  const SUPPORTED_LANGS = ['en', 'es', 'pt'];
+  const SUPPORTED_LANGS = ['en', 'es', 'fr', 'pt'];
   const DEFAULT_LANG = 'en';
   const STORAGE_KEY = 'tss-lang';
 

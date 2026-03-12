@@ -61,6 +61,7 @@ thestonesurfaces/
 ├── i18n/
 │   ├── en.json                   # Traducoes ingles
 │   ├── es.json                   # Traducoes espanhol
+│   ├── fr.json                   # Traducoes frances
 │   └── pt.json                   # Traducoes portugues
 │
 ├── pages/
@@ -114,7 +115,7 @@ thestonesurfaces/
 | 10 | Contact | Formulario split-layout (60/40) com mapa, file upload, validacao | done |
 | 11 | For The Trade | Portal profissional: beneficios, formulario trade account, recursos, promos | done |
 | 12 | Chat Widget | Botao flutuante gold, painel de chat, placeholder n8n webhook | done |
-| 13 | i18n | Sistema de traducao EN/ES/PT com `data-i18n` attributes, seletor de idioma, localStorage | done |
+| 13 | i18n | Sistema de traducao EN/ES/FR/PT com `data-i18n` attributes, seletor de idioma, localStorage | done |
 | 14 | Mobile Responsivo | Bottom tab bar, hamburger menu, swipeable carousels, touch targets 44px | done |
 | 15 | Admin Login | Autenticacao SHA-256 via Web Crypto API, sessao 8h em sessionStorage, guard de rotas | done |
 | 16 | CRM Dashboard | 4 metric cards, tabela de leads com filtros (status/source/search), paginacao, export CSV, painel slide-out com notas, add lead modal | done |
@@ -259,8 +260,9 @@ Ao clicar em qualquer swatch card, abre overlay com imagem ampliada, nome da ped
 
 ## Internacionalizacao (i18n)
 
-- **Idiomas:** English (default), Espanol, Portugues
-- **Arquivos:** `i18n/en.json`, `i18n/es.json`, `i18n/pt.json`
+- **Idiomas:** English (default), Español, Français, Português
+- **Ordem:** EN → ES → FR → PT (nos seletores desktop e mobile)
+- **Arquivos:** `i18n/en.json`, `i18n/es.json`, `i18n/fr.json`, `i18n/pt.json`
 - **Atributos:** `data-i18n` (textContent), `data-i18n-html` (innerHTML), `data-i18n-placeholder`, `data-i18n-alt`, `data-i18n-title`
 - **Storage:** `localStorage('tss-lang')`
 - **Auto-detect:** localStorage → navigator.language → default (en)
