@@ -11,24 +11,24 @@ const ADMIN_CONFIG = {
   // API Mode: 'api' (n8n webhooks + Supabase) | 'local' (localStorage fallback)
   API_MODE: 'api',
 
-  // Supabase — public config (anon key is safe, RLS enforces read-only for published posts)
+  // Supabase Cloudfy — public config (anon key is safe, RLS enforces read-only for published posts)
   SUPABASE: {
-    URL: 'https://vkgtkafaouqbgkupkdob.supabase.co',
-    ANON_KEY: 'sb_publishable_sIkYIUx_7BmRjgg4FeVcxg_EXRuShXL',
+    URL: 'https://rescuedswan-supabase.cloudfy.live',
+    ANON_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlzcyI6InN1cGFiYXNlIiwiaWF0IjoxNzczNDI4MjU5LCJleHAiOjE4MDQ5NjQyNTl9.hCdKT6HuxOnZW53rxzhcSbZXR-EVpuleGKndTMmXFeE',
     STORAGE_BUCKET: 'blog-images',
   },
 
-  // n8n Webhook Endpoints — update these when workflows are deployed
+  // n8n Webhook Endpoints — Cloudfy instance
   ENDPOINTS: {
     // Blog AI (n8n webhooks)
-    BLOG_IDEAS: null,       // POST /webhook/tss-blog-ideas
-    BLOG_GENERATE: null,    // POST /webhook/tss-blog-generate
+    BLOG_IDEAS: 'https://rescuedswan-n8n.cloudfy.live/webhook/tss-blog-ideas',
+    BLOG_GENERATE: 'https://rescuedswan-n8n.cloudfy.live/webhook/tss-blog-generate',
 
     // Blog CRUD (n8n webhook — single endpoint, action-based)
-    BLOG_CRUD: null,        // POST /webhook/tss-blog-posts { action, data }
+    BLOG_CRUD: 'https://rescuedswan-n8n.cloudfy.live/webhook/tss-blog-posts',
 
     // Settings CRUD (n8n webhook)
-    SETTINGS_CRUD: null,    // POST /webhook/tss-settings { action, data }
+    SETTINGS_CRUD: 'https://rescuedswan-n8n.cloudfy.live/webhook/tss-settings',
   },
 
   // Lead statuses
