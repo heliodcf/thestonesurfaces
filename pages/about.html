@@ -93,7 +93,7 @@
       top: 0;
       bottom: 0;
       width: 2px;
-      background: rgba(196,164,120,0.3);
+      background: rgba(160,160,165,0.4);
     }
     .timeline-item {
       position: relative;
@@ -120,7 +120,7 @@
       transform: translateX(-50%);
       width: 48px;
       height: 48px;
-      background: var(--color-cta, #c4a478);
+      background: #6B6B72;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -128,7 +128,7 @@
       font-family: 'Space Grotesk', sans-serif;
       font-weight: 700;
       font-size: 13px;
-      color: #0f0d0a;
+      color: #F7F7F8;
       z-index: 2;
       flex-shrink: 0;
     }
@@ -236,182 +236,83 @@
       }
     }
 
-    /* ===== TEAM SECTION ===== */
-    .team-section {
+    /* ===== SHOWROOMS SECTION ===== */
+    .showrooms-section {
       padding: 100px 24px;
     }
-    .team-section .section-heading {
-      text-align: center;
-      margin-bottom: 64px;
-    }
-    .team-section .section-heading h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 700;
-      font-size: clamp(32px, 4vw, 48px);
-      color: #1A1A1E;
-      margin-top: 16px;
-    }
-    .team-grid {
+    .showrooms-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
       max-width: 1100px;
       margin: 0 auto;
     }
-    .team-card {
-      position: relative;
-      border-radius: 12px;
+    .showroom-card {
+      background: var(--color-bg-surface, #EDEDEF);
+      border: 1px solid rgba(0,0,0,0.06);
       overflow: hidden;
-      aspect-ratio: 3/4;
-      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .team-card .team-photo {
+    .showroom-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+    }
+    .showroom-card-map {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+    }
+    .showroom-card-map iframe {
       width: 100%;
       height: 100%;
+      filter: grayscale(0.3) brightness(0.95);
+      transition: filter 0.3s ease;
     }
-    .team-card .team-info {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 24px 16px 16px;
-      background: linear-gradient(transparent, rgba(250,248,245,0.8));
-      transition: opacity 0.3s ease;
+    .showroom-card:hover .showroom-card-map iframe {
+      filter: grayscale(0) brightness(1);
     }
-    .team-card .team-info h4 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 700;
-      font-size: 20px;
-      color: #1A1A1E;
-      margin: 0 0 4px;
-    }
-    .team-card .team-info .role {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 13px;
-      color: var(--color-cta, #c4a478);
-      margin: 0;
-    }
-    .team-card .team-bio-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(250,248,245,0.92);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+    .showroom-card-info {
       padding: 24px;
-      text-align: center;
-      opacity: 0;
-      transition: opacity 0.4s ease;
     }
-    .team-card:hover .team-bio-overlay {
-      opacity: 1;
-    }
-    .team-bio-overlay h4 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 700;
-      font-size: 20px;
-      color: #1A1A1E;
-      margin: 0 0 4px;
-    }
-    .team-bio-overlay .role {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 13px;
-      color: var(--color-cta, #c4a478);
-      margin: 0 0 16px;
-    }
-    .team-bio-overlay p {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 14px;
-      color: rgba(26,26,30,0.7);
-      line-height: 1.6;
-      margin: 0;
-    }
-    @media (max-width: 1024px) {
-      .team-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    @media (max-width: 480px) {
-      .team-grid {
-        grid-template-columns: 1fr;
-        max-width: 320px;
-      }
-    }
-
-    /* ===== SHOWROOM SECTION ===== */
-    .showroom-section {
-      padding: 100px 24px;
-    }
-    .showroom-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 64px;
+    .showroom-card-header {
+      display: flex;
       align-items: center;
-      max-width: 1100px;
-      margin: 0 auto;
+      justify-content: space-between;
+      margin-bottom: 12px;
     }
-    .showroom-image {
-      border-radius: 12px;
-      overflow: hidden;
-      aspect-ratio: 4/3;
-    }
-    .showroom-image .placeholder-bg {
-      width: 100%;
-      height: 100%;
-    }
-    .showroom-content h2 {
+    .showroom-card-info h3 {
       font-family: 'Cormorant Garamond', serif;
-      font-weight: 700;
-      font-size: clamp(32px, 4vw, 42px);
-      color: var(--color-text-dark, #1a1510);
-      margin: 0 0 16px;
+      font-size: 28px;
+      font-weight: 400;
+      color: #1A1A1E;
+      margin: 0 0 12px;
+      letter-spacing: -0.01em;
     }
-    .showroom-content p {
+    .showroom-card-header h3 {
+      margin-bottom: 0;
+    }
+    .showroom-badge {
+      display: inline-block;
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 16px;
-      color: rgba(26,21,16,0.6);
-      line-height: 1.7;
-      margin: 0 0 16px;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-accent-gold, #6B6B6B);
+      background: rgba(107, 107, 107, 0.1);
+      border: 1px solid rgba(107, 107, 107, 0.25);
+      padding: 4px 12px;
     }
-    .showroom-details {
-      margin: 24px 0 32px;
-      padding: 0;
-      list-style: none;
-    }
-    .showroom-details li {
+    .showroom-card-address {
       font-family: 'Space Grotesk', sans-serif;
       font-size: 15px;
-      color: rgba(26,21,16,0.7);
-      padding: 8px 0;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .showroom-details li .check {
-      color: var(--color-cta, #c4a478);
-      font-weight: 700;
+      color: rgba(26,26,30,0.6);
+      line-height: 1.5;
+      margin: 0 0 20px;
     }
     @media (max-width: 768px) {
-      .showroom-grid {
+      .showrooms-grid {
         grid-template-columns: 1fr;
-        gap: 40px;
-      }
-    }
-
-    /* ===== MAP SECTION ===== */
-    .map-section {
-      padding: 0;
-    }
-    .map-section iframe {
-      width: 100%;
-      height: 450px;
-      border: 0;
-      display: block;
-    }
-    @media (max-width: 768px) {
-      .map-section iframe {
-        height: 320px;
       }
     }
   </style>
@@ -553,7 +454,7 @@
           <div class="timeline-item reveal reveal-delay-2">
             <div class="timeline-marker">2020</div>
             <div class="timeline-content">
-              <h3 data-i18n="about.timeline.2020.title">500+ Slab Varieties</h3>
+              <h3 data-i18n="about.timeline.2020.title">Great Selection on Display</h3>
               <p data-i18n="about.timeline.2020.desc">Became the largest stone selection in South Florida, curating premium materials from quarries around the world.</p>
             </div>
           </div>
@@ -622,155 +523,65 @@
       </div>
     </section>
 
-    <!-- ===== SECTION 4: TEAM ===== -->
-    <section class="team-section section--dark">
+    <!-- ===== SECTION 4: VISIT OUR SHOWROOMS ===== -->
+    <section id="showrooms" class="showrooms-section section--dark">
       <div class="container">
-        <div class="section-heading reveal">
-          <span class="label" data-i18n="about.team.label">THE PEOPLE BEHIND THE STONE</span>
-          <h2 data-i18n="about.team.title">Meet Our Team</h2>
+        <div class="section-heading reveal" style="text-align: center; margin-bottom: 64px;">
+          <span class="label">VISIT US</span>
+          <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: clamp(32px, 4vw, 48px); color: #1A1A1E; margin-top: 16px;">Visit One of Our Showrooms</h2>
+          <p style="font-family: 'Space Grotesk', sans-serif; font-size: 18px; color: rgba(26,26,30,0.6); max-width: 600px; margin: 16px auto 0; line-height: 1.6;">Three locations across Florida, each with a curated selection of premium slabs ready for your project.</p>
         </div>
 
-        <div class="team-grid">
-          <div class="team-card reveal">
-            <div class="team-photo placeholder-bg" style="background: linear-gradient(135deg, #C8BCA8, #D8CCBA);"></div>
-            <div class="team-info">
-              <h4>Carlos Mendez</h4>
-              <p class="role" data-i18n="about.team.carlos.role">Founder &amp; CEO</p>
+        <div class="showrooms-grid">
+          <!-- Miami -->
+          <div class="showroom-card reveal">
+            <div class="showroom-card-map">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3592.1!2d-80.3432!3d25.8081!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b98b5e9c0001%3A0x1!2s7972+NW+56th+St%2C+Doral%2C+FL+33166!5e0!3m2!1sen!2sus!4v1709000000000"
+                width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade" title="The Stone Surfaces - Miami"></iframe>
             </div>
-            <div class="team-bio-overlay">
-              <h4>Carlos Mendez</h4>
-              <p class="role" data-i18n="about.team.carlos.role">Founder &amp; CEO</p>
-              <p data-i18n="about.team.carlos.bio">With over 20 years in the stone industry, Carlos founded The Stone Surfaces with a mission to bring premium materials and honest service to South Florida.</p>
-            </div>
-          </div>
-
-          <div class="team-card reveal reveal-delay-1">
-            <div class="team-photo placeholder-bg" style="background: linear-gradient(135deg, #B8C8B8, #CADACA);"></div>
-            <div class="team-info">
-              <h4>Ana Lucia Reyes</h4>
-              <p class="role" data-i18n="about.team.ana.role">Director of Operations</p>
-            </div>
-            <div class="team-bio-overlay">
-              <h4>Ana Lucia Reyes</h4>
-              <p class="role" data-i18n="about.team.ana.role">Director of Operations</p>
-              <p data-i18n="about.team.ana.bio">Ana oversees logistics, inventory, and supplier relationships. Her attention to detail ensures every order is fulfilled accurately and on time.</p>
+            <div class="showroom-card-info">
+              <div class="showroom-card-header">
+                <h3>Miami</h3>
+                <span class="showroom-badge">Main Showroom</span>
+              </div>
+              <p class="showroom-card-address">7972 NW 56th St<br>Doral, FL 33166</p>
+              <a href="https://www.google.com/maps/dir/?api=1&destination=7972+NW+56th+St+Doral+FL+33166" target="_blank" rel="noopener" class="btn btn--primary btn--small">Get Directions</a>
             </div>
           </div>
 
-          <div class="team-card reveal reveal-delay-2">
-            <div class="team-photo placeholder-bg" style="background: linear-gradient(135deg, #B8B8C8, #CACADA);"></div>
-            <div class="team-info">
-              <h4>David Chen</h4>
-              <p class="role" data-i18n="about.team.david.role">Sales Manager</p>
+          <!-- Orlando -->
+          <div class="showroom-card reveal reveal-delay-1">
+            <div class="showroom-card-map">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.5!2d-81.4098!3d28.5664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88e77b5e5e9c0001%3A0x1!2s3924+N+John+Young+Pkwy%2C+Orlando%2C+FL+32804!5e0!3m2!1sen!2sus!4v1709000000000"
+                width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade" title="The Stone Surfaces - Orlando"></iframe>
             </div>
-            <div class="team-bio-overlay">
-              <h4>David Chen</h4>
-              <p class="role" data-i18n="about.team.david.role">Sales Manager</p>
-              <p data-i18n="about.team.david.bio">David leads our sales team with deep product knowledge and a consultative approach, helping clients find the perfect surface for every project.</p>
-            </div>
-          </div>
-
-          <div class="team-card reveal reveal-delay-3">
-            <div class="team-photo placeholder-bg" style="background: linear-gradient(135deg, #C8B8B8, #D8CACA);"></div>
-            <div class="team-info">
-              <h4>Isabella Vargas</h4>
-              <p class="role" data-i18n="about.team.isabella.role">Design Consultant</p>
-            </div>
-            <div class="team-bio-overlay">
-              <h4>Isabella Vargas</h4>
-              <p class="role" data-i18n="about.team.isabella.role">Design Consultant</p>
-              <p data-i18n="about.team.isabella.bio">A trained interior designer, Isabella helps homeowners and professionals visualize how different stones will transform their spaces.</p>
+            <div class="showroom-card-info">
+              <h3>Orlando</h3>
+              <p class="showroom-card-address">3924 N John Young Pkwy<br>Orlando, FL 32804</p>
+              <a href="https://www.google.com/maps/dir/?api=1&destination=3924+N+John+Young+Pkwy+Orlando+FL+32804" target="_blank" rel="noopener" class="btn btn--primary btn--small">Get Directions</a>
             </div>
           </div>
 
-          <div class="team-card reveal">
-            <div class="team-photo placeholder-bg" style="background: linear-gradient(135deg, #B8C8C8, #CADADA);"></div>
-            <div class="team-info">
-              <h4>Marcus Johnson</h4>
-              <p class="role" data-i18n="about.team.marcus.role">Trade Program Lead</p>
+          <!-- Sarasota -->
+          <div class="showroom-card reveal reveal-delay-2">
+            <div class="showroom-card-map">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3530.2!2d-82.5308!3d27.3364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c3401e5e9c0001%3A0x1!2s1695+12th+St%2C+Sarasota%2C+FL+34236!5e0!3m2!1sen!2sus!4v1709000000000"
+                width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade" title="The Stone Surfaces - Sarasota"></iframe>
             </div>
-            <div class="team-bio-overlay">
-              <h4>Marcus Johnson</h4>
-              <p class="role" data-i18n="about.team.marcus.role">Trade Program Lead</p>
-              <p data-i18n="about.team.marcus.bio">Marcus manages relationships with fabricators and contractors statewide, ensuring our trade partners get priority service and competitive pricing.</p>
-            </div>
-          </div>
-
-          <div class="team-card reveal reveal-delay-1">
-            <div class="team-photo placeholder-bg" style="background: linear-gradient(135deg, #C8C8B8, #D8D8CA);"></div>
-            <div class="team-info">
-              <h4>Sofia Petrov</h4>
-              <p class="role" data-i18n="about.team.sofia.role">Marketing Director</p>
-            </div>
-            <div class="team-bio-overlay">
-              <h4>Sofia Petrov</h4>
-              <p class="role" data-i18n="about.team.sofia.role">Marketing Director</p>
-              <p data-i18n="about.team.sofia.bio">Sofia drives our brand presence and digital strategy, connecting homeowners and trade professionals with the surfaces they need.</p>
-            </div>
-          </div>
-
-          <div class="team-card reveal reveal-delay-2">
-            <div class="team-photo placeholder-bg" style="background: linear-gradient(135deg, #B8B8B8, #CACACA);"></div>
-            <div class="team-info">
-              <h4>Roberto Silva</h4>
-              <p class="role" data-i18n="about.team.roberto.role">Warehouse Manager</p>
-            </div>
-            <div class="team-bio-overlay">
-              <h4>Roberto Silva</h4>
-              <p class="role" data-i18n="about.team.roberto.role">Warehouse Manager</p>
-              <p data-i18n="about.team.roberto.bio">Roberto ensures every slab is properly stored, catalogued, and handled with care. His team manages our entire 10,000 sq ft facility.</p>
-            </div>
-          </div>
-
-          <div class="team-card reveal reveal-delay-3">
-            <div class="team-photo placeholder-bg" style="background: linear-gradient(135deg, #C8B8C8, #D8CADA);"></div>
-            <div class="team-info">
-              <h4>Elena Torres</h4>
-              <p class="role" data-i18n="about.team.elena.role">Client Relations</p>
-            </div>
-            <div class="team-bio-overlay">
-              <h4>Elena Torres</h4>
-              <p class="role" data-i18n="about.team.elena.role">Client Relations</p>
-              <p data-i18n="about.team.elena.bio">Elena is the first point of contact for new clients, guiding them through the selection process and ensuring a seamless showroom experience.</p>
+            <div class="showroom-card-info">
+              <h3>Sarasota</h3>
+              <p class="showroom-card-address">1695 12th St<br>Sarasota, FL 34236</p>
+              <a href="https://www.google.com/maps/dir/?api=1&destination=1695+12th+St+Sarasota+FL+34236" target="_blank" rel="noopener" class="btn btn--primary btn--small">Get Directions</a>
             </div>
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- ===== SECTION 5: SHOWROOM ===== -->
-    <section id="showroom" class="showroom-section section--light">
-      <div class="container">
-        <div class="showroom-grid">
-          <div class="showroom-image reveal">
-            <div class="placeholder-bg" style="background: linear-gradient(135deg, #EDEDEF 0%, #E0E0E3 40%, #D1D1D6 100%); width: 100%; height: 100%;"></div>
-          </div>
-          <div class="showroom-content reveal reveal-delay-1">
-            <span class="label label-dark" data-i18n="about.showroom.label">VISIT US</span>
-            <h2 data-i18n="about.showroom.title">Our Doral Showroom</h2>
-            <p data-i18n="about.showroom.desc">Step into our 10,000 sq ft showroom and experience hundreds of premium slabs in person. Our expert team is on-site to help you compare materials, match colors, and find the perfect surface for your project.</p>
-            <p data-i18n="about.showroom.desc2">Whether you're a homeowner planning a renovation or a trade professional sourcing for your next build, we're here to help.</p>
-            <ul class="showroom-details">
-              <li><span class="check">&#10003;</span> <span data-i18n="about.showroom.detail1">500+ slabs on display</span></li>
-              <li><span class="check">&#10003;</span> <span data-i18n="about.showroom.detail2">Expert consultations available</span></li>
-              <li><span class="check">&#10003;</span> <span data-i18n="about.showroom.detail3">Mon&ndash;Fri 8am&ndash;5pm, Sat 9am&ndash;2pm</span></li>
-              <li><span class="check">&#10003;</span> 7980 NW 56th St, Doral, FL 33166</li>
-            </ul>
-            <a href="contact.html" class="btn btn--primary" data-i18n="about.showroom.cta">Schedule a Visit</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== SECTION 6: GOOGLE MAP ===== -->
-    <section class="map-section">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3591.847!2d-80.3430!3d25.8070!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b90a1e5b0001%3A0x1234567890abcdef!2s7980%20NW%2056th%20St%2C%20Doral%2C%20FL%2033166!5e0!3m2!1sen!2sus!4v1709900000000!5m2!1sen!2sus"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        title="The Stone Surfaces location - 7980 NW 56th St, Doral, FL 33166">
-      </iframe>
     </section>
 
   </main>
@@ -785,8 +596,13 @@
           <p class="contact-line"><strong>Miami</strong> — 7972 NW 56th St, Doral, FL 33166</p>
           <p class="contact-line"><strong>Orlando</strong> — 3924 N John Young Pkwy, Orlando, FL 32804</p>
           <p class="contact-line"><strong>Sarasota</strong> — 1695 12th St, Sarasota, FL 34236</p>
-          <p class="contact-line" style="margin-top: 8px;">&#9742; 1.866.960.8579</p>
+          <p class="contact-line" style="margin-top: 8px;"><strong>Contact Information</strong></p>
+          <p class="contact-line">Phone: (866) 960-8579</p>
           <p class="contact-line">&#9993; info@thestonesurfaces.com</p>
+          <p class="contact-line" style="margin-top: 8px;"><strong>Business Hours</strong></p>
+          <p class="contact-line">Monday &ndash; Friday 9:00 AM &ndash; 5:00 PM</p>
+          <p class="contact-line">Saturday 9:00 AM &ndash; 1:00 PM</p>
+          <p class="contact-line">Sunday Closed</p>
         </div>
         <div class="footer-col">
           <h4 data-i18n="footer.products">Products</h4>
