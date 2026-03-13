@@ -108,7 +108,7 @@ thestonesurfaces/
 | 3 | Products | Grid com filtros (cor, finish, marca, espessura), comparison bar (ate 3 produtos) | done |
 | 4 | Product Detail | Zoom on hover, accordion de specs tecnicas, produtos relacionados | done |
 | 5 | Hanstone Page | Brand page: hero, brand story com carrossel auto-rotativo (7 fotos lifestyle), catalogo real 40 cores Hanstone com imagens oficiais, lightbox popup com nome em rosa Hanstone + codigo referencia, beneficios, recursos profissionais | done |
-| 6 | Lucciare Page | Brand page dedicada com spotlight e collections | done |
+| 6 | Lucciare Page | Brand page: hero split, brand story, flat swatch grid (23 cores com collection badges), Genesis Technology, benefits, Professional Resources (BIM, CAD, CEU, Specs, Care), CTA, lightbox popup com suporte a placeholders | done |
 | 7 | Get Inspired | Masonry gallery, Before/After slider, Instagram feed, submit project form | done |
 | 8 | Blog | Featured post hero, category tabs, grid 2-col + sidebar, newsletter signup | done |
 | 9 | About | Timeline historia, missao e valores, equipe, showroom gallery, mapa Google | done |
@@ -235,6 +235,38 @@ admin.css        →  Estilos separados (reutiliza :root custom properties de st
 | `.seo-preview` | Preview Google snippet |
 | `.reveal` | Fade-up scroll animation |
 | `.toast` | Notificacao toast (success/error/warning) |
+
+### Lucciare Quartz Page — Detalhes Tecnicos
+
+A pagina Lucciare (`pages/lucciare.html`) foi redesenhada para espelhar a estrutura da Hanstone:
+
+**Estrutura de Secoes (7 secoes):**
+1. Hero split (logo + texto + badge partnership + HGTV featured)
+2. Brand Story (two-column grid + certificacoes GreenGuard Gold, NSF, GreenGuard)
+3. Collections Grid flat (23 swatches com `collection-badge` overlay: Signature/Genesis/Solstice)
+4. Genesis Technology (two-column com detalhes das series Strata, Art, Lumina)
+5. Benefits (4 cards: Italian Design, Stain Resistant, Certified Safe, Exceptional Durability)
+6. Professional Resources (BIM Library, CAD Files, CEU Courses, Spec Sheets, Care & Maintenance)
+7. CTA (Request a Quote + Visit Our Showroom)
+
+**Lightbox com suporte dual:**
+Funciona com imagens `<img>` reais e com placeholders `<div>` de gradiente CSS. Quando nao ha imagem, cria um `div.lightbox-placeholder` dinamicamente com o mesmo gradiente do swatch. Ao fechar, remove o placeholder. Mostra nome da pedra + collection badge como referencia.
+
+**CSS Custom Properties Lucciare:**
+| Variavel | Valor | Uso |
+|----------|-------|-----|
+| `--lc-terracotta` | `#CD7E59` | Cor oficial Lucciare — accents, badges, buttons, labels |
+| `--lc-terracotta-hover` | `#b56a47` | Hover state dos botoes |
+| `--lc-terracotta-glow` | `rgba(205,126,89,0.15)` | Hero flares radiais |
+| `--lc-terracotta-subtle` | `rgba(205,126,89,0.08)` | Background sutil (hover resources) |
+| `--lc-teal` | `#102526` | Background escuro do hero |
+
+**Colecoes (23 cores total):**
+| Colecao | Cores | Tiers |
+|---------|-------|-------|
+| Signature | 10 | Prestige, Premiere, Select, Designer |
+| Genesis | 9 | Strata, Art, Lumina |
+| Solstice | 4 | Solstice |
 
 ### Hanstone Quartz Page — Detalhes Tecnicos
 
@@ -374,6 +406,8 @@ Ao clicar em qualquer swatch card, abre overlay com imagem ampliada, nome da ped
 - Lightbox: overlay com `pointer-events: none/all` toggle, fecha com X, click no overlay ou tecla Escape.
 - Cor rosa Hanstone (`--hs-pink: #c44398`) usada no nome da pedra no lightbox para manter identidade visual da marca.
 - Imagens com espacos no nome do arquivo (ex: "1 ANTELLO - LO804.jpg") funcionam em HTML src mas devem ser URL-encoded em alguns contextos.
+- Pagina Lucciare redesenhada para espelhar estrutura Hanstone: collections convertidas de scroll horizontal para flat grid com `collection-badge` overlay por swatch. Lightbox adaptado para funcionar com placeholders de gradiente CSS (cria div dinamico) ate imagens reais serem adicionadas.
+- Lucciare tem 3 colecoes (Signature 10 cores, Genesis 9 cores, Solstice 4 cores = 23 total) vs Hanstone (40 cores com imagens reais).
 
 ---
 

@@ -214,62 +214,19 @@
       height: 100%;
     }
 
-    /* --- Collections Browser --- */
-    .collections-section {
-      padding: var(--section-padding-desktop) 0;
-      background: var(--color-bg-primary);
+    /* --- Collections Grid (flat grid like Hanstone) --- */
+    .palette-section {
+      padding: var(--section-padding-desktop) var(--padding-desktop);
     }
-    .collections-section .section-header {
-      padding: 0 var(--padding-desktop);
-      margin-bottom: 48px;
+    .swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 24px;
     }
-    .collection-band {
-      margin-bottom: 48px;
-    }
-    .collection-band:last-child {
-      margin-bottom: 0;
-    }
-    .collection-band-header {
-      padding: 0 var(--padding-desktop);
-      margin-bottom: 20px;
-      display: flex;
-      align-items: baseline;
-      gap: 16px;
-    }
-    .collection-band-header h3 {
-      font-family: var(--font-headline);
-      font-size: 28px;
-      font-weight: 400;
-    }
-    .collection-band-header .collection-tag {
-      font-size: 11px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--lc-terracotta);
-    }
-    .collection-scroll {
-      display: flex;
-      gap: 20px;
-      overflow-x: auto;
-      padding: 0 var(--padding-desktop) 16px;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: thin;
-      scrollbar-color: var(--lc-terracotta) transparent;
-    }
-    .collection-scroll::-webkit-scrollbar {
-      height: 4px;
-    }
-    .collection-scroll::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    .collection-scroll::-webkit-scrollbar-thumb {
-      background: var(--lc-terracotta);
-      border-radius: 2px;
+    .swatch-grid .swatch-card {
+      flex: unset;
     }
     .swatch-card {
-      flex: 0 0 220px;
-      scroll-snap-align: start;
       cursor: pointer;
       transition: transform var(--transition-default);
     }
@@ -300,6 +257,114 @@
       font-size: 11px;
       color: var(--color-text-muted);
       margin-top: 2px;
+    }
+    .swatch-card .collection-badge {
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      background: rgba(250,248,245,0.85);
+      padding: 3px 8px;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--lc-terracotta);
+    }
+
+    /* --- Professional Resources --- */
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .resource-link {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 24px;
+      background: rgba(26,26,30,0.03);
+      border: 1px solid var(--color-border-default);
+      transition: all var(--transition-default);
+      color: var(--color-text-light);
+      text-decoration: none;
+    }
+    .resource-link:hover {
+      background: var(--lc-terracotta-subtle);
+      border-color: var(--lc-terracotta);
+    }
+    .resource-link .resource-icon {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--lc-terracotta);
+    }
+    .resource-link .resource-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+    .resource-link .resource-info h4 {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .resource-link .resource-info p {
+      font-size: 12px;
+      color: var(--color-text-muted);
+    }
+
+    /* --- Lightbox --- */
+    .lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .lightbox-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .lightbox-content {
+      position: relative;
+      max-width: 700px;
+      max-height: 85vh;
+      width: 90%;
+    }
+    .lightbox-content img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 32px;
+      cursor: pointer;
+    }
+    .lightbox-info {
+      padding: 16px 0;
+      text-align: center;
+    }
+    .lightbox-name {
+      font-family: var(--font-headline);
+      font-size: 24px;
+      color: white;
+    }
+    .lightbox-ref {
+      font-size: 13px;
+      color: var(--lc-terracotta);
+      margin-top: 4px;
     }
 
     /* --- Benefits Grid --- */
@@ -443,15 +508,12 @@
       .brand-story-image {
         order: -1;
       }
-      .collections-section .section-header,
-      .collection-band-header {
-        padding: 0 var(--padding-mobile);
+      .palette-section {
+        padding: var(--section-padding-mobile) var(--padding-mobile);
       }
-      .collection-scroll {
-        padding: 0 var(--padding-mobile) 16px;
-      }
-      .swatch-card {
-        flex: 0 0 160px;
+      .swatch-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
       }
       .benefits-grid {
         grid-template-columns: 1fr;
@@ -577,7 +639,7 @@
     <!-- ===== SECTION 1: BRAND HERO ===== -->
     <section class="page-hero">
       <div class="hero-bg">
-        <img src="../images/lucciare/Lucciare_page.jpg" alt="Lucciare Handcrafted Quartz — luxury kitchen with premium surfaces">
+        <img src="../images/lucciare/lucciare_Image.jpg" alt="Lucciare Handcrafted Quartz — luxury kitchen with premium surfaces">
       </div>
       <div class="hero-overlay"></div>
       <div class="hero-flare hero-flare--left"></div>
@@ -639,152 +701,130 @@
       </div>
     </section>
 
-    <!-- ===== SECTION 3: COLLECTIONS BROWSER ===== -->
-    <section class="collections-section" id="collections">
-      <div class="section-header">
-        <span class="label reveal" data-i18n="lucciare.collections.label">EXPLORE THE COLLECTIONS</span>
-        <h2 class="reveal" style="margin-top: 16px; font-family: var(--font-headline); font-size: clamp(28px, 3.5vw, 42px); font-weight: 300;" data-i18n="lucciare.collections.title">Three Collections. Timeless Craftsmanship.</h2>
-      </div>
-
-      <!-- Signature Collection -->
-      <div class="collection-band reveal">
-        <div class="collection-band-header">
-          <h3>Signature</h3>
-          <span class="collection-tag" data-i18n="lucciare.collections.signature.tag">Timeless Designs</span>
+    <!-- ===== SECTION 3: LUCCIARE COLLECTION (flat grid) ===== -->
+    <section class="section section--surface noise-overlay palette-section" id="collections">
+      <div class="container">
+        <div class="reveal" style="margin-bottom: 16px;">
+          <span class="label" data-i18n="lucciare.collections.label">LUCCIARE QUARTZ COLLECTION</span>
+          <h2 style="margin-top: 16px; font-family: var(--font-headline); font-size: clamp(28px, 3.5vw, 42px); font-weight: 300;" data-i18n="lucciare.collections.title">Three Collections. Timeless Craftsmanship.</h2>
         </div>
-        <div class="collection-scroll">
+
+        <div class="swatch-grid reveal" id="colors">
+          <!-- Signature Collection -->
           <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #f5f0e8, #d8cfc2);"></div></div>
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #f5f0e8, #d8cfc2);"></div><span class="collection-badge">Signature</span></div>
             <div class="swatch-name">Calacatta Gold</div>
             <div class="swatch-tier">Prestige</div>
           </div>
           <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #eae5dd, #c8bfb5);"></div></div>
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #eae5dd, #c8bfb5);"></div><span class="collection-badge">Signature</span></div>
             <div class="swatch-name">Statuario Vigaria</div>
             <div class="swatch-tier">Prestige</div>
           </div>
           <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #f0ebe2, #d0c5b8);"></div></div>
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #f0ebe2, #d0c5b8);"></div><span class="collection-badge">Signature</span></div>
             <div class="swatch-name">Taj Mahal</div>
             <div class="swatch-tier">Premiere</div>
           </div>
           <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e8e0d5, #c0b5a8);"></div></div>
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e8e0d5, #c0b5a8);"></div><span class="collection-badge">Signature</span></div>
             <div class="swatch-name">Calacatta Bella</div>
             <div class="swatch-tier">Select</div>
           </div>
           <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #ede8e0, #ccc5ba);"></div></div>
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #ede8e0, #ccc5ba);"></div><span class="collection-badge">Signature</span></div>
             <div class="swatch-name">Statuario Michel</div>
             <div class="swatch-tier">Select</div>
           </div>
           <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #ddd5c8, #b8aea0);"></div></div>
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #ddd5c8, #b8aea0);"></div><span class="collection-badge">Signature</span></div>
             <div class="swatch-name">Borghini Premium</div>
             <div class="swatch-tier">Prestige</div>
           </div>
           <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e5ddd0, #c5b8a8);"></div></div>
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e5ddd0, #c5b8a8);"></div><span class="collection-badge">Signature</span></div>
             <div class="swatch-name">Travertine Lume</div>
             <div class="swatch-tier">Prestige</div>
           </div>
           <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #d8d0c5, #b0a898);"></div></div>
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #d8d0c5, #b0a898);"></div><span class="collection-badge">Signature</span></div>
             <div class="swatch-name">Rhino White</div>
             <div class="swatch-tier">Designer</div>
           </div>
           <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #f2ede5, #dbd5cb);"></div></div>
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #f2ede5, #dbd5cb);"></div><span class="collection-badge">Signature</span></div>
             <div class="swatch-name">Bella Lincoln</div>
             <div class="swatch-tier">Premiere</div>
           </div>
           <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e0d8cc, #bab0a2);"></div></div>
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e0d8cc, #bab0a2);"></div><span class="collection-badge">Signature</span></div>
             <div class="swatch-name">Sky Falls</div>
             <div class="swatch-tier">Prestige</div>
           </div>
-        </div>
-      </div>
-
-      <!-- Genesis Collection -->
-      <div class="collection-band reveal">
-        <div class="collection-band-header">
-          <h3>Genesis</h3>
-          <span class="collection-tag" data-i18n="lucciare.collections.genesis.tag">Innovative Engineering</span>
-        </div>
-        <div class="collection-scroll">
+          <!-- Genesis Collection -->
           <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e8e2d8, #c5bdb0);"></div></div>
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e8e2d8, #c5bdb0);"></div><span class="collection-badge">Genesis</span></div>
             <div class="swatch-name">Calacatta Versailles</div>
-            <div class="swatch-tier">Genesis Strata</div>
+            <div class="swatch-tier">Strata</div>
           </div>
           <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #f0eae0, #d2c8bc);"></div></div>
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #f0eae0, #d2c8bc);"></div><span class="collection-badge">Genesis</span></div>
             <div class="swatch-name">Calacatta Oro</div>
-            <div class="swatch-tier">Genesis Art</div>
+            <div class="swatch-tier">Art</div>
           </div>
           <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #ddd8d0, #b5aea5);"></div></div>
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #ddd8d0, #b5aea5);"></div><span class="collection-badge">Genesis</span></div>
             <div class="swatch-name">Victoria Grey</div>
-            <div class="swatch-tier">Genesis Strata</div>
+            <div class="swatch-tier">Strata</div>
           </div>
           <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #c8c0e0, #a098c5);"></div></div>
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #c8c0e0, #a098c5);"></div><span class="collection-badge">Genesis</span></div>
             <div class="swatch-name">Lilac</div>
-            <div class="swatch-tier">Genesis Art</div>
+            <div class="swatch-tier">Art</div>
           </div>
           <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #b0c0d8, #8898b5);"></div></div>
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #b0c0d8, #8898b5);"></div><span class="collection-badge">Genesis</span></div>
             <div class="swatch-name">Bulgari Blue</div>
-            <div class="swatch-tier">Genesis Art</div>
+            <div class="swatch-tier">Art</div>
           </div>
           <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #f5f0e8, #e0d8cc);"></div></div>
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #f5f0e8, #e0d8cc);"></div><span class="collection-badge">Genesis</span></div>
             <div class="swatch-name">Cristallo</div>
-            <div class="swatch-tier">Genesis Lumina</div>
+            <div class="swatch-tier">Lumina</div>
           </div>
           <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e5dfd5, #c8c0b5);"></div></div>
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e5dfd5, #c8c0b5);"></div><span class="collection-badge">Genesis</span></div>
             <div class="swatch-name">Statuario Classic</div>
-            <div class="swatch-tier">Genesis Strata</div>
+            <div class="swatch-tier">Strata</div>
           </div>
           <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #d5c8b5, #b0a290);"></div></div>
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #d5c8b5, #b0a290);"></div><span class="collection-badge">Genesis</span></div>
             <div class="swatch-name">Calacatta Vagli Gold</div>
-            <div class="swatch-tier">Genesis Art</div>
+            <div class="swatch-tier">Art</div>
           </div>
           <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #f8f5f0, #e5e0d8);"></div></div>
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #f8f5f0, #e5e0d8);"></div><span class="collection-badge">Genesis</span></div>
             <div class="swatch-name">Opus White</div>
-            <div class="swatch-tier">Genesis Strata</div>
+            <div class="swatch-tier">Strata</div>
           </div>
-        </div>
-      </div>
-
-      <!-- Solstice Collection -->
-      <div class="collection-band reveal">
-        <div class="collection-band-header">
-          <h3>Solstice</h3>
-          <span class="collection-tag" data-i18n="lucciare.collections.solstice.tag">Bold Expression</span>
-        </div>
-        <div class="collection-scroll">
+          <!-- Solstice Collection -->
           <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e8e2d8, #c8bfb2);"></div></div>
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e8e2d8, #c8bfb2);"></div><span class="collection-badge">Solstice</span></div>
             <div class="swatch-name">Calacatta Solstice</div>
             <div class="swatch-tier">Solstice</div>
           </div>
           <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #d8d0c5, #b5aba0);"></div></div>
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #d8d0c5, #b5aba0);"></div><span class="collection-badge">Solstice</span></div>
             <div class="swatch-name">Statuario Solstice</div>
             <div class="swatch-tier">Solstice</div>
           </div>
           <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e0dbd2, #c0b8ac);"></div></div>
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e0dbd2, #c0b8ac);"></div><span class="collection-badge">Solstice</span></div>
             <div class="swatch-name">Bianco Solstice</div>
             <div class="swatch-tier">Solstice</div>
           </div>
           <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #ede5da, #ccc2b5);"></div></div>
+            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #ede5da, #ccc2b5);"></div><span class="collection-badge">Solstice</span></div>
             <div class="swatch-name">Travertine Solstice</div>
             <div class="swatch-tier">Solstice</div>
           </div>
@@ -859,7 +899,70 @@
       </div>
     </section>
 
-    <!-- ===== SECTION 6: CTA ===== -->
+    <!-- ===== SECTION 6: PROFESSIONAL RESOURCES ===== -->
+    <section class="section section--surface noise-overlay">
+      <div class="container">
+        <div class="text-center reveal" style="margin-bottom: 48px;">
+          <span class="label" data-i18n="lucciare.resources.label">FOR PROFESSIONALS</span>
+          <h2 style="margin-top: 16px; font-family: var(--font-headline); font-size: clamp(28px, 3.5vw, 42px); font-weight: 300;" data-i18n="lucciare.resources.title">Professional Resources</h2>
+          <p style="color: var(--color-text-muted); margin-top: 12px; max-width: 560px; margin-left: auto; margin-right: auto;" data-i18n="lucciare.resources.desc">Everything architects, designers, and fabricators need to specify and install Lucciare Quartz with confidence.</p>
+        </div>
+
+        <div class="resources-grid reveal">
+          <a href="#" class="resource-link">
+            <div class="resource-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <div class="resource-info">
+              <h4 data-i18n="lucciare.resources.bim.title">BIM Library</h4>
+              <p data-i18n="lucciare.resources.bim.desc">Revit families &amp; objects</p>
+            </div>
+          </a>
+
+          <a href="#" class="resource-link">
+            <div class="resource-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <div class="resource-info">
+              <h4 data-i18n="lucciare.resources.cad.title">CAD Files</h4>
+              <p data-i18n="lucciare.resources.cad.desc">DWG &amp; DXF downloads</p>
+            </div>
+          </a>
+
+          <a href="#" class="resource-link">
+            <div class="resource-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+            </div>
+            <div class="resource-info">
+              <h4 data-i18n="lucciare.resources.ceu.title">CEU Courses</h4>
+              <p data-i18n="lucciare.resources.ceu.desc">AIA-approved learning</p>
+            </div>
+          </a>
+
+          <a href="#" class="resource-link">
+            <div class="resource-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div class="resource-info">
+              <h4 data-i18n="lucciare.resources.specs.title">Spec Sheets</h4>
+              <p data-i18n="lucciare.resources.specs.desc">Technical specifications</p>
+            </div>
+          </a>
+
+          <a href="#" class="resource-link">
+            <div class="resource-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+            </div>
+            <div class="resource-info">
+              <h4 data-i18n="lucciare.resources.care.title">Care &amp; Maintenance</h4>
+              <p data-i18n="lucciare.resources.care.desc">Cleaning guides &amp; tips</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 7: CTA ===== -->
     <section class="section section--dark cta-section" style="border-top: 1px solid var(--color-border-default);">
       <div class="container">
         <h2 class="reveal" data-i18n="lucciare.cta.title">Ready to see Lucciare in person?</h2>
@@ -982,7 +1085,82 @@
     <div id="n8n-chat-widget" data-webhook-url="YOUR_N8N_WEBHOOK_URL" style="display:none;"></div>
   </div>
 
+  <!-- Lightbox -->
+  <div class="lightbox-overlay" id="lightbox">
+    <div class="lightbox-content">
+      <button class="lightbox-close">&times;</button>
+      <img id="lightbox-img" src="" alt="">
+      <div class="lightbox-info">
+        <div class="lightbox-name" id="lightbox-name"></div>
+        <div class="lightbox-ref" id="lightbox-ref"></div>
+      </div>
+    </div>
+  </div>
+
   <script src="../js/i18n.js"></script>
   <script src="../js/main.js"></script>
+
+  <script>
+  // --- Collection Lightbox ---
+  (function() {
+    const overlay = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    const lbName = document.getElementById('lightbox-name');
+    const lbRef = document.getElementById('lightbox-ref');
+    const closeBtn = overlay.querySelector('.lightbox-close');
+
+    document.querySelectorAll('.swatch-grid .swatch-card').forEach(function(card) {
+      card.addEventListener('click', function() {
+        var preview = card.querySelector('.swatch-preview .placeholder-bg');
+        var img = card.querySelector('.swatch-preview img');
+        var name = card.querySelector('.swatch-name');
+        var badge = card.querySelector('.collection-badge');
+
+        if (img) {
+          lbImg.src = img.src;
+          lbImg.alt = img.alt;
+          lbImg.style.display = 'block';
+        } else if (preview) {
+          // For placeholder gradients, show a larger version
+          lbImg.style.display = 'none';
+          var content = overlay.querySelector('.lightbox-content');
+          var existingPlaceholder = content.querySelector('.lightbox-placeholder');
+          if (existingPlaceholder) existingPlaceholder.remove();
+          var div = document.createElement('div');
+          div.className = 'lightbox-placeholder';
+          div.style.cssText = preview.style.cssText + 'width:100%;aspect-ratio:4/3;';
+          content.insertBefore(div, content.querySelector('.lightbox-info'));
+        }
+
+        lbName.textContent = name ? name.textContent : '';
+        lbRef.textContent = badge ? badge.textContent : '';
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    function closeLightbox() {
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+      var content = overlay.querySelector('.lightbox-content');
+      var existingPlaceholder = content.querySelector('.lightbox-placeholder');
+      if (existingPlaceholder) existingPlaceholder.remove();
+      lbImg.style.display = 'block';
+    }
+
+    closeBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      closeLightbox();
+    });
+
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) closeLightbox();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  })();
+  </script>
 </body>
 </html>
