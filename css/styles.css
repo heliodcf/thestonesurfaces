@@ -347,12 +347,14 @@ p {
   left: 0;
   right: 0;
   z-index: 1000;
-  padding: 20px 0;
+  padding: 28px 0;
   transition: all var(--transition-default);
 }
 
 .header--transparent {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .header--transparent .logo-img {
@@ -410,8 +412,12 @@ p {
 }
 
 .header--solid .btn--primary {
-  background: #C4A35A;
+  background: #3A3A3A;
   color: #FFFFFF;
+}
+
+.header--solid .btn--primary:hover {
+  background: #4A4A4A;
 }
 
 .header .container {
@@ -426,7 +432,7 @@ p {
 }
 
 .logo .logo-img {
-  height: 43px;
+  height: 52px;
   width: auto;
 }
 

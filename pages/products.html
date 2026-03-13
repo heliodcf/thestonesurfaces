@@ -48,18 +48,22 @@
     .page-hero {
       padding: 140px 0 48px;
       text-align: center;
+      background: #F5F2ED;
+    }
+    .page-hero .label {
+      color: #8B7355;
     }
     .page-hero h1 {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(36px, 5vw, 56px);
       font-weight: 700;
-      color: var(--color-text, #f5f0eb);
+      color: #1C1917;
       margin-bottom: 16px;
     }
     .page-hero p {
       font-family: 'Space Grotesk', sans-serif;
       font-size: 18px;
-      color: var(--color-text-muted, #999);
+      color: #57534E;
       max-width: 640px;
       margin: 0 auto;
       line-height: 1.6;
@@ -646,7 +650,7 @@
             </div>
           </div>
         </div>
-        <a href="contact.html" class="btn btn--primary">Request a Quote</a>
+        <a href="contact.html" class="btn btn--primary">Schedule an Appointment</a>
         <div class="nav-toggle" aria-label="Toggle navigation">
           <span></span><span></span><span></span>
         </div>
@@ -687,7 +691,7 @@
       <div class="container" style="max-width: 100%; padding: 0;">
 
         <!-- Wrapper clips the top of the iframe to hide StoneProfitsWeb header -->
-        <div style="overflow: hidden; position: relative; height: 1200px;">
+        <div style="overflow: hidden; position: relative; height: 4000px;">
           <iframe
             src="https://thestonesurfaces.stoneprofitsweb.com/"
             title="The Stone Surfaces — Product Catalog"
@@ -1110,25 +1114,27 @@
   </div>
 
   <!-- ===== FOOTER ===== -->
-  <footer class="footer">
+<footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-col">
-          <div class="footer-logo"><img src="../images/header/TSS_LOGO.png" alt="The Stone Surfaces" class="logo-img"></div>
+          <div class="footer-logo"><img src="../images/header/TSS_LOGO.png" alt="The Stone Surfaces" class="logo-img" style="filter: brightness(0);"></div>
           <p class="tagline" data-i18n="footer.tagline">South Florida's trusted source for premium natural and engineered stone surfaces since 2016.</p>
-          <p class="contact-line">&#9679; 7980 NW 56th St, Doral, FL 33166</p>
-          <p class="contact-line">&#9742; (305) 000-0000</p>
+          <p class="contact-line"><strong>Miami</strong> — 7972 NW 56th St, Doral, FL 33166</p>
+          <p class="contact-line"><strong>Orlando</strong> — 3924 N John Young Pkwy, Orlando, FL 32804</p>
+          <p class="contact-line"><strong>Sarasota</strong> — 1695 12th St, Sarasota, FL 34236</p>
+          <p class="contact-line" style="margin-top: 8px;">&#9742; 1.866.960.8579</p>
           <p class="contact-line">&#9993; info@thestonesurfaces.com</p>
         </div>
         <div class="footer-col">
           <h4 data-i18n="footer.products">Products</h4>
           <ul>
-            <li><a href="products.html#granite">Granite</a></li>
-            <li><a href="products.html#marble">Marble</a></li>
-            <li><a href="products.html#quartz">Quartz</a></li>
             <li><a href="products.html#quartzite">Quartzite</a></li>
-            <li><a href="products.html#dolomite">Dolomite</a></li>
-            <li><a href="products.html#hard-marble">Hard Marble</a></li>
+            <li><a href="products.html#granite">Granite</a></li>
+            <li><a href="products.html#dolomite-hard-marble">Dolomite &amp; Hard Marble</a></li>
+            <li><a href="products.html#marble">Marble</a></li>
+            <li><a href="products.html#semi-precious-onyx">Semi-Precious &amp; Onyx</a></li>
+            <li><a href="products.html#quartz">Quartz</a></li>
             <li><a href="hanstone.html">Hanstone Quartz</a></li>
           </ul>
         </div>
@@ -1153,10 +1159,11 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span data-i18n="footer.copyright">&copy; 2026 The Stone Surfaces. All rights reserved.</span>
+        <span data-i18n-html="footer.copyright">&copy; 2026 The Stone Surfaces. All rights reserved.</span>
         <div class="footer-bottom-links">
           <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
           <a href="#" data-i18n="footer.terms">Terms of Service</a>
+          <a href="admin-login.html" style="opacity:0.3;transition:opacity 0.3s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='0.3'">Admin</a>
         </div>
       </div>
     </div>
@@ -1203,7 +1210,7 @@
         Hi! I'm here to help you find the perfect stone for your project. What are you looking for?
         <div class="quick-actions">
           <button>Browse Products</button>
-          <button>Request a Quote</button>
+          <button>Schedule an Appointment</button>
           <button>Hanstone Quartz Info</button>
           <button>Visit Our Showroom</button>
         </div>

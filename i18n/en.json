@@ -7,7 +7,7 @@
     "blog": "Blog",
     "about": "About",
     "contact": "Contact",
-    "cta": "Request a Quote",
+    "cta": "Schedule an Appointment",
     "home": "Home",
     "hanstone_short": "Hanstone",
     "inspire": "Inspire",
@@ -128,7 +128,7 @@
     "title": "The Stone Surfaces Assistant",
     "greeting": "Hi! I'm here to help you find the perfect stone for your project. What are you looking for?",
     "browse": "Browse Products",
-    "quote": "Request a Quote",
+    "quote": "Schedule an Appointment",
     "hanstone_info": "Hanstone Quartz Info",
     "showroom": "Visit Our Showroom",
     "placeholder": "Type your message..."
@@ -591,7 +591,7 @@
     }
   },
   "contact": {
-    "title": "Request a Quote",
+    "title": "Schedule an Appointment",
     "subtitle": "Tell us about your project and we'll get back to you within 24 hours.",
     "form": {
       "name": "Full Name",
@@ -651,7 +651,7 @@
       "dimensions": "Dimensions:"
     },
     "cta": {
-      "quote": "Request a Quote",
+      "quote": "Schedule an Appointment",
       "sample": "Order a Sample"
     },
     "specs": {
