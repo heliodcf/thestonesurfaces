@@ -326,6 +326,74 @@
       margin-top: 2px;
     }
 
+    /* --- Collection Intro (description + image per collection) --- */
+    .collection-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      padding: 56px 0 40px;
+    }
+    .collection-intro__text h3 {
+      font-family: var(--font-headline);
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 400;
+      color: var(--color-text-light);
+      margin: 0 0 8px;
+    }
+    .collection-intro__text .collection-tier {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--lc-terracotta);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .collection-intro__text p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--color-text-muted);
+      margin-bottom: 12px;
+    }
+    .collection-intro__text ul {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0 0;
+    }
+    .collection-intro__text ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 5px 0;
+      font-size: 14px;
+      color: var(--color-text-light);
+    }
+    .collection-intro__text ul li .check {
+      color: var(--lc-terracotta);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .collection-intro__image {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      background: var(--color-bg-surface);
+    }
+    .collection-intro__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .collection-intro:hover .collection-intro__image img {
+      transform: scale(1.03);
+    }
+    .collection-divider {
+      height: 1px;
+      background: var(--color-border-default);
+      margin: 16px 0;
+    }
+
     /* --- Professional Resources --- */
     .resources-grid {
       display: grid;
@@ -580,6 +648,14 @@
         gap: 16px;
         padding: 8px 20px 32px;
       }
+      .collection-intro {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding: 40px 0 32px;
+      }
+      .collection-intro .collection-intro__image {
+        order: -1;
+      }
       .benefits-grid {
         grid-template-columns: 1fr;
         gap: 20px;
@@ -751,7 +827,7 @@
             </div>
           </div>
           <div class="brand-story-image reveal reveal-delay-1">
-            <img src="../images/lucciare/lucciare_Image.jpg" alt="Lucciare Handcrafted Quartz — Italian design heritage" style="width:100%;height:100%;object-fit:cover;">
+            <img src="../images/lucciare/lucciare_page2.jpg" alt="Lucciare Handcrafted Quartz — Italian design heritage" style="width:100%;height:100%;object-fit:cover;">
           </div>
         </div>
       </div>
@@ -765,7 +841,22 @@
           <h2 style="margin-top: 16px; font-family: var(--font-headline); font-size: clamp(28px, 3.5vw, 42px); font-weight: 300;" data-i18n="lucciare.collections.title">Four Collections. Timeless Craftsmanship.</h2>
         </div>
 
-        <div class="collection-accordion reveal">
+        <!-- Signature Collection Intro -->
+        <div class="collection-intro reveal">
+          <div class="collection-intro__text">
+            <span class="collection-tier">Prestige &middot; Premiere &middot; Select &middot; Designer</span>
+            <h3>Signature Collection</h3>
+            <p>The crown jewel of Lucciare's portfolio. Each Signature surface captures the essence of rare Italian marbles &mdash; from dramatic Calacatta movements to subtle travertine warmth &mdash; with handcrafted veining that no two slabs share.</p>
+            <ul>
+              <li><span class="check">&#10003;</span>24 exclusive designs across four premium tiers</li>
+              <li><span class="check">&#10003;</span>Handcrafted veining replicating natural marble</li>
+              <li><span class="check">&#10003;</span>Non-porous, stain-resistant engineered quartz</li>
+            </ul>
+          </div>
+          <div class="collection-intro__image">
+            <img src="../images/lucciare/collection lucciare/Signature Collection.png" alt="Lucciare Signature Collection — premium handcrafted quartz surfaces" loading="lazy">
+          </div>
+        </div>
 
           <!-- ── SIGNATURE COLLECTION (24 stones) ── -->
           <div class="collection-group open">
@@ -902,6 +993,25 @@
             </div>
           </div>
 
+        <div class="collection-divider"></div>
+
+        <!-- Genesis Collection Intro -->
+        <div class="collection-intro reveal">
+          <div class="collection-intro__image">
+            <img src="../images/lucciare/collection lucciare/Genesis Collection.png" alt="Lucciare Genesis Collection — full-body veining technology" loading="lazy">
+          </div>
+          <div class="collection-intro__text">
+            <span class="collection-tier">Strata &middot; Art &middot; Lumina</span>
+            <h3>Genesis Collection</h3>
+            <p>A breakthrough in engineered stone. The Strata Series features full-body composition with consistent veining throughout the entire thickness. The Art Series transforms stone into a canvas for bold creativity, while Lumina captures light with translucent depth.</p>
+            <ul>
+              <li><span class="check">&#10003;</span>Full-body veining through entire slab thickness</li>
+              <li><span class="check">&#10003;</span>Bold, creative patterns with dynamic depth effects</li>
+              <li><span class="check">&#10003;</span>Light-capturing surfaces with translucent quality</li>
+            </ul>
+          </div>
+        </div>
+
           <!-- ── GENESIS COLLECTION (17 stones) ── -->
           <div class="collection-group">
             <div class="collection-header" onclick="toggleCollection(this)">
@@ -1002,6 +1112,25 @@
             </div>
           </div>
 
+        <div class="collection-divider"></div>
+
+        <!-- Solstice Collection Intro -->
+        <div class="collection-intro reveal">
+          <div class="collection-intro__text">
+            <span class="collection-tier">Full-Of-Transparency Technology</span>
+            <h3>Solstice Collection</h3>
+            <p>Lucciare's proprietary FOT (Full-Of-Transparency) technology creates surfaces with exceptional depth and light-capturing properties. Each slab shifts and evolves with changing light throughout the day &mdash; a living surface that transforms any space.</p>
+            <ul>
+              <li><span class="check">&#10003;</span>Proprietary FOT technology for unmatched depth</li>
+              <li><span class="check">&#10003;</span>Light-responsive surfaces that shift throughout the day</li>
+              <li><span class="check">&#10003;</span>6 curated designs for distinctive interiors</li>
+            </ul>
+          </div>
+          <div class="collection-intro__image">
+            <img src="../images/lucciare/collection lucciare/Solstice Collection.png" alt="Lucciare Solstice Collection — FOT transparency technology" loading="lazy">
+          </div>
+        </div>
+
           <!-- ── SOLSTICE COLLECTION (6 stones) ── -->
           <div class="collection-group">
             <div class="collection-header" onclick="toggleCollection(this)">
@@ -1046,6 +1175,25 @@
               </div>
             </div>
           </div>
+
+        <div class="collection-divider"></div>
+
+        <!-- Lucciare Library Intro -->
+        <div class="collection-intro reveal">
+          <div class="collection-intro__image">
+            <img src="../images/lucciare/collection lucciare/Lucciare Library.png" alt="Lucciare Library — timeless classic quartz designs" loading="lazy">
+          </div>
+          <div class="collection-intro__text">
+            <span class="collection-tier">Classic &middot; Timeless &middot; Refined</span>
+            <h3>Lucciare Library</h3>
+            <p>The foundational collection that built Lucciare's reputation over a decade. Timeless Calacatta and Statuario interpretations meet distinctive dark tones and gold-veined compositions &mdash; refined classics that never go out of style.</p>
+            <ul>
+              <li><span class="check">&#10003;</span>11 designs refined over 10+ years of development</li>
+              <li><span class="check">&#10003;</span>Classic marble interpretations with modern performance</li>
+              <li><span class="check">&#10003;</span>From elegant whites to dramatic dark compositions</li>
+            </ul>
+          </div>
+        </div>
 
           <!-- ── LUCCIARE LIBRARY (11 stones) ── -->
           <div class="collection-group">
@@ -1117,30 +1265,6 @@
             </div>
           </div>
 
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== SECTION 4: GENESIS TECHNOLOGY ===== -->
-    <section class="section section--surface noise-overlay">
-      <div class="container">
-        <div class="brand-story-grid">
-          <div class="brand-story-image reveal">
-            <div class="placeholder-bg" style="background: linear-gradient(135deg, #EDEDEF 0%, #E0E0E3 40%, #D1D1D6 100%);"></div>
-          </div>
-          <div class="brand-story-text reveal reveal-delay-1">
-            <span class="label" data-i18n="lucciare.genesis.label">GENESIS TECHNOLOGY</span>
-            <h2 data-i18n="lucciare.genesis.title">Full-Body Veining, Engineered to Perfection</h2>
-            <p data-i18n="lucciare.genesis.text1">The Genesis Collection represents a breakthrough in engineered stone. The Strata Series features full-body composition with consistent veining and color throughout the entire thickness &mdash; not just surface-level patterns.</p>
-            <p data-i18n="lucciare.genesis.text2">Combined with the Art Series, which transforms engineered stone into a canvas for bold creativity with imaginative patterns and dynamic hues, Genesis offers a level of depth and authenticity never seen before in quartz surfaces.</p>
-            <ul>
-              <li><span class="check">&#10003;</span><span data-i18n="lucciare.genesis.point1">Strata Series: Full-body veining through entire slab thickness</span></li>
-              <li><span class="check">&#10003;</span><span data-i18n="lucciare.genesis.point2">Art Series: Bold, creative patterns with dynamic depth effects</span></li>
-              <li><span class="check">&#10003;</span><span data-i18n="lucciare.genesis.point3">Lumina Series: Light-capturing surfaces with translucent quality</span></li>
-              <li><span class="check">&#10003;</span><span data-i18n="lucciare.genesis.point4">Perfect for countertops, vanities, staircases &amp; furniture</span></li>
-            </ul>
-          </div>
-        </div>
       </div>
     </section>
 
