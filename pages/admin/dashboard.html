@@ -24,6 +24,7 @@
       <nav class="admin-nav" id="admin-nav">
         <a href="dashboard.html" class="admin-nav-link active">&#9632; Dashboard</a>
         <a href="blog-manager.html" class="admin-nav-link">&#9998; Blog Manager</a>
+        <a href="settings.html" class="admin-nav-link">&#9881; Settings</a>
         <button class="admin-nav-link admin-nav-link--logout" id="logout-btn">Logout</button>
       </nav>
     </div>
@@ -58,6 +59,11 @@
         <div class="metric-value" id="metric-converted">0</div>
         <div class="metric-label">Converted</div>
       </div>
+      <div class="metric-card" style="border-left:3px solid #EF4444;">
+        <div class="metric-icon">&#9888;</div>
+        <div class="metric-value" id="metric-abandoned">0</div>
+        <div class="metric-label">Abandoned</div>
+      </div>
     </div>
 
     <!-- Filters Bar -->
@@ -70,15 +76,16 @@
           <option value="contacted">Contacted</option>
           <option value="qualified">Qualified</option>
           <option value="converted">Converted</option>
+          <option value="abandoned_cart">Abandoned</option>
         </select>
       </div>
       <div class="filter-group">
         <label>Source</label>
         <select class="filter-select" id="filter-source">
           <option value="">All Sources</option>
-          <option value="chatbot">AI Chatbot</option>
-          <option value="contact_form">Contact Form</option>
-          <option value="trade_form">Trade Form</option>
+          <option value="chat">AI Chatbot</option>
+          <option value="quote-form">Quote Form</option>
+          <option value="trade-form">Trade Form</option>
           <option value="manual">Manual Entry</option>
         </select>
       </div>
@@ -136,6 +143,7 @@
           <option value="contacted">Contacted</option>
           <option value="qualified">Qualified</option>
           <option value="converted">Converted</option>
+          <option value="abandoned_cart">Abandoned</option>
         </select>
         <button class="btn btn--primary btn--small" id="detail-save-status">Update Status</button>
       </div>
@@ -196,9 +204,9 @@
               <label for="lead-source">Source</label>
               <select id="lead-source">
                 <option value="manual">Manual Entry</option>
-                <option value="chatbot">AI Chatbot</option>
-                <option value="contact_form">Contact Form</option>
-                <option value="trade_form">Trade Form</option>
+                <option value="chat">AI Chatbot</option>
+                <option value="quote-form">Quote Form</option>
+                <option value="trade-form">Trade Form</option>
               </select>
             </div>
           </div>
@@ -287,6 +295,7 @@
         document.getElementById('metric-new').textContent = allLeads.filter(l => l.status === 'new').length;
         document.getElementById('metric-qualified').textContent = allLeads.filter(l => l.status === 'qualified').length;
         document.getElementById('metric-converted').textContent = allLeads.filter(l => l.status === 'converted').length;
+        document.getElementById('metric-abandoned').textContent = allLeads.filter(l => l.status === 'abandoned_cart').length;
       }
 
       function applyFilters() {
@@ -298,8 +307,8 @@
           if (status && l.status !== status) return false;
           if (source && l.source !== source) return false;
           if (search && !(
-            l.name.toLowerCase().includes(search) ||
-            l.email.toLowerCase().includes(search) ||
+            (l.name || '').toLowerCase().includes(search) ||
+            (l.email || '').toLowerCase().includes(search) ||
             (l.phone && l.phone.includes(search))
           )) return false;
           return true;
@@ -340,7 +349,7 @@
               <div>${escHtml(lead.email)}</div>
               <div class="lead-email">${escHtml(lead.phone || '—')}</div>
             </td>
-            <td>${escHtml(lead.interest || '—')}</td>
+            <td>${escHtml(lead.materialsInterest ? (Array.isArray(lead.materialsInterest) ? lead.materialsInterest.join(', ') : lead.materialsInterest) : (lead.interest || '—'))}</td>
             <td>${escHtml(sourceCfg.label || lead.source)}</td>
             <td><span class="status-badge status-badge--${lead.status}">${escHtml(statusCfg.label || lead.status)}</span></td>
             <td>${date}</td>
@@ -438,8 +447,8 @@
             <div class="detail-value">${lead.phone ? `<a href="tel:${escHtml(lead.phone)}">${escHtml(lead.phone)}</a>` : '—'}</div>
           </div>
           <div class="detail-field">
-            <div class="detail-label">Interest</div>
-            <div class="detail-value">${escHtml(lead.interest || '—')}</div>
+            <div class="detail-label">Materials Interest</div>
+            <div class="detail-value">${escHtml(lead.materialsInterest ? (Array.isArray(lead.materialsInterest) ? lead.materialsInterest.join(', ') : lead.materialsInterest) : (lead.interest || '—'))}</div>
           </div>
           <div class="detail-field">
             <div class="detail-label">Project Type</div>
@@ -521,7 +530,7 @@
           name,
           email,
           phone: document.getElementById('lead-phone').value.trim(),
-          interest: document.getElementById('lead-interest').value,
+          materialsInterest: [document.getElementById('lead-interest').value].filter(Boolean),
           projectType: document.getElementById('lead-project').value,
           source: document.getElementById('lead-source').value,
           status: 'new',
@@ -542,9 +551,9 @@
           return;
         }
 
-        const headers = ['Name', 'Email', 'Phone', 'Interest', 'Project Type', 'Source', 'Status', 'Created'];
+        const headers = ['Name', 'Email', 'Phone', 'Materials Interest', 'Project Type', 'Source', 'Status', 'Created'];
         const rows = filteredLeads.map(l => [
-          l.name, l.email, l.phone || '', l.interest || '', l.projectType || '',
+          l.name || '', l.email || '', l.phone || '', l.materialsInterest ? (Array.isArray(l.materialsInterest) ? l.materialsInterest.join('; ') : l.materialsInterest) : (l.interest || ''), l.projectType || '',
           l.source, l.status, new Date(l.createdAt).toLocaleDateString()
         ]);
 

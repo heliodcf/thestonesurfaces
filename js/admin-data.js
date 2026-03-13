@@ -1,7 +1,8 @@
 /**
  * The Stone Surfaces — Admin Data Layer
  * CRUD operations for Leads & Blog Posts
- * Supports n8n API mode with localStorage fallback
+ * Primary: Supabase REST (reads) + n8n webhooks (writes/AI)
+ * Fallback: localStorage for offline/unconfigured state
  */
 const AdminData = (() => {
 
@@ -37,112 +38,150 @@ const AdminData = (() => {
     localStorage.setItem(key, JSON.stringify(data));
   }
 
-  async function apiFetch(url, options = {}) {
-    if (!url) return null;
+  // ─── Supabase REST Helper ─────────────────────────────────
+
+  function supabaseConfigured() {
+    return ADMIN_CONFIG.SUPABASE.URL && ADMIN_CONFIG.SUPABASE.ANON_KEY;
+  }
+
+  async function supabaseGet(table, params = '') {
+    if (!supabaseConfigured()) return null;
     try {
-      const res = await fetch(url, {
-        headers: { 'Content-Type': 'application/json' },
-        ...options,
-      });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const res = await fetch(
+        `${ADMIN_CONFIG.SUPABASE.URL}/rest/v1/${table}${params ? '?' + params : ''}`,
+        {
+          headers: {
+            'apikey': ADMIN_CONFIG.SUPABASE.ANON_KEY,
+            'Authorization': `Bearer ${ADMIN_CONFIG.SUPABASE.ANON_KEY}`,
+          },
+        }
+      );
+      if (!res.ok) throw new Error(`Supabase ${res.status}`);
       return await res.json();
     } catch (err) {
-      console.warn('[AdminData] API call failed, using localStorage fallback:', err.message);
+      console.warn('[AdminData] Supabase read failed:', err.message);
       return null;
     }
   }
 
-  // ─── LEADS ─────────────────────────────────────────────────
+  // ─── n8n Webhook Helper ────────────────────────────────────
 
-  async function getLeads(filters = {}) {
-    const endpoint = ADMIN_CONFIG.ENDPOINTS.LEADS_LIST;
-    if (ADMIN_CONFIG.API_MODE === 'api' && endpoint) {
-      const params = new URLSearchParams();
-      if (filters.status) params.set('status', filters.status);
-      if (filters.source) params.set('source', filters.source);
-      if (filters.from) params.set('from', filters.from);
-      if (filters.to) params.set('to', filters.to);
-      const result = await apiFetch(endpoint + '?' + params.toString());
-      if (result) return result;
-    }
-
-    // localStorage fallback
-    let leads = getStorage(ADMIN_CONFIG.STORAGE_KEYS.LEADS);
-    if (leads.length === 0) {
-      leads = getSeedLeads();
-      setStorage(ADMIN_CONFIG.STORAGE_KEYS.LEADS, leads);
-    }
-    // Apply filters locally
-    if (filters.status) leads = leads.filter(l => l.status === filters.status);
-    if (filters.source) leads = leads.filter(l => l.source === filters.source);
-    if (filters.search) {
-      const q = filters.search.toLowerCase();
-      leads = leads.filter(l =>
-        l.name.toLowerCase().includes(q) ||
-        l.email.toLowerCase().includes(q) ||
-        l.phone.includes(q)
-      );
-    }
-    return leads.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-  }
-
-  async function saveLead(lead) {
-    lead.id = lead.id || generateId('lead');
-    lead.createdAt = lead.createdAt || new Date().toISOString();
-    lead.updatedAt = new Date().toISOString();
-    lead.notes = lead.notes || [];
-
-    const endpoint = ADMIN_CONFIG.ENDPOINTS.LEADS_CREATE;
-    if (ADMIN_CONFIG.API_MODE === 'api' && endpoint) {
-      const result = await apiFetch(endpoint, {
+  async function n8nPost(endpoint, body) {
+    if (!endpoint) return null;
+    try {
+      const res = await fetch(endpoint, {
         method: 'POST',
-        body: JSON.stringify(lead),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
       });
-      if (result) return result;
+      if (!res.ok) throw new Error(`n8n ${res.status}`);
+      return await res.json();
+    } catch (err) {
+      console.warn('[AdminData] n8n call failed:', err.message);
+      return null;
     }
-
-    const leads = getStorage(ADMIN_CONFIG.STORAGE_KEYS.LEADS);
-    leads.unshift(lead);
-    setStorage(ADMIN_CONFIG.STORAGE_KEYS.LEADS, leads);
-    return lead;
   }
 
-  async function updateLead(id, updates) {
-    const endpoint = ADMIN_CONFIG.ENDPOINTS.LEADS_UPDATE;
-    if (ADMIN_CONFIG.API_MODE === 'api' && endpoint) {
-      const result = await apiFetch(endpoint.replace('{id}', id), {
-        method: 'PATCH',
-        body: JSON.stringify(updates),
-      });
-      if (result) return result;
-    }
+  // ─── Field Mapping: camelCase ↔ snake_case ────────────────
 
-    const leads = getStorage(ADMIN_CONFIG.STORAGE_KEYS.LEADS);
-    const idx = leads.findIndex(l => l.id === id);
-    if (idx === -1) return null;
-    Object.assign(leads[idx], updates, { updatedAt: new Date().toISOString() });
-    setStorage(ADMIN_CONFIG.STORAGE_KEYS.LEADS, leads);
-    return leads[idx];
+  function postToSnake(post) {
+    return {
+      id: post.id || undefined,
+      title: post.title,
+      slug: post.slug || slugify(post.title),
+      content: post.content || '',
+      excerpt: post.excerpt || '',
+      featured_image: post.featuredImage || '',
+      category: post.category || 'design-trends',
+      tags: post.tags || [],
+      author_name: post.author?.name || post.authorName || 'The Stone Surfaces',
+      author_avatar: post.author?.avatar || post.authorAvatar || 'TS',
+      status: post.status || 'draft',
+      read_time: post.readTime || calcReadTime(post.content || ''),
+      seo_title_tag: post.seo?.titleTag || '',
+      seo_meta_description: post.seo?.metaDescription || '',
+      seo_canonical_url: post.seo?.canonicalUrl || '',
+      seo_og_title: post.seo?.ogTitle || '',
+      seo_og_description: post.seo?.ogDescription || '',
+      seo_alt_text: post.seo?.altText || '',
+      seo_schema_article: post.seo?.schemaArticle || {},
+      primary_keyword: post.primaryKeyword || '',
+      secondary_keywords: post.secondaryKeywords || [],
+      created_at: post.createdAt,
+      updated_at: new Date().toISOString(),
+      published_at: post.publishedAt,
+    };
   }
 
-  async function deleteLead(id) {
-    const leads = getStorage(ADMIN_CONFIG.STORAGE_KEYS.LEADS);
-    const filtered = leads.filter(l => l.id !== id);
-    setStorage(ADMIN_CONFIG.STORAGE_KEYS.LEADS, filtered);
-    return true;
+  function postToCamel(row) {
+    return {
+      id: row.id,
+      title: row.title,
+      slug: row.slug,
+      content: row.content,
+      excerpt: row.excerpt,
+      featuredImage: row.featured_image,
+      category: row.category,
+      tags: row.tags || [],
+      author: { name: row.author_name, avatar: row.author_avatar },
+      status: row.status,
+      readTime: row.read_time,
+      seo: {
+        titleTag: row.seo_title_tag,
+        metaDescription: row.seo_meta_description,
+        canonicalUrl: row.seo_canonical_url,
+        ogTitle: row.seo_og_title,
+        ogDescription: row.seo_og_description,
+        altText: row.seo_alt_text,
+        schemaArticle: row.seo_schema_article,
+      },
+      primaryKeyword: row.primary_keyword,
+      secondaryKeywords: row.secondary_keywords,
+      createdAt: row.created_at,
+      updatedAt: row.updated_at,
+      publishedAt: row.published_at,
+    };
+  }
+
+  function leadToCamel(row) {
+    return {
+      id: row.id,
+      name: row.name,
+      email: row.email,
+      phone: row.phone,
+      company: row.company,
+      projectType: row.project_type,
+      materialsInterest: row.materials_interest,
+      message: row.message,
+      source: row.source,
+      status: row.status,
+      chatTranscript: row.chat_transcript,
+      dataCollected: row.data_collected,
+      isComplete: row.is_complete,
+      abandonedAt: row.abandoned_at,
+      createdAt: row.created_at,
+      updatedAt: row.updated_at,
+    };
   }
 
   // ─── BLOG POSTS ────────────────────────────────────────────
 
   async function getPosts(filters = {}) {
-    const endpoint = ADMIN_CONFIG.ENDPOINTS.BLOG_POSTS_LIST;
-    if (ADMIN_CONFIG.API_MODE === 'api' && endpoint) {
-      const params = new URLSearchParams();
-      if (filters.status) params.set('status', filters.status);
-      const result = await apiFetch(endpoint + '?' + params.toString());
-      if (result) return result;
+    // Try n8n CRUD endpoint first (admin context)
+    const endpoint = ADMIN_CONFIG.ENDPOINTS.BLOG_CRUD;
+    if (endpoint) {
+      const result = await n8nPost(endpoint, {
+        action: 'list',
+        data: { status: filters.status || 'all' },
+      });
+      if (result && result.success && Array.isArray(result.data)) {
+        const posts = result.data.map(postToCamel);
+        setStorage(ADMIN_CONFIG.STORAGE_KEYS.POSTS, posts); // cache
+        return posts;
+      }
     }
 
+    // localStorage fallback
     let posts = getStorage(ADMIN_CONFIG.STORAGE_KEYS.POSTS);
     if (posts.length === 0) {
       posts = getSeedPosts();
@@ -170,15 +209,19 @@ const AdminData = (() => {
       post.seo = generateLocalSEO(post);
     }
 
-    const endpoint = ADMIN_CONFIG.ENDPOINTS.BLOG_POSTS_SAVE;
-    if (ADMIN_CONFIG.API_MODE === 'api' && endpoint) {
-      const result = await apiFetch(endpoint.replace('{id}', post.id), {
-        method: 'PUT',
-        body: JSON.stringify(post),
+    // Try n8n CRUD endpoint
+    const endpoint = ADMIN_CONFIG.ENDPOINTS.BLOG_CRUD;
+    if (endpoint) {
+      const result = await n8nPost(endpoint, {
+        action: 'save',
+        data: postToSnake(post),
       });
-      if (result) return result;
+      if (result && result.success) {
+        return result.data ? postToCamel(result.data) : post;
+      }
     }
 
+    // localStorage fallback
     const posts = getStorage(ADMIN_CONFIG.STORAGE_KEYS.POSTS);
     if (isNew) {
       posts.unshift(post);
@@ -192,8 +235,162 @@ const AdminData = (() => {
   }
 
   async function deletePost(id) {
+    // Try n8n CRUD endpoint
+    const endpoint = ADMIN_CONFIG.ENDPOINTS.BLOG_CRUD;
+    if (endpoint) {
+      const result = await n8nPost(endpoint, {
+        action: 'delete',
+        data: { id },
+      });
+      if (result && result.success) {
+        // Also remove from cache
+        const posts = getStorage(ADMIN_CONFIG.STORAGE_KEYS.POSTS);
+        setStorage(ADMIN_CONFIG.STORAGE_KEYS.POSTS, posts.filter(p => p.id !== id));
+        return true;
+      }
+    }
+
+    // localStorage fallback
     const posts = getStorage(ADMIN_CONFIG.STORAGE_KEYS.POSTS);
     setStorage(ADMIN_CONFIG.STORAGE_KEYS.POSTS, posts.filter(p => p.id !== id));
+    return true;
+  }
+
+  // ─── PUBLIC READS (Supabase direct — for blog.html, homepage) ──
+
+  async function getPublishedPosts(limit = 20) {
+    const result = await supabaseGet(
+      'blog_posts',
+      `status=eq.published&order=published_at.desc&limit=${limit}`
+    );
+    if (result) return result.map(postToCamel);
+
+    // Fallback to localStorage
+    return getStorage(ADMIN_CONFIG.STORAGE_KEYS.POSTS)
+      .filter(p => p.status === 'published')
+      .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))
+      .slice(0, limit);
+  }
+
+  async function getPostBySlug(slug) {
+    const result = await supabaseGet(
+      'blog_posts',
+      `slug=eq.${encodeURIComponent(slug)}&status=eq.published&limit=1`
+    );
+    if (result && result.length > 0) return postToCamel(result[0]);
+
+    // Fallback to localStorage
+    const posts = getStorage(ADMIN_CONFIG.STORAGE_KEYS.POSTS);
+    const post = posts.find(p => p.slug === slug && p.status === 'published');
+    return post || null;
+  }
+
+  async function getRelatedPosts(category, excludeId, limit = 3) {
+    const result = await supabaseGet(
+      'blog_posts',
+      `status=eq.published&category=eq.${encodeURIComponent(category)}&id=neq.${excludeId}&order=published_at.desc&limit=${limit}`
+    );
+    if (result) return result.map(postToCamel);
+
+    return getStorage(ADMIN_CONFIG.STORAGE_KEYS.POSTS)
+      .filter(p => p.status === 'published' && p.category === category && p.id !== excludeId)
+      .slice(0, limit);
+  }
+
+  // ─── LEADS ─────────────────────────────────────────────────
+
+  async function getLeads(filters = {}) {
+    // Read directly from Supabase (service_role via n8n, or direct if admin)
+    const endpoint = ADMIN_CONFIG.ENDPOINTS.BLOG_CRUD; // reuse CRUD endpoint
+    if (endpoint) {
+      const result = await n8nPost(endpoint.replace('tss-blog-posts', 'tss-leads'), {
+        action: 'list',
+        data: { status: filters.status || 'all', source: filters.source || 'all' },
+      });
+      if (result && result.success && Array.isArray(result.data)) {
+        const leads = result.data.map(leadToCamel);
+        setStorage(ADMIN_CONFIG.STORAGE_KEYS.LEADS, leads);
+        return leads;
+      }
+    }
+
+    // localStorage fallback
+    let leads = getStorage(ADMIN_CONFIG.STORAGE_KEYS.LEADS);
+    if (leads.length === 0) {
+      leads = getSeedLeads();
+      setStorage(ADMIN_CONFIG.STORAGE_KEYS.LEADS, leads);
+    }
+    if (filters.status) leads = leads.filter(l => l.status === filters.status);
+    if (filters.source) leads = leads.filter(l => l.source === filters.source);
+    if (filters.search) {
+      const q = filters.search.toLowerCase();
+      leads = leads.filter(l =>
+        (l.name || '').toLowerCase().includes(q) ||
+        (l.email || '').toLowerCase().includes(q) ||
+        (l.phone || '').includes(q)
+      );
+    }
+    return leads.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  }
+
+  async function saveLead(lead) {
+    lead.id = lead.id || generateId('lead');
+    lead.createdAt = lead.createdAt || new Date().toISOString();
+    lead.updatedAt = new Date().toISOString();
+
+    // localStorage (always save locally as cache)
+    const leads = getStorage(ADMIN_CONFIG.STORAGE_KEYS.LEADS);
+    leads.unshift(lead);
+    setStorage(ADMIN_CONFIG.STORAGE_KEYS.LEADS, leads);
+    return lead;
+  }
+
+  async function updateLead(id, updates) {
+    const leads = getStorage(ADMIN_CONFIG.STORAGE_KEYS.LEADS);
+    const idx = leads.findIndex(l => l.id === id);
+    if (idx === -1) return null;
+    Object.assign(leads[idx], updates, { updatedAt: new Date().toISOString() });
+    setStorage(ADMIN_CONFIG.STORAGE_KEYS.LEADS, leads);
+    return leads[idx];
+  }
+
+  async function deleteLead(id) {
+    const leads = getStorage(ADMIN_CONFIG.STORAGE_KEYS.LEADS);
+    setStorage(ADMIN_CONFIG.STORAGE_KEYS.LEADS, leads.filter(l => l.id !== id));
+    return true;
+  }
+
+  // ─── SETTINGS ──────────────────────────────────────────────
+
+  async function getSettings() {
+    const endpoint = ADMIN_CONFIG.ENDPOINTS.SETTINGS_CRUD;
+    if (endpoint) {
+      const result = await n8nPost(endpoint, { action: 'list' });
+      if (result && result.success) return result.data;
+    }
+    // Fallback
+    try {
+      return JSON.parse(localStorage.getItem('tss-settings')) || {};
+    } catch {
+      return {};
+    }
+  }
+
+  async function saveSetting(key, value) {
+    const endpoint = ADMIN_CONFIG.ENDPOINTS.SETTINGS_CRUD;
+    if (endpoint) {
+      const result = await n8nPost(endpoint, {
+        action: 'save',
+        data: { key, value },
+      });
+      if (result && result.success) return true;
+    }
+    // Fallback
+    try {
+      const settings = JSON.parse(localStorage.getItem('tss-settings')) || {};
+      settings[key] = value;
+      localStorage.setItem('tss-settings', JSON.stringify(settings));
+    } catch {}
     return true;
   }
 
@@ -202,12 +399,9 @@ const AdminData = (() => {
   async function generateBlogIdeas() {
     const endpoint = ADMIN_CONFIG.ENDPOINTS.BLOG_IDEAS;
     if (endpoint) {
-      const result = await apiFetch(endpoint, {
-        method: 'POST',
-        body: JSON.stringify({
-          niche: 'natural stone, quartz, interior design, countertops, South Florida',
-          count: 5,
-        }),
+      const result = await n8nPost(endpoint, {
+        niche: 'natural stone, quartz, interior design, countertops, South Florida',
+        count: 3,
       });
       if (result && result.ideas) return result.ideas;
     }
@@ -219,14 +413,11 @@ const AdminData = (() => {
   async function generateBlogContent(title, angle) {
     const endpoint = ADMIN_CONFIG.ENDPOINTS.BLOG_GENERATE;
     if (endpoint) {
-      const result = await apiFetch(endpoint, {
-        method: 'POST',
-        body: JSON.stringify({
-          title,
-          angle: angle || '',
-          tone: 'professional yet warm, luxury stone distributor',
-          brand: 'The Stone Surfaces',
-        }),
+      const result = await n8nPost(endpoint, {
+        title,
+        angle: angle || '',
+        tone: 'professional yet warm, luxury stone distributor',
+        brand: 'The Stone Surfaces',
       });
       if (result) return result;
     }
@@ -240,20 +431,6 @@ const AdminData = (() => {
     };
   }
 
-  async function generateBlogSEO(title, content, url) {
-    const endpoint = ADMIN_CONFIG.ENDPOINTS.BLOG_SEO;
-    if (endpoint) {
-      const result = await apiFetch(endpoint, {
-        method: 'POST',
-        body: JSON.stringify({ title, content, url }),
-      });
-      if (result) return result;
-    }
-
-    // Fallback: local SEO generation
-    return generateLocalSEO({ title, content, slug: slugify(title) });
-  }
-
   // ─── LOCAL SEO GENERATION ─────────────────────────────────
 
   function generateLocalSEO(post) {
@@ -264,7 +441,7 @@ const AdminData = (() => {
     return {
       titleTag: (post.title || 'Blog Post') + ' | The Stone Surfaces Blog',
       metaDescription: excerpt || 'Read the latest insights from The Stone Surfaces, South Florida\'s premier stone distributor.',
-      canonicalUrl: '/pages/blog/' + slug,
+      canonicalUrl: '/pages/blog-post.html?post=' + slug,
       ogTitle: post.title || 'Blog Post',
       ogDescription: excerpt || 'Expert insights from The Stone Surfaces.',
       altText: (post.title || 'Blog post') + ' — The Stone Surfaces',
@@ -306,9 +483,9 @@ const AdminData = (() => {
       { title: 'Waterfall Edges & Book-Matched Slabs: Premium Design Details Explained', angle: 'Luxury design techniques for high-end installations' },
     ];
 
-    // Shuffle and pick 5
+    // Shuffle and pick 3
     const shuffled = pool.sort(() => Math.random() - 0.5);
-    return shuffled.slice(0, 5);
+    return shuffled.slice(0, 3);
   }
 
   // ─── FALLBACK: TEMPLATE CONTENT ───────────────────────────
@@ -340,7 +517,7 @@ const AdminData = (() => {
         email: 'maria@designstudio.com',
         phone: '+1 305-555-0101',
         interest: 'Hanstone Quartz',
-        source: 'chatbot',
+        source: 'chat',
         status: 'new',
         notes: [{ text: 'Interested in Hanstone for a luxury condo project in Brickell.', date: '2026-03-10T14:00:00.000Z' }],
         projectType: 'Residential Kitchen',
@@ -353,7 +530,7 @@ const AdminData = (() => {
         email: 'jchen@buildersinc.com',
         phone: '+1 407-555-0202',
         interest: 'Quartzite',
-        source: 'trade_form',
+        source: 'trade-form',
         status: 'contacted',
         notes: [
           { text: 'Trade account application received.', date: '2026-03-08T10:00:00.000Z' },
@@ -362,51 +539,6 @@ const AdminData = (() => {
         projectType: 'Commercial',
         createdAt: '2026-03-08T10:00:00.000Z',
         updatedAt: '2026-03-09T16:30:00.000Z',
-      },
-      {
-        id: 'lead_demo_003',
-        name: 'Sarah Williams',
-        email: 'sarah.w@email.com',
-        phone: '+1 954-555-0303',
-        interest: 'Marble',
-        source: 'contact_form',
-        status: 'qualified',
-        notes: [
-          { text: 'Wants Calacatta marble for master bathroom.', date: '2026-03-05T09:00:00.000Z' },
-          { text: 'Showroom visit scheduled for March 15.', date: '2026-03-07T11:00:00.000Z' },
-        ],
-        projectType: 'Residential Bathroom',
-        createdAt: '2026-03-05T09:00:00.000Z',
-        updatedAt: '2026-03-07T11:00:00.000Z',
-      },
-      {
-        id: 'lead_demo_004',
-        name: 'David Park',
-        email: 'dpark@parkdesigns.com',
-        phone: '+1 305-555-0404',
-        interest: 'Granite',
-        source: 'chatbot',
-        status: 'converted',
-        notes: [
-          { text: 'Commercial project — restaurant countertops.', date: '2026-02-28T08:00:00.000Z' },
-          { text: 'Order placed: 12 slabs Black Galaxy granite.', date: '2026-03-04T15:00:00.000Z' },
-        ],
-        projectType: 'Commercial',
-        createdAt: '2026-02-28T08:00:00.000Z',
-        updatedAt: '2026-03-04T15:00:00.000Z',
-      },
-      {
-        id: 'lead_demo_005',
-        name: 'Laura Martinez',
-        email: 'laura.m@interiors.com',
-        phone: '+1 786-555-0505',
-        interest: 'Porcelain',
-        source: 'manual',
-        status: 'new',
-        notes: [],
-        projectType: 'Residential Kitchen',
-        createdAt: '2026-03-11T08:00:00.000Z',
-        updatedAt: '2026-03-11T08:00:00.000Z',
       },
     ];
   }
@@ -426,14 +558,13 @@ const AdminData = (() => {
         seo: {
           titleTag: '5 Quartzite Trends Dominating South Florida Kitchens | The Stone Surfaces Blog',
           metaDescription: 'Discover the top quartzite varieties transforming South Florida kitchens in 2026. Expert insights from The Stone Surfaces.',
-          canonicalUrl: '/pages/blog/5-quartzite-trends-south-florida-kitchens',
+          canonicalUrl: '/pages/blog-post.html?post=5-quartzite-trends-south-florida-kitchens',
           ogTitle: '5 Quartzite Trends Dominating South Florida Kitchens',
           ogDescription: 'Discover the top quartzite varieties transforming South Florida kitchens in 2026.',
           altText: 'Quartzite kitchen countertop trends in South Florida',
           schemaArticle: {},
         },
         status: 'published',
-        scheduledDate: null,
         readTime: '3 min read',
         createdAt: '2026-03-01T10:00:00.000Z',
         updatedAt: '2026-03-01T10:00:00.000Z',
@@ -452,14 +583,13 @@ const AdminData = (() => {
         seo: {
           titleTag: 'Hanstone Quartz: Why We Became Official Distributors | The Stone Surfaces Blog',
           metaDescription: 'Learn why The Stone Surfaces chose Hanstone Quartz as our flagship quartz brand.',
-          canonicalUrl: '/pages/blog/hanstone-quartz-official-distributors',
+          canonicalUrl: '/pages/blog-post.html?post=hanstone-quartz-official-distributors',
           ogTitle: 'Hanstone Quartz: Why We Became Official Distributors',
           ogDescription: 'Learn why The Stone Surfaces chose Hanstone Quartz as our flagship quartz brand.',
           altText: 'Hanstone Quartz official distributor announcement',
           schemaArticle: {},
         },
         status: 'published',
-        scheduledDate: null,
         readTime: '2 min read',
         createdAt: '2026-02-20T12:00:00.000Z',
         updatedAt: '2026-02-20T12:00:00.000Z',
@@ -478,14 +608,13 @@ const AdminData = (() => {
         seo: {
           titleTag: 'Marble Care Guide: Protecting Your Investment | The Stone Surfaces Blog',
           metaDescription: 'Expert tips on maintaining and protecting your marble surfaces from The Stone Surfaces.',
-          canonicalUrl: '/pages/blog/marble-care-guide',
+          canonicalUrl: '/pages/blog-post.html?post=marble-care-guide',
           ogTitle: 'Marble Care Guide: Protecting Your Investment',
           ogDescription: 'Expert tips on maintaining and protecting your marble surfaces.',
           altText: 'Marble surface care and maintenance guide',
           schemaArticle: {},
         },
         status: 'draft',
-        scheduledDate: null,
         readTime: '2 min read',
         createdAt: '2026-03-09T09:00:00.000Z',
         updatedAt: '2026-03-09T09:00:00.000Z',
@@ -497,19 +626,25 @@ const AdminData = (() => {
   // ─── Public API ────────────────────────────────────────────
 
   return {
+    // Posts (admin CRUD)
+    getPosts,
+    savePost,
+    deletePost,
+    // Posts (public reads)
+    getPublishedPosts,
+    getPostBySlug,
+    getRelatedPosts,
     // Leads
     getLeads,
     saveLead,
     updateLead,
     deleteLead,
-    // Posts
-    getPosts,
-    savePost,
-    deletePost,
+    // Settings
+    getSettings,
+    saveSetting,
     // AI Generation
     generateBlogIdeas,
     generateBlogContent,
-    generateBlogSEO,
     // Utilities
     generateLocalSEO,
     slugify,

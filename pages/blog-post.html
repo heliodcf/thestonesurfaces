@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading... | The Stone Surfaces Blog</title>
+  <meta name="description" content="">
+
+  <!-- Open Graph (set dynamically) -->
+  <meta property="og:title" content="">
+  <meta property="og:description" content="">
+  <meta property="og:image" content="">
+  <meta property="og:type" content="article">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/styles.css">
+
+  <style>
+    /* ===== BLOG POST PAGE STYLES ===== */
+
+    /* Skeleton Loading */
+    @keyframes skeleton-pulse {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 0.8; }
+    }
+
+    .skeleton {
+      background: rgba(0, 0, 0, 0.08);
+      border-radius: 4px;
+      animation: skeleton-pulse 1.5s ease-in-out infinite;
+    }
+
+    .skeleton-hero {
+      width: 100%;
+      height: 480px;
+      background: linear-gradient(135deg, #e8e2dc 0%, #d8d0c8 50%, #e8e2dc 100%);
+      animation: skeleton-pulse 1.5s ease-in-out infinite;
+    }
+
+    .skeleton-line {
+      height: 16px;
+      margin-bottom: 12px;
+      border-radius: 4px;
+      background: rgba(0, 0, 0, 0.08);
+      animation: skeleton-pulse 1.5s ease-in-out infinite;
+    }
+
+    .skeleton-line.w-40 { width: 40%; }
+    .skeleton-line.w-60 { width: 60%; }
+    .skeleton-line.w-80 { width: 80%; }
+    .skeleton-line.w-100 { width: 100%; }
+    .skeleton-line.h-24 { height: 24px; }
+    .skeleton-line.h-32 { height: 32px; }
+    .skeleton-line.h-48 { height: 48px; }
+
+    /* Post Hero */
+    .post-hero {
+      position: relative;
+      min-height: 480px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+
+    .post-hero .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .post-hero .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .post-hero .hero-bg .placeholder-bg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .post-hero .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(250, 248, 245, 0.95) 0%, rgba(250, 248, 245, 0.7) 40%, rgba(250, 248, 245, 0.2) 100%);
+      z-index: 1;
+    }
+
+    .post-hero .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 780px;
+      padding: 80px 0 60px;
+    }
+
+    .post-hero .category-tag {
+      display: inline-block;
+      background: var(--color-cta, #b8956a);
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 2px;
+      margin-bottom: 20px;
+      text-decoration: none;
+    }
+
+    .post-hero .category-tag:hover {
+      background: #a07d55;
+    }
+
+    .post-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 700;
+      color: #1A1A1E;
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+
+    .post-hero .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .post-hero .author-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .post-hero .author-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--color-cta, #b8956a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: #fff;
+    }
+
+    .post-hero .author-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      color: #1A1A1E;
+      font-size: 14px;
+    }
+
+    .post-hero .meta-separator {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(44, 37, 32, 0.4);
+    }
+
+    .post-hero .meta-item {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      color: rgba(44, 37, 32, 0.6);
+    }
+
+    /* Post Content Area */
+    .post-content-section {
+      padding: 60px 0 80px;
+      background: var(--color-surface, #f5f0eb);
+    }
+
+    .post-content-wrapper {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    /* Article Content Styles */
+    .article-content {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 17px;
+      font-weight: 400;
+      color: #1A1A1E;
+      line-height: 1.7;
+    }
+
+    .article-content h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: #1A1A1E;
+      line-height: 1.2;
+      margin: 48px 0 20px;
+    }
+
+    .article-content h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: #1A1A1E;
+      line-height: 1.25;
+      margin: 40px 0 16px;
+    }
+
+    .article-content h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1A1A1E;
+      line-height: 1.3;
+      margin: 32px 0 12px;
+    }
+
+    .article-content p {
+      margin-bottom: 24px;
+    }
+
+    .article-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 32px 0;
+    }
+
+    .article-content blockquote {
+      border-left: 3px solid var(--color-cta, #b8956a);
+      padding: 16px 24px;
+      margin: 32px 0;
+      background: rgba(184, 149, 106, 0.06);
+      border-radius: 0 8px 8px 0;
+      font-style: italic;
+      color: rgba(26, 26, 30, 0.8);
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 24px;
+      margin-bottom: 24px;
+    }
+
+    .article-content li {
+      margin-bottom: 8px;
+    }
+
+    .article-content a {
+      color: var(--color-cta, #b8956a);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.3s ease;
+    }
+
+    .article-content a:hover {
+      color: #a07d55;
+    }
+
+    .article-content pre {
+      background: #1A1A1E;
+      color: #f5f0eb;
+      padding: 24px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 32px 0;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .article-content code {
+      background: rgba(0, 0, 0, 0.06);
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .article-content pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 32px 0;
+    }
+
+    .article-content th,
+    .article-content td {
+      padding: 12px 16px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      text-align: left;
+      font-size: 15px;
+    }
+
+    .article-content th {
+      background: rgba(0, 0, 0, 0.04);
+      font-weight: 700;
+    }
+
+    /* Tags */
+    .post-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .post-tags .tag-pill {
+      display: inline-block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(44, 37, 32, 0.7);
+      background: rgba(0, 0, 0, 0.05);
+      padding: 6px 14px;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .post-tags .tag-pill:hover {
+      background: var(--color-cta, #b8956a);
+      color: #fff;
+    }
+
+    /* Social Share */
+    .social-share {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .social-share .share-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(44, 37, 32, 0.6);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .social-share .share-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #fff;
+      color: #1A1A1E;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .social-share .share-btn:hover {
+      background: var(--color-cta, #b8956a);
+      color: #fff;
+      border-color: var(--color-cta, #b8956a);
+    }
+
+    .social-share .share-btn svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    .share-btn.copied {
+      background: #059669;
+      color: #fff;
+      border-color: #059669;
+    }
+
+    /* Related Posts */
+    .related-section {
+      padding: 80px 0;
+      background: var(--color-surface, #f5f0eb);
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .related-section .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 4vw, 36px);
+      font-weight: 300;
+      color: #1A1A1E;
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .related-card {
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-decoration: none;
+      display: block;
+    }
+
+    .related-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .related-card .card-image {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .related-card .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .related-card:hover .card-image img,
+    .related-card:hover .card-image .placeholder-bg {
+      transform: scale(1.05);
+    }
+
+    .related-card .card-image .placeholder-bg {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.5s ease;
+    }
+
+    .related-card .card-image .tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: var(--color-cta, #b8956a);
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 2px;
+    }
+
+    .related-card .card-body {
+      padding: 24px;
+    }
+
+    .related-card .card-body h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--color-text-dark, #1a1510);
+      line-height: 1.35;
+      margin-bottom: 10px;
+    }
+
+    .related-card .card-body .excerpt {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      color: #6b6560;
+      line-height: 1.55;
+      margin-bottom: 20px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .related-card .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 16px;
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .related-card .card-author {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .related-card .author-avatar-sm {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--color-text-dark, #1a1510);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      color: #fff;
+    }
+
+    .related-card .author-name-sm {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--color-text-dark, #1a1510);
+    }
+
+    .related-card .card-meta-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .related-card .card-meta-right span {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      color: #9a9590;
+    }
+
+    /* Newsletter CTA */
+    .newsletter-cta {
+      padding: 80px 0;
+      background: #EDEDEF;
+    }
+
+    .newsletter-cta-inner {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .newsletter-cta h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 4vw, 36px);
+      font-weight: 300;
+      color: #1A1A1E;
+      margin-bottom: 12px;
+    }
+
+    .newsletter-cta p {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      color: rgba(44, 37, 32, 0.6);
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .newsletter-cta form {
+      display: flex;
+      gap: 12px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .newsletter-cta input[type="email"] {
+      flex: 1;
+      padding: 14px 18px;
+      border: 1px solid rgba(44, 37, 32, 0.15);
+      border-radius: 4px;
+      background: #fff;
+      color: #1A1A1E;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    .newsletter-cta input[type="email"]::placeholder {
+      color: rgba(44, 37, 32, 0.4);
+    }
+
+    .newsletter-cta input[type="email"]:focus {
+      border-color: var(--color-cta, #b8956a);
+    }
+
+    .newsletter-cta .btn-subscribe {
+      padding: 14px 28px;
+      background: var(--color-cta, #b8956a);
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .newsletter-cta .btn-subscribe:hover {
+      background: #a07d55;
+    }
+
+    /* 404 State */
+    .post-not-found {
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 20px;
+      background: var(--color-surface, #f5f0eb);
+    }
+
+    .post-not-found h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: #1A1A1E;
+      margin-bottom: 16px;
+    }
+
+    .post-not-found p {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 17px;
+      color: rgba(44, 37, 32, 0.6);
+      margin-bottom: 32px;
+    }
+
+    .post-not-found .btn-back {
+      display: inline-block;
+      padding: 14px 32px;
+      background: var(--color-cta, #b8956a);
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .post-not-found .btn-back:hover {
+      background: #a07d55;
+    }
+
+    /* Loading State */
+    .loading-state {
+      background: var(--color-surface, #f5f0eb);
+    }
+
+    .loading-content {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 60px 20px 80px;
+    }
+
+    /* Breadcrumb */
+    .post-breadcrumb {
+      padding: 20px 0;
+      background: var(--color-surface, #f5f0eb);
+    }
+
+    .post-breadcrumb nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+    }
+
+    .post-breadcrumb a {
+      color: rgba(44, 37, 32, 0.6);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .post-breadcrumb a:hover {
+      color: var(--color-cta, #b8956a);
+    }
+
+    .post-breadcrumb .separator {
+      color: rgba(44, 37, 32, 0.3);
+    }
+
+    .post-breadcrumb .current {
+      color: #1A1A1E;
+      font-weight: 500;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .related-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .post-hero {
+        min-height: 360px;
+      }
+
+      .post-hero .hero-content {
+        padding: 100px 0 40px;
+      }
+
+      .post-hero h1 {
+        font-size: 28px;
+      }
+
+      .related-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .newsletter-cta form {
+        flex-direction: column;
+      }
+
+      .social-share {
+        flex-wrap: wrap;
+      }
+
+      .article-content {
+        font-size: 16px;
+      }
+
+      .article-content h2 {
+        font-size: 26px;
+      }
+
+      .article-content h3 {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <div class="container">
+      <a href="../index.html" class="logo">
+        <img src="../images/header/TSS_LOGO.png" alt="The Stone Surfaces" class="logo-img">
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="products.html" data-mega-menu>Products</a>
+        <a href="hanstone.html">Hanstone Quartz</a>
+        <a href="lucciare.html" data-i18n="nav.lucciare">Lucciare</a>
+        <a href="inspired.html">Get Inspired</a>
+        <a href="blog.html" class="active">Blog</a>
+        <a href="about.html">About</a>
+      </nav>
+
+      <!-- Mega Menu -->
+      <div class="mega-menu">
+        <div class="container">
+                    <div class="mega-menu-grid">
+            <a href="products.html#quartzite" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/QUARTZITE - Bianco Superiore 2cm.jpg" alt="Quartzite slabs"></div>
+              <h4 data-i18n="nav.mega.quartzite">Quartzite</h4></a>
+            <a href="products.html#granite" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/GRANITE - Alpinus Cream 3cm.jpg" alt="Granite slabs"></div>
+              <h4 data-i18n="nav.mega.granite">Granite</h4></a>
+            <a href="products.html#dolomite-hard-marble" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/DOLOMITE %26 HARD MARBLE - Matarazzo 3cm.jpg" alt="Dolomite &amp; Hard Marble slabs"></div>
+              <h4 data-i18n="nav.mega.dolomite">Dolomite &amp; Hard Marble</h4></a>
+            <a href="products.html#marble" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/MARBLE - Calacatta Viola 2cm.jpg" alt="Marble slabs"></div>
+              <h4 data-i18n="nav.mega.marble">Marble</h4></a>
+            <a href="products.html#semi-precious-onyx" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/SEMI-PRECIOUS %26 ONYX - Onyx Fantastico 2cm.jpg" alt="Semi-Precious &amp; Onyx slabs"></div>
+              <h4 data-i18n="nav.mega.semiprecious">Semi-Precious &amp; Onyx</h4></a>
+            <a href="products.html#quartz" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/QUARTZ - Quartz Lucciare Statuario Classic.jpg" alt="Quartz slabs"></div>
+              <h4 data-i18n="nav.mega.quartz">Quartz</h4></a>
+          </div></div>
+      </div>
+
+      <div class="header-right">
+        <div class="lang-selector">
+          <button class="lang-selector-toggle" aria-label="Select language">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            <span class="lang-current">EN</span>
+            <svg class="lang-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+          </button>
+          <div class="lang-dropdown">
+            <div class="lang-option active" data-lang="en">
+              <span class="lang-option-label">English</span>
+              <span class="lang-option-code">EN</span>
+            </div>
+            <div class="lang-option" data-lang="es">
+              <span class="lang-option-label">Español</span>
+              <span class="lang-option-code">ES</span>
+            </div>
+          <div class="lang-option" data-lang="fr">
+            <span class="lang-option-label">Français</span>
+            <span class="lang-option-code">FR</span>
+          </div>
+            <div class="lang-option" data-lang="pt">
+              <span class="lang-option-label">Português</span>
+              <span class="lang-option-code">PT</span>
+            </div>
+          </div>
+        </div>
+        <a href="contact.html" class="btn btn--primary">Request a Quote</a>
+        <div class="nav-toggle" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu">
+    <a href="products.html">Products</a>
+    <a href="hanstone.html">Hanstone Quartz</a>
+    <a href="lucciare.html" data-i18n="nav.lucciare">Lucciare</a>
+    <a href="inspired.html">Get Inspired</a>
+    <a href="blog.html" class="active">Blog</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <div class="lang-selector-mobile">
+      <button data-lang="en" class="active">EN</button>
+      <button data-lang="es">ES</button>
+      <button data-lang="fr">FR</button>
+      <button data-lang="pt">PT</button>
+    </div>
+  </div>
+
+  <main id="main-content">
+
+    <!-- Loading State -->
+    <div id="loading-state" class="loading-state">
+      <div class="skeleton-hero"></div>
+      <div class="loading-content">
+        <div class="skeleton-line h-48 w-80"></div>
+        <div class="skeleton-line w-40" style="margin-bottom: 32px;"></div>
+        <div class="skeleton-line w-100"></div>
+        <div class="skeleton-line w-100"></div>
+        <div class="skeleton-line w-80"></div>
+        <div class="skeleton-line w-100" style="margin-top: 24px;"></div>
+        <div class="skeleton-line w-100"></div>
+        <div class="skeleton-line w-60"></div>
+        <div class="skeleton-line w-100" style="margin-top: 24px;"></div>
+        <div class="skeleton-line w-100"></div>
+        <div class="skeleton-line w-80"></div>
+      </div>
+    </div>
+
+    <!-- 404 State (hidden by default) -->
+    <div id="not-found-state" class="post-not-found" style="display: none;">
+      <h1>Post not found</h1>
+      <p>The article you're looking for doesn't exist or may have been removed.</p>
+      <a href="blog.html" class="btn-back">Back to Blog</a>
+    </div>
+
+    <!-- Post Content (hidden until loaded) -->
+    <div id="post-content" style="display: none;">
+
+      <!-- Breadcrumb -->
+      <div class="post-breadcrumb">
+        <div class="container">
+          <nav>
+            <a href="../index.html">Home</a>
+            <span class="separator">/</span>
+            <a href="blog.html">Blog</a>
+            <span class="separator">/</span>
+            <span class="current" id="breadcrumb-title"></span>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Hero -->
+      <section class="post-hero" id="post-hero">
+        <div class="hero-bg" id="hero-bg">
+          <div class="placeholder-bg" style="background: linear-gradient(135deg, #EDEDEF 0%, #E0E0E3 30%, #D1D1D6 60%, #E0E0E3 100%);"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="container">
+          <div class="hero-content reveal">
+            <a href="blog.html" class="category-tag" id="post-category"></a>
+            <h1 id="post-title"></h1>
+            <div class="post-meta">
+              <div class="author-info">
+                <div class="author-avatar" id="post-author-avatar"></div>
+                <span class="author-name" id="post-author-name"></span>
+              </div>
+              <span class="meta-separator"></span>
+              <span class="meta-item" id="post-date"></span>
+              <span class="meta-separator"></span>
+              <span class="meta-item" id="post-read-time"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Article Body -->
+      <section class="post-content-section">
+        <div class="container">
+          <div class="post-content-wrapper">
+            <div class="article-content" id="article-body"></div>
+
+            <!-- Tags -->
+            <div class="post-tags" id="post-tags"></div>
+
+            <!-- Social Share -->
+            <div class="social-share">
+              <span class="share-label">Share</span>
+              <a href="#" class="share-btn" id="share-linkedin" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn">
+                <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              </a>
+              <a href="#" class="share-btn" id="share-facebook" target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook">
+                <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </a>
+              <a href="#" class="share-btn" id="share-twitter" target="_blank" rel="noopener noreferrer" aria-label="Share on X">
+                <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+              <button class="share-btn" id="share-copy" aria-label="Copy link">
+                <svg viewBox="0 0 24 24"><path d="M13.723 18.654l-3.61 3.609c-2.316 2.315-6.063 2.315-8.378 0-2.315-2.316-2.315-6.062 0-8.377l3.61-3.609c2.315-2.315 6.062-2.315 8.377 0 .369.368.693.78.966 1.225l-1.624 1.624a2.56 2.56 0 00-.476-.573 3.21 3.21 0 00-4.539 0l-3.61 3.609a3.21 3.21 0 000 4.539 3.21 3.21 0 004.539 0l1.875-1.875a6.09 6.09 0 002.87.288zm4.542-12.936l-3.61 3.609a6.09 6.09 0 01.288 2.87l1.875-1.875a3.21 3.21 0 014.539 0 3.21 3.21 0 010 4.539l-3.61 3.609a3.21 3.21 0 01-4.539 0 2.56 2.56 0 01-.573-.476l-1.624 1.624c.273.445.597.857.966 1.225 2.315 2.315 6.062 2.315 8.377 0l3.61-3.609c2.315-2.316 2.315-6.062 0-8.377-2.316-2.316-6.063-2.316-8.378 0z"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Related Posts -->
+      <section class="related-section" id="related-section" style="display: none;">
+        <div class="container">
+          <h2 class="section-title">You Might Also Like</h2>
+          <div class="related-grid" id="related-grid"></div>
+        </div>
+      </section>
+
+      <!-- Newsletter CTA -->
+      <section class="newsletter-cta">
+        <div class="container">
+          <div class="newsletter-cta-inner">
+            <h2>Stay in the Loop</h2>
+            <p>Get design inspiration, stone care tips, and exclusive updates delivered to your inbox.</p>
+            <form id="newsletter-form">
+              <input type="email" placeholder="Your email address" required>
+              <button type="submit" class="btn-subscribe">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-logo"><img src="../images/header/TSS_LOGO.png" alt="The Stone Surfaces" class="logo-img"></div>
+          <p class="tagline" data-i18n="footer.tagline">South Florida's trusted source for premium natural and engineered stone surfaces since 2016.</p>
+          <p class="contact-line">&#9679; 7980 NW 56th St, Doral, FL 33166</p>
+          <p class="contact-line">&#9742; (305) 000-0000</p>
+          <p class="contact-line">&#9993; info@thestonesurfaces.com</p>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footer.products">Products</h4>
+          <ul>
+            <li><a href="products.html#granite">Granite</a></li>
+            <li><a href="products.html#marble">Marble</a></li>
+            <li><a href="products.html#quartz">Quartz</a></li>
+            <li><a href="products.html#quartzite">Quartzite</a></li>
+            <li><a href="products.html#dolomite">Dolomite</a></li>
+            <li><a href="products.html#hard-marble">Hard Marble</a></li>
+            <li><a href="hanstone.html">Hanstone Quartz</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footer.resources">Resources</h4>
+          <ul>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="inspired.html">Get Inspired</a></li>
+            <li><a href="#" data-i18n="footer.faqs">FAQs</a></li>
+            <li><a href="#" data-i18n="footer.warranty">Warranty Info</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footer.connect">Connect</h4>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="Pinterest">PI</a>
+            <a href="#" aria-label="LinkedIn">LI</a>
+            <a href="#" aria-label="Houzz">HZ</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 The Stone Surfaces. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
+          <a href="#" data-i18n="footer.terms">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== MOBILE TAB BAR ===== -->
+  <nav class="mobile-tab-bar">
+    <div class="container">
+      <a href="../index.html" class="tab-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+        <span>Home</span>
+      </a>
+      <a href="products.html" class="tab-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        <span>Products</span>
+      </a>
+      <a href="hanstone.html" class="tab-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <span>Hanstone</span>
+      </a>
+      <a href="inspired.html" class="tab-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span>Inspire</span>
+      </a>
+      <a href="contact.html" class="tab-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span>Contact</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ===== CHAT WIDGET ===== -->
+  <button class="chat-widget-btn" aria-label="Open chat">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+  </button>
+
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <h4>The Stone Surfaces Assistant</h4>
+      <div class="close-btn">&times;</div>
+    </div>
+    <div class="chat-messages">
+      <div class="chat-message bot">
+        Hi! I'm here to help you find the perfect stone for your project. What are you looking for?
+        <div class="quick-actions">
+          <button>Browse Products</button>
+          <button>Request a Quote</button>
+          <button>Hanstone Quartz Info</button>
+          <button>Visit Our Showroom</button>
+        </div>
+      </div>
+    </div>
+    <div class="chat-input">
+      <input type="text" placeholder="Type your message...">
+      <button aria-label="Send">&uarr;</button>
+    </div>
+    <div id="n8n-chat-widget" data-webhook-url="YOUR_N8N_WEBHOOK_URL" style="display:none;"></div>
+  </div>
+
+  <!-- Admin Config & Data -->
+  <script src="../js/admin-config.js"></script>
+  <script src="../js/admin-data.js"></script>
+
+  <script src="../js/i18n.js"></script>
+  <script src="../js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // ─── Helpers ───────────────────────────────────────────────
+      var catLabels = {
+        'design-trends': 'Design Trends',
+        'stone-care': 'Stone Care',
+        'industry-news': 'Industry News',
+        'project-spotlights': 'Project Spotlights',
+        'hanstone-updates': 'Hanstone Updates'
+      };
+
+      var catGradients = {
+        'design-trends': 'linear-gradient(135deg, #c8b8a8, #a89888)',
+        'stone-care': 'linear-gradient(135deg, #b0a090, #908070)',
+        'industry-news': 'linear-gradient(135deg, #c0b0a0, #a09080)',
+        'project-spotlights': 'linear-gradient(135deg, #a89080, #887060)',
+        'hanstone-updates': 'linear-gradient(135deg, #d8c8b8, #b8a898)'
+      };
+
+      function formatDate(dateStr) {
+        if (!dateStr) return '';
+        var d = new Date(dateStr);
+        return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+      }
+
+      function setMeta(property, content) {
+        var el = document.querySelector('meta[property="' + property + '"]');
+        if (el) {
+          el.setAttribute('content', content);
+        } else {
+          el = document.createElement('meta');
+          el.setAttribute('property', property);
+          el.setAttribute('content', content);
+          document.head.appendChild(el);
+        }
+      }
+
+      function setMetaName(name, content) {
+        var el = document.querySelector('meta[name="' + name + '"]');
+        if (el) {
+          el.setAttribute('content', content);
+        } else {
+          el = document.createElement('meta');
+          el.setAttribute('name', name);
+          el.setAttribute('content', content);
+          document.head.appendChild(el);
+        }
+      }
+
+      function showState(state) {
+        document.getElementById('loading-state').style.display = 'none';
+        document.getElementById('not-found-state').style.display = 'none';
+        document.getElementById('post-content').style.display = 'none';
+        document.getElementById(state).style.display = '';
+      }
+
+      // ─── Extract slug from URL ────────────────────────────────
+      var slug = new URLSearchParams(window.location.search).get('post');
+
+      if (!slug) {
+        showState('not-found-state');
+        return;
+      }
+
+      // ─── Load Post ────────────────────────────────────────────
+      AdminData.getPostBySlug(slug).then(function (post) {
+        if (!post) {
+          showState('not-found-state');
+          return;
+        }
+
+        // ─── Dynamic Meta Tags ────────────────────────────────
+        var seo = post.seo || {};
+        document.title = seo.titleTag || (post.title + ' | The Stone Surfaces Blog');
+        setMetaName('description', seo.metaDescription || post.excerpt || '');
+        setMeta('og:title', seo.ogTitle || post.title);
+        setMeta('og:description', seo.ogDescription || post.excerpt || '');
+        setMeta('og:image', post.featuredImage || '');
+
+        // JSON-LD Schema
+        if (seo.schemaArticle && Object.keys(seo.schemaArticle).length > 0) {
+          var ldScript = document.createElement('script');
+          ldScript.type = 'application/ld+json';
+          ldScript.textContent = JSON.stringify(seo.schemaArticle);
+          document.head.appendChild(ldScript);
+        }
+
+        // ─── Render Hero ──────────────────────────────────────
+        var heroBg = document.getElementById('hero-bg');
+        if (post.featuredImage) {
+          heroBg.innerHTML = '<img src="' + post.featuredImage + '" alt="' + (seo.altText || post.title) + '">';
+        } else {
+          var gradient = catGradients[post.category] || 'linear-gradient(135deg, #EDEDEF 0%, #E0E0E3 30%, #D1D1D6 60%, #E0E0E3 100%)';
+          heroBg.innerHTML = '<div class="placeholder-bg" style="background: ' + gradient + ';"></div>';
+        }
+
+        // Category tag
+        var catLabel = catLabels[post.category] || post.category || 'Blog';
+        var catEl = document.getElementById('post-category');
+        catEl.textContent = catLabel.toUpperCase();
+        catEl.href = 'blog.html#' + (post.category || '');
+
+        // Title
+        document.getElementById('post-title').textContent = post.title;
+        document.getElementById('breadcrumb-title').textContent = post.title;
+
+        // Author
+        var avatar = (post.author && post.author.avatar) || 'TS';
+        var authorName = (post.author && post.author.name) || 'The Stone Surfaces';
+        document.getElementById('post-author-avatar').textContent = avatar;
+        document.getElementById('post-author-name').textContent = authorName;
+
+        // Date & Read Time
+        document.getElementById('post-date').textContent = formatDate(post.publishedAt || post.createdAt);
+        document.getElementById('post-read-time').textContent = post.readTime || '3 min read';
+
+        // ─── Article Content ──────────────────────────────────
+        document.getElementById('article-body').innerHTML = post.content || '';
+
+        // ─── Tags ─────────────────────────────────────────────
+        var tagsContainer = document.getElementById('post-tags');
+        var tags = post.tags || [];
+        if (tags.length > 0) {
+          tagsContainer.innerHTML = tags.map(function (tag) {
+            return '<span class="tag-pill">' + tag + '</span>';
+          }).join('');
+        } else {
+          tagsContainer.style.display = 'none';
+        }
+
+        // ─── Social Share ─────────────────────────────────────
+        var pageUrl = encodeURIComponent(window.location.href);
+        var pageTitle = encodeURIComponent(post.title);
+
+        document.getElementById('share-linkedin').href =
+          'https://www.linkedin.com/sharing/share-offsite/?url=' + pageUrl;
+        document.getElementById('share-facebook').href =
+          'https://www.facebook.com/sharer/sharer.php?u=' + pageUrl;
+        document.getElementById('share-twitter').href =
+          'https://twitter.com/intent/tweet?url=' + pageUrl + '&text=' + pageTitle;
+
+        document.getElementById('share-copy').addEventListener('click', function () {
+          var btn = this;
+          navigator.clipboard.writeText(window.location.href).then(function () {
+            btn.classList.add('copied');
+            btn.setAttribute('aria-label', 'Link copied!');
+            setTimeout(function () {
+              btn.classList.remove('copied');
+              btn.setAttribute('aria-label', 'Copy link');
+            }, 2000);
+          });
+        });
+
+        // ─── Show Post ───────────────────────────────────────
+        showState('post-content');
+
+        // ─── Related Posts ────────────────────────────────────
+        if (post.category && post.id) {
+          AdminData.getRelatedPosts(post.category, post.id, 3).then(function (related) {
+            if (!related || related.length === 0) return;
+
+            var grid = document.getElementById('related-grid');
+            var relatedSection = document.getElementById('related-section');
+
+            related.forEach(function (rp) {
+              var rpDate = formatDate(rp.publishedAt || rp.createdAt);
+              var rpAvatar = (rp.author && rp.author.avatar) || 'TS';
+              var rpAuthorName = (rp.author && rp.author.name) || 'The Stone Surfaces';
+              var rpCatLabel = catLabels[rp.category] || rp.category || 'Blog';
+              var rpExcerpt = rp.excerpt || (rp.content || '').replace(/<[^>]*>/g, '').slice(0, 120) + '...';
+              var rpGradient = catGradients[rp.category] || 'linear-gradient(135deg, #EDEDEF, #D1D1D6)';
+
+              var imageHtml;
+              if (rp.featuredImage) {
+                imageHtml = '<img src="' + rp.featuredImage + '" alt="' + (rp.title || '') + '">';
+              } else {
+                imageHtml = '<div class="placeholder-bg" style="background: ' + rpGradient + '; height: 100%;"></div>';
+              }
+
+              var card = document.createElement('a');
+              card.className = 'related-card reveal';
+              card.href = 'blog-post.html?post=' + encodeURIComponent(rp.slug);
+              card.innerHTML =
+                '<div class="card-image">' +
+                  imageHtml +
+                  '<span class="tag">' + rpCatLabel.toUpperCase() + '</span>' +
+                '</div>' +
+                '<div class="card-body">' +
+                  '<h4>' + (rp.title || '') + '</h4>' +
+                  '<p class="excerpt">' + rpExcerpt + '</p>' +
+                  '<div class="card-footer">' +
+                    '<div class="card-author">' +
+                      '<div class="author-avatar-sm">' + rpAvatar + '</div>' +
+                      '<span class="author-name-sm">' + rpAuthorName + '</span>' +
+                    '</div>' +
+                    '<div class="card-meta-right">' +
+                      '<span>' + rpDate + '</span>' +
+                      '<span>' + (rp.readTime || '3 min read') + '</span>' +
+                    '</div>' +
+                  '</div>' +
+                '</div>';
+
+              grid.appendChild(card);
+            });
+
+            relatedSection.style.display = '';
+          });
+        }
+
+      }).catch(function (err) {
+        console.error('[BlogPost] Failed to load post:', err);
+        showState('not-found-state');
+      });
+
+    });
+  </script>
+</body>
+</html>

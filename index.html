@@ -54,39 +54,31 @@
         <a href="pages/inspired.html" data-i18n="nav.inspired">Get Inspired</a>
         <a href="pages/blog.html" data-i18n="nav.blog">Blog</a>
         <a href="pages/about.html" data-i18n="nav.about">About</a>
-        <a href="pages/trade.html" data-i18n="nav.trade">For The Trade</a>
       </nav>
 
       <!-- Mega Menu -->
       <div class="mega-menu">
         <div class="container">
-          <div class="mega-menu-grid">
+                    <div class="mega-menu-grid">
             <a href="pages/products.html#quartzite" class="mega-menu-item">
               <div class="thumb"><img src="images/collections/QUARTZITE - Bianco Superiore 2cm.jpg" alt="Quartzite slabs"></div>
-              <h4 data-i18n="nav.mega.quartzite">Quartzite</h4>
-            </a>
+              <h4 data-i18n="nav.mega.quartzite">Quartzite</h4></a>
             <a href="pages/products.html#granite" class="mega-menu-item">
               <div class="thumb"><img src="images/collections/GRANITE - Alpinus Cream 3cm.jpg" alt="Granite slabs"></div>
-              <h4 data-i18n="nav.mega.granite">Granite</h4>
-            </a>
+              <h4 data-i18n="nav.mega.granite">Granite</h4></a>
             <a href="pages/products.html#dolomite-hard-marble" class="mega-menu-item">
-              <div class="thumb"><img src="images/collections/DOLOMITE &amp; HARD MARBLE - Matarazzo 3cm.jpg" alt="Dolomite & Hard Marble slabs"></div>
-              <h4 data-i18n="nav.mega.dolomite">Dolomite & Hard Marble</h4>
-            </a>
+              <div class="thumb"><img src="images/collections/DOLOMITE %26 HARD MARBLE - Matarazzo 3cm.jpg" alt="Dolomite &amp; Hard Marble slabs"></div>
+              <h4 data-i18n="nav.mega.dolomite">Dolomite &amp; Hard Marble</h4></a>
             <a href="pages/products.html#marble" class="mega-menu-item">
               <div class="thumb"><img src="images/collections/MARBLE - Calacatta Viola 2cm.jpg" alt="Marble slabs"></div>
-              <h4 data-i18n="nav.mega.marble">Marble</h4>
-            </a>
+              <h4 data-i18n="nav.mega.marble">Marble</h4></a>
             <a href="pages/products.html#semi-precious-onyx" class="mega-menu-item">
-              <div class="thumb"><img src="images/collections/SEMI-PRECIOUS &amp; ONYX - Onyx Fantastico 2cm.jpg" alt="Semi-Precious & Onyx slabs"></div>
-              <h4 data-i18n="nav.mega.semiprecious">Semi-Precious & Onyx</h4>
-            </a>
+              <div class="thumb"><img src="images/collections/SEMI-PRECIOUS %26 ONYX - Onyx Fantastico 2cm.jpg" alt="Semi-Precious &amp; Onyx slabs"></div>
+              <h4 data-i18n="nav.mega.semiprecious">Semi-Precious &amp; Onyx</h4></a>
             <a href="pages/products.html#quartz" class="mega-menu-item">
               <div class="thumb"><img src="images/collections/QUARTZ - Quartz Lucciare Statuario Classic.jpg" alt="Quartz slabs"></div>
-              <h4 data-i18n="nav.mega.quartz">Quartz</h4>
-            </a>
-          </div>
-        </div>
+              <h4 data-i18n="nav.mega.quartz">Quartz</h4></a>
+          </div></div>
       </div>
 
       <div class="header-right">
@@ -131,7 +123,6 @@
     <a href="pages/inspired.html" data-i18n="nav.inspired">Get Inspired</a>
     <a href="pages/blog.html" data-i18n="nav.blog">Blog</a>
     <a href="pages/about.html" data-i18n="nav.about">About</a>
-    <a href="pages/trade.html" data-i18n="nav.trade">For The Trade</a>
     <a href="pages/contact.html" data-i18n="nav.contact">Contact</a>
     <div class="lang-selector-mobile">
       <button data-lang="en" class="active">EN</button>
@@ -645,7 +636,6 @@
             <li><a href="pages/inspired.html" data-i18n="nav.inspired">Get Inspired</a></li>
             <li><a href="#" data-i18n="footer.faqs">FAQs</a></li>
             <li><a href="#" data-i18n="footer.warranty">Warranty Info</a></li>
-            <li><a href="pages/trade.html" data-i18n="nav.trade">For The Trade</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -727,5 +717,55 @@
 
   <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/admin-config.js"></script>
+  <script src="js/admin-data.js"></script>
+  <script>
+    // Dynamic Blog Posts — Section 7
+    (async function() {
+      try {
+        const posts = await AdminData.getPublishedPosts(3);
+        if (!posts || posts.length === 0) return; // keep hardcoded fallback
+
+        const grid = document.querySelector('.section--light .grid.grid-3');
+        if (!grid) return;
+
+        const catLabels = {
+          'design-trends': 'Design Trends',
+          'stone-care': 'Stone Care',
+          'industry-news': 'Industry News',
+          'project-spotlights': 'Project Spotlights',
+          'hanstone-updates': 'Hanstone Updates'
+        };
+
+        const cards = grid.querySelectorAll('.blog-card');
+        posts.forEach((post, i) => {
+          const card = cards[i];
+          if (!card) return;
+
+          const date = new Date(post.publishedAt || post.createdAt)
+            .toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+          const bgStyle = post.featuredImage
+            ? 'background-image:url(' + post.featuredImage + ');background-size:cover;background-position:center;height:100%;'
+            : card.querySelector('.placeholder-bg').getAttribute('style');
+          const catLabel = catLabels[post.category] || post.category;
+          const excerpt = post.excerpt || (post.content || '').replace(/<[^>]*>/g, '').slice(0, 120) + '...';
+
+          card.querySelector('.placeholder-bg').setAttribute('style', bgStyle);
+          card.querySelector('.tag').textContent = catLabel;
+          card.querySelector('h4').textContent = post.title;
+          card.querySelector('p').textContent = excerpt;
+          const metaSpans = card.querySelectorAll('.card-meta span');
+          if (metaSpans[0]) metaSpans[0].textContent = post.readTime || '3 min read';
+          if (metaSpans[1]) metaSpans[1].textContent = date;
+
+          // Wrap card in link
+          card.style.cursor = 'pointer';
+          card.addEventListener('click', () => {
+            window.location.href = 'pages/blog-post.html?post=' + encodeURIComponent(post.slug);
+          });
+        });
+      } catch(e) { /* graceful degradation: keep hardcoded cards */ }
+    })();
+  </script>
 </body>
 </html>

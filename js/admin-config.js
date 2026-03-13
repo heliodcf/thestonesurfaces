@@ -1,6 +1,6 @@
 /**
  * The Stone Surfaces — Admin Configuration
- * Central config for admin area: auth, endpoints, constants
+ * Central config for admin area: auth, endpoints, Supabase, constants
  */
 const ADMIN_CONFIG = {
   // Authentication
@@ -8,24 +8,27 @@ const ADMIN_CONFIG = {
   SESSION_KEY: 'tss-admin-session',
   SESSION_DURATION_MS: 8 * 60 * 60 * 1000, // 8 hours
 
-  // API Mode: 'api' (n8n webhooks) | 'local' (localStorage fallback)
+  // API Mode: 'api' (n8n webhooks + Supabase) | 'local' (localStorage fallback)
   API_MODE: 'api',
+
+  // Supabase — public config (anon key is safe, RLS enforces read-only for published posts)
+  SUPABASE: {
+    URL: 'https://vkgtkafaouqbgkupkdob.supabase.co',
+    ANON_KEY: 'sb_publishable_sIkYIUx_7BmRjgg4FeVcxg_EXRuShXL',
+    STORAGE_BUCKET: 'blog-images',
+  },
 
   // n8n Webhook Endpoints — update these when workflows are deployed
   ENDPOINTS: {
-    // Leads
-    LEADS_LIST: null,       // GET  /webhook/leads?status=&source=&from=&to=
-    LEADS_CREATE: null,     // POST /webhook/leads
-    LEADS_UPDATE: null,     // PATCH /webhook/leads/{id}
+    // Blog AI (n8n webhooks)
+    BLOG_IDEAS: null,       // POST /webhook/tss-blog-ideas
+    BLOG_GENERATE: null,    // POST /webhook/tss-blog-generate
 
-    // Blog AI
-    BLOG_IDEAS: null,       // POST /webhook/blog-ideas
-    BLOG_GENERATE: null,    // POST /webhook/blog-generate
-    BLOG_SEO: null,         // POST /webhook/blog-seo
+    // Blog CRUD (n8n webhook — single endpoint, action-based)
+    BLOG_CRUD: null,        // POST /webhook/tss-blog-posts { action, data }
 
-    // Blog CRUD
-    BLOG_POSTS_LIST: null,  // GET  /webhook/blog-posts?status=
-    BLOG_POSTS_SAVE: null,  // PUT  /webhook/blog-posts/{id}
+    // Settings CRUD (n8n webhook)
+    SETTINGS_CRUD: null,    // POST /webhook/tss-settings { action, data }
   },
 
   // Lead statuses
@@ -34,13 +37,14 @@ const ADMIN_CONFIG = {
     { value: 'contacted', label: 'Contacted', color: '#F59E0B' },
     { value: 'qualified', label: 'Qualified', color: '#8B5CF6' },
     { value: 'converted', label: 'Converted', color: '#059669' },
+    { value: 'abandoned_cart', label: 'Abandoned', color: '#EF4444' },
   ],
 
   // Lead sources
   LEAD_SOURCES: [
-    { value: 'chatbot', label: 'AI Chatbot' },
-    { value: 'contact_form', label: 'Contact Form' },
-    { value: 'trade_form', label: 'Trade Form' },
+    { value: 'chat', label: 'AI Chatbot' },
+    { value: 'quote-form', label: 'Quote Form' },
+    { value: 'trade-form', label: 'Trade Form' },
     { value: 'manual', label: 'Manual Entry' },
   ],
 
@@ -64,7 +68,7 @@ const ADMIN_CONFIG = {
   LEADS_PER_PAGE: 20,
   POSTS_PER_PAGE: 15,
 
-  // localStorage keys (used as fallback or for local data)
+  // localStorage keys (used as offline cache)
   STORAGE_KEYS: {
     LEADS: 'tss-leads',
     POSTS: 'tss-blog-posts',

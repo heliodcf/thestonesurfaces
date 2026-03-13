@@ -214,17 +214,82 @@
       height: 100%;
     }
 
-    /* --- Collections Grid (flat grid like Hanstone) --- */
+    /* --- Collections Accordion --- */
     .palette-section {
       padding: var(--section-padding-desktop) var(--padding-desktop);
     }
+    .collection-accordion {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .collection-group {
+      border: 1px solid var(--color-border-default);
+      overflow: hidden;
+      transition: border-color 0.3s ease;
+    }
+    .collection-group:hover {
+      border-color: rgba(205, 126, 89, 0.3);
+    }
+    .collection-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 32px;
+      cursor: pointer;
+      background: var(--color-bg-surface);
+      transition: background 0.3s ease;
+      user-select: none;
+    }
+    .collection-header:hover {
+      background: rgba(205, 126, 89, 0.06);
+    }
+    .collection-header-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .collection-header h3 {
+      font-family: var(--font-headline);
+      font-size: clamp(20px, 2.5vw, 28px);
+      font-weight: 400;
+      color: var(--color-text-light);
+      margin: 0;
+    }
+    .collection-count {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--lc-terracotta);
+      letter-spacing: 0.05em;
+      background: rgba(205, 126, 89, 0.1);
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+    .collection-chevron {
+      width: 24px;
+      height: 24px;
+      color: var(--color-text-muted);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      flex-shrink: 0;
+    }
+    .collection-group.open .collection-chevron {
+      transform: rotate(180deg);
+    }
+    .collection-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .collection-group.open .collection-body {
+      max-height: 4000px;
+    }
     .swatch-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       gap: 24px;
-    }
-    .swatch-grid .swatch-card {
-      flex: unset;
+      padding: 8px 32px 40px;
     }
     .swatch-card {
       cursor: pointer;
@@ -238,13 +303,15 @@
       overflow: hidden;
       margin-bottom: 12px;
       position: relative;
+      background: var(--color-bg-surface);
     }
-    .swatch-card .swatch-preview .placeholder-bg {
+    .swatch-card .swatch-preview img {
       width: 100%;
       height: 100%;
+      object-fit: cover;
       transition: transform var(--transition-default);
     }
-    .swatch-card:hover .swatch-preview .placeholder-bg {
+    .swatch-card:hover .swatch-preview img {
       transform: scale(1.05);
     }
     .swatch-card .swatch-name {
@@ -253,21 +320,10 @@
       font-weight: 500;
       color: var(--color-text-light);
     }
-    .swatch-card .swatch-tier {
+    .swatch-card .swatch-ref {
       font-size: 11px;
       color: var(--color-text-muted);
       margin-top: 2px;
-    }
-    .swatch-card .collection-badge {
-      position: absolute;
-      bottom: 8px;
-      left: 8px;
-      background: rgba(250,248,245,0.85);
-      padding: 3px 8px;
-      font-size: 10px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--lc-terracotta);
     }
 
     /* --- Professional Resources --- */
@@ -485,6 +541,11 @@
         grid-template-columns: repeat(2, 1fr);
       }
     }
+    @media (max-width: 1024px) {
+      .swatch-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
     @media (max-width: 768px) {
       .page-hero {
         padding: 140px var(--padding-mobile) 64px;
@@ -511,9 +572,13 @@
       .palette-section {
         padding: var(--section-padding-mobile) var(--padding-mobile);
       }
+      .collection-header {
+        padding: 18px 20px;
+      }
       .swatch-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 16px;
+        padding: 8px 20px 32px;
       }
       .benefits-grid {
         grid-template-columns: 1fr;
@@ -547,39 +612,31 @@
         <a href="inspired.html">Get Inspired</a>
         <a href="blog.html">Blog</a>
         <a href="about.html">About</a>
-        <a href="trade.html">For The Trade</a>
       </nav>
 
       <!-- Mega Menu -->
       <div class="mega-menu">
         <div class="container">
-          <div class="mega-menu-grid">
+                    <div class="mega-menu-grid">
             <a href="products.html#quartzite" class="mega-menu-item">
               <div class="thumb"><img src="../images/collections/QUARTZITE - Bianco Superiore 2cm.jpg" alt="Quartzite slabs"></div>
-              <h4 data-i18n="nav.mega.quartzite">Quartzite</h4>
-            </a>
+              <h4 data-i18n="nav.mega.quartzite">Quartzite</h4></a>
             <a href="products.html#granite" class="mega-menu-item">
               <div class="thumb"><img src="../images/collections/GRANITE - Alpinus Cream 3cm.jpg" alt="Granite slabs"></div>
-              <h4 data-i18n="nav.mega.granite">Granite</h4>
-            </a>
+              <h4 data-i18n="nav.mega.granite">Granite</h4></a>
             <a href="products.html#dolomite-hard-marble" class="mega-menu-item">
-              <div class="thumb"><img src="../images/collections/DOLOMITE &amp; HARD MARBLE - Matarazzo 3cm.jpg" alt="Dolomite & Hard Marble slabs"></div>
-              <h4 data-i18n="nav.mega.dolomite">Dolomite & Hard Marble</h4>
-            </a>
+              <div class="thumb"><img src="../images/collections/DOLOMITE %26 HARD MARBLE - Matarazzo 3cm.jpg" alt="Dolomite &amp; Hard Marble slabs"></div>
+              <h4 data-i18n="nav.mega.dolomite">Dolomite &amp; Hard Marble</h4></a>
             <a href="products.html#marble" class="mega-menu-item">
               <div class="thumb"><img src="../images/collections/MARBLE - Calacatta Viola 2cm.jpg" alt="Marble slabs"></div>
-              <h4 data-i18n="nav.mega.marble">Marble</h4>
-            </a>
+              <h4 data-i18n="nav.mega.marble">Marble</h4></a>
             <a href="products.html#semi-precious-onyx" class="mega-menu-item">
-              <div class="thumb"><img src="../images/collections/SEMI-PRECIOUS &amp; ONYX - Onyx Fantastico 2cm.jpg" alt="Semi-Precious & Onyx slabs"></div>
-              <h4 data-i18n="nav.mega.semiprecious">Semi-Precious & Onyx</h4>
-            </a>
+              <div class="thumb"><img src="../images/collections/SEMI-PRECIOUS %26 ONYX - Onyx Fantastico 2cm.jpg" alt="Semi-Precious &amp; Onyx slabs"></div>
+              <h4 data-i18n="nav.mega.semiprecious">Semi-Precious &amp; Onyx</h4></a>
             <a href="products.html#quartz" class="mega-menu-item">
               <div class="thumb"><img src="../images/collections/QUARTZ - Quartz Lucciare Statuario Classic.jpg" alt="Quartz slabs"></div>
-              <h4 data-i18n="nav.mega.quartz">Quartz</h4>
-            </a>
-          </div>
-        </div>
+              <h4 data-i18n="nav.mega.quartz">Quartz</h4></a>
+          </div></div>
       </div>
 
       <div class="header-right">
@@ -624,7 +681,6 @@
     <a href="inspired.html">Get Inspired</a>
     <a href="blog.html">Blog</a>
     <a href="about.html">About</a>
-    <a href="trade.html">For The Trade</a>
     <a href="contact.html">Contact</a>
     <div class="lang-selector-mobile">
       <button data-lang="en" class="active">EN</button>
@@ -701,133 +757,366 @@
       </div>
     </section>
 
-    <!-- ===== SECTION 3: LUCCIARE COLLECTION (flat grid) ===== -->
+    <!-- ===== SECTION 3: LUCCIARE COLLECTIONS (Accordion) ===== -->
     <section class="section section--surface noise-overlay palette-section" id="collections">
       <div class="container">
         <div class="reveal" style="margin-bottom: 16px;">
           <span class="label" data-i18n="lucciare.collections.label">LUCCIARE QUARTZ COLLECTION</span>
-          <h2 style="margin-top: 16px; font-family: var(--font-headline); font-size: clamp(28px, 3.5vw, 42px); font-weight: 300;" data-i18n="lucciare.collections.title">Three Collections. Timeless Craftsmanship.</h2>
+          <h2 style="margin-top: 16px; font-family: var(--font-headline); font-size: clamp(28px, 3.5vw, 42px); font-weight: 300;" data-i18n="lucciare.collections.title">Four Collections. Timeless Craftsmanship.</h2>
         </div>
 
-        <div class="swatch-grid reveal" id="colors">
-          <!-- Signature Collection -->
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #f5f0e8, #d8cfc2);"></div><span class="collection-badge">Signature</span></div>
-            <div class="swatch-name">Calacatta Gold</div>
-            <div class="swatch-tier">Prestige</div>
+        <div class="collection-accordion reveal">
+
+          <!-- ── SIGNATURE COLLECTION (24 stones) ── -->
+          <div class="collection-group open">
+            <div class="collection-header" onclick="toggleCollection(this)">
+              <div class="collection-header-left">
+                <h3>Signature Collection</h3>
+                <span class="collection-count">24 Colors</span>
+              </div>
+              <svg class="collection-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="collection-body">
+              <div class="swatch-grid">
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/1 Signature Collection/1 Travertine Lume 5024 Signature Collection.jpg" alt="Travertine Lume" loading="lazy"></div>
+                  <div class="swatch-name">Travertine Lume</div>
+                  <div class="swatch-ref">5024</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/1 Signature Collection/2 Statuario Vigaria 5113 Signature Collection.jpg" alt="Statuario Vigaria" loading="lazy"></div>
+                  <div class="swatch-name">Statuario Vigaria</div>
+                  <div class="swatch-ref">5113</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/1 Signature Collection/3 Borghini Premium 5155 Signature Collection .jpg" alt="Borghini Premium" loading="lazy"></div>
+                  <div class="swatch-name">Borghini Premium</div>
+                  <div class="swatch-ref">5155</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/1 Signature Collection/4 Taj Mahal 6133 Signature Collection .jpg" alt="Taj Mahal" loading="lazy"></div>
+                  <div class="swatch-name">Taj Mahal</div>
+                  <div class="swatch-ref">6133</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/1 Signature Collection/5 Bella Lincoln 6117 Signature Collection .jpg" alt="Bella Lincoln" loading="lazy"></div>
+                  <div class="swatch-name">Bella Lincoln</div>
+                  <div class="swatch-ref">6117</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/1 Signature Collection/6  Rolux Gold 5189 Signature Collection .jpg" alt="Rolux Gold" loading="lazy"></div>
+                  <div class="swatch-name">Rolux Gold</div>
+                  <div class="swatch-ref">5189</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/1 Signature Collection/7 Castillo Gray 5310 Signature Collection .jpg" alt="Castillo Gray" loading="lazy"></div>
+                  <div class="swatch-name">Castillo Gray</div>
+                  <div class="swatch-ref">5310</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/1 Signature Collection/8  Opal Marquette 5210 Signature Collection .jpg" alt="Opal Marquette" loading="lazy"></div>
+                  <div class="swatch-name">Opal Marquette</div>
+                  <div class="swatch-ref">5210</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/1 Signature Collection/9 Cascader 5153 Signature Collection .jpg" alt="Cascader" loading="lazy"></div>
+                  <div class="swatch-name">Cascader</div>
+                  <div class="swatch-ref">5153</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/1 Signature Collection/10  Statuario Michel 5139 Signature Collection .jpg" alt="Statuario Michel" loading="lazy"></div>
+                  <div class="swatch-name">Statuario Michel</div>
+                  <div class="swatch-ref">5139</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/1 Signature Collection/11 Travertine Onyx 5017 Signature Collection .jpg" alt="Travertine Onyx" loading="lazy"></div>
+                  <div class="swatch-name">Travertine Onyx</div>
+                  <div class="swatch-ref">5017</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/1 Signature Collection/12 Calacatta Vagli Onyx 5016 Signature Collection .jpg" alt="Calacatta Vagli Onyx" loading="lazy"></div>
+                  <div class="swatch-name">Calacatta Vagli Onyx</div>
+                  <div class="swatch-ref">5016</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/1 Signature Collection/13  Calacatta Unique 5195 Signature Collection .jpg" alt="Calacatta Unique" loading="lazy"></div>
+                  <div class="swatch-name">Calacatta Unique</div>
+                  <div class="swatch-ref">5195</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/1 Signature Collection/14  Pirgona Mist 7105 Signature Collection .jpg" alt="Pirgona Mist" loading="lazy"></div>
+                  <div class="swatch-name">Pirgona Mist</div>
+                  <div class="swatch-ref">7105</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/1 Signature Collection/15  Tribeca White 3102 Signature Collection .jpg" alt="Tribeca White" loading="lazy"></div>
+                  <div class="swatch-name">Tribeca White</div>
+                  <div class="swatch-ref">3102</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/1 Signature Collection/16  Pietra Grey LT5317A Signature Collection .jpg" alt="Pietra Grey" loading="lazy"></div>
+                  <div class="swatch-name">Pietra Grey</div>
+                  <div class="swatch-ref">LT5317A</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/1 Signature Collection/17  Rhino White 5187 Signature Collection .jpg" alt="Rhino White" loading="lazy"></div>
+                  <div class="swatch-name">Rhino White</div>
+                  <div class="swatch-ref">5187</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/1 Signature Collection/18  Calacatta Gold 5177 Signature Collection .jpg" alt="Calacatta Gold" loading="lazy"></div>
+                  <div class="swatch-name">Calacatta Gold</div>
+                  <div class="swatch-ref">5177</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/1 Signature Collection/19  Calacatta Antique 5115 Signature Collection .jpg" alt="Calacatta Antique" loading="lazy"></div>
+                  <div class="swatch-name">Calacatta Antique</div>
+                  <div class="swatch-ref">5115</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/1 Signature Collection/20  Olympia 7111 Signature Collection .jpg" alt="Olympia" loading="lazy"></div>
+                  <div class="swatch-name">Olympia</div>
+                  <div class="swatch-ref">7111</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/1 Signature Collection/21  Pietra Danae 5221 Signature Collection .jpg" alt="Pietra Danae" loading="lazy"></div>
+                  <div class="swatch-name">Pietra Danae</div>
+                  <div class="swatch-ref">5221</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/1 Signature Collection/22  Mondria Kumair 5184 Signature Collection .jpg" alt="Mondria Kumair" loading="lazy"></div>
+                  <div class="swatch-name">Mondria Kumair</div>
+                  <div class="swatch-ref">5184</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/1 Signature Collection/23  Statuario Dior 5133 Signature Collection .jpg" alt="Statuario Dior" loading="lazy"></div>
+                  <div class="swatch-name">Statuario Dior</div>
+                  <div class="swatch-ref">5133</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/1 Signature Collection/24  Blanco Crystol 5179 Signature Collection .jpg" alt="Blanco Crystol" loading="lazy"></div>
+                  <div class="swatch-name">Blanco Crystol</div>
+                  <div class="swatch-ref">5179</div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #eae5dd, #c8bfb5);"></div><span class="collection-badge">Signature</span></div>
-            <div class="swatch-name">Statuario Vigaria</div>
-            <div class="swatch-tier">Prestige</div>
+
+          <!-- ── GENESIS COLLECTION (17 stones) ── -->
+          <div class="collection-group">
+            <div class="collection-header" onclick="toggleCollection(this)">
+              <div class="collection-header-left">
+                <h3>Genesis Collection</h3>
+                <span class="collection-count">17 Colors</span>
+              </div>
+              <svg class="collection-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="collection-body">
+              <div class="swatch-grid">
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/2 Genesis Collection/1  Victoria Grey 9320 Genesis Collection .jpg" alt="Victoria Grey" loading="lazy"></div>
+                  <div class="swatch-name">Victoria Grey</div>
+                  <div class="swatch-ref">9320</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/2 Genesis Collection/2  Viola Oro 9119 Genesis Collection .jpg" alt="Viola Oro" loading="lazy"></div>
+                  <div class="swatch-name">Viola Oro</div>
+                  <div class="swatch-ref">9119</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/2 Genesis Collection/3  Pandora 9311 Genesis Collection .jpg" alt="Pandora" loading="lazy"></div>
+                  <div class="swatch-name">Pandora</div>
+                  <div class="swatch-ref">9311</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/2 Genesis Collection/4  Bulgari Blue 9308 Genesis Collection .jpg" alt="Bulgari Blue" loading="lazy"></div>
+                  <div class="swatch-name">Bulgari Blue</div>
+                  <div class="swatch-ref">9308</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/2 Genesis Collection/5  Cristallo 9306 Genesis Collection .jpg" alt="Cristallo" loading="lazy"></div>
+                  <div class="swatch-name">Cristallo</div>
+                  <div class="swatch-ref">9306</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/2 Genesis Collection/6  Cristallo Imperial 9213 Genesis Collection .jpg" alt="Cristallo Imperial" loading="lazy"></div>
+                  <div class="swatch-name">Cristallo Imperial</div>
+                  <div class="swatch-ref">9213</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/2 Genesis Collection/7  Taj Mahal 9211 Genesis Collection .jpg" alt="Taj Mahal" loading="lazy"></div>
+                  <div class="swatch-name">Taj Mahal</div>
+                  <div class="swatch-ref">9211</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/2 Genesis Collection/8  Lilac 9128 Genesis Collection .jpg" alt="Lilac" loading="lazy"></div>
+                  <div class="swatch-name">Lilac</div>
+                  <div class="swatch-ref">9128</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/2 Genesis Collection/9  Holy Empire 9123 Genesis Collection .jpg" alt="Holy Empire" loading="lazy"></div>
+                  <div class="swatch-name">Holy Empire</div>
+                  <div class="swatch-ref">9123</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/2 Genesis Collection/10  Calacatta Vagli Gold 9105 Genesis Collection .jpg" alt="Calacatta Vagli Gold" loading="lazy"></div>
+                  <div class="swatch-name">Calacatta Vagli Gold</div>
+                  <div class="swatch-ref">9105</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/2 Genesis Collection/11  Calacatta Oro 9103 Genesis Collection .jpg" alt="Calacatta Oro" loading="lazy"></div>
+                  <div class="swatch-name">Calacatta Oro</div>
+                  <div class="swatch-ref">9103</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/2 Genesis Collection/12  White Camouflage 9310 Genesis Collection .jpg" alt="White Camouflage" loading="lazy"></div>
+                  <div class="swatch-name">White Camouflage</div>
+                  <div class="swatch-ref">9310</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/2 Genesis Collection/13  Calacatta Buckingham 9121 Genesis Collection .jpg" alt="Calacatta Buckingham" loading="lazy"></div>
+                  <div class="swatch-name">Calacatta Buckingham</div>
+                  <div class="swatch-ref">9121</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/2 Genesis Collection/14  Calacatta Versailles 9120 Genesis Collection .jpg" alt="Calacatta Versailles" loading="lazy"></div>
+                  <div class="swatch-name">Calacatta Versailles</div>
+                  <div class="swatch-ref">9120</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/2 Genesis Collection/15  Statuario Classic 9111 Genesis Collection .jpg" alt="Statuario Classic" loading="lazy"></div>
+                  <div class="swatch-name">Statuario Classic</div>
+                  <div class="swatch-ref">9111</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/2 Genesis Collection/16  Opus White 9107 Genesis Collection .jpg" alt="Opus White" loading="lazy"></div>
+                  <div class="swatch-name">Opus White</div>
+                  <div class="swatch-ref">9107</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/2 Genesis Collection/17  Calacatta Macchia Vecchia 9101 Genesis Collection .jpg" alt="Calacatta Macchia Vecchia" loading="lazy"></div>
+                  <div class="swatch-name">Calacatta Macchia Vecchia</div>
+                  <div class="swatch-ref">9101</div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #f0ebe2, #d0c5b8);"></div><span class="collection-badge">Signature</span></div>
-            <div class="swatch-name">Taj Mahal</div>
-            <div class="swatch-tier">Premiere</div>
+
+          <!-- ── SOLSTICE COLLECTION (6 stones) ── -->
+          <div class="collection-group">
+            <div class="collection-header" onclick="toggleCollection(this)">
+              <div class="collection-header-left">
+                <h3>Solstice Collection</h3>
+                <span class="collection-count">6 Colors</span>
+              </div>
+              <svg class="collection-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="collection-body">
+              <div class="swatch-grid">
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/3 Solstice Collection/1  Pietra Grey FOT5317 Solstice Collection .jpg" alt="Pietra Grey" loading="lazy"></div>
+                  <div class="swatch-name">Pietra Grey</div>
+                  <div class="swatch-ref">FOT5317</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/3 Solstice Collection/2  Bianco Corte FOT5229 Solstice Collection .jpg" alt="Bianco Corte" loading="lazy"></div>
+                  <div class="swatch-name">Bianco Corte</div>
+                  <div class="swatch-ref">FOT5229</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/3 Solstice Collection/3  Soapstone Supreme FOT5342 Solstice Collection .jpg" alt="Soapstone Supreme" loading="lazy"></div>
+                  <div class="swatch-name">Soapstone Supreme</div>
+                  <div class="swatch-ref">FOT5342</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/3 Solstice Collection/4  Beaumaniere FOT5330 Solstice Collection .jpg" alt="Beaumaniere" loading="lazy"></div>
+                  <div class="swatch-name">Beaumaniere</div>
+                  <div class="swatch-ref">FOT5330</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/3 Solstice Collection/5  Laurence Gold FOT5387 Solstice Collection .jpg" alt="Laurence Gold" loading="lazy"></div>
+                  <div class="swatch-name">Laurence Gold</div>
+                  <div class="swatch-ref">FOT5387</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/3 Solstice Collection/6  Sere' Pylos FOT5300 Solstice Collection .jpg" alt="Sere' Pylos" loading="lazy"></div>
+                  <div class="swatch-name">Sere' Pylos</div>
+                  <div class="swatch-ref">FOT5300</div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e8e0d5, #c0b5a8);"></div><span class="collection-badge">Signature</span></div>
-            <div class="swatch-name">Calacatta Bella</div>
-            <div class="swatch-tier">Select</div>
+
+          <!-- ── LUCCIARE LIBRARY (11 stones) ── -->
+          <div class="collection-group">
+            <div class="collection-header" onclick="toggleCollection(this)">
+              <div class="collection-header-left">
+                <h3>Lucciare Library</h3>
+                <span class="collection-count">11 Colors</span>
+              </div>
+              <svg class="collection-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="collection-body">
+              <div class="swatch-grid">
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/4 Lucciare Livrary/1  Sere' Pylos 5300 Lucciare Collection .jpg" alt="Sere' Pylos" loading="lazy"></div>
+                  <div class="swatch-name">Sere' Pylos</div>
+                  <div class="swatch-ref">5300</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/4 Lucciare Livrary/2  Saint Laurent Gold 5316 Lucciare Collection .jpg" alt="Saint Laurent Gold" loading="lazy"></div>
+                  <div class="swatch-name">Saint Laurent Gold</div>
+                  <div class="swatch-ref">5316</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/4 Lucciare Livrary/3  Bianco Drift Extra 7132 Lucciare Collection .jpg" alt="Bianco Drift Extra" loading="lazy"></div>
+                  <div class="swatch-name">Bianco Drift Extra</div>
+                  <div class="swatch-ref">7132</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/4 Lucciare Livrary/4  Calacatta Paonazzo L5288A Lucciare Collection .jpg" alt="Calacatta Paonazzo" loading="lazy"></div>
+                  <div class="swatch-name">Calacatta Paonazzo</div>
+                  <div class="swatch-ref">L5288A</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/4 Lucciare Livrary/5  Polar Onyx L5971A Lucciare Collection .jpg" alt="Polar Onyx" loading="lazy"></div>
+                  <div class="swatch-name">Polar Onyx</div>
+                  <div class="swatch-ref">L5971A</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/4 Lucciare Livrary/6  Calacatta Elegant L5107A Lucciare Collection .jpg" alt="Calacatta Elegant" loading="lazy"></div>
+                  <div class="swatch-name">Calacatta Elegant</div>
+                  <div class="swatch-ref">L5107A</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/4 Lucciare Livrary/7  Statuario White River L5001A Lucciare Collection .jpg" alt="Statuario White River" loading="lazy"></div>
+                  <div class="swatch-name">Statuario White River</div>
+                  <div class="swatch-ref">L5001A</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/4 Lucciare Livrary/8  Marquina Mist L5851A Lucciare Collection .jpg" alt="Marquina Mist" loading="lazy"></div>
+                  <div class="swatch-name">Marquina Mist</div>
+                  <div class="swatch-ref">L5851A</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/4 Lucciare Livrary/9  Leonardo L5212A Lucciare Collection .jpg" alt="Leonardo" loading="lazy"></div>
+                  <div class="swatch-name">Leonardo</div>
+                  <div class="swatch-ref">L5212A</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/4 Lucciare Livrary/10  Calacatta Lincoln L5102A Lucciare Collection .jpg" alt="Calacatta Lincoln" loading="lazy"></div>
+                  <div class="swatch-name">Calacatta Lincoln</div>
+                  <div class="swatch-ref">L5102A</div>
+                </div>
+                <div class="swatch-card" onclick="openLightbox(this)">
+                  <div class="swatch-preview"><img src="../images/lucciare/collection lucciare/4 Lucciare Livrary/11  Calacatta Classic L5101A Lucciare Collection .jpg" alt="Calacatta Classic" loading="lazy"></div>
+                  <div class="swatch-name">Calacatta Classic</div>
+                  <div class="swatch-ref">L5101A</div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #ede8e0, #ccc5ba);"></div><span class="collection-badge">Signature</span></div>
-            <div class="swatch-name">Statuario Michel</div>
-            <div class="swatch-tier">Select</div>
-          </div>
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #ddd5c8, #b8aea0);"></div><span class="collection-badge">Signature</span></div>
-            <div class="swatch-name">Borghini Premium</div>
-            <div class="swatch-tier">Prestige</div>
-          </div>
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e5ddd0, #c5b8a8);"></div><span class="collection-badge">Signature</span></div>
-            <div class="swatch-name">Travertine Lume</div>
-            <div class="swatch-tier">Prestige</div>
-          </div>
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #d8d0c5, #b0a898);"></div><span class="collection-badge">Signature</span></div>
-            <div class="swatch-name">Rhino White</div>
-            <div class="swatch-tier">Designer</div>
-          </div>
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #f2ede5, #dbd5cb);"></div><span class="collection-badge">Signature</span></div>
-            <div class="swatch-name">Bella Lincoln</div>
-            <div class="swatch-tier">Premiere</div>
-          </div>
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e0d8cc, #bab0a2);"></div><span class="collection-badge">Signature</span></div>
-            <div class="swatch-name">Sky Falls</div>
-            <div class="swatch-tier">Prestige</div>
-          </div>
-          <!-- Genesis Collection -->
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e8e2d8, #c5bdb0);"></div><span class="collection-badge">Genesis</span></div>
-            <div class="swatch-name">Calacatta Versailles</div>
-            <div class="swatch-tier">Strata</div>
-          </div>
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #f0eae0, #d2c8bc);"></div><span class="collection-badge">Genesis</span></div>
-            <div class="swatch-name">Calacatta Oro</div>
-            <div class="swatch-tier">Art</div>
-          </div>
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #ddd8d0, #b5aea5);"></div><span class="collection-badge">Genesis</span></div>
-            <div class="swatch-name">Victoria Grey</div>
-            <div class="swatch-tier">Strata</div>
-          </div>
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #c8c0e0, #a098c5);"></div><span class="collection-badge">Genesis</span></div>
-            <div class="swatch-name">Lilac</div>
-            <div class="swatch-tier">Art</div>
-          </div>
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #b0c0d8, #8898b5);"></div><span class="collection-badge">Genesis</span></div>
-            <div class="swatch-name">Bulgari Blue</div>
-            <div class="swatch-tier">Art</div>
-          </div>
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #f5f0e8, #e0d8cc);"></div><span class="collection-badge">Genesis</span></div>
-            <div class="swatch-name">Cristallo</div>
-            <div class="swatch-tier">Lumina</div>
-          </div>
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e5dfd5, #c8c0b5);"></div><span class="collection-badge">Genesis</span></div>
-            <div class="swatch-name">Statuario Classic</div>
-            <div class="swatch-tier">Strata</div>
-          </div>
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #d5c8b5, #b0a290);"></div><span class="collection-badge">Genesis</span></div>
-            <div class="swatch-name">Calacatta Vagli Gold</div>
-            <div class="swatch-tier">Art</div>
-          </div>
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #f8f5f0, #e5e0d8);"></div><span class="collection-badge">Genesis</span></div>
-            <div class="swatch-name">Opus White</div>
-            <div class="swatch-tier">Strata</div>
-          </div>
-          <!-- Solstice Collection -->
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e8e2d8, #c8bfb2);"></div><span class="collection-badge">Solstice</span></div>
-            <div class="swatch-name">Calacatta Solstice</div>
-            <div class="swatch-tier">Solstice</div>
-          </div>
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #d8d0c5, #b5aba0);"></div><span class="collection-badge">Solstice</span></div>
-            <div class="swatch-name">Statuario Solstice</div>
-            <div class="swatch-tier">Solstice</div>
-          </div>
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #e0dbd2, #c0b8ac);"></div><span class="collection-badge">Solstice</span></div>
-            <div class="swatch-name">Bianco Solstice</div>
-            <div class="swatch-tier">Solstice</div>
-          </div>
-          <div class="swatch-card">
-            <div class="swatch-preview"><div class="placeholder-bg" style="background: linear-gradient(135deg, #ede5da, #ccc2b5);"></div><span class="collection-badge">Solstice</span></div>
-            <div class="swatch-name">Travertine Solstice</div>
-            <div class="swatch-tier">Solstice</div>
-          </div>
+
         </div>
       </div>
     </section>
@@ -1007,7 +1296,6 @@
             <li><a href="inspired.html" data-i18n="nav.inspired">Get Inspired</a></li>
             <li><a href="#" data-i18n="footer.faqs">FAQs</a></li>
             <li><a href="#" data-i18n="footer.warranty">Warranty Info</a></li>
-            <li><a href="trade.html" data-i18n="nav.trade">For The Trade</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -1101,51 +1389,40 @@
   <script src="../js/main.js"></script>
 
   <script>
+  // --- Collection Accordion ---
+  function toggleCollection(header) {
+    var group = header.parentElement;
+    group.classList.toggle('open');
+  }
+
   // --- Collection Lightbox ---
+  function openLightbox(card) {
+    var overlay = document.getElementById('lightbox');
+    var lbImg = document.getElementById('lightbox-img');
+    var lbName = document.getElementById('lightbox-name');
+    var lbRef = document.getElementById('lightbox-ref');
+
+    var img = card.querySelector('.swatch-preview img');
+    var name = card.querySelector('.swatch-name');
+    var ref = card.querySelector('.swatch-ref');
+
+    if (img) {
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+    }
+    lbName.textContent = name ? name.textContent : '';
+    lbRef.textContent = ref ? ref.textContent : '';
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
   (function() {
-    const overlay = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lightbox-img');
-    const lbName = document.getElementById('lightbox-name');
-    const lbRef = document.getElementById('lightbox-ref');
-    const closeBtn = overlay.querySelector('.lightbox-close');
-
-    document.querySelectorAll('.swatch-grid .swatch-card').forEach(function(card) {
-      card.addEventListener('click', function() {
-        var preview = card.querySelector('.swatch-preview .placeholder-bg');
-        var img = card.querySelector('.swatch-preview img');
-        var name = card.querySelector('.swatch-name');
-        var badge = card.querySelector('.collection-badge');
-
-        if (img) {
-          lbImg.src = img.src;
-          lbImg.alt = img.alt;
-          lbImg.style.display = 'block';
-        } else if (preview) {
-          // For placeholder gradients, show a larger version
-          lbImg.style.display = 'none';
-          var content = overlay.querySelector('.lightbox-content');
-          var existingPlaceholder = content.querySelector('.lightbox-placeholder');
-          if (existingPlaceholder) existingPlaceholder.remove();
-          var div = document.createElement('div');
-          div.className = 'lightbox-placeholder';
-          div.style.cssText = preview.style.cssText + 'width:100%;aspect-ratio:4/3;';
-          content.insertBefore(div, content.querySelector('.lightbox-info'));
-        }
-
-        lbName.textContent = name ? name.textContent : '';
-        lbRef.textContent = badge ? badge.textContent : '';
-        overlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      });
-    });
+    var overlay = document.getElementById('lightbox');
+    var closeBtn = overlay.querySelector('.lightbox-close');
 
     function closeLightbox() {
       overlay.classList.remove('active');
       document.body.style.overflow = '';
-      var content = overlay.querySelector('.lightbox-content');
-      var existingPlaceholder = content.querySelector('.lightbox-placeholder');
-      if (existingPlaceholder) existingPlaceholder.remove();
-      lbImg.style.display = 'block';
     }
 
     closeBtn.addEventListener('click', function(e) {

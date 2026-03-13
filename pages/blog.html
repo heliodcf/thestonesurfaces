@@ -607,39 +607,31 @@
         <a href="inspired.html">Get Inspired</a>
         <a href="blog.html" class="active">Blog</a>
         <a href="about.html">About</a>
-        <a href="trade.html">For The Trade</a>
       </nav>
 
       <!-- Mega Menu -->
       <div class="mega-menu">
         <div class="container">
-          <div class="mega-menu-grid">
-            <a href="products.html#granite" class="mega-menu-item">
-              <div class="thumb"><img src="../images/collections/Granite.jpg" alt="Granite"></div>
-              <h4>Granite</h4>
-            </a>
-            <a href="products.html#marble" class="mega-menu-item">
-              <div class="thumb"><img src="../images/collections/marble.jpg" alt="Marble"></div>
-              <h4>Marble</h4>
-            </a>
-            <a href="products.html#quartz" class="mega-menu-item">
-              <div class="thumb"><img src="../images/collections/Quartz.jpg" alt="Quartz"></div>
-              <h4>Quartz</h4>
-            </a>
+                    <div class="mega-menu-grid">
             <a href="products.html#quartzite" class="mega-menu-item">
-              <div class="thumb"><img src="../images/collections/Quartzite.jpg" alt="Quartzite"></div>
-              <h4>Quartzite</h4>
-            </a>
-            <a href="products.html#dolomite" class="mega-menu-item">
-              <div class="thumb"><img src="../images/collections/Dolomite.jpg" alt="Dolomite"></div>
-              <h4>Dolomite</h4>
-            </a>
-            <a href="products.html#hard-marble" class="mega-menu-item">
-              <div class="thumb"><img src="../images/collections/Hard_Marble.jpg" alt="Hard Marble"></div>
-              <h4>Hard Marble</h4>
-            </a>
-          </div>
-        </div>
+              <div class="thumb"><img src="../images/collections/QUARTZITE - Bianco Superiore 2cm.jpg" alt="Quartzite slabs"></div>
+              <h4 data-i18n="nav.mega.quartzite">Quartzite</h4></a>
+            <a href="products.html#granite" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/GRANITE - Alpinus Cream 3cm.jpg" alt="Granite slabs"></div>
+              <h4 data-i18n="nav.mega.granite">Granite</h4></a>
+            <a href="products.html#dolomite-hard-marble" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/DOLOMITE %26 HARD MARBLE - Matarazzo 3cm.jpg" alt="Dolomite &amp; Hard Marble slabs"></div>
+              <h4 data-i18n="nav.mega.dolomite">Dolomite &amp; Hard Marble</h4></a>
+            <a href="products.html#marble" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/MARBLE - Calacatta Viola 2cm.jpg" alt="Marble slabs"></div>
+              <h4 data-i18n="nav.mega.marble">Marble</h4></a>
+            <a href="products.html#semi-precious-onyx" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/SEMI-PRECIOUS %26 ONYX - Onyx Fantastico 2cm.jpg" alt="Semi-Precious &amp; Onyx slabs"></div>
+              <h4 data-i18n="nav.mega.semiprecious">Semi-Precious &amp; Onyx</h4></a>
+            <a href="products.html#quartz" class="mega-menu-item">
+              <div class="thumb"><img src="../images/collections/QUARTZ - Quartz Lucciare Statuario Classic.jpg" alt="Quartz slabs"></div>
+              <h4 data-i18n="nav.mega.quartz">Quartz</h4></a>
+          </div></div>
       </div>
 
       <div class="header-right">
@@ -684,7 +676,6 @@
     <a href="inspired.html">Get Inspired</a>
     <a href="blog.html" class="active">Blog</a>
     <a href="about.html">About</a>
-    <a href="trade.html">For The Trade</a>
     <a href="contact.html">Contact</a>
     <div class="lang-selector-mobile">
       <button data-lang="en" class="active">EN</button>
@@ -697,26 +688,14 @@
   <main>
 
     <!-- ===== FEATURED POST HERO ===== -->
-    <section class="blog-hero">
+    <section class="blog-hero" id="blog-hero">
       <div class="hero-bg">
-        <div class="placeholder-bg" style="background: linear-gradient(135deg, #EDEDEF 0%, #E0E0E3 30%, #D1D1D6 60%, #E0E0E3 100%);"></div>
+        <div class="placeholder-bg" id="hero-bg-img" style="background: linear-gradient(135deg, #EDEDEF 0%, #E0E0E3 30%, #D1D1D6 60%, #E0E0E3 100%);"></div>
       </div>
       <div class="hero-overlay"></div>
       <div class="container">
-        <div class="hero-content reveal">
-          <span class="featured-tag" data-i18n="blog.featured.label">FEATURED POST</span>
-          <h1 data-i18n="blog.featured.title">2026 Kitchen Countertop Trends: What Designers Are Choosing</h1>
-          <p class="hero-excerpt" data-i18n="blog.featured.excerpt">From dramatic veining and warm-toned marbles to matte quartz finishes, discover the surfaces that are defining luxury kitchens this year and why South Florida designers can't get enough.</p>
-          <div class="hero-meta">
-            <div class="author-info">
-              <div class="author-avatar">SM</div>
-              <span class="author-name">Sarah Mitchell</span>
-            </div>
-            <span class="meta-separator"></span>
-            <span class="meta-item">March 1, 2026</span>
-            <span class="meta-separator"></span>
-            <span class="meta-item" data-i18n="blog.featured.readTime">5 min read</span>
-          </div>
+        <div class="hero-content reveal" id="hero-content">
+          <!-- Populated dynamically by JS -->
         </div>
       </div>
     </section>
@@ -740,197 +719,29 @@
       <div class="container">
         <div class="blog-layout">
 
-          <!-- Main Blog Grid -->
-          <div class="blog-grid">
-
-            <!-- Card 1 -->
-            <article class="blog-card reveal">
-              <div class="card-image">
-                <div class="placeholder-bg" style="background: linear-gradient(135deg, #c8b8a8, #a89888); height: 100%;"></div>
-                <span class="tag" data-i18n="blog.cat.trends">DESIGN TRENDS</span>
-              </div>
-              <div class="card-body">
-                <h4 data-i18n="blog.card1.title">Why Warm-Toned Marble Is Dominating Miami Luxury Homes</h4>
-                <p class="excerpt" data-i18n="blog.card1.excerpt">Designers are moving away from cool whites toward honey, caramel, and terracotta marble varieties that bring warmth to contemporary spaces.</p>
-                <div class="card-footer">
-                  <div class="card-author">
-                    <div class="author-avatar-sm">SM</div>
-                    <span class="author-name-sm">Sarah Mitchell</span>
-                  </div>
-                  <div class="card-meta-right">
-                    <span>Feb 24, 2026</span>
-                    <span data-i18n="blog.card1.readTime">4 min</span>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <!-- Card 2 -->
-            <article class="blog-card reveal reveal-delay-1">
-              <div class="card-image">
-                <div class="placeholder-bg" style="background: linear-gradient(135deg, #b0a090, #908070); height: 100%;"></div>
-                <span class="tag" data-i18n="blog.cat.care">STONE CARE</span>
-              </div>
-              <div class="card-body">
-                <h4 data-i18n="blog.card2.title">The Complete Guide to Sealing Natural Stone Countertops</h4>
-                <p class="excerpt" data-i18n="blog.card2.excerpt">Everything you need to know about when to seal, which sealers to use, and the mistakes that void your warranty.</p>
-                <div class="card-footer">
-                  <div class="card-author">
-                    <div class="author-avatar-sm">DR</div>
-                    <span class="author-name-sm">David Reyes</span>
-                  </div>
-                  <div class="card-meta-right">
-                    <span>Feb 18, 2026</span>
-                    <span data-i18n="blog.card2.readTime">6 min</span>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <!-- Card 3 -->
-            <article class="blog-card reveal">
-              <div class="card-image">
-                <div class="placeholder-bg" style="background: linear-gradient(135deg, #d8c8b8, #b8a898); height: 100%;"></div>
-                <span class="tag" data-i18n="blog.cat.hanstone">HANSTONE UPDATES</span>
-              </div>
-              <div class="card-body">
-                <h4 data-i18n="blog.card3.title">Hanstone Quartz Introduces 12 New Colors for Spring 2026</h4>
-                <p class="excerpt" data-i18n="blog.card3.excerpt">Hyundai L&C expands its Hanstone collection with nature-inspired tones and advanced veining technology now available at our showroom.</p>
-                <div class="card-footer">
-                  <div class="card-author">
-                    <div class="author-avatar-sm">AL</div>
-                    <span class="author-name-sm">Ana Lopez</span>
-                  </div>
-                  <div class="card-meta-right">
-                    <span>Feb 12, 2026</span>
-                    <span data-i18n="blog.card3.readTime">3 min</span>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <!-- Card 4 -->
-            <article class="blog-card reveal reveal-delay-1">
-              <div class="card-image">
-                <div class="placeholder-bg" style="background: linear-gradient(135deg, #a89080, #887060); height: 100%;"></div>
-                <span class="tag" data-i18n="blog.cat.spotlights">PROJECT SPOTLIGHTS</span>
-              </div>
-              <div class="card-body">
-                <h4 data-i18n="blog.card4.title">Inside a $4M Coral Gables Renovation: Choosing the Right Stone</h4>
-                <p class="excerpt" data-i18n="blog.card4.excerpt">How one design team used five different stone varieties to create a cohesive look across a 6,000 sq ft waterfront estate.</p>
-                <div class="card-footer">
-                  <div class="card-author">
-                    <div class="author-avatar-sm">SM</div>
-                    <span class="author-name-sm">Sarah Mitchell</span>
-                  </div>
-                  <div class="card-meta-right">
-                    <span>Feb 5, 2026</span>
-                    <span data-i18n="blog.card4.readTime">7 min</span>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <!-- Card 5 -->
-            <article class="blog-card reveal">
-              <div class="card-image">
-                <div class="placeholder-bg" style="background: linear-gradient(135deg, #c0b0a0, #a09080); height: 100%;"></div>
-                <span class="tag" data-i18n="blog.cat.news">INDUSTRY NEWS</span>
-              </div>
-              <div class="card-body">
-                <h4 data-i18n="blog.card5.title">Natural Stone Supply Chains in 2026: What Contractors Need to Know</h4>
-                <p class="excerpt" data-i18n="blog.card5.excerpt">Global quarry updates, shipping timelines, and how to plan ahead for your next project to avoid costly delays.</p>
-                <div class="card-footer">
-                  <div class="card-author">
-                    <div class="author-avatar-sm">DR</div>
-                    <span class="author-name-sm">David Reyes</span>
-                  </div>
-                  <div class="card-meta-right">
-                    <span>Jan 28, 2026</span>
-                    <span data-i18n="blog.card5.readTime">5 min</span>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <!-- Card 6 -->
-            <article class="blog-card reveal reveal-delay-1">
-              <div class="card-image">
-                <div class="placeholder-bg" style="background: linear-gradient(135deg, #b8a898, #988878); height: 100%;"></div>
-                <span class="tag" data-i18n="blog.cat.care">STONE CARE</span>
-              </div>
-              <div class="card-body">
-                <h4 data-i18n="blog.card6.title">Quartz vs. Quartzite: The Differences Every Homeowner Should Know</h4>
-                <p class="excerpt" data-i18n="blog.card6.excerpt">They sound alike, but these two surfaces couldn't be more different. Here's how to pick the right one for your lifestyle.</p>
-                <div class="card-footer">
-                  <div class="card-author">
-                    <div class="author-avatar-sm">AL</div>
-                    <span class="author-name-sm">Ana Lopez</span>
-                  </div>
-                  <div class="card-meta-right">
-                    <span>Jan 20, 2026</span>
-                    <span data-i18n="blog.card6.readTime">4 min</span>
-                  </div>
-                </div>
-              </div>
-            </article>
-
+          <!-- Main Blog Grid (populated dynamically by JS) -->
+          <div class="blog-grid" id="blog-grid">
+            <!-- Loading skeleton -->
+            <div class="blog-card" style="opacity:0.5;" id="skeleton-1"><div class="card-image"><div class="placeholder-bg" style="background:#E0E0E3;height:100%;"></div></div><div class="card-body"><h4 style="background:#E0E0E3;height:20px;border-radius:4px;margin-bottom:10px;">&nbsp;</h4><p class="excerpt" style="background:#EDEDEF;height:40px;border-radius:4px;">&nbsp;</p></div></div>
+            <div class="blog-card" style="opacity:0.5;" id="skeleton-2"><div class="card-image"><div class="placeholder-bg" style="background:#E0E0E3;height:100%;"></div></div><div class="card-body"><h4 style="background:#E0E0E3;height:20px;border-radius:4px;margin-bottom:10px;">&nbsp;</h4><p class="excerpt" style="background:#EDEDEF;height:40px;border-radius:4px;">&nbsp;</p></div></div>
           </div>
 
           <!-- Sidebar -->
           <aside class="blog-sidebar">
 
-            <!-- Popular Posts -->
+            <!-- Popular Posts (populated dynamically by JS) -->
             <div class="sidebar-card reveal">
               <h3 data-i18n="blog.sidebar.popular">Popular Posts</h3>
-              <ul class="popular-posts-list">
-                <li>
-                  <span class="post-number">1</span>
-                  <div class="post-info">
-                    <h5>2026 Kitchen Countertop Trends: What Designers Are Choosing</h5>
-                    <span>March 1, 2026</span>
-                  </div>
-                </li>
-                <li>
-                  <span class="post-number">2</span>
-                  <div class="post-info">
-                    <h5>Quartz vs. Quartzite: The Differences Every Homeowner Should Know</h5>
-                    <span>Jan 20, 2026</span>
-                  </div>
-                </li>
-                <li>
-                  <span class="post-number">3</span>
-                  <div class="post-info">
-                    <h5>The Complete Guide to Sealing Natural Stone Countertops</h5>
-                    <span>Feb 18, 2026</span>
-                  </div>
-                </li>
-                <li>
-                  <span class="post-number">4</span>
-                  <div class="post-info">
-                    <h5>Inside a $4M Coral Gables Renovation: Choosing the Right Stone</h5>
-                    <span>Feb 5, 2026</span>
-                  </div>
-                </li>
-                <li>
-                  <span class="post-number">5</span>
-                  <div class="post-info">
-                    <h5>Why Warm-Toned Marble Is Dominating Miami Luxury Homes</h5>
-                    <span>Feb 24, 2026</span>
-                  </div>
-                </li>
+              <ul class="popular-posts-list" id="popular-posts-list">
+                <!-- Populated by JS -->
               </ul>
             </div>
 
-            <!-- Categories -->
+            <!-- Categories (counts populated dynamically by JS) -->
             <div class="sidebar-card reveal">
               <h3 data-i18n="blog.sidebar.categories">Categories</h3>
-              <ul class="category-links">
-                <li><a href="#" data-i18n-html="blog.sidebar.cat.news">Industry News <span class="count-badge">8</span></a></li>
-                <li><a href="#" data-i18n-html="blog.sidebar.cat.trends">Design Trends <span class="count-badge">14</span></a></li>
-                <li><a href="#" data-i18n-html="blog.sidebar.cat.care">Stone Care <span class="count-badge">11</span></a></li>
-                <li><a href="#" data-i18n-html="blog.sidebar.cat.spotlights">Project Spotlights <span class="count-badge">9</span></a></li>
-                <li><a href="#" data-i18n-html="blog.sidebar.cat.hanstone">Hanstone Updates <span class="count-badge">6</span></a></li>
+              <ul class="category-links" id="category-links">
+                <!-- Populated by JS -->
               </ul>
             </div>
 
@@ -995,7 +806,6 @@
             <li><a href="inspired.html">Get Inspired</a></li>
             <li><a href="#" data-i18n="footer.faqs">FAQs</a></li>
             <li><a href="#" data-i18n="footer.warranty">Warranty Info</a></li>
-            <li><a href="trade.html">For The Trade</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -1075,61 +885,395 @@
 
   <script src="../js/i18n.js"></script>
   <script src="../js/main.js"></script>
+  <script src="../js/admin-config.js"></script>
+  <script src="../js/admin-data.js"></script>
 
-  <!-- Dynamic Blog Posts from Admin -->
+  <!-- Dynamic Blog Posts from Supabase -->
   <script>
     (function() {
-      try {
-        var posts = JSON.parse(localStorage.getItem('tss-blog-posts') || '[]');
-        var published = posts.filter(function(p) { return p.status === 'published'; });
-        if (published.length === 0) return;
+      'use strict';
 
-        var grid = document.querySelector('.blog-grid');
-        if (!grid) return;
+      // ─── Category labels ──────────────────────────────────────
+      var catLabels = {
+        'design-trends': 'DESIGN TRENDS',
+        'stone-care': 'STONE CARE',
+        'industry-news': 'INDUSTRY NEWS',
+        'project-spotlights': 'PROJECT SPOTLIGHTS',
+        'hanstone-updates': 'HANSTONE UPDATES'
+      };
 
-        var catLabels = {
-          'design-trends': 'DESIGN TRENDS',
-          'stone-care': 'STONE CARE',
-          'industry-news': 'INDUSTRY NEWS',
-          'project-spotlights': 'PROJECT SPOTLIGHTS',
-          'hanstone-updates': 'HANSTONE UPDATES'
+      var catDisplayNames = {
+        'design-trends': 'Design Trends',
+        'stone-care': 'Stone Care',
+        'industry-news': 'Industry News',
+        'project-spotlights': 'Project Spotlights',
+        'hanstone-updates': 'Hanstone Updates'
+      };
+
+      // ─── Fallback posts (original hardcoded content) ──────────
+      var fallbackPosts = [
+        {
+          title: '2026 Kitchen Countertop Trends: What Designers Are Choosing',
+          slug: '2026-kitchen-countertop-trends',
+          excerpt: 'From dramatic veining and warm-toned marbles to matte quartz finishes, discover the surfaces that are defining luxury kitchens this year and why South Florida designers can\'t get enough.',
+          category: 'design-trends',
+          author: { name: 'Sarah Mitchell', avatar: 'SM' },
+          readTime: '5 min read',
+          publishedAt: '2026-03-01T10:00:00Z',
+          featuredImage: '',
+          bgGradient: 'linear-gradient(135deg, #EDEDEF 0%, #E0E0E3 30%, #D1D1D6 60%, #E0E0E3 100%)'
+        },
+        {
+          title: 'Why Warm-Toned Marble Is Dominating Miami Luxury Homes',
+          slug: 'warm-toned-marble-miami',
+          excerpt: 'Designers are moving away from cool whites toward honey, caramel, and terracotta marble varieties that bring warmth to contemporary spaces.',
+          category: 'design-trends',
+          author: { name: 'Sarah Mitchell', avatar: 'SM' },
+          readTime: '4 min',
+          publishedAt: '2026-02-24T10:00:00Z',
+          featuredImage: '',
+          bgGradient: 'linear-gradient(135deg, #c8b8a8, #a89888)'
+        },
+        {
+          title: 'The Complete Guide to Sealing Natural Stone Countertops',
+          slug: 'guide-sealing-natural-stone',
+          excerpt: 'Everything you need to know about when to seal, which sealers to use, and the mistakes that void your warranty.',
+          category: 'stone-care',
+          author: { name: 'David Reyes', avatar: 'DR' },
+          readTime: '6 min',
+          publishedAt: '2026-02-18T10:00:00Z',
+          featuredImage: '',
+          bgGradient: 'linear-gradient(135deg, #b0a090, #908070)'
+        },
+        {
+          title: 'Hanstone Quartz Introduces 12 New Colors for Spring 2026',
+          slug: 'hanstone-new-colors-spring-2026',
+          excerpt: 'Hyundai L&C expands its Hanstone collection with nature-inspired tones and advanced veining technology now available at our showroom.',
+          category: 'hanstone-updates',
+          author: { name: 'Ana Lopez', avatar: 'AL' },
+          readTime: '3 min',
+          publishedAt: '2026-02-12T10:00:00Z',
+          featuredImage: '',
+          bgGradient: 'linear-gradient(135deg, #d8c8b8, #b8a898)'
+        },
+        {
+          title: 'Inside a $4M Coral Gables Renovation: Choosing the Right Stone',
+          slug: 'coral-gables-renovation',
+          excerpt: 'How one design team used five different stone varieties to create a cohesive look across a 6,000 sq ft waterfront estate.',
+          category: 'project-spotlights',
+          author: { name: 'Sarah Mitchell', avatar: 'SM' },
+          readTime: '7 min',
+          publishedAt: '2026-02-05T10:00:00Z',
+          featuredImage: '',
+          bgGradient: 'linear-gradient(135deg, #a89080, #887060)'
+        },
+        {
+          title: 'Natural Stone Supply Chains in 2026: What Contractors Need to Know',
+          slug: 'stone-supply-chains-2026',
+          excerpt: 'Global quarry updates, shipping timelines, and how to plan ahead for your next project to avoid costly delays.',
+          category: 'industry-news',
+          author: { name: 'David Reyes', avatar: 'DR' },
+          readTime: '5 min',
+          publishedAt: '2026-01-28T10:00:00Z',
+          featuredImage: '',
+          bgGradient: 'linear-gradient(135deg, #c0b0a0, #a09080)'
+        },
+        {
+          title: 'Quartz vs. Quartzite: The Differences Every Homeowner Should Know',
+          slug: 'quartz-vs-quartzite',
+          excerpt: 'They sound alike, but these two surfaces couldn\'t be more different. Here\'s how to pick the right one for your lifestyle.',
+          category: 'stone-care',
+          author: { name: 'Ana Lopez', avatar: 'AL' },
+          readTime: '4 min',
+          publishedAt: '2026-01-20T10:00:00Z',
+          featuredImage: '',
+          bgGradient: 'linear-gradient(135deg, #b8a898, #988878)'
+        }
+      ];
+
+      // ─── Helpers ──────────────────────────────────────────────
+
+      function formatDate(dateStr) {
+        return new Date(dateStr).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+      }
+
+      function getInitials(post) {
+        return (post.author && post.author.avatar) || (post.authorAvatar) || 'TS';
+      }
+
+      function getAuthorName(post) {
+        return (post.author && post.author.name) || (post.authorName) || 'The Stone Surfaces';
+      }
+
+      function getExcerpt(post) {
+        if (post.excerpt) return post.excerpt;
+        return ((post.content || '').replace(/<[^>]*>/g, '').slice(0, 120) + '...') || '';
+      }
+
+      function getBgStyle(post) {
+        if (post.featuredImage) {
+          return 'background-image:url(' + post.featuredImage + ');background-size:cover;background-position:center;height:100%;';
+        }
+        if (post.bgGradient) {
+          return 'background:' + post.bgGradient + ';height:100%;';
+        }
+        return 'background:linear-gradient(135deg,#E0E0E3,#D1D1D6);height:100%;';
+      }
+
+      function getSlug(post) {
+        return post.slug || post.title.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+      }
+
+      function getCatLabel(cat) {
+        return catLabels[cat] || (cat || '').toUpperCase().replace(/-/g, ' ');
+      }
+
+      // ─── Render hero ─────────────────────────────────────────
+
+      function renderHero(post) {
+        var heroSection = document.getElementById('blog-hero');
+        var heroBg = document.getElementById('hero-bg-img');
+        var heroContent = document.getElementById('hero-content');
+        if (!heroContent) return;
+
+        var slug = getSlug(post);
+        var date = formatDate(post.publishedAt || post.createdAt);
+
+        // Set hero background
+        if (post.featuredImage) {
+          heroBg.style.cssText = 'background-image:url(' + post.featuredImage + ');background-size:cover;background-position:center;width:100%;height:100%;';
+        } else if (post.bgGradient) {
+          heroBg.style.cssText = 'background:' + post.bgGradient + ';width:100%;height:100%;';
+        }
+
+        // Make hero clickable
+        heroSection.style.cursor = 'pointer';
+        heroSection.onclick = function() {
+          window.location.href = 'blog-post.html?post=' + slug;
         };
 
-        published.sort(function(a, b) { return new Date(b.publishedAt || b.createdAt) - new Date(a.publishedAt || a.createdAt); });
+        heroContent.innerHTML =
+          '<span class="featured-tag">FEATURED POST</span>' +
+          '<h1>' + (post.title || '') + '</h1>' +
+          '<p class="hero-excerpt">' + getExcerpt(post) + '</p>' +
+          '<div class="hero-meta">' +
+            '<div class="author-info">' +
+              '<div class="author-avatar">' + getInitials(post) + '</div>' +
+              '<span class="author-name">' + getAuthorName(post) + '</span>' +
+            '</div>' +
+            '<span class="meta-separator"></span>' +
+            '<span class="meta-item">' + date + '</span>' +
+            '<span class="meta-separator"></span>' +
+            '<span class="meta-item">' + (post.readTime || '3 min read') + '</span>' +
+          '</div>';
+      }
 
-        published.forEach(function(post) {
-          var date = new Date(post.publishedAt || post.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-          var initials = (post.author && post.author.avatar) || 'TS';
-          var authorName = (post.author && post.author.name) || 'The Stone Surfaces';
-          var catLabel = catLabels[post.category] || post.category.toUpperCase();
-          var excerpt = (post.excerpt || (post.content || '').replace(/<[^>]*>/g, '').slice(0, 120) + '...') || '';
-          var bgStyle = post.featuredImage
-            ? 'background-image:url(' + post.featuredImage + ');background-size:cover;background-position:center;height:100%;'
-            : 'background:linear-gradient(135deg,#c4a35a33,#8b735533);height:100%;';
+      // ─── Render card ─────────────────────────────────────────
 
-          var card = document.createElement('article');
-          card.className = 'blog-card reveal';
-          card.setAttribute('data-dynamic', 'true');
-          card.innerHTML = '<div class="card-image">' +
-            '<div class="placeholder-bg" style="' + bgStyle + '"></div>' +
-            '<span class="tag">' + catLabel + '</span>' +
+      function renderCard(post, idx) {
+        var slug = getSlug(post);
+        var date = formatDate(post.publishedAt || post.createdAt);
+        var delayClass = (idx % 2 === 1) ? ' reveal-delay-1' : '';
+
+        return '<article class="blog-card reveal' + delayClass + '" data-category="' + (post.category || '') + '">' +
+          '<a href="blog-post.html?post=' + slug + '" style="text-decoration:none;color:inherit;">' +
+            '<div class="card-image">' +
+              '<div class="placeholder-bg" style="' + getBgStyle(post) + '"></div>' +
+              '<span class="tag">' + getCatLabel(post.category) + '</span>' +
             '</div>' +
             '<div class="card-body">' +
-            '<h4>' + (post.title || '') + '</h4>' +
-            '<p class="excerpt">' + excerpt + '</p>' +
-            '<div class="card-footer">' +
-            '<div class="card-author">' +
-            '<div class="author-avatar-sm">' + initials + '</div>' +
-            '<span class="author-name-sm">' + authorName + '</span>' +
+              '<h4>' + (post.title || '') + '</h4>' +
+              '<p class="excerpt">' + getExcerpt(post) + '</p>' +
+              '<div class="card-footer">' +
+                '<div class="card-author">' +
+                  '<div class="author-avatar-sm">' + getInitials(post) + '</div>' +
+                  '<span class="author-name-sm">' + getAuthorName(post) + '</span>' +
+                '</div>' +
+                '<div class="card-meta-right">' +
+                  '<span>' + date + '</span>' +
+                  '<span>' + (post.readTime || '3 min read') + '</span>' +
+                '</div>' +
+              '</div>' +
             '</div>' +
-            '<div class="card-meta-right">' +
-            '<span>' + date + '</span>' +
-            '<span>' + (post.readTime || '3 min read') + '</span>' +
-            '</div></div></div>';
+          '</a>' +
+        '</article>';
+      }
 
-          grid.insertBefore(card, grid.firstChild);
+      // ─── Render popular posts sidebar ─────────────────────────
+
+      function renderPopularPosts(posts) {
+        var list = document.getElementById('popular-posts-list');
+        if (!list) return;
+        var top5 = posts.slice(0, 5);
+        if (top5.length === 0) {
+          list.innerHTML = '<li style="padding:12px 0;color:#9a9590;font-size:13px;">No posts yet</li>';
+          return;
+        }
+        var html = '';
+        top5.forEach(function(post, i) {
+          var slug = getSlug(post);
+          var date = formatDate(post.publishedAt || post.createdAt);
+          html += '<li>' +
+            '<span class="post-number">' + (i + 1) + '</span>' +
+            '<div class="post-info">' +
+              '<h5><a href="blog-post.html?post=' + slug + '" style="text-decoration:none;color:inherit;">' + (post.title || '') + '</a></h5>' +
+              '<span>' + date + '</span>' +
+            '</div>' +
+          '</li>';
         });
-      } catch(e) { /* silently fail */ }
+        list.innerHTML = html;
+      }
+
+      // ─── Render category counts sidebar ───────────────────────
+
+      function renderCategoryCounts(posts) {
+        var list = document.getElementById('category-links');
+        if (!list) return;
+        var counts = {};
+        var categoryKeys = Object.keys(catDisplayNames);
+        categoryKeys.forEach(function(k) { counts[k] = 0; });
+        posts.forEach(function(p) {
+          if (p.category && counts.hasOwnProperty(p.category)) {
+            counts[p.category]++;
+          }
+        });
+        var html = '';
+        categoryKeys.forEach(function(cat) {
+          html += '<li><a href="#" data-sidebar-cat="' + cat + '">' + catDisplayNames[cat] + ' <span class="count-badge">' + counts[cat] + '</span></a></li>';
+        });
+        list.innerHTML = html;
+
+        // Click handlers for sidebar category links
+        list.querySelectorAll('a[data-sidebar-cat]').forEach(function(a) {
+          a.addEventListener('click', function(e) {
+            e.preventDefault();
+            var cat = this.getAttribute('data-sidebar-cat');
+            // Find the matching category tab and click it
+            var tabs = document.querySelectorAll('.category-tab');
+            tabs.forEach(function(tab) {
+              var tabCat = getCatKeyFromTab(tab);
+              if (tabCat === cat) tab.click();
+            });
+          });
+        });
+      }
+
+      // ─── Category tab filtering ──────────────────────────────
+
+      function getCatKeyFromTab(tab) {
+        var text = tab.textContent.trim().toLowerCase();
+        if (text === 'all') return 'all';
+        for (var k in catDisplayNames) {
+          if (catDisplayNames[k].toLowerCase() === text) return k;
+        }
+        // Fallback: match by i18n key
+        var i18n = tab.getAttribute('data-i18n') || '';
+        if (i18n.includes('news')) return 'industry-news';
+        if (i18n.includes('trends')) return 'design-trends';
+        if (i18n.includes('care')) return 'stone-care';
+        if (i18n.includes('spotlights')) return 'project-spotlights';
+        if (i18n.includes('hanstone')) return 'hanstone-updates';
+        return 'all';
+      }
+
+      function setupCategoryTabs() {
+        var tabs = document.querySelectorAll('.category-tab');
+        tabs.forEach(function(tab) {
+          tab.addEventListener('click', function() {
+            tabs.forEach(function(t) { t.classList.remove('active'); });
+            this.classList.add('active');
+
+            var cat = getCatKeyFromTab(this);
+            var cards = document.querySelectorAll('.blog-grid .blog-card');
+            cards.forEach(function(card) {
+              if (cat === 'all' || card.getAttribute('data-category') === cat) {
+                card.style.display = '';
+              } else {
+                card.style.display = 'none';
+              }
+            });
+          });
+        });
+      }
+
+      // ─── Render no posts message ──────────────────────────────
+
+      function renderNoPosts() {
+        var grid = document.getElementById('blog-grid');
+        if (!grid) return;
+        grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px;">' +
+          '<h3 style="font-family:\'Cormorant Garamond\',serif;font-size:28px;color:#1A1A1E;margin-bottom:12px;">No posts yet</h3>' +
+          '<p style="font-family:\'Space Grotesk\',sans-serif;font-size:15px;color:#6b6560;">Check back soon for insights on stone design trends, care tips, and industry news.</p>' +
+        '</div>';
+      }
+
+      // ─── Main render ─────────────────────────────────────────
+
+      function renderBlog(posts) {
+        if (!posts || posts.length === 0) {
+          renderNoPosts();
+          renderHero(fallbackPosts[0]); // Show fallback hero even with no posts
+          renderPopularPosts([]);
+          renderCategoryCounts([]);
+          return;
+        }
+
+        // First post = hero, rest = cards
+        var heroPost = posts[0];
+        var cardPosts = posts.slice(1);
+
+        renderHero(heroPost);
+
+        // Render cards
+        var grid = document.getElementById('blog-grid');
+        if (grid) {
+          if (cardPosts.length === 0) {
+            grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px 20px;">' +
+              '<p style="font-family:\'Space Grotesk\',sans-serif;font-size:15px;color:#6b6560;">More posts coming soon.</p>' +
+            '</div>';
+          } else {
+            var html = '';
+            cardPosts.forEach(function(post, i) {
+              html += renderCard(post, i);
+            });
+            grid.innerHTML = html;
+          }
+        }
+
+        // Sidebar: popular posts (all posts, first 5)
+        renderPopularPosts(posts);
+
+        // Sidebar: category counts (all posts)
+        renderCategoryCounts(posts);
+
+        // Setup category filtering
+        setupCategoryTabs();
+      }
+
+      // ─── Init ─────────────────────────────────────────────────
+
+      document.addEventListener('DOMContentLoaded', async function() {
+        try {
+          // Try Supabase/localStorage via AdminData
+          if (typeof AdminData !== 'undefined' && typeof AdminData.getPublishedPosts === 'function') {
+            var posts = await AdminData.getPublishedPosts(20);
+
+            if (posts && posts.length > 0) {
+              renderBlog(posts);
+              return;
+            }
+          }
+
+          // No posts from AdminData — use fallback
+          renderBlog(fallbackPosts);
+
+        } catch (err) {
+          console.warn('[Blog] Failed to load posts from AdminData:', err.message);
+          // Graceful degradation: render fallback posts
+          renderBlog(fallbackPosts);
+        }
+      });
+
     })();
   </script>
 </body>

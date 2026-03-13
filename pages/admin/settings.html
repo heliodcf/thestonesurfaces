@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings | The Stone Surfaces Admin</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/admin.css">
+  <style>
+    /* ── Settings Cards ─────────────────────── */
+    .settings-card {
+      background: var(--color-bg-surface);
+      border: 1px solid var(--color-border-dark);
+      border-radius: 4px;
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+
+    .settings-card-title {
+      font-family: var(--font-headline);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--color-text-light);
+      margin-bottom: 8px;
+    }
+
+    .settings-card-desc {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    /* ── Email List ─────────────────────────── */
+    .email-list {
+      margin-bottom: 20px;
+    }
+
+    .email-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--color-border-dark);
+      border-radius: 4px;
+      margin-bottom: 8px;
+      transition: border-color 0.3s;
+    }
+
+    .email-row:hover {
+      border-color: rgba(196, 163, 90, 0.3);
+    }
+
+    .email-row-address {
+      font-size: 14px;
+      color: var(--color-text-light);
+      font-family: var(--font-body);
+    }
+
+    .email-row-remove {
+      background: none;
+      border: none;
+      color: var(--color-text-muted);
+      font-size: 18px;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 4px;
+      transition: color 0.2s, background 0.2s;
+      line-height: 1;
+    }
+
+    .email-row-remove:hover {
+      color: #EF4444;
+      background: rgba(239, 68, 68, 0.1);
+    }
+
+    .email-add-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .email-add-row input {
+      flex: 1;
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--color-border-dark);
+      border-radius: 4px;
+      color: var(--color-text-light);
+      font-family: var(--font-body);
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .email-add-row input:focus {
+      border-color: var(--color-accent-gold);
+    }
+
+    .email-add-row input::placeholder {
+      color: var(--color-text-muted);
+    }
+
+    .email-empty {
+      text-align: center;
+      padding: 20px;
+      color: var(--color-text-muted);
+      font-size: 13px;
+      border: 1px dashed var(--color-border-dark);
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+
+    /* ── Toggle Switch ──────────────────────── */
+    .toggle-group {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--color-border-dark);
+    }
+
+    .toggle-group:last-of-type {
+      border-bottom: none;
+    }
+
+    .toggle-label {
+      font-size: 14px;
+      color: var(--color-text-light);
+      font-weight: 500;
+    }
+
+    .toggle-switch {
+      position: relative;
+      width: 48px;
+      height: 26px;
+      flex-shrink: 0;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 26px;
+      transition: background 0.3s;
+    }
+
+    .toggle-slider::before {
+      content: '';
+      position: absolute;
+      height: 20px;
+      width: 20px;
+      left: 3px;
+      bottom: 3px;
+      background: var(--color-text-muted);
+      border-radius: 50%;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .toggle-switch input:checked + .toggle-slider {
+      background: rgba(196, 163, 90, 0.3);
+    }
+
+    .toggle-switch input:checked + .toggle-slider::before {
+      transform: translateX(22px);
+      background: var(--color-accent-gold);
+    }
+
+    /* ── Status Indicator ───────────────────── */
+    .connection-status {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--color-border-dark);
+      border-radius: 4px;
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .status-dot--connected {
+      background: #059669;
+      box-shadow: 0 0 6px rgba(5, 150, 105, 0.5);
+    }
+
+    .status-dot--disconnected {
+      background: #EF4444;
+      box-shadow: 0 0 6px rgba(239, 68, 68, 0.5);
+    }
+
+    .connection-info {
+      flex: 1;
+    }
+
+    .connection-label {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      margin-bottom: 4px;
+    }
+
+    .connection-value {
+      font-size: 14px;
+      color: var(--color-text-light);
+      font-family: var(--font-body);
+      word-break: break-all;
+    }
+
+    /* ── Actions Row ────────────────────────── */
+    .settings-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid var(--color-border-dark);
+    }
+
+    /* ── Section Label ──────────────────────── */
+    .settings-section-label {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-accent-gold);
+      margin-bottom: 16px;
+    }
+
+    .toggles-section {
+      margin-top: 24px;
+    }
+  </style>
+</head>
+<body class="admin-body">
+
+  <!-- Admin Header -->
+  <header class="admin-header">
+    <div class="admin-header-inner">
+      <a href="../../index.html" class="admin-logo">
+        <span class="logo-icon">S</span>TSS
+        <span class="admin-logo-badge">Admin</span>
+      </a>
+      <button class="admin-mobile-toggle" id="mobile-toggle">&#9776;</button>
+      <nav class="admin-nav" id="admin-nav">
+        <a href="dashboard.html" class="admin-nav-link">&#9632; Dashboard</a>
+        <a href="blog-manager.html" class="admin-nav-link">&#9998; Blog Manager</a>
+        <a href="settings.html" class="admin-nav-link active">&#9881; Settings</a>
+        <button class="admin-nav-link admin-nav-link--logout" id="logout-btn">Logout</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content (hidden until auth) -->
+  <main class="admin-main" style="display:none;">
+
+    <h1 class="admin-page-title">Settings</h1>
+    <p class="admin-page-subtitle">Manage notification preferences and system configuration.</p>
+
+    <!-- ═══ Email Notifications ═══ -->
+    <div class="settings-card">
+      <div class="settings-card-title">Lead Notification Emails</div>
+      <div class="settings-card-desc">When a new lead is captured or a chat is abandoned, notifications will be sent to these email addresses.</div>
+
+      <div class="settings-section-label">Email Recipients</div>
+
+      <div class="email-list" id="email-list">
+        <!-- Populated by JS -->
+      </div>
+
+      <div class="email-add-row">
+        <input type="email" id="email-input" placeholder="Add email address">
+        <button class="btn btn--outline btn--small" id="add-email-btn">Add</button>
+      </div>
+
+      <div class="toggles-section">
+        <div class="settings-section-label">Notification Triggers</div>
+
+        <div class="toggle-group">
+          <span class="toggle-label">Notify on new complete leads</span>
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggle-new-lead">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div class="toggle-group">
+          <span class="toggle-label">Notify on abandoned chats</span>
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggle-abandoned">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="settings-actions">
+        <button class="btn btn--primary" id="save-settings-btn">Save Settings</button>
+        <button class="btn btn--outline" id="test-email-btn">Send Test Email</button>
+      </div>
+    </div>
+
+    <!-- ═══ Supabase Connection ═══ -->
+    <div class="settings-card">
+      <div class="settings-card-title">Supabase Connection</div>
+      <div class="settings-card-desc">Current database connection status. Configuration is managed via admin-config.js.</div>
+
+      <div class="connection-status" id="supabase-status">
+        <div class="status-dot" id="status-dot"></div>
+        <div class="connection-info">
+          <div class="connection-label">Supabase URL</div>
+          <div class="connection-value" id="supabase-url">Not configured</div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script src="../../js/admin-config.js"></script>
+  <script src="../../js/admin-auth.js"></script>
+  <script src="../../js/admin-data.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      if (!AdminAuth.guard()) return;
+
+      // State
+      let emails = [];
+
+      // DOM refs
+      const emailList = document.getElementById('email-list');
+      const emailInput = document.getElementById('email-input');
+      const newLeadToggle = document.getElementById('toggle-new-lead');
+      const abandonedToggle = document.getElementById('toggle-abandoned');
+
+      // ── Logout & Mobile Nav ────────────────
+      document.getElementById('logout-btn').addEventListener('click', () => AdminAuth.logout());
+      document.getElementById('mobile-toggle').addEventListener('click', () => {
+        document.getElementById('admin-nav').classList.toggle('open');
+      });
+
+      // ── Load Settings ──────────────────────
+      const settings = await AdminData.getSettings();
+      emails = Array.isArray(settings.notification_emails) ? [...settings.notification_emails] : [];
+      newLeadToggle.checked = settings.notification_new_lead !== false;
+      abandonedToggle.checked = settings.notification_abandoned_cart !== false;
+      renderEmailList();
+
+      // ── Supabase Status ────────────────────
+      const supabaseUrl = ADMIN_CONFIG.SUPABASE.URL;
+      const statusDot = document.getElementById('status-dot');
+      const supabaseUrlEl = document.getElementById('supabase-url');
+
+      if (supabaseUrl) {
+        statusDot.classList.add('status-dot--connected');
+        // Mask URL: show protocol + first 8 chars + ...
+        const masked = supabaseUrl.replace(/(https?:\/\/)([^.]{4})[^.]*/i, '$1$2****');
+        supabaseUrlEl.textContent = masked;
+      } else {
+        statusDot.classList.add('status-dot--disconnected');
+        supabaseUrlEl.textContent = 'Not configured';
+      }
+
+      // ── Add Email ──────────────────────────
+      document.getElementById('add-email-btn').addEventListener('click', addEmail);
+      emailInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          addEmail();
+        }
+      });
+
+      // ── Save Settings ──────────────────────
+      document.getElementById('save-settings-btn').addEventListener('click', async () => {
+        const btn = document.getElementById('save-settings-btn');
+        btn.disabled = true;
+        btn.textContent = 'Saving...';
+
+        await AdminData.saveSetting('notification_emails', emails);
+        await AdminData.saveSetting('notification_new_lead', newLeadToggle.checked);
+        await AdminData.saveSetting('notification_abandoned_cart', abandonedToggle.checked);
+
+        btn.disabled = false;
+        btn.textContent = 'Save Settings';
+        showToast('Settings saved!');
+      });
+
+      // ── Test Email ─────────────────────────
+      document.getElementById('test-email-btn').addEventListener('click', () => {
+        showToast('Test email feature coming soon.', 'warning');
+      });
+
+      // ── Functions ──────────────────────────
+
+      function addEmail() {
+        const value = emailInput.value.trim();
+        if (!value) return;
+
+        // Validate email format
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(value)) {
+          showToast('Please enter a valid email address.', 'error');
+          return;
+        }
+
+        // Check duplicate
+        if (emails.includes(value)) {
+          showToast('This email is already in the list.', 'warning');
+          return;
+        }
+
+        emails.push(value);
+        emailInput.value = '';
+        renderEmailList();
+      }
+
+      function removeEmail(index) {
+        emails.splice(index, 1);
+        renderEmailList();
+      }
+
+      function renderEmailList() {
+        if (emails.length === 0) {
+          emailList.innerHTML = '<div class="email-empty">No notification emails configured. Add one below.</div>';
+          return;
+        }
+
+        emailList.innerHTML = emails.map((email, i) => `
+          <div class="email-row">
+            <span class="email-row-address">${escHtml(email)}</span>
+            <button class="email-row-remove" data-idx="${i}" title="Remove">&times;</button>
+          </div>
+        `).join('');
+
+        emailList.querySelectorAll('.email-row-remove').forEach(btn => {
+          btn.addEventListener('click', () => removeEmail(parseInt(btn.dataset.idx)));
+        });
+      }
+
+      // ── Utilities ──────────────────────────
+
+      function escHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str || '';
+        return div.innerHTML;
+      }
+
+      function showToast(message, type = 'success') {
+        const toast = document.getElementById('toast');
+        toast.textContent = message;
+        toast.className = 'toast' + (type !== 'success' ? ' toast--' + type : '');
+        toast.classList.add('visible');
+        setTimeout(() => toast.classList.remove('visible'), 3000);
+      }
+    });
+  </script>
+</body>
+</html>
