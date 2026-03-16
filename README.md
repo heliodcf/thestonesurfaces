@@ -19,7 +19,12 @@ Website multi-pagina premium + area administrativa para **The Stone Surfaces**, 
 | Google Fonts | Cormorant Garamond (headlines) + Space Grotesk (body/UI) |
 | Web Crypto API | Hash SHA-256 para autenticacao admin |
 | localStorage / sessionStorage | Persistencia de dados (leads, posts, sessao) |
-| n8n Webhooks | Backend AI para chat, blog ideas, content generation, SEO (futuro) |
+| Supabase (Cloudfy) | Banco de dados PostgreSQL + Storage (blog_posts, leads, settings, blog-images) |
+| n8n (Cloudfy) | 6 workflows: Blog CRUD, Ideas, Content, Chat Agent, Carrinho Perdido, Settings |
+| OpenRouter (Cloudfy) | LLMs: Gemini 2.5 Flash, Mistral Small, Mistral Nemo |
+| Redis (Cloudfy) | Chat memory persistente (TTL 24h) |
+| Chatwoot (Cloudfy) | Chat widget + atendimento humano (pendente setup) |
+| Evolution API (Cloudfy) | WhatsApp notificacoes (pendente config) |
 | i18n (EN/ES/PT) | Sistema de traducao com `data-i18n` attributes + JSON files |
 
 ---
@@ -120,9 +125,12 @@ thestonesurfaces/
 | 15 | Admin Login | Autenticacao SHA-256 via Web Crypto API, sessao 8h em sessionStorage, guard de rotas | done |
 | 16 | CRM Dashboard | 4 metric cards, tabela de leads com filtros (status/source/search), paginacao, export CSV, painel slide-out com notas, add lead modal | done |
 | 17 | Blog Manager AI | Geracao de 5 ideias via n8n, geracao de conteudo AI, editor com toolbar, tags input, SEO auto-gerado (title, meta desc, OG, alt text, schema.org), preview modal com Google snippet, CRUD de posts | done |
-| 18 | Blog Dinamico | Posts publicados no admin aparecem automaticamente no blog publico via localStorage | done |
-| 19 | n8n AI Agent | Backend do chat com webhook real | todo |
-| 20 | SEO & Performance | Structured data, meta tags, lazy loading, CLS | in-progress |
+| 18 | Blog Dinamico | Posts publicados no admin aparecem automaticamente no blog publico via Supabase (fallback localStorage) | done |
+| 19 | Cloudfy Migration | Supabase, n8n, Redis, OpenRouter — toda infraestrutura migrada para Cloudfy | done |
+| 20 | n8n Workflows | 6 workflows: Blog CRUD/Ideas/Content, Chat Agent, Carrinho Perdido, Settings — todos com credentials corretas | done |
+| 21 | Chat Agent AI | OpenRouter Gemini 2.5 Flash + Redis Memory + Save Lead Tool → Supabase | done |
+| 22 | Chatwoot + Evolution | Chat widget profissional + WhatsApp notificacoes | in-progress |
+| 23 | SEO & Performance | Structured data, meta tags, lazy loading, CLS | todo |
 
 ---
 
@@ -172,20 +180,49 @@ admin-data.js    →  CRUD + AI generation (dual mode: n8n API + localStorage fa
 admin.css        →  Estilos separados (reutiliza :root custom properties de styles.css)
 ```
 
-### n8n Webhooks (configurar em `js/admin-config.js`)
+### Infraestrutura Cloudfy (Plano Max)
 
-| Endpoint | Metodo | Funcao |
-|----------|--------|--------|
-| `/webhook/leads` | GET | Listar leads com filtros (status, source, date range) |
-| `/webhook/leads` | POST | Criar lead (chatbot, forms) |
-| `/webhook/leads/{id}` | PATCH | Atualizar status e notas de um lead |
-| `/webhook/blog-ideas` | POST | Gerar 5 ideias de blog posts para o nicho |
-| `/webhook/blog-generate` | POST | Gerar conteudo completo (HTML, excerpt, tags, categoria) |
-| `/webhook/blog-seo` | POST | Gerar SEO completo (title, meta desc, OG, schema.org) |
-| `/webhook/blog-posts` | GET | Listar posts (filtro por status) |
-| `/webhook/blog-posts/{id}` | PUT | Salvar/atualizar post |
+Toda a infraestrutura backend roda no Cloudfy (rescuedswan):
 
-**Como ativar:** Editar `js/admin-config.js` → preencher URLs nos `ENDPOINTS` → manter `API_MODE: 'api'`. Se webhook falhar, fallback automatico para localStorage.
+| Servico | URL | Status |
+|---------|-----|--------|
+| Supabase | `rescuedswan-supabase.cloudfy.live` | ATIVO |
+| n8n | `rescuedswan-n8n.cloudfy.live` | ATIVO (workflows inativos) |
+| Redis | `rescuedswan-redis.cloudfy.live:6379` | ATIVO |
+| Chatwoot | `rescuedswan-chatwoot.cloudfy.live` | Pendente onboarding |
+| Evolution API | `rescuedswan-evolution.cloudfy.live` | Pendente config |
+
+### n8n Workflows (Cloudfy)
+
+| Workflow | ID | Webhook | LLM | Status |
+|----------|-----|---------|-----|--------|
+| TSS Blog CRUD API | `QBm8uboKs2a0TvRw` | POST `/tss-blog-posts` | — | Pronto |
+| TSS Blog Ideas Generator | `hKwSztv5CzyVLsYu` | POST `/tss-blog-ideas` | Mistral Small | Pronto |
+| TSS Blog Content Generator | `mNJVzGCxjyVqCiOb` | POST `/tss-blog-generate` | Gemini 2.5 Flash + Mistral Nemo | Pronto |
+| TSS Chat Agent (Atendimento) | `LvVrmcCVFdRdTbNm` | Chat Trigger | Gemini 2.5 Flash + Redis Memory | Pronto |
+| TSS Carrinho Perdido (Cron) | `LNOeaaZN0FbEBee5` | Schedule (1h) | — | Pendente Gmail |
+| TSS Settings CRUD | `a7qct7yuFGNbgfPV` | POST `/tss-settings` | — | Pronto |
+
+### n8n Credentials
+
+| ID | Nome | Tipo |
+|----|------|------|
+| `tcV5OYp4HrgnYZSD` | Supabase_TSS | supabaseApi |
+| `ElO7yI2hvBIUjKZf` | openrouter_cloudfy | openRouterApi |
+| `6PSepQskNTBlZmi6` | postgres_cloudfy | postgres |
+| `EiRQ5mOpIuE0JaLG` | redis_cloudfy | redis |
+| `G8t7OAiMif9Hoko5` | evolution_cloudfy | evolutionApi |
+
+### Webhooks (configurados em `js/admin-config.js`)
+
+| Endpoint | URL Completa |
+|----------|-------------|
+| Blog CRUD | `https://rescuedswan-n8n.cloudfy.live/webhook/tss-blog-posts` |
+| Blog Ideas | `https://rescuedswan-n8n.cloudfy.live/webhook/tss-blog-ideas` |
+| Blog Generate | `https://rescuedswan-n8n.cloudfy.live/webhook/tss-blog-generate` |
+| Settings | `https://rescuedswan-n8n.cloudfy.live/webhook/tss-settings` |
+
+**Como ativar:** Editar `js/admin-config.js` → URLs ja configuradas → `API_MODE: 'api'`. Se webhook falhar, fallback automatico para localStorage.
 
 ---
 
@@ -430,12 +467,15 @@ open http://localhost:8080/pages/admin-login.html
 
 ## Proximos Passos
 
-| Prioridade | Task | Dependencia |
-|------------|------|-------------|
-| Alta | Configurar workflows n8n para blog AI (ideas, generate, SEO) | n8n instance rodando |
-| Alta | Configurar workflow n8n para AI chatbot (webhook real) | n8n instance rodando |
-| Media | Conectar endpoints n8n em `admin-config.js` | Workflows n8n prontos |
+| Prioridade | Task | Status |
+|------------|------|--------|
+| Alta | ~~Migrar backend para Cloudfy (Supabase, n8n, Redis)~~ | FEITO |
+| Alta | ~~Trocar LLMs: OpenAI → OpenRouter (Gemini, Mistral)~~ | FEITO |
+| Alta | ~~Configurar Redis Chat Memory no Chat Agent~~ | FEITO |
+| Alta | Completar onboarding Chatwoot (browser ou super_admin) | Pendente |
+| Alta | Configurar Gmail credential no n8n (App Password) | Pendente |
+| Alta | Ativar workflows + testar fluxo completo | Pendente |
+| Alta | Cliente responder questionario → system prompt do agente | Pendente |
+| Media | Configurar Evolution API (WhatsApp notificacoes) | Pendente |
 | Media | SEO completo: structured data, meta tags em todas as paginas | — |
-| Media | Imagens reais: hero, produtos, showroom, equipe | Assets do cliente |
 | Baixa | Otimizacao: lazy loading, WebP, critical CSS, CLS | — |
-| Baixa | PWA: service worker, offline support, manifest | — |
