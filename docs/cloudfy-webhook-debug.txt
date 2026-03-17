@@ -1,0 +1,29 @@
+=============================================
+  n8n Webhook Debug Report — 2026-03-16
+  Instance: rescuedswan-n8n.cloudfy.live
+=============================================
+
+TESTE 1 — Health Check: OK
+{"status":"ok"}
+
+TESTE 2 — Webhook /tss-blog-ideas: 404
+{"code":404,"message":"The requested webhook \"POST tss-blog-ideas\" is not registered.","hint":"The workflow must be active for a production URL to run successfully. You can activate the workflow using the toggle in the top-right of the editor. Note that unlike test URL calls, production URL calls aren't shown on the canvas (only in the executions list)"}
+
+TESTE 3 — Webhook /tss-blog-posts: 404
+{"code":404,"message":"The requested webhook \"POST tss-blog-posts\" is not registered.","hint":"The workflow must be active for a production URL to run successfully. You can activate the workflow using the toggle in the top-right of the editor. Note that unlike test URL calls, production URL calls aren't shown on the canvas (only in the executions list)"}
+
+TESTE 4 — Webhook /chat-01/chat: 404
+{"code":404,"message":"The requested webhook \"POST chat-01/chat\" is not registered.","hint":"The workflow must be active for a production URL to run successfully. You can activate the workflow using the toggle in the top-right of the editor. Note that unlike test URL calls, production URL calls aren't shown on the canvas (only in the executions list)"}
+
+TESTE 5 — Webhook /tss-settings: 404
+{"code":404,"message":"The requested webhook \"POST tss-settings\" is not registered.","hint":"The workflow must be active for a production URL to run successfully. You can activate the workflow using the toggle in the top-right of the editor. Note that unlike test URL calls, production URL calls aren't shown on the canvas (only in the executions list)"}
+
+=============================================
+CONCLUSAO:
+- n8n health: OK (runtime funcionando)
+- Cron triggers: OK (2 execucoes registradas hoje)
+- Webhook triggers: TODOS retornam 404
+- Webhook listener/worker NAO esta registrando paths
+- Pedido: restart do container n8n ou verificar
+  se o webhook worker esta ativo
+=============================================
