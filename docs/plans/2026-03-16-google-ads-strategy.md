@@ -5,7 +5,7 @@
 
 ---
 
-## Estrutura de Campanhas (5)
+## Estrutura de Campanhas (6)
 
 ### 1. [SEARCH] MIAMI — High Intent ($18/dia)
 - Regiao: 30mi ao redor de Doral
@@ -50,16 +50,26 @@
 - Audience signals: site visitors (remarketing), in-market home improvement/kitchen/bathroom/interior design
 - Assets: fotos showroom, slabs, Hanstone, Lucciare
 
+### 6. [SEARCH] CARIBBEAN + PUERTO RICO ($8/dia)
+- Regiao: Puerto Rico, US Virgin Islands, Dominican Republic, Bahamas, Jamaica, Trinidad and Tobago, Cayman Islands, Barbados, Aruba, Curacao, Haiti
+- Publico: All customers (location: "IN or INTERESTED IN" — diferente das campanhas FL)
+- Ad Groups: Stone Slabs Caribbean, Quartz Caribbean, Puerto Rico Specific (keywords em espanhol)
+- Keywords: stone slabs caribbean, granite slabs caribbean, marble slabs puerto rico, quartz countertops puerto rico, losas de granito puerto rico, marmol puerto rico
+- Negatives: mesmas de Miami + local only
+- Landing: /contact
+- Bid: Maximize conversions
+
 ## Distribuicao de Budget
 
 | Campanha | $/dia | $/mes | % |
 |----------|-------|-------|---|
-| Miami Search | $18 | $540 | 32% |
-| Orlando Search | $12 | $360 | 22% |
-| Hanstone Florida | $10 | $300 | 18% |
-| Sarasota B2B | $8 | $240 | 14% |
-| PMax Remarketing | $7 | $210 | 14% |
-| **Total** | **$55** | **$1,650** | **100%** |
+| Miami Search | $18 | $540 | 29% |
+| Orlando Search | $12 | $360 | 19% |
+| Hanstone Florida | $10 | $300 | 16% |
+| Sarasota B2B | $8 | $240 | 13% |
+| Caribbean + PR | $8 | $240 | 13% |
+| PMax Remarketing | $7 | $210 | 11% |
+| **Total** | **$63** | **$1,890** | **100%** |
 
 ## Copy dos Anuncios
 

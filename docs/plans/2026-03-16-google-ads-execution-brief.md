@@ -1,6 +1,6 @@
 # Google Ads — Execution Brief para Claude (Browser Session)
 **Criado por:** Claude Code (sessao CLI) em 2026-03-16
-**Objetivo:** Criar 6 campanhas no Google Ads, todas PAUSADAS, prontas pra ativar quando o site estiver live.
+**Objetivo:** Criar 6 campanhas no Google Ads (5 Search + 1 PMax), todas PAUSADAS, prontas pra ativar quando o site estiver live.
 
 ---
 
@@ -43,19 +43,16 @@
 
 ## WEBSITES E DOMINIOS
 
-- **Site principal:** thestonesurfaces.com (novo, deploy Cloudflare Pages — propagando DNS)
-- **URL temporaria:** thestonesurfaces.pages.dev
+- **Site principal:** thestonesurfaces.com (Cloudflare Pages — LIVE)
 - **Hanstone page:** hanstonefl.com → redireciona pra thestonesurfaces.com/pages/hanstone.html
 - **Lucciare page:** lucciarefl.com → redireciona pra thestonesurfaces.com/pages/lucciare.html
 
-**IMPORTANTE:** Enquanto os dominios propagam, usar `thestonesurfaces.pages.dev` como URL base nas campanhas. Depois trocar pra `thestonesurfaces.com`.
-
 URLs das landing pages:
-- Homepage: `thestonesurfaces.pages.dev`
-- Hanstone: `thestonesurfaces.pages.dev/pages/hanstone.html`
-- Lucciare: `thestonesurfaces.pages.dev/pages/lucciare.html`
-- Contact/Quote: `thestonesurfaces.pages.dev/pages/contact.html`
-- Products: `thestonesurfaces.pages.dev/pages/products.html`
+- Homepage: `thestonesurfaces.com`
+- Hanstone: `thestonesurfaces.com/pages/hanstone.html`
+- Lucciare: `thestonesurfaces.com/pages/lucciare.html`
+- Contact/Quote: `thestonesurfaces.com/pages/contact.html`
+- Products: `thestonesurfaces.com/pages/products.html`
 
 ---
 
@@ -87,7 +84,7 @@ URLs das landing pages:
 
 ---
 
-## 5 CAMPANHAS PARA CRIAR
+## 6 CAMPANHAS PARA CRIAR
 
 ### CAMPANHA 1: [SEARCH] MIAMI — High Intent
 
@@ -169,7 +166,7 @@ Descriptions (max 90 chars each):
 3. South Florida's premier stone distributor. 3 showrooms in Miami, Orlando & Sarasota. Get a quote.
 4. Exclusive Hanstone Quartz dealer in Florida. All USA colors in stock. Lifetime residential warranty.
 
-Final URL: thestonesurfaces.pages.dev/pages/contact.html
+Final URL: thestonesurfaces.com/pages/contact.html
 Display path: thestonesurfaces.com / stone-slabs
 
 **Sitelink Extensions:**
@@ -282,7 +279,7 @@ Descriptions:
 1. Premium stone slabs for fabricators and trade professionals. Direct importers with 500+ varieties in stock.
 2. Wholesale granite, marble, quartz and quartzite slabs. Visit our Sarasota showroom — dedicated B2B service.
 
-Final URL: thestonesurfaces.pages.dev/pages/contact.html
+Final URL: thestonesurfaces.com/pages/contact.html
 Display path: thestonesurfaces.com / wholesale
 
 ---
@@ -392,7 +389,7 @@ Descriptions:
 2. Hanstone Quartz by Hyundai L&C — now at The Stone Surfaces. 93% natural quartz, never needs sealing. 3 FL locations.
 3. New 2026 Hanstone colors: Avora and Calacatta Gravo. See them first at The Stone Surfaces — exclusive FL distributor.
 
-Final URL: thestonesurfaces.pages.dev/pages/hanstone.html
+Final URL: thestonesurfaces.com/pages/hanstone.html
 Display path: thestonesurfaces.com / hanstone-quartz
 
 **Sitelink Extensions (Hanstone specific):**
@@ -440,7 +437,7 @@ Descriptions:
 
 Images: usar imagens do site (slabs, showroom, Hanstone products). Recomendo fazer upload de pelo menos 5-10 imagens de alta qualidade.
 
-Final URL: thestonesurfaces.pages.dev
+Final URL: thestonesurfaces.com
 Business name: The Stone Surfaces
 Call to action: Learn More
 
@@ -535,7 +532,7 @@ Descriptions (max 90 chars each):
 3. Florida's premier stone distributor now shipping to the Caribbean. Get a quote for your project today.
 4. Quality stone slabs delivered to your island. 500+ varieties, competitive pricing, reliable shipping.
 
-Final URL: thestonesurfaces.pages.dev/pages/contact.html
+Final URL: thestonesurfaces.com/pages/contact.html
 Display path: thestonesurfaces.com / caribbean
 
 **Sitelink Extensions:**
@@ -565,10 +562,8 @@ Display path: thestonesurfaces.com / caribbean
 
 ### Depois de criar:
 1. Todas as 6 campanhas devem estar PAUSED
-2. NAO ativar ate o site estar live no dominio definitivo
-3. Quando ativar, trocar todas as URLs de `thestonesurfaces.pages.dev` pra `thestonesurfaces.com`
-4. Trocar URL da Hanstone pra `hanstonefl.com` (redireciona pra pagina correta)
-5. Trocar URL da Lucciare pra `lucciarefl.com` (redireciona pra pagina correta)
+2. Site ja esta LIVE em thestonesurfaces.com — URLs ja estao corretas no brief
+3. Campanhas podem ser ativadas assim que criadas e revisadas pelo owner
 
 ### REGRAS IMPORTANTES:
 - NUNCA mencionar precos nos anuncios
