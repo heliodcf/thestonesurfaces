@@ -4,7 +4,7 @@
  */
 const ADMIN_CONFIG = {
   // Authentication
-  AUTH_HASH: '2974e7d92b74a61e1ba74c57bdf4ee4bd9455ff8b0a1a31ecec5bd5fd2dac840',
+  AUTH_HASH: '02ee04a3f06e95d795e9e0e22ab87d313c06c07077f54f1a7e96a983485011f1',
   SESSION_KEY: 'tss-admin-session',
   SESSION_DURATION_MS: 8 * 60 * 60 * 1000, // 8 hours
 
@@ -13,7 +13,7 @@ const ADMIN_CONFIG = {
 
   // Supabase Cloudfy — public config (anon key is safe, RLS enforces read-only for published posts)
   SUPABASE: {
-    URL: 'https://rescuedswan-supabase.cloudfy.live',
+    URL: 'https://grouplivingcentipede-supabase.cloudfy.live',
     ANON_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlzcyI6InN1cGFiYXNlIiwiaWF0IjoxNzczNDI4MjU5LCJleHAiOjE4MDQ5NjQyNTl9.hCdKT6HuxOnZW53rxzhcSbZXR-EVpuleGKndTMmXFeE',
     STORAGE_BUCKET: 'blog-images',
   },
@@ -21,14 +21,14 @@ const ADMIN_CONFIG = {
   // n8n Webhook Endpoints — Cloudfy instance
   ENDPOINTS: {
     // Blog AI (n8n webhooks)
-    BLOG_IDEAS: 'https://rescuedswan-n8n.cloudfy.live/webhook/tss-blog-ideas',
-    BLOG_GENERATE: 'https://rescuedswan-n8n.cloudfy.live/webhook/tss-blog-generate',
+    BLOG_IDEAS: 'https://grouplivingcentipede-n8n.cloudfy.live/webhook/tss-blog-ideas',
+    BLOG_GENERATE: 'https://grouplivingcentipede-n8n.cloudfy.live/webhook/tss-blog-generate',
 
     // Blog CRUD (n8n webhook — single endpoint, action-based)
-    BLOG_CRUD: 'https://rescuedswan-n8n.cloudfy.live/webhook/tss-blog-posts',
+    BLOG_CRUD: 'https://grouplivingcentipede-n8n.cloudfy.live/webhook/tss-blog-posts',
 
     // Settings CRUD (n8n webhook)
-    SETTINGS_CRUD: 'https://rescuedswan-n8n.cloudfy.live/webhook/tss-settings',
+    SETTINGS_CRUD: 'https://grouplivingcentipede-n8n.cloudfy.live/webhook/tss-settings',
   },
 
   // Lead statuses
