@@ -100,15 +100,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 6000);
   }
 
-  // --- Chat Widget ---
+  // --- Chat Widget with n8n Integration ---
   const chatBtn = document.querySelector('.chat-widget-btn');
   const chatPanel = document.querySelector('.chat-panel');
   const chatClose = document.querySelector('.chat-panel-header .close-btn');
+  const chatMessages = document.querySelector('.chat-messages');
+  const chatInput = document.querySelector('.chat-input input');
+  const chatSendBtn = document.querySelector('.chat-input button');
+  const n8nWidget = document.getElementById('n8n-chat-widget');
+  const webhookUrl = n8nWidget ? n8nWidget.dataset.webhookUrl : null;
+  const sessionId = 'tss-' + Math.random().toString(36).substring(2, 12) + '-' + Date.now();
 
   if (chatBtn && chatPanel) {
     chatBtn.addEventListener('click', () => {
       chatPanel.classList.toggle('active');
       chatBtn.style.display = chatPanel.classList.contains('active') ? 'none' : 'flex';
+      if (chatPanel.classList.contains('active') && chatInput) chatInput.focus();
     });
 
     if (chatClose) {
@@ -116,6 +123,141 @@ document.addEventListener('DOMContentLoaded', () => {
         chatPanel.classList.remove('active');
         chatBtn.style.display = 'flex';
       });
+    }
+  }
+
+  // Quick action buttons
+  document.querySelectorAll('.quick-actions button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const text = btn.textContent.trim();
+      if (chatInput) {
+        chatInput.value = text;
+        sendChatMessage();
+      }
+    });
+  });
+
+  // Send on Enter or click
+  if (chatInput) {
+    chatInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendChatMessage();
+      }
+    });
+  }
+  if (chatSendBtn) {
+    chatSendBtn.addEventListener('click', sendChatMessage);
+  }
+
+  function appendMessage(text, sender) {
+    if (!chatMessages) return null;
+    // Remove quick actions after first user message
+    const quickActions = chatMessages.querySelector('.quick-actions');
+    if (quickActions && sender === 'user') quickActions.remove();
+
+    const msg = document.createElement('div');
+    msg.className = 'chat-message ' + sender;
+    msg.textContent = text;
+    chatMessages.appendChild(msg);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    return msg;
+  }
+
+  function showTypingIndicator() {
+    if (!chatMessages) return null;
+    const indicator = document.createElement('div');
+    indicator.className = 'chat-message bot typing-indicator';
+    indicator.innerHTML = '<span></span><span></span><span></span>';
+    chatMessages.appendChild(indicator);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    return indicator;
+  }
+
+  async function sendChatMessage() {
+    if (!chatInput || !webhookUrl) return;
+    const text = chatInput.value.trim();
+    if (!text) return;
+
+    // Show user message
+    appendMessage(text, 'user');
+    chatInput.value = '';
+    chatInput.disabled = true;
+    if (chatSendBtn) chatSendBtn.disabled = true;
+
+    // Show typing indicator
+    const typing = showTypingIndicator();
+
+    try {
+      const res = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'sendMessage',
+          chatInput: text,
+          sessionId: sessionId
+        })
+      });
+
+      // Remove typing indicator
+      if (typing) typing.remove();
+
+      if (!res.ok) {
+        appendMessage('Sorry, I\'m having trouble connecting. Please call us at 1-866-960-8579.', 'bot');
+        return;
+      }
+
+      // Handle streaming response (n8n Chat Trigger sends newline-delimited JSON)
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let botMsg = appendMessage('', 'bot');
+      let fullText = '';
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        const chunk = decoder.decode(value, { stream: true });
+        const lines = chunk.split('\n').filter(l => l.trim());
+
+        for (const line of lines) {
+          try {
+            const parsed = JSON.parse(line);
+            if (parsed.type === 'item' && parsed.content) {
+              fullText += parsed.content;
+              if (botMsg) botMsg.textContent = fullText;
+            } else if (parsed.type === 'text' && parsed.text) {
+              fullText += parsed.text;
+              if (botMsg) botMsg.textContent = fullText;
+            } else if (parsed.output) {
+              // Non-streaming fallback (single JSON response)
+              fullText = parsed.output;
+              if (botMsg) botMsg.textContent = fullText;
+            }
+          } catch (e) {
+            // Line might not be JSON — could be raw text
+            if (line.trim() && !line.startsWith('{')) {
+              fullText += line;
+              if (botMsg) botMsg.textContent = fullText;
+            }
+          }
+        }
+
+        if (chatMessages) chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+
+      // Fallback if no text was captured
+      if (!fullText.trim() && botMsg) {
+        botMsg.textContent = 'I\'m here to help! Could you rephrase your question?';
+      }
+
+    } catch (err) {
+      if (typing) typing.remove();
+      appendMessage('Connection error. Please try again or call us at 1-866-960-8579.', 'bot');
+    } finally {
+      if (chatInput) chatInput.disabled = false;
+      if (chatSendBtn) chatSendBtn.disabled = false;
+      if (chatInput) chatInput.focus();
     }
   }
 
@@ -208,32 +350,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- Counter Animation ---
-  const counters = document.querySelectorAll('.trust-item .number');
-  const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        const target = el.dataset.count;
-        if (!target) return;
-        let current = 0;
-        const increment = Math.ceil(parseInt(target) / 40);
-        const suffix = el.dataset.suffix || '';
-        const timer = setInterval(() => {
-          current += increment;
-          if (current >= parseInt(target)) {
-            el.textContent = target + suffix;
-            clearInterval(timer);
-          } else {
-            el.textContent = current + suffix;
-          }
-        }, 30);
-        counterObserver.unobserve(el);
-      }
-    });
-  }, { threshold: 0.5 });
-
-  counters.forEach(c => counterObserver.observe(c));
+  // --- Statement Strip Reveal ---
+  const statementStrip = document.querySelector('.statement-strip');
+  if (statementStrip) {
+    const statementObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          statementObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    statementObserver.observe(statementStrip);
+  }
 
   // --- Hanstone Flare Parallax on Scroll ---
   const hanstoneSection = document.querySelector('.hanstone-section');
