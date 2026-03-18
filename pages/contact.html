@@ -437,5 +437,59 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <script src="../js/i18n.js"></script>
   <script src="../js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.querySelector('.quote-form');
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const LEADS_ENDPOINT = 'https://grouplivingcentipede-n8n.cloudfy.live/webhook/tss-leads';
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Collect materials checkboxes
+        const materials = Array.from(form.querySelectorAll('input[name="materials"]:checked'))
+          .map(cb => cb.value).join(', ');
+
+        const data = {
+          name: form.querySelector('#full-name').value.trim(),
+          email: form.querySelector('#email').value.trim(),
+          phone: form.querySelector('#phone').value.trim(),
+          company: form.querySelector('#company-name').value.trim() || null,
+          project_type: form.querySelector('#project-type').value,
+          materials_interest: materials,
+          message: form.querySelector('#message').value.trim(),
+          source: 'quote-form',
+        };
+
+        // Disable button while submitting
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+
+        try {
+          const res = await fetch(LEADS_ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ action: 'save', data }),
+          });
+
+          if (!res.ok) throw new Error('Server error');
+
+          // Success state
+          form.innerHTML = `
+            <div style="text-align:center; padding: 48px 24px;">
+              <div style="font-size: 48px; margin-bottom: 16px;">&#10003;</div>
+              <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 28px; margin-bottom: 12px;">Thank You!</h3>
+              <p style="color: var(--color-text-muted); font-size: 16px; line-height: 1.6;">Your request has been received. Our team will get back to you within 24 hours.</p>
+            </div>
+          `;
+        } catch (err) {
+          console.error('[QuoteForm] Submit failed:', err);
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send Your Request';
+          alert('Something went wrong. Please try again or call us at (866) 960-8579.');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
