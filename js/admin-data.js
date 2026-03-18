@@ -354,6 +354,26 @@ const AdminData = (() => {
   }
 
   async function updateLead(id, updates) {
+    // Try n8n endpoint first (persists to Supabase)
+    const endpoint = ADMIN_CONFIG.ENDPOINTS.LEADS_CRUD;
+    if (endpoint) {
+      const result = await n8nPost(endpoint, {
+        action: 'update',
+        data: { id, ...updates, updated_at: new Date().toISOString() },
+      });
+      if (result && result.success) {
+        // Update local cache too
+        const leads = getStorage(ADMIN_CONFIG.STORAGE_KEYS.LEADS);
+        const idx = leads.findIndex(l => l.id === id);
+        if (idx !== -1) {
+          Object.assign(leads[idx], updates, { updatedAt: new Date().toISOString() });
+          setStorage(ADMIN_CONFIG.STORAGE_KEYS.LEADS, leads);
+        }
+        return result.data || leads[idx];
+      }
+    }
+
+    // localStorage fallback
     const leads = getStorage(ADMIN_CONFIG.STORAGE_KEYS.LEADS);
     const idx = leads.findIndex(l => l.id === id);
     if (idx === -1) return null;
@@ -363,6 +383,21 @@ const AdminData = (() => {
   }
 
   async function deleteLead(id) {
+    // Try n8n endpoint first (deletes from Supabase)
+    const endpoint = ADMIN_CONFIG.ENDPOINTS.LEADS_CRUD;
+    if (endpoint) {
+      const result = await n8nPost(endpoint, {
+        action: 'delete',
+        data: { id },
+      });
+      if (result && result.success) {
+        const leads = getStorage(ADMIN_CONFIG.STORAGE_KEYS.LEADS);
+        setStorage(ADMIN_CONFIG.STORAGE_KEYS.LEADS, leads.filter(l => l.id !== id));
+        return true;
+      }
+    }
+
+    // localStorage fallback
     const leads = getStorage(ADMIN_CONFIG.STORAGE_KEYS.LEADS);
     setStorage(ADMIN_CONFIG.STORAGE_KEYS.LEADS, leads.filter(l => l.id !== id));
     return true;
