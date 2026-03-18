@@ -11,10 +11,10 @@ const ADMIN_CONFIG = {
   // API Mode: 'api' (n8n webhooks + Supabase) | 'local' (localStorage fallback)
   API_MODE: 'api',
 
-  // Supabase Cloudfy — admin key (behind admin login, TODO: migrate to n8n proxy)
+  // Supabase Cloudfy — reads proxied via n8n webhooks (key server-side only)
   SUPABASE: {
     URL: 'https://grouplivingcentipede-supabase.cloudfy.live',
-    ANON_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic2VydmljZV9yb2xlIiwiaXNzIjoic3VwYWJhc2UiLCJpYXQiOjE3NzM3ODEwNDUsImV4cCI6MTgwNTMxNzA0NX0.CWIOBplatRZqe-EVsRFJr9nfwUDsw1GmJ7J_klow9Hc',
+    ANON_KEY: '',
     STORAGE_BUCKET: 'blog-images',
   },
 
@@ -29,6 +29,9 @@ const ADMIN_CONFIG = {
 
     // Settings CRUD (n8n webhook)
     SETTINGS_CRUD: 'https://grouplivingcentipede-n8n.cloudfy.live/webhook/tss-settings',
+
+    // Leads CRUD (n8n webhook — proxies Supabase reads)
+    LEADS_CRUD: 'https://grouplivingcentipede-n8n.cloudfy.live/webhook/tss-leads',
   },
 
   // Lead statuses
