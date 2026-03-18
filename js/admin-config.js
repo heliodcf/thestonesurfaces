@@ -4,7 +4,7 @@
  */
 const ADMIN_CONFIG = {
   // Authentication
-  AUTH_HASH: '02ee04a3f06e95d795e9e0e22ab87d313c06c07077f54f1a7e96a983485011f1',
+  AUTH_HASH: '2974e7d92b74a61e1ba74c57bdf4ee4bd9455ff8b0a1a31ecec5bd5fd2dac840',
   SESSION_KEY: 'tss-admin-session',
   SESSION_DURATION_MS: 8 * 60 * 60 * 1000, // 8 hours
 
