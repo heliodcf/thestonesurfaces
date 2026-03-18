@@ -11,10 +11,10 @@ const ADMIN_CONFIG = {
   // API Mode: 'api' (n8n webhooks + Supabase) | 'local' (localStorage fallback)
   API_MODE: 'api',
 
-  // Supabase Cloudfy — public config (anon key is safe, RLS enforces read-only for published posts)
+  // Supabase Cloudfy — admin key (behind admin login, TODO: migrate to n8n proxy)
   SUPABASE: {
     URL: 'https://grouplivingcentipede-supabase.cloudfy.live',
-    ANON_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlzcyI6InN1cGFiYXNlIiwiaWF0IjoxNzczNDI4MjU5LCJleHAiOjE4MDQ5NjQyNTl9.hCdKT6HuxOnZW53rxzhcSbZXR-EVpuleGKndTMmXFeE',
+    ANON_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic2VydmljZV9yb2xlIiwiaXNzIjoic3VwYWJhc2UiLCJpYXQiOjE3NzM3ODEwNDUsImV4cCI6MTgwNTMxNzA0NX0.CWIOBplatRZqe-EVsRFJr9nfwUDsw1GmJ7J_klow9Hc',
     STORAGE_BUCKET: 'blog-images',
   },
 

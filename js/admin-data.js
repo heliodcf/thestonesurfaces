@@ -300,18 +300,24 @@ const AdminData = (() => {
   // ─── LEADS ─────────────────────────────────────────────────
 
   async function getLeads(filters = {}) {
-    // Read directly from Supabase (service_role via n8n, or direct if admin)
-    const endpoint = ADMIN_CONFIG.ENDPOINTS.BLOG_CRUD; // reuse CRUD endpoint
-    if (endpoint) {
-      const result = await n8nPost(endpoint.replace('tss-blog-posts', 'tss-leads'), {
-        action: 'list',
-        data: { status: filters.status || 'all', source: filters.source || 'all' },
-      });
-      if (result && result.success && Array.isArray(result.data)) {
-        const leads = result.data.map(leadToCamel);
-        setStorage(ADMIN_CONFIG.STORAGE_KEYS.LEADS, leads);
-        return leads;
+    // Read directly from Supabase
+    let params = 'order=created_at.desc&limit=100';
+    if (filters.status && filters.status !== 'all') params += '&status=eq.' + filters.status;
+    if (filters.source && filters.source !== 'all') params += '&source=eq.' + filters.source;
+
+    const result = await supabaseGet('leads', params);
+    if (result && Array.isArray(result)) {
+      let leads = result.map(leadToCamel);
+      setStorage(ADMIN_CONFIG.STORAGE_KEYS.LEADS, leads);
+      if (filters.search) {
+        const q = filters.search.toLowerCase();
+        leads = leads.filter(l =>
+          (l.name || '').toLowerCase().includes(q) ||
+          (l.email || '').toLowerCase().includes(q) ||
+          (l.phone || '').includes(q)
+        );
       }
+      return leads;
     }
 
     // localStorage fallback
@@ -320,8 +326,8 @@ const AdminData = (() => {
       leads = getSeedLeads();
       setStorage(ADMIN_CONFIG.STORAGE_KEYS.LEADS, leads);
     }
-    if (filters.status) leads = leads.filter(l => l.status === filters.status);
-    if (filters.source) leads = leads.filter(l => l.source === filters.source);
+    if (filters.status && filters.status !== 'all') leads = leads.filter(l => l.status === filters.status);
+    if (filters.source && filters.source !== 'all') leads = leads.filter(l => l.source === filters.source);
     if (filters.search) {
       const q = filters.search.toLowerCase();
       leads = leads.filter(l =>
