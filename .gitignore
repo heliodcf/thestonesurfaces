@@ -1,6 +1,10 @@
 .DS_Store
 .env
 .env.local
+.wrangler/
+Agente/
+docs/n8n-backups/
+n8n/
 images/hero/hero-video.mp4
 images/hero/hero-video.webm
 images/hero/hero-video-V2.mp4
