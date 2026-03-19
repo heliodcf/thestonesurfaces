@@ -702,8 +702,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <section class="section" style="padding-top: 0;">
       <div class="container" style="max-width: 100%; padding: 0;">
 
-        <!-- Wrapper clips the top of the iframe to hide StoneProfitsWeb header -->
-        <div style="overflow: hidden; position: relative; height: 4000px;">
+        <!-- StoneProfitsWeb iframe (replaced by native catalog below) -->
+        <div style="overflow: hidden; position: relative; height: 4000px; display: none;">
           <iframe
             src="https://thestonesurfaces.stoneprofitsweb.com/"
             title="The Stone Surfaces — Product Catalog"
@@ -1110,7 +1110,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </section>
 
     <!-- ===== NATIVE PRODUCT CATALOG (Supabase-powered) ===== -->
-    <section id="nativeCatalog" style="display:none;">
+    <script src="../js/admin-config.js"></script>
+    <section id="nativeCatalog">
       <style>
         /* ===== NATIVE CATALOG STYLES ===== */
 
