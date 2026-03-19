@@ -96,7 +96,9 @@ thestonesurfaces/
 │
 ├── docs/plans/
 │   ├── 2026-03-11-multi-language-i18n.md        # Design doc do sistema i18n
-│   └── 2026-03-11-admin-crm-blog-manager-design.md  # Design doc do admin
+│   ├── 2026-03-11-admin-crm-blog-manager-design.md  # Design doc do admin
+│   ├── 2026-03-19-native-product-catalog-design.md  # Design doc do catalogo nativo
+│   └── 2026-03-19-native-product-catalog-plan.md    # Plano de implementacao do catalogo
 │
 └── .github/
     └── workflows/                # GitHub Pages deploy
@@ -110,8 +112,8 @@ thestonesurfaces/
 |---|-------|-----------|--------|
 | 1 | Design System | Paleta Cool Gray Monochrome, tipografia, spacing, motion, CSS custom properties | done |
 | 2 | Homepage | 9 secoes: hero cinematico, spotlights Hanstone/Lucciare, collections grid, trust strip inline, galeria, reviews, blog preview, newsletter, footer com 3 locacoes | done |
-| 3 | Products | Grid com filtros (cor, finish, marca, espessura), comparison bar (ate 3 produtos) | done |
-| 4 | Product Detail | Zoom on hover, accordion de specs tecnicas, produtos relacionados | done |
+| 3 | Products | Catalogo nativo com 440 produtos do Supabase, filtros (categoria, espessura, finish, location), busca, paginacao 24/pg, sort. Substituiu iframe StoneProfitsWeb | done |
+| 4 | Product Detail | Pagina dinamica via `?id=`, imagem com zoom, specs, disponibilidade por location, galeria de aplicacao, produtos relacionados, mobile sticky CTA | done |
 | 5 | Hanstone Page | Brand page: hero, brand story com carrossel auto-rotativo (7 fotos lifestyle), catalogo real 40 cores Hanstone com imagens oficiais, lightbox popup com nome em rosa Hanstone + codigo referencia, beneficios, recursos profissionais | done |
 | 6 | Lucciare Page | Brand page: hero split, brand story, flat swatch grid (23 cores com collection badges), Genesis Technology, benefits, Professional Resources (BIM, CAD, CEU, Specs, Care), CTA, lightbox popup com suporte a placeholders | done |
 | 7 | Get Inspired | Masonry gallery, Before/After slider, Instagram feed, submit project form | done |
@@ -124,13 +126,16 @@ thestonesurfaces/
 | 14 | Mobile Responsivo | Bottom tab bar, hamburger menu, swipeable carousels, touch targets 44px | done |
 | 15 | Admin Login | Autenticacao SHA-256 via Web Crypto API, sessao 8h em sessionStorage, guard de rotas | done |
 | 16 | CRM Dashboard | 4 metric cards, tabela de leads com filtros (status/source/search), paginacao, export CSV, painel slide-out com notas, add lead modal | done |
-| 17 | Blog Manager AI | Geracao de 5 ideias via n8n, geracao de conteudo AI, editor com toolbar, tags input, SEO auto-gerado (title, meta desc, OG, alt text, schema.org), preview modal com Google snippet, CRUD de posts | done |
-| 18 | Blog Dinamico | Posts publicados no admin aparecem automaticamente no blog publico via Supabase (fallback localStorage) | done |
+| 17 | Blog Manager AI | Geracao de ideias via n8n, geracao de conteudo AI, editor com toolbar, tags input, SEO auto-gerado, preview modal, CRUD de posts, upload de imagem (Supabase Storage), busca Unsplash com 4 opcoes | done |
+| 18 | Blog Dinamico | Posts publicados no admin aparecem automaticamente no blog publico via Supabase. Hero = primeiro post, grid = restante | done |
 | 19 | Cloudfy Migration | Supabase, n8n, Redis, OpenRouter — toda infraestrutura migrada para Cloudfy | done |
-| 20 | n8n Workflows | 6 workflows: Blog CRUD/Ideas/Content, Chat Agent, Carrinho Perdido, Settings — todos com credentials corretas | done |
+| 20 | n8n Workflows | 8 workflows: Blog CRUD/Ideas/Content, Chat Agent, Carrinho Perdido, Settings, Leads CRUD, **Product Sync** — todos com credentials corretas | done |
 | 21 | Chat Agent AI | OpenRouter Gemini 2.5 Flash + Redis Memory + Save Lead Tool → Supabase | done |
 | 22 | Chatwoot + Evolution | Chat widget profissional + WhatsApp notificacoes | in-progress |
-| 23 | SEO & Performance | Structured data, meta tags, lazy loading, CLS | todo |
+| 23 | Product Catalog Native | 440 produtos sincronizados do StoneProfits via API → Supabase. Sync diario 3AM + manual. Catalogo nativo substituiu iframe | done |
+| 24 | Blog Image Upload | Upload drag & drop pro Supabase Storage + busca Unsplash automatica com 4 opcoes | done |
+| 25 | Blog CRUD Fixes | Fix save (UUID validation), fix list (empty array response), fix Success Response (always array) | done |
+| 26 | SEO & Performance | Structured data, meta tags, lazy loading, CLS | todo |
 
 ---
 
@@ -182,47 +187,75 @@ admin.css        →  Estilos separados (reutiliza :root custom properties de st
 
 ### Infraestrutura Cloudfy (Plano Max)
 
-Toda a infraestrutura backend roda no Cloudfy (rescuedswan):
+Toda a infraestrutura backend roda no Cloudfy (grouplivingcentipede):
 
 | Servico | URL | Status |
 |---------|-----|--------|
-| Supabase | `rescuedswan-supabase.cloudfy.live` | ATIVO |
-| n8n | `rescuedswan-n8n.cloudfy.live` | ATIVO (workflows inativos) |
-| Redis | `rescuedswan-redis.cloudfy.live:6379` | ATIVO |
-| Chatwoot | `rescuedswan-chatwoot.cloudfy.live` | Pendente onboarding |
-| Evolution API | `rescuedswan-evolution.cloudfy.live` | Pendente config |
+| Supabase | `grouplivingcentipede-supabase.cloudfy.live` | ATIVO |
+| n8n | `grouplivingcentipede-n8n.cloudfy.live` | ATIVO (8 workflows ativos) |
+| Redis | `grouplivingcentipede-redis.cloudfy.live:6379` | ATIVO |
+| Chatwoot | `grouplivingcentipede-chatwoot.cloudfy.live` | Pendente onboarding |
+| Evolution API | `grouplivingcentipede-evolution.cloudfy.live` | Pendente config |
+
+### Supabase Tables
+
+| Tabela | Descricao | RLS |
+|--------|-----------|-----|
+| `blog_posts` | Posts do blog (CRUD via n8n) | Public read published, service_role full |
+| `leads` | Leads do CRM (chatbot, forms, manual) | Service_role only |
+| `settings` | Config key-value (notificacoes) | Service_role only |
+| `products` | 440 produtos sincronizados do StoneProfits | Public read all, service_role full |
+
+### Supabase Storage Buckets
+
+| Bucket | Uso | Public |
+|--------|-----|--------|
+| `blog-images` | Featured images dos blog posts (upload via admin) | Sim |
+| `product-images` | Fotos de aplicacao de produtos (admin enrichment) | Sim |
 
 ### n8n Workflows (Cloudfy)
 
-| Workflow | ID | Webhook | LLM | Status |
-|----------|-----|---------|-----|--------|
-| TSS Blog CRUD API | `QBm8uboKs2a0TvRw` | POST `/tss-blog-posts` | — | Pronto |
-| TSS Blog Ideas Generator | `hKwSztv5CzyVLsYu` | POST `/tss-blog-ideas` | Mistral Small | Pronto |
-| TSS Blog Content Generator | `mNJVzGCxjyVqCiOb` | POST `/tss-blog-generate` | Gemini 2.5 Flash + Mistral Nemo | Pronto |
-| TSS Chat Agent (Atendimento) | `LvVrmcCVFdRdTbNm` | Chat Trigger | Gemini 2.5 Flash + Redis Memory | Pronto |
-| TSS Carrinho Perdido (Cron) | `LNOeaaZN0FbEBee5` | Schedule (1h) | — | Pendente Gmail |
-| TSS Settings CRUD | `a7qct7yuFGNbgfPV` | POST `/tss-settings` | — | Pronto |
+| Workflow | ID | Webhook | Status |
+|----------|-----|---------|--------|
+| TSS Blog CRUD API | `dpHyaxeBSyTkeCRJ` | POST `/tss-blog-posts` | Ativo |
+| TSS Blog Ideas Generator | `ZeCbmGTDE1s908Yt` | POST `/tss-blog-ideas` | Ativo |
+| TSS Blog Content Generator | `rykKEueJcCXisRsj` | POST `/tss-blog-generate` | Ativo |
+| TSS Chat Agent (Atendimento) | `2OGBWVHj4hb9ftzm` | Chat Trigger | Ativo |
+| TSS Carrinho Perdido (Cron) | `hjn1iS2Y9W0dvweh` | Schedule (1h) | Ativo |
+| TSS Settings CRUD | `wNB5oukELRPaexTS` | POST `/tss-settings` | Ativo |
+| TSS Leads CRUD API | `UkwtEF54UFIexQ5I` | POST `/tss-leads` | Ativo |
+| **TSS Product Sync** | `ZnkfOixiOi5hNhub` | POST `/tss-product-sync` + Schedule 3AM | **Ativo** |
 
 ### n8n Credentials
 
 | ID | Nome | Tipo |
 |----|------|------|
-| `tcV5OYp4HrgnYZSD` | Supabase_TSS | supabaseApi |
-| `ElO7yI2hvBIUjKZf` | openrouter_cloudfy | openRouterApi |
-| `6PSepQskNTBlZmi6` | postgres_cloudfy | postgres |
-| `EiRQ5mOpIuE0JaLG` | redis_cloudfy | redis |
-| `G8t7OAiMif9Hoko5` | evolution_cloudfy | evolutionApi |
+| `cWxvS4F4YThtSz3R` | Supabase_TSS | supabaseApi |
 
 ### Webhooks (configurados em `js/admin-config.js`)
 
 | Endpoint | URL Completa |
 |----------|-------------|
-| Blog CRUD | `https://rescuedswan-n8n.cloudfy.live/webhook/tss-blog-posts` |
-| Blog Ideas | `https://rescuedswan-n8n.cloudfy.live/webhook/tss-blog-ideas` |
-| Blog Generate | `https://rescuedswan-n8n.cloudfy.live/webhook/tss-blog-generate` |
-| Settings | `https://rescuedswan-n8n.cloudfy.live/webhook/tss-settings` |
+| Blog CRUD | `https://grouplivingcentipede-n8n.cloudfy.live/webhook/tss-blog-posts` |
+| Blog Ideas | `https://grouplivingcentipede-n8n.cloudfy.live/webhook/tss-blog-ideas` |
+| Blog Generate | `https://grouplivingcentipede-n8n.cloudfy.live/webhook/tss-blog-generate` |
+| Settings | `https://grouplivingcentipede-n8n.cloudfy.live/webhook/tss-settings` |
+| Leads CRUD | `https://grouplivingcentipede-n8n.cloudfy.live/webhook/tss-leads` |
+| Product Sync | `https://grouplivingcentipede-n8n.cloudfy.live/webhook/tss-product-sync` |
 
-**Como ativar:** Editar `js/admin-config.js` → URLs ja configuradas → `API_MODE: 'api'`. Se webhook falhar, fallback automatico para localStorage.
+### StoneProfits API (Product Sync)
+
+| Item | Valor |
+|------|-------|
+| Base URL | `https://thestonesurfaces.stoneprofits.com/api/fetchdataAngularProductionToyota.ashx` |
+| Auth | Token estatico (SPSWebToken) em `.env` |
+| Endpoint | `act=getItemGallery` (POST) |
+| Locations | `act=getLocations` (GET) → Miami, Orlando, Sarasota |
+| Produtos | 922 registros → 440 unicos (deduplicados por ItemID, slabs/qty agregados) |
+| Imagens | S3: `https://s3.us-east-1.amazonaws.com/thestonesurfaces-sps-files/{Filename}` |
+| Sync | Diario 3AM ET + botao manual via webhook |
+
+**Como ativar:** `API_MODE: 'api'` em `js/admin-config.js`. Fallback automatico para localStorage se webhook falhar.
 
 ---
 
@@ -414,10 +447,14 @@ Ao clicar em qualquer swatch card, abre overlay com imagem ampliada, nome da ped
 3. **Admin separado do publico** — CSS e JS proprios. Nenhum arquivo publico modificado para admin (exceto footer link + blog integration script).
 4. **Data layer com dual mode** — `admin-data.js` verifica `ADMIN_CONFIG.API_MODE`. Se `'api'` + endpoint: fetch para n8n. Se falha: fallback localStorage. Zero mudanca no frontend ao alternar.
 5. **Autenticacao client-side (MVP)** — SHA-256 via Web Crypto API. Hash no config, sessao em sessionStorage. Upgrade para JWT via n8n quando backend existir.
-6. **Blog dinamico** — Posts publicados gravados em `localStorage('tss-blog-posts')`. Blog publico le e renderiza antes dos cards estaticos.
-7. **i18n sem biblioteca** — IIFE puro, JSON de traducao, `data-i18n` attributes. Suporta textContent, innerHTML, placeholder, alt, title.
-8. **Duas marcas parceiras** — Hanstone + Lucciare com paginas dedicadas.
-9. **3 locacoes** — Doral (main showroom), Orlando, Sarasota. Mapas Google embeddados.
+6. **Blog dinamico** — Posts salvos no Supabase via n8n webhook. Blog publico le via n8n CRUD endpoint. Primeiro post = hero, restante = grid.
+7. **Blog images** — Upload drag & drop pro Supabase Storage (bucket `blog-images`) + busca Unsplash com 4 opcoes por query. Auto-busca apos geracao AI.
+8. **i18n sem biblioteca** — IIFE puro, JSON de traducao, `data-i18n` attributes. Suporta textContent, innerHTML, placeholder, alt, title.
+9. **Duas marcas parceiras** — Hanstone + Lucciare com paginas dedicadas.
+10. **3 locacoes** — Doral (main showroom), Orlando, Sarasota. Mapas Google embeddados.
+11. **Catalogo nativo de produtos** — 440 produtos do StoneProfits sincronizados via API REST → Supabase. Frontend nativo com filtros client-side (categoria, espessura, finish, location), busca, paginacao. Substituiu iframe do StoneProfitsWeb.
+12. **Product Sync** — n8n workflow faz GET na API StoneProfits (token estatico), deduplicao por ItemID (agrega slabs/qty), upsert em batches de 20 no Supabase com `on_conflict=sps_item_id`. Preserva campos de enriquecimento (description, application_images).
+13. **Product detail dinamico** — Pagina carrega produto do Supabase via `?id={sps_item_id}`. Zoom on hover com tracking de cursor, disponibilidade por location, galeria de aplicacao, produtos relacionados, mobile sticky CTA.
 
 ---
 
@@ -445,6 +482,13 @@ Ao clicar em qualquer swatch card, abre overlay com imagem ampliada, nome da ped
 - Imagens com espacos no nome do arquivo (ex: "1 ANTELLO - LO804.jpg") funcionam em HTML src mas devem ser URL-encoded em alguns contextos.
 - Pagina Lucciare redesenhada para espelhar estrutura Hanstone: collections convertidas de scroll horizontal para flat grid com `collection-badge` overlay por swatch. Lightbox adaptado para funcionar com placeholders de gradiente CSS (cria div dinamico) ate imagens reais serem adicionadas.
 - Lucciare tem 3 colecoes (Signature 10 cores, Genesis 9 cores, Solstice 4 cores = 23 total) vs Hanstone (40 cores com imagens reais).
+- StoneProfits API retorna duplicatas por location/bundle — 922 registros sao 440 produtos unicos. Deduplicacao obrigatoria no Transform node com agregacao de slabs/qty.
+- Supabase upsert via REST requer `?on_conflict=sps_item_id` na URL + header `Prefer: resolution=merge-duplicates`. Sem o `on_conflict`, retorna 500 com "ON CONFLICT DO UPDATE command cannot affect row a second time".
+- `this.helpers.httpRequest` no n8n Code node: usar `body: JSON.stringify(array)` (string), NAO `body: array, json: true` (double-serialize).
+- Blog CRUD: IDs gerados pelo frontend (`post_123...`) nao sao UUID validos. O workflow "Prepare Save" precisa validar com regex UUID e tratar como insert novo se invalido.
+- Blog CRUD: `alwaysOutputData: true` no node Supabase "List Posts" + filtrar items vazios (`item.json.id` exists) no "Filter By Status" e "Success Response".
+- Unsplash API: query longa demais retorna poucos resultados. Usar titulo + "luxury interior" em vez de titulo + "stone countertop interior design".
+- Location colors desaturadas pro palette monochrome: Miami `#5A6B7A`, Orlando `#6B5A7A`, Sarasota `#5A7A6B`.
 
 ---
 
@@ -472,10 +516,13 @@ open http://localhost:8080/pages/admin-login.html
 | Alta | ~~Migrar backend para Cloudfy (Supabase, n8n, Redis)~~ | FEITO |
 | Alta | ~~Trocar LLMs: OpenAI → OpenRouter (Gemini, Mistral)~~ | FEITO |
 | Alta | ~~Configurar Redis Chat Memory no Chat Agent~~ | FEITO |
+| Alta | ~~Catalogo nativo de produtos (substituir iframe StoneProfitsWeb)~~ | FEITO |
+| Alta | ~~Blog: fix save/list + upload imagem + Unsplash~~ | FEITO |
+| Alta | ~~Product Sync: n8n workflow diario + manual~~ | FEITO |
+| Alta | Admin Product Manager (enriquecimento: descricao + fotos aplicacao) | Pendente |
 | Alta | Completar onboarding Chatwoot (browser ou super_admin) | Pendente |
 | Alta | Configurar Gmail credential no n8n (App Password) | Pendente |
-| Alta | Ativar workflows + testar fluxo completo | Pendente |
 | Alta | Cliente responder questionario → system prompt do agente | Pendente |
 | Media | Configurar Evolution API (WhatsApp notificacoes) | Pendente |
-| Media | SEO completo: structured data, meta tags em todas as paginas | — |
-| Baixa | Otimizacao: lazy loading, WebP, critical CSS, CLS | — |
+| Media | SEO completo: structured data, meta tags em todas as paginas | Pendente |
+| Baixa | Otimizacao: lazy loading, WebP, critical CSS, CLS | Pendente |
