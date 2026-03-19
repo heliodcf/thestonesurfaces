@@ -4,6 +4,14 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  // --- Phone Click Tracking for Google Ads via GTM ---
+  document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+    link.addEventListener('click', () => {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'phone_click', phone_number: link.href });
+    });
+  });
+
   // --- Scroll-triggered Reveal Animations ---
   const revealElements = document.querySelectorAll('.reveal');
   const revealObserver = new IntersectionObserver((entries) => {
@@ -113,9 +121,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (chatBtn && chatPanel) {
     chatBtn.addEventListener('click', () => {
+      const wasActive = chatPanel.classList.contains('active');
       chatPanel.classList.toggle('active');
       chatBtn.style.display = chatPanel.classList.contains('active') ? 'none' : 'flex';
       if (chatPanel.classList.contains('active') && chatInput) chatInput.focus();
+      // Fire conversion event on chat open for Google Ads via GTM
+      if (!wasActive) {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'chat_open' });
+      }
     });
 
     if (chatClose) {
