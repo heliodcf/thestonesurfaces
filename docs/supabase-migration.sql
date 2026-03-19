@@ -79,31 +79,21 @@ INSERT INTO settings (key, value) VALUES
 ON CONFLICT (key) DO NOTHING;
 
 -- 4. RLS Policies
+-- NOTE: service_role bypasses RLS automatically in Supabase — no explicit policy needed.
+-- auth.role() = 'service_role' causes errors in SQL editor (no JWT context).
 
--- Blog Posts: public can read published, service_role has full access
+-- Blog Posts: public (anon) can read published only
 ALTER TABLE blog_posts ENABLE ROW LEVEL SECURITY;
 
 CREATE POLICY "Public can read published posts"
   ON blog_posts FOR SELECT
   USING (status = 'published');
 
-CREATE POLICY "Service role full access on blog_posts"
-  ON blog_posts FOR ALL
-  USING (auth.role() = 'service_role');
-
--- Leads: no public access, service_role only
+-- Leads: no public access (service_role bypasses RLS automatically)
 ALTER TABLE leads ENABLE ROW LEVEL SECURITY;
 
-CREATE POLICY "Service role full access on leads"
-  ON leads FOR ALL
-  USING (auth.role() = 'service_role');
-
--- Settings: no public access, service_role only
+-- Settings: no public access (service_role bypasses RLS automatically)
 ALTER TABLE settings ENABLE ROW LEVEL SECURITY;
-
-CREATE POLICY "Service role full access on settings"
-  ON settings FOR ALL
-  USING (auth.role() = 'service_role');
 
 -- 5. Storage bucket (create via Supabase Dashboard > Storage)
 -- Bucket name: blog-images
