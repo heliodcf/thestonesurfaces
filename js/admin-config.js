@@ -11,11 +11,15 @@ const ADMIN_CONFIG = {
   // API Mode: 'api' (n8n webhooks + Supabase) | 'local' (localStorage fallback)
   API_MODE: 'api',
 
+  // Unsplash API (free tier — 50 req/hr)
+  UNSPLASH_ACCESS_KEY: 'crJxgF336crUHzvqBHh1OHzm-7vjJe2mgbUJ39lrLBE',
+
   // Supabase Cloudfy — reads proxied via n8n webhooks (key server-side only)
   SUPABASE: {
     URL: 'https://grouplivingcentipede-supabase.cloudfy.live',
-    ANON_KEY: '',
+    ANON_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlzcyI6InN1cGFiYXNlIiwiaWF0IjoxNzczNzgxMDQ1LCJleHAiOjE4MDUzMTcwNDV9.nNxpimWk059MIcP49TuqKHEoSaaiD0yWDT36Ej05zJg',
     STORAGE_BUCKET: 'blog-images',
+    PRODUCT_STORAGE_BUCKET: 'product-images',
   },
 
   // n8n Webhook Endpoints — Cloudfy instance
@@ -32,6 +36,9 @@ const ADMIN_CONFIG = {
 
     // Leads CRUD (n8n webhook — proxies Supabase reads)
     LEADS_CRUD: 'https://grouplivingcentipede-n8n.cloudfy.live/webhook/tss-leads',
+
+    // Product Sync (n8n webhook — triggers StoneProfits → Supabase sync)
+    PRODUCT_SYNC: 'https://grouplivingcentipede-n8n.cloudfy.live/webhook/tss-product-sync',
   },
 
   // Lead statuses
@@ -67,9 +74,43 @@ const ADMIN_CONFIG = {
     { value: 'scheduled', label: 'Scheduled', color: '#3B82F6' },
   ],
 
+  // Product catalog
+  PRODUCT_CATEGORIES: [
+    { value: 'Quartzite', label: 'Quartzite' },
+    { value: 'Quartz', label: 'Quartz' },
+    { value: 'Granite', label: 'Granite' },
+    { value: 'Marble', label: 'Marble' },
+    { value: 'Hard Marble', label: 'Hard Marble' },
+    { value: 'Dolomite', label: 'Dolomite' },
+    { value: 'Onyx', label: 'Onyx' },
+    { value: 'Travertine', label: 'Travertine' },
+    { value: 'Soapstone', label: 'Soapstone' },
+    { value: 'Semi Precious', label: 'Semi Precious' },
+    { value: 'Limestone', label: 'Limestone' },
+  ],
+
+  PRODUCT_FINISHES: [
+    { value: 'Polished', label: 'Polished' },
+    { value: 'Leather', label: 'Leather' },
+    { value: 'Honed', label: 'Honed' },
+    { value: 'Satin', label: 'Satin' },
+    { value: 'Brushed', label: 'Brushed' },
+    { value: 'Honed and Filled', label: 'Honed and Filled' },
+    { value: 'Dual Polished/Leather', label: 'Dual Polished/Leather' },
+    { value: 'Dual Polished/Honed', label: 'Dual Polished/Honed' },
+    { value: 'Dual Honed/Leather', label: 'Dual Honed/Leather' },
+  ],
+
+  PRODUCT_LOCATIONS: [
+    { value: 'Miami', label: 'Miami', color: '#3B82F6' },
+    { value: 'Orlando', label: 'Orlando', color: '#8B5CF6' },
+    { value: 'Sarasota', label: 'Sarasota', color: '#059669' },
+  ],
+
   // Pagination
   LEADS_PER_PAGE: 20,
   POSTS_PER_PAGE: 15,
+  PRODUCTS_PER_PAGE: 24,
 
   // localStorage keys (used as offline cache)
   STORAGE_KEYS: {

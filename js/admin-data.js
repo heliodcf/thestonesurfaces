@@ -217,7 +217,8 @@ const AdminData = (() => {
         data: postToSnake(post),
       });
       if (result && result.success) {
-        return result.data ? postToCamel(result.data) : post;
+        const saved = Array.isArray(result.data) ? result.data[0] : result.data;
+        return saved ? postToCamel(saved) : post;
       }
     }
 
@@ -685,6 +686,220 @@ const AdminData = (() => {
     ];
   }
 
+  // ─── UNSPLASH IMAGE SEARCH ───────────────────────────────
+
+  async function searchUnsplashImage(query, count = 4) {
+    const key = ADMIN_CONFIG.UNSPLASH_ACCESS_KEY;
+    if (!key) {
+      console.warn('[AdminData] Unsplash API key not configured');
+      return [];
+    }
+    try {
+      const q = encodeURIComponent(query + ' luxury interior');
+      const res = await fetch(
+        `https://api.unsplash.com/search/photos?query=${q}&per_page=${count}&orientation=landscape`,
+        { headers: { 'Authorization': `Client-ID ${key}` } }
+      );
+      if (!res.ok) throw new Error(`Unsplash ${res.status}`);
+      const data = await res.json();
+      return (data.results || []).map(img => ({
+        id: img.id,
+        url: img.urls.regular,
+        thumb: img.urls.small,
+        alt: img.alt_description || query,
+        credit: img.user.name,
+        creditUrl: img.user.links.html,
+      }));
+    } catch (err) {
+      console.warn('[AdminData] Unsplash search failed:', err.message);
+      return [];
+    }
+  }
+
+  // ─── IMAGE UPLOAD (Supabase Storage) ─────────────────────
+
+  async function uploadBlogImage(file) {
+    const supabaseUrl = ADMIN_CONFIG.SUPABASE.URL;
+    const anonKey = ADMIN_CONFIG.SUPABASE.ANON_KEY;
+    const bucket = ADMIN_CONFIG.SUPABASE.STORAGE_BUCKET || 'blog-images';
+    if (!supabaseUrl || !anonKey) {
+      console.warn('[AdminData] Supabase not configured for image upload');
+      return null;
+    }
+
+    const ext = file.name.split('.').pop().toLowerCase();
+    const filename = `blog_${Date.now()}_${Math.random().toString(36).slice(2, 8)}.${ext}`;
+    try {
+      const res = await fetch(
+        `${supabaseUrl}/storage/v1/object/${bucket}/${filename}`,
+        {
+          method: 'POST',
+          headers: {
+            'apikey': anonKey,
+            'Authorization': `Bearer ${anonKey}`,
+            'Content-Type': file.type,
+          },
+          body: file,
+        }
+      );
+      if (!res.ok) {
+        const err = await res.text();
+        throw new Error(`Upload ${res.status}: ${err}`);
+      }
+      return `${supabaseUrl}/storage/v1/object/public/${bucket}/${filename}`;
+    } catch (err) {
+      console.warn('[AdminData] Blog image upload failed:', err.message);
+      return null;
+    }
+  }
+
+  // ─── PRODUCTS ─────────────────────────────────────────────
+
+  async function getProducts(filters = {}) {
+    const supabaseUrl = ADMIN_CONFIG.SUPABASE.URL;
+    const anonKey = ADMIN_CONFIG.SUPABASE.ANON_KEY;
+    if (!supabaseUrl || !anonKey) return [];
+
+    try {
+      let params = 'order=is_featured.desc,name.asc';
+      if (filters.category) params += `&category=eq.${encodeURIComponent(filters.category)}`;
+      if (filters.location) params += `&location_name=eq.${encodeURIComponent(filters.location)}`;
+      if (filters.finish) params += `&finish_name=eq.${encodeURIComponent(filters.finish)}`;
+      if (filters.thickness) params += `&thickness=eq.${encodeURIComponent(filters.thickness)}`;
+      if (filters.search) params += `&name=ilike.*${encodeURIComponent(filters.search)}*`;
+
+      const res = await fetch(`${supabaseUrl}/rest/v1/products?${params}`, {
+        headers: {
+          'apikey': anonKey,
+          'Authorization': `Bearer ${anonKey}`,
+        },
+      });
+      if (!res.ok) throw new Error(`Supabase ${res.status}`);
+      return await res.json();
+    } catch (err) {
+      console.warn('[AdminData] Products fetch failed:', err.message);
+      return [];
+    }
+  }
+
+  async function getProductById(spsItemId) {
+    const supabaseUrl = ADMIN_CONFIG.SUPABASE.URL;
+    const anonKey = ADMIN_CONFIG.SUPABASE.ANON_KEY;
+    if (!supabaseUrl || !anonKey) return null;
+
+    try {
+      const res = await fetch(
+        `${supabaseUrl}/rest/v1/products?sps_item_id=eq.${spsItemId}&limit=1`,
+        {
+          headers: {
+            'apikey': anonKey,
+            'Authorization': `Bearer ${anonKey}`,
+          },
+        }
+      );
+      if (!res.ok) throw new Error(`Supabase ${res.status}`);
+      const data = await res.json();
+      return data[0] || null;
+    } catch (err) {
+      console.warn('[AdminData] Product fetch failed:', err.message);
+      return null;
+    }
+  }
+
+  async function getRelatedProducts(category, excludeId, limit = 6) {
+    const supabaseUrl = ADMIN_CONFIG.SUPABASE.URL;
+    const anonKey = ADMIN_CONFIG.SUPABASE.ANON_KEY;
+    if (!supabaseUrl || !anonKey) return [];
+
+    try {
+      const res = await fetch(
+        `${supabaseUrl}/rest/v1/products?category=eq.${encodeURIComponent(category)}&sps_item_id=neq.${excludeId}&limit=${limit}&order=is_featured.desc`,
+        {
+          headers: {
+            'apikey': anonKey,
+            'Authorization': `Bearer ${anonKey}`,
+          },
+        }
+      );
+      if (!res.ok) throw new Error(`Supabase ${res.status}`);
+      return await res.json();
+    } catch (err) {
+      console.warn('[AdminData] Related products fetch failed:', err.message);
+      return [];
+    }
+  }
+
+  async function updateProductEnrichment(spsItemId, description, applicationImages) {
+    const endpoint = ADMIN_CONFIG.ENDPOINTS.PRODUCT_SYNC;
+    if (!endpoint) return null;
+
+    try {
+      const res = await fetch(endpoint.replace('tss-product-sync', 'tss-product-update'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'enrich',
+          data: {
+            sps_item_id: spsItemId,
+            description: description || '',
+            application_images: applicationImages || [],
+          },
+        }),
+      });
+      if (!res.ok) throw new Error(`n8n ${res.status}`);
+      return await res.json();
+    } catch (err) {
+      console.warn('[AdminData] Product enrichment failed:', err.message);
+      return null;
+    }
+  }
+
+  async function triggerProductSync() {
+    const endpoint = ADMIN_CONFIG.ENDPOINTS.PRODUCT_SYNC;
+    if (!endpoint) return null;
+
+    try {
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'sync' }),
+      });
+      if (!res.ok) throw new Error(`n8n ${res.status}`);
+      return await res.json();
+    } catch (err) {
+      console.warn('[AdminData] Product sync trigger failed:', err.message);
+      return null;
+    }
+  }
+
+  async function uploadProductImage(file) {
+    const supabaseUrl = ADMIN_CONFIG.SUPABASE.URL;
+    const anonKey = ADMIN_CONFIG.SUPABASE.ANON_KEY;
+    const bucket = ADMIN_CONFIG.SUPABASE.PRODUCT_STORAGE_BUCKET || 'product-images';
+    if (!supabaseUrl || !anonKey) return null;
+
+    const filename = `${Date.now()}_${file.name.replace(/\s+/g, '_')}`;
+    try {
+      const res = await fetch(
+        `${supabaseUrl}/storage/v1/object/${bucket}/${filename}`,
+        {
+          method: 'POST',
+          headers: {
+            'apikey': anonKey,
+            'Authorization': `Bearer ${anonKey}`,
+            'Content-Type': file.type,
+          },
+          body: file,
+        }
+      );
+      if (!res.ok) throw new Error(`Upload ${res.status}`);
+      return `${supabaseUrl}/storage/v1/object/public/${bucket}/${filename}`;
+    } catch (err) {
+      console.warn('[AdminData] Image upload failed:', err.message);
+      return null;
+    }
+  }
+
   // ─── Public API ────────────────────────────────────────────
 
   return {
@@ -707,6 +922,16 @@ const AdminData = (() => {
     // AI Generation
     generateBlogIdeas,
     generateBlogContent,
+    // Images
+    searchUnsplashImage,
+    uploadBlogImage,
+    // Products
+    getProducts,
+    getProductById,
+    getRelatedProducts,
+    updateProductEnrichment,
+    triggerProductSync,
+    uploadProductImage,
     // Utilities
     generateLocalSEO,
     slugify,

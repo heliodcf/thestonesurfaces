@@ -202,10 +202,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <!-- Featured Image -->
         <div class="form-group">
-          <label for="post-image">Featured Image URL</label>
-          <input type="url" id="post-image" placeholder="https://example.com/image.jpg">
-          <div id="image-preview" style="display:none;margin-top:8px;border-radius:4px;overflow:hidden;max-height:200px;">
-            <img id="image-preview-img" src="" alt="Preview" style="width:100%;height:200px;object-fit:cover;">
+          <label>Featured Image</label>
+          <input type="hidden" id="post-image" value="">
+          <div id="image-upload-zone" style="border:2px dashed var(--a-border,#333);border-radius:8px;padding:24px;text-align:center;cursor:pointer;transition:all 0.3s;position:relative;">
+            <div id="image-upload-prompt" style="color:var(--a-text-muted,#888);font-size:13px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32" style="display:block;margin:0 auto 8px;opacity:0.5;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+              Click to upload or drag &amp; drop<br>
+              <span style="font-size:11px;opacity:0.6;">JPG, PNG or WebP — max 5MB</span>
+            </div>
+            <div id="image-preview" style="display:none;position:relative;">
+              <img id="image-preview-img" src="" alt="Preview" style="width:100%;max-height:200px;object-fit:cover;border-radius:4px;">
+              <button type="button" id="image-remove-btn" style="position:absolute;top:6px;right:6px;background:rgba(0,0,0,0.7);color:#fff;border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:background 0.3s;" title="Remove image">&times;</button>
+            </div>
+            <div id="image-uploading" style="display:none;color:var(--a-text-muted,#888);font-size:13px;padding:12px 0;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20" style="animation:spin 0.8s linear infinite;display:inline-block;vertical-align:middle;margin-right:6px;"><path d="M12 2v4m0 12v4m-7.07-3.93l2.83-2.83m8.48-8.48l2.83-2.83M2 12h4m12 0h4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83"/></svg>
+              Uploading...
+            </div>
+            <input type="file" id="image-file-input" accept="image/jpeg,image/png,image/webp" style="position:absolute;inset:0;opacity:0;cursor:pointer;">
+          </div>
+          <!-- Unsplash search -->
+          <div style="margin-top:8px;display:flex;gap:6px;">
+            <input type="text" id="unsplash-search" placeholder="Search Unsplash images..." style="flex:1;padding:8px 10px;background:var(--a-surface,#1a1a1e);border:1px solid var(--a-border,#333);border-radius:4px;color:var(--a-text,#e5e5e5);font-size:12px;font-family:var(--a-font-body);">
+            <button type="button" id="unsplash-search-btn" style="padding:8px 14px;background:var(--a-surface,#1a1a1e);border:1px solid var(--a-border,#333);border-radius:4px;color:var(--a-text-secondary,#aaa);font-size:12px;cursor:pointer;white-space:nowrap;font-family:var(--a-font-body);transition:all 0.3s;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" style="vertical-align:middle;margin-right:4px;"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>Search
+            </button>
+          </div>
+          <div id="unsplash-results" style="display:none;margin-top:8px;grid-template-columns:repeat(4,1fr);gap:6px;"></div>
+          <div style="margin-top:6px;">
+            <input type="url" id="post-image-url" placeholder="Or paste image URL directly" style="width:100%;padding:8px 10px;background:var(--a-surface,#1a1a1e);border:1px solid var(--a-border,#333);border-radius:4px;color:var(--a-text,#e5e5e5);font-size:12px;font-family:var(--a-font-body);">
           </div>
         </div>
 
@@ -425,19 +449,147 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         document.querySelector('.admin-tab[data-filter=""]').classList.add('active');
       });
 
-      // ── Image Preview ───────────────────────
-      document.getElementById('post-image').addEventListener('input', (e) => {
-        const url = e.target.value.trim();
-        const preview = document.getElementById('image-preview');
-        const img = document.getElementById('image-preview-img');
+      // ── Image Upload & Preview ────────────────
+      const imageZone = document.getElementById('image-upload-zone');
+      const imageFileInput = document.getElementById('image-file-input');
+      const imageUrlInput = document.getElementById('post-image-url');
+      const imageHidden = document.getElementById('post-image');
+      const imagePreview = document.getElementById('image-preview');
+      const imagePreviewImg = document.getElementById('image-preview-img');
+      const imagePrompt = document.getElementById('image-upload-prompt');
+      const imageUploading = document.getElementById('image-uploading');
+      const imageRemoveBtn = document.getElementById('image-remove-btn');
+
+      function showImagePreview(url) {
+        if (!url) { hideImagePreview(); return; }
+        imageHidden.value = url;
+        imagePreviewImg.src = url;
+        imagePreviewImg.onload = () => {
+          imagePreview.style.display = 'block';
+          imagePrompt.style.display = 'none';
+          imageUploading.style.display = 'none';
+        };
+        imagePreviewImg.onerror = () => { hideImagePreview(); };
+      }
+
+      function hideImagePreview() {
+        imageHidden.value = '';
+        imagePreview.style.display = 'none';
+        imagePrompt.style.display = 'block';
+        imageUploading.style.display = 'none';
+        imageFileInput.value = '';
+      }
+
+      async function handleImageFile(file) {
+        if (!file || !file.type.startsWith('image/')) {
+          showToast('Please select an image file (JPG, PNG, WebP).', 'error');
+          return;
+        }
+        if (file.size > 5 * 1024 * 1024) {
+          showToast('Image must be under 5MB.', 'error');
+          return;
+        }
+        imagePrompt.style.display = 'none';
+        imagePreview.style.display = 'none';
+        imageUploading.style.display = 'block';
+        imageZone.style.borderColor = 'var(--a-accent, #6B6B6B)';
+
+        const url = await AdminData.uploadBlogImage(file);
+        imageZone.style.borderColor = '';
+
         if (url) {
-          img.src = url;
-          img.onerror = () => { preview.style.display = 'none'; };
-          img.onload = () => { preview.style.display = 'block'; };
+          showImagePreview(url);
+          showToast('Image uploaded!');
         } else {
-          preview.style.display = 'none';
+          hideImagePreview();
+          showToast('Upload failed. Try again or paste a URL.', 'error');
+        }
+      }
+
+      imageFileInput.addEventListener('change', (e) => {
+        if (e.target.files[0]) handleImageFile(e.target.files[0]);
+      });
+
+      imageZone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        imageZone.style.borderColor = 'var(--a-accent, #6B6B6B)';
+        imageZone.style.background = 'rgba(107,107,107,0.05)';
+      });
+      imageZone.addEventListener('dragleave', () => {
+        imageZone.style.borderColor = '';
+        imageZone.style.background = '';
+      });
+      imageZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        imageZone.style.borderColor = '';
+        imageZone.style.background = '';
+        if (e.dataTransfer.files[0]) handleImageFile(e.dataTransfer.files[0]);
+      });
+
+      imageRemoveBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        hideImagePreview();
+      });
+
+      imageUrlInput.addEventListener('change', (e) => {
+        const url = e.target.value.trim();
+        if (url) showImagePreview(url);
+      });
+
+      // ── Unsplash Search ────────────────────────
+      const unsplashResultsEl = document.getElementById('unsplash-results');
+
+      async function searchUnsplash(query) {
+        if (!query) return;
+        unsplashResultsEl.style.display = 'grid';
+        unsplashResultsEl.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:var(--a-text-muted);font-size:12px;padding:12px;">Searching Unsplash...</div>';
+
+        const results = await AdminData.searchUnsplashImage(query, 4);
+        if (!results || results.length === 0) {
+          unsplashResultsEl.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:var(--a-text-muted);font-size:12px;padding:12px;">No images found. Try different keywords.</div>';
+          return;
+        }
+
+        unsplashResultsEl.innerHTML = results.map(img => `
+          <div class="unsplash-thumb" data-url="${img.url}" data-credit="${img.credit}" data-credit-url="${img.creditUrl}" style="cursor:pointer;border-radius:4px;overflow:hidden;aspect-ratio:16/10;position:relative;border:2px solid transparent;transition:border-color 0.2s;">
+            <img src="${img.thumb}" alt="${img.alt}" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
+            <div style="position:absolute;bottom:0;left:0;right:0;padding:3px 6px;background:linear-gradient(transparent,rgba(0,0,0,0.7));font-size:10px;color:#fff;">
+              ${img.credit}
+            </div>
+          </div>
+        `).join('');
+
+        unsplashResultsEl.querySelectorAll('.unsplash-thumb').forEach(el => {
+          el.addEventListener('click', () => {
+            const url = el.dataset.url;
+            showImagePreview(url);
+            unsplashResultsEl.querySelectorAll('.unsplash-thumb').forEach(t => t.style.borderColor = 'transparent');
+            el.style.borderColor = 'var(--a-accent, #6B6B6B)';
+          });
+        });
+      }
+
+      document.getElementById('unsplash-search-btn').addEventListener('click', () => {
+        const q = document.getElementById('unsplash-search').value.trim();
+        if (q) searchUnsplash(q);
+      });
+
+      document.getElementById('unsplash-search').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          const q = e.target.value.trim();
+          if (q) searchUnsplash(q);
         }
       });
+
+      // Auto-search Unsplash when title changes (debounced)
+      async function autoFetchUnsplashForTitle() {
+        const title = document.getElementById('post-title').value.trim();
+        if (title && !imageHidden.value) {
+          document.getElementById('unsplash-search').value = title;
+          await searchUnsplash(title);
+        }
+      }
 
       // ── Preview Modal ──────────────────────
       document.getElementById('preview-close').addEventListener('click', () => {
@@ -526,6 +678,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         document.getElementById('post-title').value = post.title;
         document.getElementById('post-content').value = post.content || '';
         document.getElementById('post-image').value = post.featuredImage || '';
+        if (post.featuredImage) {
+          showImagePreview(post.featuredImage);
+        } else {
+          hideImagePreview();
+        }
         document.getElementById('post-category').value = post.category || 'design-trends';
 
         // Tags
@@ -556,6 +713,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         editingPostId = null;
         document.getElementById('post-form').reset();
         document.getElementById('post-id').value = '';
+        hideImagePreview();
+        document.getElementById('post-image-url').value = '';
+        document.getElementById('unsplash-search').value = '';
+        unsplashResultsEl.style.display = 'none';
+        unsplashResultsEl.innerHTML = '';
         tags = [];
         renderTags();
         selectedIdeaIdx = -1;
@@ -632,8 +794,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
 
         if (result.featuredImage) {
-          document.getElementById('post-image').value = result.featuredImage;
-          document.getElementById('post-image').dispatchEvent(new Event('input'));
+          showImagePreview(result.featuredImage);
         }
 
         if (result.seo) {
@@ -655,6 +816,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         showToast('Post generated! Review and edit before publishing.');
         setTimeout(() => { pipeline.style.display = 'none'; }, 3000);
+
+        // Auto-fetch Unsplash image if no image set
+        if (!imageHidden.value) {
+          autoFetchUnsplashForTitle();
+        }
       }
 
       // ── AI Ideas ───────────────────────────
@@ -731,8 +897,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
           // Apply featured image from AI pipeline
           if (result.featuredImage) {
-            document.getElementById('post-image').value = result.featuredImage;
-            document.getElementById('post-image').dispatchEvent(new Event('input'));
+            showImagePreview(result.featuredImage);
           }
 
           // Apply SEO from AI pipeline (comes with content generation now)
@@ -758,6 +923,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         document.getElementById('ideas-container').classList.remove('visible');
         setTimeout(() => { pipeline.style.display = 'none'; }, 3000);
+
+        // Auto-fetch Unsplash image
+        if (!imageHidden.value) {
+          autoFetchUnsplashForTitle();
+        }
       }
 
       // ── SEO Generation ─────────────────────

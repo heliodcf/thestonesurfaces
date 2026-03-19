@@ -101,3 +101,65 @@ ALTER TABLE settings ENABLE ROW LEVEL SECURITY;
 -- Max file size: 5MB
 -- Allowed types: image/webp, image/jpeg, image/png
 -- NOTE: Storage buckets cannot be created via SQL, use the Dashboard UI
+
+-- 6. Products (synced from StoneProfits + TSS enrichments)
+CREATE TABLE IF NOT EXISTS products (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+
+  -- StoneProfits sync fields
+  sps_item_id INT UNIQUE NOT NULL,
+  name TEXT NOT NULL,
+  sku TEXT DEFAULT '',
+  category TEXT NOT NULL,
+  category_id INT,
+  type TEXT DEFAULT 'SLAB',
+  thickness TEXT DEFAULT '',
+  finish_id INT,
+  finish_name TEXT DEFAULT 'Polished',
+  image_filename TEXT DEFAULT '',
+  image_url TEXT DEFAULT '',
+  location_id INT,
+  location_name TEXT DEFAULT '',
+  block_number TEXT DEFAULT '',
+  bundle_number TEXT DEFAULT '',
+  avg_length NUMERIC DEFAULT 0,
+  avg_width NUMERIC DEFAULT 0,
+  available_qty_sf NUMERIC DEFAULT 0,
+  available_slabs INT DEFAULT 0,
+  is_featured BOOLEAN DEFAULT false,
+  is_new_arrival BOOLEAN DEFAULT false,
+  slab_options TEXT DEFAULT 'Full Slab',
+  kind TEXT DEFAULT 'Stock',
+  alternate_name TEXT DEFAULT '',
+
+  -- TSS enrichment fields (managed via admin)
+  description TEXT DEFAULT '',
+  application_images TEXT[] DEFAULT '{}',
+
+  -- Metadata
+  synced_at TIMESTAMPTZ DEFAULT NOW(),
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_products_sps_item_id ON products(sps_item_id);
+CREATE INDEX IF NOT EXISTS idx_products_category ON products(category);
+CREATE INDEX IF NOT EXISTS idx_products_location ON products(location_name);
+CREATE INDEX IF NOT EXISTS idx_products_finish ON products(finish_name);
+CREATE INDEX IF NOT EXISTS idx_products_thickness ON products(thickness);
+CREATE INDEX IF NOT EXISTS idx_products_is_featured ON products(is_featured);
+CREATE INDEX IF NOT EXISTS idx_products_name ON products USING gin(to_tsvector('english', name));
+
+-- Products: public can read all
+ALTER TABLE products ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Public can read products"
+  ON products FOR SELECT
+  USING (true);
+
+-- 7. Storage bucket: product-images
+-- Create via Supabase Dashboard > Storage
+-- Bucket name: product-images
+-- Public: Yes
+-- Max file size: 5MB
+-- Allowed types: image/webp, image/jpeg, image/png
