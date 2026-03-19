@@ -10,12 +10,12 @@
   })(window,document,'script','dataLayer','GTM-KPZR9CKJ');</script>
   <!-- End Google Tag Manager -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alaska White Granite — The Stone Surfaces</title>
-  <meta name="description" content="Alaska White Granite — premium natural stone slab available in polished, honed, and leathered finishes. Request a quote or order a sample from The Stone Surfaces.">
+  <title>Product Detail — The Stone Surfaces</title>
+  <meta name="description" content="Premium natural stone slab — available in multiple finishes and thicknesses. Request a quote from The Stone Surfaces, South Florida's premier stone distributor.">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Alaska White Granite — The Stone Surfaces">
-  <meta property="og:description" content="Premium Alaska White Granite slab. Available in multiple finishes and thicknesses. South Florida's premier stone distributor.">
+  <meta property="og:title" content="Product Detail — The Stone Surfaces">
+  <meta property="og:description" content="Premium natural stone slab. Available in multiple finishes and thicknesses. South Florida's premier stone distributor.">
   <meta property="og:type" content="product">
 
   <!-- Fonts -->
@@ -25,21 +25,431 @@
 
   <link rel="stylesheet" href="../css/styles.css?v=2">
 
-  <!-- Schema.org Product -->
-  <script type="application/ld+json">
+  <!-- Schema.org Product — dynamically updated by JS -->
+  <script type="application/ld+json" id="product-schema">
   {
     "@context": "https://schema.org",
     "@type": "Product",
-    "name": "Alaska White Granite",
-    "description": "Premium Alaska White Granite slab with elegant white and grey veining. Available in polished, honed, and leathered finishes.",
+    "name": "Loading...",
     "brand": {
       "@type": "Brand",
       "name": "The Stone Surfaces"
     },
-    "material": "Granite",
     "category": "Natural Stone Slabs"
   }
   </script>
+
+  <style>
+    /* ===== PRODUCT DETAIL — DYNAMIC PAGE STYLES ===== */
+
+    /* Skeleton shimmer animation */
+    @keyframes shimmer {
+      0% { background-position: -400px 0; }
+      100% { background-position: 400px 0; }
+    }
+    .skeleton {
+      background: linear-gradient(90deg, #e8e8ec 25%, #f4f4f6 37%, #e8e8ec 63%);
+      background-size: 800px 100%;
+      animation: shimmer 1.6s ease-in-out infinite;
+      border-radius: var(--radius-card, 4px);
+    }
+    .skeleton-text { height: 16px; margin-bottom: 12px; border-radius: 4px; }
+    .skeleton-text.lg { height: 40px; width: 70%; }
+    .skeleton-text.md { height: 20px; width: 50%; }
+    .skeleton-text.sm { height: 14px; width: 30%; }
+    .skeleton-image { width: 100%; aspect-ratio: 4/3; border-radius: 8px; }
+    .skeleton-badge { display: inline-block; height: 28px; width: 80px; border-radius: 20px; margin-right: 8px; }
+
+    /* Loading state */
+    .pdp-loading { padding: 60px 0 120px; }
+    .pdp-loading .pdp-hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .pdp-loading .pdp-info-skeleton { display: flex; flex-direction: column; gap: 16px; padding-top: 24px; }
+
+    /* Error state */
+    .pdp-error {
+      text-align: center;
+      padding: 120px 0;
+    }
+    .pdp-error-icon {
+      width: 80px; height: 80px;
+      margin: 0 auto 24px;
+      border-radius: 50%;
+      background: var(--color-bg-surface, #EDEDEF);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .pdp-error-icon svg { width: 36px; height: 36px; color: var(--color-text-muted, #6B6B72); }
+    .pdp-error h2 { font-family: var(--font-headline); font-size: 36px; font-weight: 300; margin-bottom: 12px; }
+    .pdp-error p { color: var(--color-text-muted); margin-bottom: 32px; font-size: 16px; }
+    .pdp-error .btn { display: inline-flex; }
+
+    /* Breadcrumb overrides */
+    .pdp-breadcrumb { padding: 20px 0; background: var(--color-bg-primary, #F7F7F8); border-bottom: 1px solid var(--color-border-light, rgba(26,26,30,0.06)); }
+    .pdp-breadcrumb .breadcrumb-list {
+      display: flex; align-items: center; gap: 8px;
+      list-style: none; padding: 0; margin: 0;
+      font-family: var(--font-body); font-size: 13px;
+      color: var(--color-text-muted, #6B6B72);
+    }
+    .pdp-breadcrumb .breadcrumb-list li { display: flex; align-items: center; gap: 8px; }
+    .pdp-breadcrumb .breadcrumb-list li:not(:last-child)::after {
+      content: '';
+      display: block;
+      width: 4px; height: 4px;
+      border-top: 1px solid var(--color-text-muted);
+      border-right: 1px solid var(--color-text-muted);
+      transform: rotate(45deg);
+      opacity: 0.5;
+    }
+    .pdp-breadcrumb .breadcrumb-list a { color: var(--color-text-muted); transition: color 0.2s; }
+    .pdp-breadcrumb .breadcrumb-list a:hover { color: var(--color-text-light, #1A1A1E); }
+    .pdp-breadcrumb .breadcrumb-list li[aria-current="page"] { color: var(--color-text-light, #1A1A1E); font-weight: 500; }
+
+    /* Hero section */
+    .pdp-hero { padding: 48px 0 64px; background: var(--color-bg-primary, #F7F7F8); }
+    .pdp-hero-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    /* Product image */
+    .pdp-image-wrapper { position: relative; border-radius: 8px; overflow: hidden; background: #fff; box-shadow: var(--shadow-lg, 0 8px 30px rgba(26,26,30,0.10)); }
+    .pdp-image-main {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      cursor: zoom-in;
+    }
+    .pdp-image-main img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transform-origin: var(--zoom-x, center) var(--zoom-y, center);
+    }
+    .pdp-image-main:hover img { transform: scale(1.8); }
+    .pdp-image-main .pdp-zoom-hint {
+      position: absolute; bottom: 16px; right: 16px;
+      background: rgba(26,26,30,0.7); color: #fff;
+      font-size: 11px; font-family: var(--font-body);
+      padding: 6px 12px; border-radius: 20px;
+      backdrop-filter: blur(8px);
+      pointer-events: none;
+      opacity: 1; transition: opacity 0.3s;
+    }
+    .pdp-image-main:hover .pdp-zoom-hint { opacity: 0; }
+
+    /* No image placeholder */
+    .pdp-no-image {
+      width: 100%; aspect-ratio: 4/3;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: linear-gradient(135deg, var(--color-bg-surface, #EDEDEF) 0%, var(--color-bg-accent, #E0E0E3) 100%);
+      color: var(--color-text-muted, #6B6B72);
+    }
+    .pdp-no-image svg { width: 64px; height: 64px; margin-bottom: 12px; opacity: 0.3; }
+    .pdp-no-image span { font-size: 13px; opacity: 0.5; }
+
+    /* Product info panel */
+    .pdp-info { padding: 8px 0; }
+    .pdp-category-label {
+      font-family: var(--font-body);
+      font-size: 12px; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--color-accent-gold, #6B6B6B);
+      margin-bottom: 12px;
+    }
+    .pdp-product-name {
+      font-family: var(--font-headline);
+      font-size: 42px; font-weight: 300;
+      line-height: 1.1;
+      color: var(--color-text-light, #1A1A1E);
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+    .pdp-sku {
+      display: inline-flex; align-items: center;
+      background: var(--color-bg-surface, #EDEDEF);
+      color: var(--color-text-muted, #6B6B72);
+      font-size: 12px; font-weight: 500;
+      padding: 4px 12px; border-radius: 20px;
+      margin-bottom: 20px;
+      font-family: var(--font-body);
+      letter-spacing: 0.04em;
+    }
+    .pdp-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+    .pdp-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 14px; border-radius: 20px;
+      font-size: 13px; font-weight: 500;
+      font-family: var(--font-body);
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.1);
+      color: var(--color-text-light, #1A1A1E);
+      transition: all 0.2s;
+    }
+    .pdp-tag svg { width: 14px; height: 14px; opacity: 0.5; }
+
+    /* Badges */
+    .pdp-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+    .pdp-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 5px 12px; border-radius: 20px;
+      font-size: 11px; font-weight: 700;
+      font-family: var(--font-body);
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .pdp-badge--new {
+      background: linear-gradient(135deg, #059669, #10b981);
+      color: #fff;
+    }
+    .pdp-badge--featured {
+      background: linear-gradient(135deg, #6B6B6B, #525252);
+      color: #fff;
+    }
+    .pdp-badge svg { width: 12px; height: 12px; }
+
+    /* Divider */
+    .pdp-divider {
+      height: 1px;
+      background: var(--color-border-default, #C8C8CE);
+      margin: 24px 0;
+      opacity: 0.5;
+    }
+
+    /* CTAs */
+    .pdp-ctas { display: flex; flex-direction: column; gap: 12px; margin-top: 28px; }
+    .pdp-cta {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 14px 28px; border-radius: var(--radius-button, 4px);
+      font-family: var(--font-body);
+      font-size: 14px; font-weight: 600;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .pdp-cta svg { width: 16px; height: 16px; }
+    .pdp-cta--primary {
+      background: var(--color-text-light, #1A1A1E);
+      color: #fff;
+    }
+    .pdp-cta--primary:hover { background: var(--color-accent-bronze, #525252); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+    .pdp-cta--outline {
+      background: transparent;
+      color: var(--color-text-light, #1A1A1E);
+      border: 1.5px solid var(--color-border-default, #C8C8CE);
+    }
+    .pdp-cta--outline:hover { border-color: var(--color-text-light, #1A1A1E); transform: translateY(-1px); }
+
+    /* Description section */
+    .pdp-description-section { padding: 64px 0; background: var(--color-bg-surface, #EDEDEF); }
+    .pdp-description-card {
+      max-width: 800px; margin: 0 auto;
+      background: #fff; border-radius: 12px;
+      padding: 48px; box-shadow: var(--shadow-md);
+    }
+    .pdp-description-card h2 {
+      font-family: var(--font-headline); font-size: 28px; font-weight: 300;
+      margin-bottom: 20px; color: var(--color-text-light, #1A1A1E);
+    }
+    .pdp-description-card p {
+      font-size: 16px; line-height: 1.8;
+      color: var(--color-text-muted, #6B6B72);
+    }
+
+    /* Application gallery */
+    .pdp-gallery-section { padding: 64px 0; background: var(--color-bg-primary, #F7F7F8); }
+    .pdp-section-header { text-align: center; margin-bottom: 40px; }
+    .pdp-section-header .label { margin-bottom: 12px; display: block; }
+    .pdp-section-header h2 { font-family: var(--font-headline); font-size: 36px; font-weight: 300; }
+    .pdp-gallery-track {
+      display: flex; gap: 16px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 16px;
+      scrollbar-width: thin;
+    }
+    .pdp-gallery-track::-webkit-scrollbar { height: 4px; }
+    .pdp-gallery-track::-webkit-scrollbar-track { background: transparent; }
+    .pdp-gallery-track::-webkit-scrollbar-thumb { background: var(--color-border-default); border-radius: 4px; }
+    .pdp-gallery-item {
+      flex: 0 0 320px; scroll-snap-align: start;
+      border-radius: 8px; overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .pdp-gallery-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .pdp-gallery-item img { width: 100%; height: 240px; object-fit: cover; display: block; border-radius: 0 !important; }
+
+    /* Availability section */
+    .pdp-availability-section { padding: 64px 0; background: var(--color-bg-surface, #EDEDEF); }
+    .pdp-avail-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 960px; margin: 0 auto; }
+    .pdp-avail-card {
+      background: #fff; border-radius: 12px;
+      padding: 28px; box-shadow: var(--shadow-sm);
+      border: 1px solid var(--color-border-light, rgba(26,26,30,0.06));
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .pdp-avail-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .pdp-avail-location {
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--font-headline); font-size: 22px; font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--color-text-light, #1A1A1E);
+    }
+    .pdp-avail-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .pdp-avail-dot--miami { background: #5A6B7A; }
+    .pdp-avail-dot--orlando { background: #6B5A7A; }
+    .pdp-avail-dot--sarasota { background: #5A7A6B; }
+    .pdp-avail-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--color-border-light, rgba(26,26,30,0.06));
+      font-size: 14px;
+    }
+    .pdp-avail-row:last-child { border-bottom: none; }
+    .pdp-avail-label { color: var(--color-text-muted, #6B6B72); font-weight: 400; }
+    .pdp-avail-value { color: var(--color-text-light, #1A1A1E); font-weight: 600; }
+
+    /* Related products */
+    .pdp-related-section { padding: 80px 0; background: var(--color-bg-primary, #F7F7F8); }
+    .pdp-related-track {
+      display: flex; gap: 20px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 16px;
+      scrollbar-width: thin;
+    }
+    .pdp-related-track::-webkit-scrollbar { height: 4px; }
+    .pdp-related-track::-webkit-scrollbar-track { background: transparent; }
+    .pdp-related-track::-webkit-scrollbar-thumb { background: var(--color-border-default); border-radius: 4px; }
+    .pdp-related-card {
+      flex: 0 0 220px; scroll-snap-align: start;
+      background: #fff; border-radius: 8px;
+      overflow: hidden; box-shadow: var(--shadow-sm);
+      border: 1px solid var(--color-border-light, rgba(26,26,30,0.06));
+      text-decoration: none; color: inherit;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    }
+    .pdp-related-card:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--color-accent-gold, #6B6B6B);
+    }
+    .pdp-related-card-img {
+      width: 100%; height: 160px;
+      object-fit: cover; display: block;
+      border-radius: 0 !important;
+    }
+    .pdp-related-card-body { padding: 16px; }
+    .pdp-related-card-cat {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--color-accent-gold, #6B6B6B);
+      margin-bottom: 4px;
+    }
+    .pdp-related-card-name {
+      font-family: var(--font-headline);
+      font-size: 18px; font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 6px;
+      color: var(--color-text-light, #1A1A1E);
+    }
+    .pdp-related-card-meta {
+      font-size: 12px;
+      color: var(--color-text-muted, #6B6B72);
+    }
+
+    /* Related no-image */
+    .pdp-related-no-img {
+      width: 100%; height: 160px;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, var(--color-bg-surface) 0%, var(--color-bg-accent) 100%);
+    }
+    .pdp-related-no-img svg { width: 32px; height: 32px; opacity: 0.2; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .pdp-hero-grid { grid-template-columns: 1fr; gap: 32px; }
+      .pdp-loading .pdp-hero-grid { grid-template-columns: 1fr; }
+      .pdp-product-name { font-size: 32px; }
+      .pdp-ctas { flex-direction: column; }
+      .pdp-description-card { padding: 28px 20px; }
+      .pdp-gallery-item { flex: 0 0 260px; }
+      .pdp-related-card { flex: 0 0 180px; }
+    }
+    @media (max-width: 480px) {
+      .pdp-product-name { font-size: 28px; }
+      .pdp-hero { padding: 24px 0 40px; }
+      .pdp-avail-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Fade-in animation */
+    @keyframes pdpFadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .pdp-animate { animation: pdpFadeUp 0.5s ease-out forwards; }
+    .pdp-animate-delay-1 { animation-delay: 0.1s; opacity: 0; }
+    .pdp-animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
+    .pdp-animate-delay-3 { animation-delay: 0.3s; opacity: 0; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .pdp-animate, .pdp-animate-delay-1, .pdp-animate-delay-2, .pdp-animate-delay-3 {
+        animation: none; opacity: 1;
+      }
+      .pdp-image-main:hover img { transform: none; }
+      .skeleton { animation: none; }
+    }
+
+    /* Mobile sticky CTA */
+    .pdp-mobile-cta {
+      display: none;
+      position: fixed;
+      bottom: 60px;
+      left: 0;
+      right: 0;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(0,0,0,0.08);
+      padding: 12px 20px;
+      z-index: 80;
+      gap: 10px;
+    }
+    .pdp-mobile-cta a {
+      flex: 1;
+      text-align: center;
+      padding: 12px 16px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .pdp-mobile-cta .cta-primary {
+      background: var(--color-cta, #6B6B6B);
+      color: #fff;
+    }
+    .pdp-mobile-cta .cta-outline {
+      background: transparent;
+      border: 1px solid var(--color-accent-gold, #6B6B6B);
+      color: var(--color-text-light, #1A1A1E);
+    }
+    @media (max-width: 768px) {
+      .pdp-mobile-cta { display: flex; }
+    }
+  </style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -139,236 +549,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 
-  <main>
-
-    <!-- ===== BREADCRUMB ===== -->
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-      <div class="container">
-        <ol class="breadcrumb-list">
-          <li><a href="../index.html" data-i18n="common.home">Home</a></li>
-          <li><a href="products.html" data-i18n="detail.breadcrumb">Products</a></li>
-          <li><a href="products.html#granite">Granite</a></li>
-          <li aria-current="page">Alaska White</li>
-        </ol>
-      </div>
-    </nav>
-
-    <!-- ===== PRODUCT DETAIL ===== -->
-    <section class="section section--dark product-detail-section">
-      <div class="container">
-        <div class="product-detail-grid">
-
-          <!-- Left Column: Product Image -->
-          <div class="product-image reveal">
-            <div class="product-image-main">
-              <div class="placeholder-bg" style="background: linear-gradient(135deg, #e8e0d8 0%, #d0c8c0 25%, #c8c0b8 50%, #b8b0a8 75%, #a8a098 100%); min-height: 500px; border-radius: 8px;"></div>
-            </div>
-            <div class="product-image-thumbs">
-              <button class="thumb active" aria-label="View slab image 1">
-                <div class="placeholder-bg" style="background: linear-gradient(135deg, #e8e0d8, #c8c0b8); height: 100%; border-radius: 4px;"></div>
-              </button>
-              <button class="thumb" aria-label="View slab image 2">
-                <div class="placeholder-bg" style="background: linear-gradient(135deg, #d8d0c8, #b8b0a8); height: 100%; border-radius: 4px;"></div>
-              </button>
-              <button class="thumb" aria-label="View slab image 3">
-                <div class="placeholder-bg" style="background: linear-gradient(135deg, #c8c0b8, #a8a098); height: 100%; border-radius: 4px;"></div>
-              </button>
-              <button class="thumb" aria-label="View close-up detail">
-                <div class="placeholder-bg" style="background: linear-gradient(135deg, #d0c8c0, #c0b8b0); height: 100%; border-radius: 4px;"></div>
-              </button>
-            </div>
-          </div>
-
-          <!-- Right Column: Product Info -->
-          <div class="product-info reveal reveal-delay-1">
-            <span class="label">PREMIUM COLLECTION</span>
-            <h1>Alaska White Granite</h1>
-            <p class="product-material-type">Natural Granite</p>
-
-            <!-- Finish Options -->
-            <div class="product-option-group">
-              <h3 class="option-label" data-i18n="detail.label.finishes">Finish</h3>
-              <div class="finish-tags">
-                <button class="finish-tag active" aria-pressed="true">Polished</button>
-                <button class="finish-tag" aria-pressed="false">Honed</button>
-                <button class="finish-tag" aria-pressed="false">Leathered</button>
-              </div>
-            </div>
-
-            <!-- Thickness Options -->
-            <div class="product-option-group">
-              <h3 class="option-label" data-i18n="detail.label.thickness">Thickness</h3>
-              <div class="thickness-options">
-                <button class="thickness-btn active" aria-pressed="true">2cm</button>
-                <button class="thickness-btn" aria-pressed="false">3cm</button>
-              </div>
-            </div>
-
-            <!-- Dimensions -->
-            <div class="product-option-group">
-              <h3 class="option-label" data-i18n="detail.label.dimensions">Slab Dimensions</h3>
-              <p class="product-dimensions">126&Prime; &times; 63&Prime;</p>
-            </div>
-
-            <!-- CTAs -->
-            <div class="product-ctas">
-              <a href="contact.html" class="btn btn--primary" data-i18n="detail.cta.quote">Schedule an Appointment</a>
-              <a href="contact.html?type=sample" class="btn btn--outline" data-i18n="detail.cta.sample">Order a Sample</a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== SPECS ACCORDION ===== -->
-    <section class="section section--surface noise-overlay">
-      <div class="container">
-        <div class="specs-section reveal">
-          <h2 data-i18n="detail.specs.title">Technical Specifications</h2>
-
-          <div class="accordion">
-            <div class="accordion-item">
-              <button class="accordion-header" aria-expanded="false">
-                <span data-i18n="detail.specs.composition">Composition</span>
-                <span class="accordion-icon">+</span>
-              </button>
-              <div class="accordion-body">
-                <p>Alaska White Granite is a natural igneous rock composed primarily of feldspar, quartz, and mica. Its distinctive white and grey patterning with subtle flecks of garnet and biotite makes each slab a unique work of nature. Quarried from premium deposits in Brazil.</p>
-              </div>
-            </div>
-
-            <div class="accordion-item">
-              <button class="accordion-header" aria-expanded="false">
-                <span data-i18n="detail.specs.hardness">Mohs Hardness</span>
-                <span class="accordion-icon">+</span>
-              </button>
-              <div class="accordion-body">
-                <p><strong>6&ndash;7 on the Mohs scale.</strong> This makes Alaska White Granite highly resistant to scratching and abrasion, suitable for high-traffic areas and heavy daily use in kitchens and commercial spaces.</p>
-              </div>
-            </div>
-
-            <div class="accordion-item">
-              <button class="accordion-header" aria-expanded="false">
-                <span data-i18n="detail.specs.absorption">Water Absorption</span>
-                <span class="accordion-icon">+</span>
-              </button>
-              <div class="accordion-body">
-                <p><strong>&lt; 0.4%</strong> — Alaska White Granite has a very low water absorption rate, making it an excellent choice for kitchen countertops, bathroom vanities, and other areas exposed to moisture. Sealing is recommended annually to maintain optimal performance.</p>
-              </div>
-            </div>
-
-            <div class="accordion-item">
-              <button class="accordion-header" aria-expanded="false">
-                <span data-i18n="detail.specs.strength">Flexural Strength</span>
-                <span class="accordion-icon">+</span>
-              </button>
-              <div class="accordion-body">
-                <p><strong>14.5 MPa (ASTM C880).</strong> Provides excellent structural integrity for countertop overhangs, island installations, and commercial applications. Supports standard overhang depths without additional reinforcement when properly installed.</p>
-              </div>
-            </div>
-
-            <div class="accordion-item">
-              <button class="accordion-header" aria-expanded="false">
-                <span data-i18n="detail.specs.applications">Recommended Applications</span>
-                <span class="accordion-icon">+</span>
-              </button>
-              <div class="accordion-body">
-                <ul class="specs-list">
-                  <li>Kitchen countertops &amp; islands</li>
-                  <li>Bathroom vanities &amp; shower surrounds</li>
-                  <li>Fireplace surrounds</li>
-                  <li>Outdoor kitchens (with proper sealing)</li>
-                  <li>Commercial bar tops &amp; reception desks</li>
-                  <li>Feature walls &amp; accent surfaces</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== RELATED PRODUCTS ===== -->
-    <section class="section section--dark">
-      <div class="container">
-        <div class="text-center reveal" style="margin-bottom: 48px;">
-          <span class="label">YOU MAY ALSO LIKE</span>
-          <h2 style="margin-top: 16px;" data-i18n="detail.related.title">Related Products</h2>
-        </div>
-
-        <div class="related-products-carousel reveal">
-          <div class="related-products-track">
-            <a href="product-detail.html" class="product-card">
-              <div class="product-card-image">
-                <div class="placeholder-bg" style="background: linear-gradient(135deg, #d8d0c8, #b0a898); height: 100%;"></div>
-              </div>
-              <div class="product-card-body">
-                <span class="product-card-type">Granite</span>
-                <h4>White Ice Granite</h4>
-                <p class="product-card-finish">Polished &middot; 3cm</p>
-              </div>
-            </a>
-
-            <a href="product-detail.html" class="product-card">
-              <div class="product-card-image">
-                <div class="placeholder-bg" style="background: linear-gradient(135deg, #c0b8b0, #989088); height: 100%;"></div>
-              </div>
-              <div class="product-card-body">
-                <span class="product-card-type">Granite</span>
-                <h4>Colonial White Granite</h4>
-                <p class="product-card-finish">Polished &middot; 3cm</p>
-              </div>
-            </a>
-
-            <a href="product-detail.html" class="product-card">
-              <div class="product-card-image">
-                <div class="placeholder-bg" style="background: linear-gradient(135deg, #e0d8d0, #c8c0b8); height: 100%;"></div>
-              </div>
-              <div class="product-card-body">
-                <span class="product-card-type">Quartzite</span>
-                <h4>White Macaubas Quartzite</h4>
-                <p class="product-card-finish">Polished &middot; 2cm</p>
-              </div>
-            </a>
-
-            <a href="product-detail.html" class="product-card">
-              <div class="product-card-image">
-                <div class="placeholder-bg" style="background: linear-gradient(135deg, #f0e8e0, #d0c8c0); height: 100%;"></div>
-              </div>
-              <div class="product-card-body">
-                <span class="product-card-type">Quartz</span>
-                <h4>Hanstone Cascina</h4>
-                <p class="product-card-finish">Polished &middot; 3cm</p>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== VIEW IN ROOM (AR PLACEHOLDER) ===== -->
-    <section class="section section--surface noise-overlay">
-      <div class="container">
-        <div class="view-in-room reveal">
-          <div class="view-in-room-icon">
-            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" width="64" height="64">
-              <rect x="8" y="16" width="48" height="36" rx="4"/>
-              <path d="M8 28h48"/>
-              <path d="M32 28v24"/>
-              <circle cx="22" cy="22" r="3"/>
-              <path d="M44 40l-8-8-12 12"/>
-            </svg>
-          </div>
-          <h2 data-i18n="detail.viewInRoom.title">View in Your Space</h2>
-          <p class="text-muted" style="max-width: 520px; margin: 16px auto 0;" data-i18n-html="detail.viewInRoom.desc">Coming Soon &mdash; Visualize this surface in your space with our AR tool. Upload a photo of your room and see how Alaska White Granite transforms your environment.</p>
-          <div style="margin-top: 32px;">
-            <span class="btn btn--outline" style="opacity: 0.5; cursor: default;">Coming Soon</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
+  <main id="pdp-main">
+    <!-- Content rendered dynamically by JS -->
+    <div class="pdp-mobile-cta">
+      <a href="contact.html" class="cta-primary">Schedule Appointment</a>
+      <a href="contact.html?type=quote" class="cta-outline">Request Quote</a>
+    </div>
   </main>
 
   <!-- ===== FOOTER ===== -->
@@ -487,7 +673,351 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div id="n8n-chat-widget" data-webhook-url="https://grouplivingcentipede-n8n.cloudfy.live/webhook/8e5a5c60-de06-4e15-8207-30622fb38185/chat" style="display:none;"></div>
   </div>
 
+  <script src="../js/admin-config.js"></script>
   <script src="../js/i18n.js"></script>
   <script src="../js/main.js"></script>
+
+  <script>
+  (function() {
+    'use strict';
+
+    // ===== CONFIG =====
+    const SUPABASE_URL = ADMIN_CONFIG.SUPABASE.URL;
+    const SUPABASE_KEY = ADMIN_CONFIG.SUPABASE.ANON_KEY;
+    const REST_BASE = SUPABASE_URL + '/rest/v1';
+
+    const main = document.getElementById('pdp-main');
+
+    // ===== HELPERS =====
+    function getProductId() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('id');
+    }
+
+    function supaFetch(path) {
+      return fetch(REST_BASE + path, {
+        headers: {
+          'apikey': SUPABASE_KEY,
+          'Authorization': 'Bearer ' + SUPABASE_KEY,
+          'Accept': 'application/json'
+        }
+      }).then(function(r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      });
+    }
+
+    function esc(str) {
+      if (!str) return '';
+      var d = document.createElement('div');
+      d.textContent = str;
+      return d.innerHTML;
+    }
+
+    function locationDotClass(name) {
+      var n = (name || '').toLowerCase();
+      if (n.indexOf('miami') !== -1) return 'pdp-avail-dot--miami';
+      if (n.indexOf('orlando') !== -1) return 'pdp-avail-dot--orlando';
+      if (n.indexOf('sarasota') !== -1) return 'pdp-avail-dot--sarasota';
+      return '';
+    }
+
+    function categorySlug(cat) {
+      return (cat || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    }
+
+    // ===== RENDER: LOADING =====
+    function renderLoading() {
+      main.innerHTML = '\
+        <div class="pdp-loading">\
+          <div class="container">\
+            <div class="pdp-hero-grid">\
+              <div><div class="skeleton skeleton-image"></div></div>\
+              <div class="pdp-info-skeleton">\
+                <div class="skeleton skeleton-text sm"></div>\
+                <div class="skeleton skeleton-text lg"></div>\
+                <div class="skeleton skeleton-text md"></div>\
+                <div style="display:flex;gap:8px;"><div class="skeleton skeleton-badge"></div><div class="skeleton skeleton-badge"></div></div>\
+                <div class="skeleton skeleton-text" style="width:100%;height:48px;margin-top:16px;"></div>\
+                <div class="skeleton skeleton-text" style="width:100%;height:48px;"></div>\
+              </div>\
+            </div>\
+          </div>\
+        </div>';
+    }
+
+    // ===== RENDER: ERROR =====
+    function renderError(msg) {
+      main.innerHTML = '\
+        <div class="pdp-error">\
+          <div class="container">\
+            <div class="pdp-error-icon">\
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>\
+            </div>\
+            <h2>' + esc(msg || 'Product Not Found') + '</h2>\
+            <p>The product you are looking for may no longer be available or the link may be incorrect.</p>\
+            <a href="products.html" class="btn btn--primary">Browse All Products</a>\
+          </div>\
+        </div>';
+      document.title = 'Product Not Found — The Stone Surfaces';
+    }
+
+    // ===== RENDER: PRODUCT =====
+    function renderProduct(p, related) {
+      // Update page title & meta
+      document.title = esc(p.name) + ' — The Stone Surfaces';
+      var metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) metaDesc.content = p.name + ' — premium ' + (p.category || 'stone') + ' slab available at The Stone Surfaces. Request a quote today.';
+      var ogTitle = document.querySelector('meta[property="og:title"]');
+      if (ogTitle) ogTitle.content = p.name + ' — The Stone Surfaces';
+      var ogDesc = document.querySelector('meta[property="og:description"]');
+      if (ogDesc) ogDesc.content = 'Premium ' + p.name + ' slab. ' + (p.finish_name || '') + ' finish. South Florida\'s premier stone distributor.';
+
+      // Update Schema.org
+      var schema = document.getElementById('product-schema');
+      if (schema) {
+        try {
+          schema.textContent = JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            "name": p.name,
+            "description": p.description || (p.name + ' — premium ' + (p.category || 'stone') + ' slab'),
+            "brand": { "@type": "Brand", "name": "The Stone Surfaces" },
+            "material": p.category || 'Stone',
+            "category": "Natural Stone Slabs",
+            "sku": p.sku || '',
+            "image": p.image_url || ''
+          });
+        } catch(e) {}
+      }
+
+      var html = '';
+
+      // Breadcrumb
+      html += '<nav class="pdp-breadcrumb" aria-label="Breadcrumb"><div class="container"><ol class="breadcrumb-list">';
+      html += '<li><a href="../index.html">Home</a></li>';
+      html += '<li><a href="products.html">Products</a></li>';
+      if (p.category) {
+        html += '<li><a href="products.html#' + categorySlug(p.category) + '">' + esc(p.category) + '</a></li>';
+      }
+      html += '<li aria-current="page">' + esc(p.name) + '</li>';
+      html += '</ol></div></nav>';
+
+      // Hero
+      html += '<section class="pdp-hero"><div class="container"><div class="pdp-hero-grid">';
+
+      // Image
+      html += '<div class="pdp-image-wrapper pdp-animate">';
+      if (p.image_url) {
+        html += '<div class="pdp-image-main" id="pdp-zoom-area">';
+        html += '<img src="' + esc(p.image_url) + '" alt="' + esc(p.name) + ' slab" loading="eager">';
+        html += '<span class="pdp-zoom-hint">Hover to zoom</span>';
+        html += '</div>';
+      } else {
+        html += '<div class="pdp-no-image">';
+        html += '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>';
+        html += '<span>No image available</span>';
+        html += '</div>';
+      }
+      html += '</div>';
+
+      // Info panel
+      html += '<div class="pdp-info pdp-animate pdp-animate-delay-1">';
+
+      // Category label
+      html += '<div class="pdp-category-label">' + esc(p.category || 'Stone') + '</div>';
+
+      // Product name
+      html += '<h1 class="pdp-product-name">' + esc(p.name) + '</h1>';
+
+      // SKU
+      if (p.sku) {
+        html += '<div class="pdp-sku">SKU: ' + esc(p.sku) + '</div>';
+      }
+
+      // Badges
+      var hasBadges = p.is_new_arrival || p.is_featured;
+      if (hasBadges) {
+        html += '<div class="pdp-badges">';
+        if (p.is_new_arrival) {
+          html += '<span class="pdp-badge pdp-badge--new"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> New Arrival</span>';
+        }
+        if (p.is_featured) {
+          html += '<span class="pdp-badge pdp-badge--featured"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg> Featured</span>';
+        }
+        html += '</div>';
+      }
+
+      // Tags: finish + thickness
+      html += '<div class="pdp-tags">';
+      if (p.finish_name) {
+        html += '<span class="pdp-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="9"/></svg>' + esc(p.finish_name) + '</span>';
+      }
+      if (p.thickness) {
+        html += '<span class="pdp-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 3H3v18h18V3zM9 3v18M15 3v18"/></svg>' + esc(p.thickness) + '</span>';
+      }
+      if (p.type) {
+        html += '<span class="pdp-tag">' + esc(p.type) + '</span>';
+      }
+      html += '</div>';
+
+      html += '<div class="pdp-divider"></div>';
+
+      // CTAs
+      html += '<div class="pdp-ctas">';
+      html += '<a href="contact.html?product=' + encodeURIComponent(p.name) + '" class="pdp-cta pdp-cta--primary">';
+      html += '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>';
+      html += 'Schedule an Appointment</a>';
+      html += '<a href="contact.html?type=quote&product=' + encodeURIComponent(p.name) + '" class="pdp-cta pdp-cta--outline">';
+      html += '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>';
+      html += 'Request a Quote</a>';
+      html += '</div>';
+
+      html += '</div>'; // pdp-info
+      html += '</div></div></section>'; // hero grid, container, section
+
+      // Description section
+      if (p.description && p.description.trim()) {
+        html += '<section class="pdp-description-section pdp-animate pdp-animate-delay-2">';
+        html += '<div class="container"><div class="pdp-description-card">';
+        html += '<h2>About This Stone</h2>';
+        html += '<p>' + esc(p.description) + '</p>';
+        html += '</div></div></section>';
+      }
+
+      // Application gallery
+      if (p.application_images && p.application_images.length > 0) {
+        html += '<section class="pdp-gallery-section pdp-animate pdp-animate-delay-2">';
+        html += '<div class="container">';
+        html += '<div class="pdp-section-header"><span class="label">Inspiration</span><h2>See It in Action</h2></div>';
+        html += '<div class="pdp-gallery-track">';
+        p.application_images.forEach(function(imgUrl) {
+          html += '<div class="pdp-gallery-item"><img src="' + esc(imgUrl) + '" alt="' + esc(p.name) + ' application" loading="lazy"></div>';
+        });
+        html += '</div></div></section>';
+      }
+
+      // Availability
+      if (p.location_name) {
+        html += '<section class="pdp-availability-section pdp-animate pdp-animate-delay-3">';
+        html += '<div class="container">';
+        html += '<div class="pdp-section-header"><span class="label">Inventory</span><h2>Availability</h2></div>';
+        html += '<div class="pdp-avail-grid">';
+
+        html += '<div class="pdp-avail-card">';
+        html += '<div class="pdp-avail-location"><span class="pdp-avail-dot ' + locationDotClass(p.location_name) + '"></span>' + esc(p.location_name) + '</div>';
+
+        if (p.block_number) {
+          html += '<div class="pdp-avail-row"><span class="pdp-avail-label">Block</span><span class="pdp-avail-value">' + esc(p.block_number) + '</span></div>';
+        }
+        if (p.bundle_number) {
+          html += '<div class="pdp-avail-row"><span class="pdp-avail-label">Bundle</span><span class="pdp-avail-value">' + esc(p.bundle_number) + '</span></div>';
+        }
+        if (p.avg_length > 0 && p.avg_width > 0) {
+          html += '<div class="pdp-avail-row"><span class="pdp-avail-label">Avg Size</span><span class="pdp-avail-value">' + Number(p.avg_length).toFixed(0) + '&Prime; &times; ' + Number(p.avg_width).toFixed(0) + '&Prime;</span></div>';
+        }
+        if (p.available_qty_sf > 0) {
+          html += '<div class="pdp-avail-row"><span class="pdp-avail-label">Available</span><span class="pdp-avail-value">' + Number(p.available_qty_sf).toFixed(0) + ' SF</span></div>';
+        }
+        if (p.available_slabs > 0) {
+          html += '<div class="pdp-avail-row"><span class="pdp-avail-label">Slabs</span><span class="pdp-avail-value">' + p.available_slabs + ' Slabs</span></div>';
+        }
+
+        html += '</div>'; // card
+        html += '</div>'; // grid
+        html += '</div></section>';
+      }
+
+      // Related products
+      if (related && related.length > 0) {
+        html += '<section class="pdp-related-section pdp-animate pdp-animate-delay-3">';
+        html += '<div class="container">';
+        html += '<div class="pdp-section-header"><span class="label">You May Also Like</span><h2>Related Products</h2></div>';
+        html += '<div class="pdp-related-track">';
+        related.forEach(function(r) {
+          html += '<a href="product-detail.html?id=' + r.sps_item_id + '" class="pdp-related-card">';
+          if (r.image_url) {
+            html += '<img class="pdp-related-card-img" src="' + esc(r.image_url) + '" alt="' + esc(r.name) + '" loading="lazy">';
+          } else {
+            html += '<div class="pdp-related-no-img"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>';
+          }
+          html += '<div class="pdp-related-card-body">';
+          html += '<div class="pdp-related-card-cat">' + esc(r.category) + '</div>';
+          html += '<div class="pdp-related-card-name">' + esc(r.name) + '</div>';
+          html += '<div class="pdp-related-card-meta">' + esc(r.finish_name || '') + (r.thickness ? ' &middot; ' + esc(r.thickness) : '') + '</div>';
+          html += '</div></a>';
+        });
+        html += '</div></div></section>';
+      }
+
+      main.innerHTML = html;
+
+      // Attach zoom behavior
+      initZoom();
+    }
+
+    // ===== ZOOM ON HOVER =====
+    function initZoom() {
+      var area = document.getElementById('pdp-zoom-area');
+      if (!area) return;
+      area.addEventListener('mousemove', function(e) {
+        var rect = area.getBoundingClientRect();
+        var x = ((e.clientX - rect.left) / rect.width) * 100;
+        var y = ((e.clientY - rect.top) / rect.height) * 100;
+        area.style.setProperty('--zoom-x', x + '%');
+        area.style.setProperty('--zoom-y', y + '%');
+      });
+      area.addEventListener('mouseleave', function() {
+        area.style.setProperty('--zoom-x', 'center');
+        area.style.setProperty('--zoom-y', 'center');
+      });
+    }
+
+    // ===== MAIN =====
+    function init() {
+      var productId = getProductId();
+      if (!productId) {
+        renderError('No Product Selected');
+        return;
+      }
+
+      renderLoading();
+
+      // Fetch product
+      supaFetch('/products?sps_item_id=eq.' + encodeURIComponent(productId) + '&limit=1')
+        .then(function(data) {
+          if (!data || data.length === 0) {
+            renderError('Product Not Found');
+            return;
+          }
+
+          var product = data[0];
+
+          // Fetch related products (same category, exclude current, limit 6)
+          return supaFetch(
+            '/products?category=eq.' + encodeURIComponent(product.category) +
+            '&sps_item_id=neq.' + encodeURIComponent(product.sps_item_id) +
+            '&limit=6&select=sps_item_id,name,category,image_url,finish_name,thickness'
+          ).then(function(related) {
+            renderProduct(product, related || []);
+          }).catch(function() {
+            // Render product even if related fails
+            renderProduct(product, []);
+          });
+        })
+        .catch(function(err) {
+          console.error('Failed to load product:', err);
+          renderError('Error Loading Product');
+        });
+    }
+
+    // Run
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+  </script>
 </body>
 </html>
