@@ -256,15 +256,22 @@ const AdminData = (() => {
     return true;
   }
 
-  // ─── PUBLIC READS (Supabase direct — for blog.html, homepage) ──
+  // ─── PUBLIC READS (via n8n CRUD — Supabase credentials server-side) ──
 
   async function getPublishedPosts(limit = 20) {
-    const result = await supabaseGet(
-      'blog_posts',
-      `status=eq.published&order=published_at.desc&limit=${limit}`
-    );
-    if (result) return result.map(postToCamel);
-
+    const endpoint = ADMIN_CONFIG.ENDPOINTS.BLOG_CRUD;
+    if (endpoint) {
+      const result = await n8nPost(endpoint, {
+        action: 'list',
+        data: { status: 'published' },
+      });
+      if (result && result.success && Array.isArray(result.data)) {
+        return result.data
+          .map(postToCamel)
+          .sort((a, b) => new Date(b.publishedAt || b.createdAt) - new Date(a.publishedAt || a.createdAt))
+          .slice(0, limit);
+      }
+    }
     // Fallback to localStorage
     return getStorage(ADMIN_CONFIG.STORAGE_KEYS.POSTS)
       .filter(p => p.status === 'published')
@@ -273,25 +280,36 @@ const AdminData = (() => {
   }
 
   async function getPostBySlug(slug) {
-    const result = await supabaseGet(
-      'blog_posts',
-      `slug=eq.${encodeURIComponent(slug)}&status=eq.published&limit=1`
-    );
-    if (result && result.length > 0) return postToCamel(result[0]);
-
+    const endpoint = ADMIN_CONFIG.ENDPOINTS.BLOG_CRUD;
+    if (endpoint) {
+      const result = await n8nPost(endpoint, {
+        action: 'list',
+        data: { status: 'published' },
+      });
+      if (result && result.success && Array.isArray(result.data)) {
+        const match = result.data.find(p => p.slug === slug);
+        if (match) return postToCamel(match);
+      }
+    }
     // Fallback to localStorage
     const posts = getStorage(ADMIN_CONFIG.STORAGE_KEYS.POSTS);
-    const post = posts.find(p => p.slug === slug && p.status === 'published');
-    return post || null;
+    return posts.find(p => p.slug === slug && p.status === 'published') || null;
   }
 
   async function getRelatedPosts(category, excludeId, limit = 3) {
-    const result = await supabaseGet(
-      'blog_posts',
-      `status=eq.published&category=eq.${encodeURIComponent(category)}&id=neq.${excludeId}&order=published_at.desc&limit=${limit}`
-    );
-    if (result) return result.map(postToCamel);
-
+    const endpoint = ADMIN_CONFIG.ENDPOINTS.BLOG_CRUD;
+    if (endpoint) {
+      const result = await n8nPost(endpoint, {
+        action: 'list',
+        data: { status: 'published' },
+      });
+      if (result && result.success && Array.isArray(result.data)) {
+        return result.data
+          .filter(p => p.category === category && p.id !== excludeId)
+          .map(postToCamel)
+          .slice(0, limit);
+      }
+    }
     return getStorage(ADMIN_CONFIG.STORAGE_KEYS.POSTS)
       .filter(p => p.status === 'published' && p.category === category && p.id !== excludeId)
       .slice(0, limit);
