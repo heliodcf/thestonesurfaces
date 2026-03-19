@@ -471,12 +471,13 @@ const AdminData = (() => {
     return getLocalIdeas();
   }
 
-  async function generateBlogContent(title, angle) {
+  async function generateBlogContent(title, angle, category) {
     const endpoint = ADMIN_CONFIG.ENDPOINTS.BLOG_GENERATE;
     if (endpoint) {
       const result = await n8nPost(endpoint, {
         title,
         angle: angle || '',
+        category: category || 'design-trends',
         tone: 'professional yet warm, luxury stone distributor',
         brand: 'The Stone Surfaces',
       });

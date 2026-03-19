@@ -16,7 +16,278 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../css/styles.css?v=3">
-  <link rel="stylesheet" href="../../css/admin.css?v=3">
+  <link rel="stylesheet" href="../../css/admin.css?v=4">
+  <style>
+    /* ── Dashboard-specific enhancements ── */
+
+    /* Page Header */
+    .dash-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+    .dash-header-left h1 {
+      font-family: var(--a-font-display);
+      font-size: 32px;
+      font-weight: 300;
+      color: var(--a-text);
+      margin: 0 0 4px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .dash-header-left p {
+      font-size: 13px;
+      color: var(--a-text-secondary);
+      margin: 0;
+    }
+    .dash-header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .dash-date {
+      font-size: 12px;
+      color: var(--a-text-muted);
+      font-variant-numeric: tabular-nums;
+    }
+    .btn-refresh {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      background: var(--a-surface);
+      border: 1px solid var(--a-border);
+      border-radius: var(--a-radius-sm);
+      color: var(--a-text-secondary);
+      font-size: 13px;
+      font-family: var(--a-font-body);
+      cursor: pointer;
+      transition: var(--a-transition);
+    }
+    .btn-refresh:hover {
+      border-color: var(--a-border-hover);
+      color: var(--a-text);
+      background: var(--a-surface-hover);
+    }
+    .btn-refresh svg { width: 14px; height: 14px; }
+    .btn-refresh.loading svg { animation: spin 0.8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Metric Cards — SVG icons replacing emoji */
+    .metric-icon svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    /* Dashboard 2-col insight section */
+    .dash-insights {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    @media (max-width: 900px) { .dash-insights { grid-template-columns: 1fr; } }
+
+    .insight-card {
+      background: var(--a-card);
+      border: 1px solid var(--a-border);
+      border-radius: var(--a-radius);
+      padding: 20px 24px;
+    }
+    .insight-card-title {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--a-text-secondary);
+      margin: 0 0 16px;
+    }
+
+    /* Pipeline funnel */
+    .pipeline-stages { display: flex; flex-direction: column; gap: 10px; }
+    .pipeline-stage { display: flex; align-items: center; gap: 12px; }
+    .pipeline-stage-label {
+      width: 88px;
+      font-size: 12px;
+      color: var(--a-text-secondary);
+      flex-shrink: 0;
+    }
+    .pipeline-bar-track {
+      flex: 1;
+      height: 6px;
+      background: var(--a-border);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .pipeline-bar-fill {
+      height: 100%;
+      border-radius: 99px;
+      transition: width 0.6s cubic-bezier(0.4,0,0.2,1);
+    }
+    .pipeline-count {
+      width: 28px;
+      text-align: right;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--a-text);
+      flex-shrink: 0;
+      font-variant-numeric: tabular-nums;
+    }
+    .pipeline-pct {
+      width: 36px;
+      text-align: right;
+      font-size: 11px;
+      color: var(--a-text-muted);
+      flex-shrink: 0;
+      font-variant-numeric: tabular-nums;
+    }
+    /* pipeline colors */
+    .pbar-total  { background: var(--a-gold); }
+    .pbar-new    { background: var(--a-info); }
+    .pbar-cont   { background: #f59e0b; }
+    .pbar-qual   { background: #8b5cf6; }
+    .pbar-conv   { background: var(--a-success); }
+    .pbar-aband  { background: var(--a-danger); }
+
+    /* Source breakdown */
+    .source-rows { display: flex; flex-direction: column; gap: 12px; }
+    .source-row { display: flex; align-items: center; gap: 12px; }
+    .source-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .source-name {
+      width: 96px;
+      font-size: 12px;
+      color: var(--a-text-secondary);
+      flex-shrink: 0;
+    }
+    .source-bar-track {
+      flex: 1;
+      height: 5px;
+      background: var(--a-border);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .source-bar-fill {
+      height: 100%;
+      border-radius: 99px;
+      transition: width 0.6s cubic-bezier(0.4,0,0.2,1);
+    }
+    .source-count {
+      width: 24px;
+      text-align: right;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--a-text);
+      flex-shrink: 0;
+    }
+    .src-chat    { background: var(--a-gold); }
+    .src-quote   { background: var(--a-info); }
+    .src-trade   { background: #8b5cf6; }
+    .src-manual  { background: var(--a-text-muted); }
+
+    .source-empty {
+      font-size: 12px;
+      color: var(--a-text-muted);
+      text-align: center;
+      padding: 16px 0;
+    }
+
+    /* Avatar initials in table */
+    .lead-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
+      letter-spacing: 0;
+    }
+    .lead-avatar-cell {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .lead-avatar-info { display: flex; flex-direction: column; }
+    .lead-avatar-name { font-weight: 500; font-size: 13px; color: var(--a-text); }
+    .lead-avatar-company { font-size: 11px; color: var(--a-text-muted); }
+
+    /* Avatar colors by first letter */
+    .av-a,.av-b,.av-c,.av-d,.av-e { background: rgba(59,130,246,0.15); color: #60a5fa; }
+    .av-f,.av-g,.av-h,.av-i,.av-j { background: rgba(139,92,246,0.15); color: #a78bfa; }
+    .av-k,.av-l,.av-m,.av-n,.av-o { background: rgba(201,169,110,0.15); color: var(--a-gold); }
+    .av-p,.av-q,.av-r,.av-s,.av-t { background: rgba(34,197,94,0.15); color: #4ade80; }
+    .av-u,.av-v,.av-w,.av-x,.av-y,.av-z { background: rgba(245,158,11,0.15); color: #fbbf24; }
+    .av-other { background: rgba(255,255,255,0.06); color: var(--a-text-secondary); }
+
+    /* Message preview in table */
+    .lead-message-preview {
+      font-size: 12px;
+      color: var(--a-text-muted);
+      max-width: 200px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Contact cell */
+    .contact-cell a {
+      color: var(--a-text-secondary);
+      text-decoration: none;
+      font-size: 12px;
+      transition: color var(--a-transition);
+    }
+    .contact-cell a:hover { color: var(--a-gold); }
+    .contact-cell .contact-primary { font-size: 13px; color: var(--a-text); margin-bottom: 2px; }
+
+    /* Skeleton loading */
+    .skeleton-row td { padding: 14px 16px; }
+    .skeleton-line {
+      height: 12px;
+      border-radius: 4px;
+      background: linear-gradient(90deg, var(--a-surface) 25%, var(--a-surface-hover) 50%, var(--a-surface) 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.4s infinite;
+    }
+    .skeleton-circle {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(90deg, var(--a-surface) 25%, var(--a-surface-hover) 50%, var(--a-surface) 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.4s infinite;
+      flex-shrink: 0;
+    }
+    @keyframes shimmer { to { background-position: -200% 0; } }
+
+    /* Filters bar upgrade */
+    .filters-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .filters-left { display: flex; align-items: center; gap: 8px; flex: 1; flex-wrap: wrap; }
+    .filters-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+
+    /* Lead count label */
+    .leads-count-label {
+      font-size: 12px;
+      color: var(--a-text-muted);
+      margin-bottom: 8px;
+    }
+    .leads-count-label strong { color: var(--a-text-secondary); }
+  </style>
 </head>
 <body class="admin-body">
 <!-- Google Tag Manager (noscript) -->
@@ -27,12 +298,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- Sidebar -->
   <aside class="admin-sidebar" id="admin-sidebar">
     <div class="sidebar-header">
-      <a href="../../index.html" class="sidebar-logo">
+      <a href="../../index.html" class="sidebar-logo" style="flex-direction:column;align-items:center;gap:6px;">
         <img src="../../images/header/TSS_LOGO.png" alt="The Stone Surfaces">
-        <div class="sidebar-logo-text">
-          <span class="sidebar-logo-name">The Stone Surfaces</span>
-          <span class="sidebar-badge">Admin</span>
-        </div>
+        <span class="sidebar-badge">Admin</span>
       </a>
     </div>
     <nav class="sidebar-nav">
@@ -60,83 +328,134 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="sidebar-overlay" id="sidebar-overlay"></div>
   <button class="admin-mobile-toggle" id="mobile-toggle">&#9776;</button>
 
-  <!-- Main Content (hidden until auth check) -->
+  <!-- Main Content -->
   <main class="admin-main" style="display:none;">
   <div class="admin-content">
 
     <!-- Page Header -->
-    <div class="admin-page-header">
-      <div>
-        <h1 class="admin-page-title">Lead Dashboard</h1>
-        <p class="admin-page-subtitle">Manage leads from your AI chatbot, contact forms, and trade applications.</p>
+    <div class="dash-header">
+      <div class="dash-header-left">
+        <h1>Lead Dashboard</h1>
+        <p>Leads from AI chatbot, contact form, and trade applications.</p>
+      </div>
+      <div class="dash-header-right">
+        <span class="dash-date" id="dash-date"></span>
+        <button class="btn-refresh" id="refresh-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"/></svg>
+          Refresh
+        </button>
+        <button class="btn btn--outline btn--small" id="export-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width:14px;height:14px;display:inline;vertical-align:-2px;margin-right:4px;"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+          Export CSV
+        </button>
+        <button class="btn btn--primary btn--small" id="add-lead-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width:14px;height:14px;display:inline;vertical-align:-2px;margin-right:4px;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+          Add Lead
+        </button>
       </div>
     </div>
 
     <!-- Metrics -->
     <div class="metric-grid" id="metrics-grid">
       <div class="metric-card">
-        <div class="metric-icon">&#9733;</div>
-        <div class="metric-value" id="metric-total">0</div>
+        <div class="metric-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"/></svg>
+        </div>
+        <div class="metric-value" id="metric-total">—</div>
         <div class="metric-label">Total Leads</div>
       </div>
       <div class="metric-card metric-card--blue">
-        <div class="metric-icon">&#10043;</div>
-        <div class="metric-value" id="metric-new">0</div>
+        <div class="metric-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+        </div>
+        <div class="metric-value" id="metric-new">—</div>
         <div class="metric-label">New Leads</div>
       </div>
+      <div class="metric-card metric-card--amber">
+        <div class="metric-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z"/></svg>
+        </div>
+        <div class="metric-value" id="metric-contacted">—</div>
+        <div class="metric-label">Contacted</div>
+      </div>
       <div class="metric-card metric-card--purple">
-        <div class="metric-icon">&#10004;</div>
-        <div class="metric-value" id="metric-qualified">0</div>
+        <div class="metric-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z"/></svg>
+        </div>
+        <div class="metric-value" id="metric-qualified">—</div>
         <div class="metric-label">Qualified</div>
       </div>
       <div class="metric-card metric-card--green">
-        <div class="metric-icon">&#10070;</div>
-        <div class="metric-value" id="metric-converted">0</div>
+        <div class="metric-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z"/></svg>
+        </div>
+        <div class="metric-value" id="metric-converted">—</div>
         <div class="metric-label">Converted</div>
       </div>
-      <div class="metric-card">
-        <div class="metric-icon">&#9888;</div>
-        <div class="metric-value" id="metric-abandoned">0</div>
-        <div class="metric-label">Abandoned</div>
+    </div>
+
+    <!-- Insights Row -->
+    <div class="dash-insights">
+
+      <!-- Pipeline Funnel -->
+      <div class="insight-card">
+        <p class="insight-card-title">Conversion Pipeline</p>
+        <div class="pipeline-stages" id="pipeline-stages">
+          <!-- Populated by JS -->
+          <div class="pipeline-stage">
+            <div class="pipeline-stage-label">Loading...</div>
+            <div class="pipeline-bar-track"><div class="pipeline-bar-fill pbar-total skeleton-line" style="width:100%;height:6px;"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Source Breakdown -->
+      <div class="insight-card">
+        <p class="insight-card-title">Lead Sources</p>
+        <div class="source-rows" id="source-rows">
+          <div class="source-row">
+            <div class="source-name" style="color:var(--a-text-muted);font-size:12px;">Loading...</div>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- Filters Bar -->
     <div class="filters-bar">
-      <div class="filter-group">
-        <label>Status</label>
-        <select class="filter-select" id="filter-status">
-          <option value="">All Statuses</option>
-          <option value="new">New</option>
-          <option value="contacted">Contacted</option>
-          <option value="qualified">Qualified</option>
-          <option value="converted">Converted</option>
-          <option value="abandoned_cart">Abandoned</option>
-        </select>
+      <div class="filters-left">
+        <div class="filter-group" style="margin:0;">
+          <select class="filter-select" id="filter-status" style="min-width:130px;">
+            <option value="">All Statuses</option>
+            <option value="new">New</option>
+            <option value="contacted">Contacted</option>
+            <option value="qualified">Qualified</option>
+            <option value="converted">Converted</option>
+            <option value="abandoned_cart">Abandoned</option>
+          </select>
+        </div>
+        <div class="filter-group" style="margin:0;">
+          <select class="filter-select" id="filter-source" style="min-width:130px;">
+            <option value="">All Sources</option>
+            <option value="chat">AI Chatbot</option>
+            <option value="quote-form">Quote Form</option>
+            <option value="trade-form">Trade Form</option>
+            <option value="manual">Manual</option>
+          </select>
+        </div>
+        <div class="filter-group" style="margin:0;flex:1;">
+          <input type="text" class="filter-input filter-input--search" id="filter-search" placeholder="Search name, email, phone…" style="width:100%;">
+        </div>
       </div>
-      <div class="filter-group">
-        <label>Source</label>
-        <select class="filter-select" id="filter-source">
-          <option value="">All Sources</option>
-          <option value="chat">AI Chatbot</option>
-          <option value="quote-form">Quote Form</option>
-          <option value="trade-form">Trade Form</option>
-          <option value="manual">Manual Entry</option>
-        </select>
-      </div>
-      <div class="filter-group">
-        <input type="text" class="filter-input filter-input--search" id="filter-search" placeholder="Search name, email, phone...">
-      </div>
-      <button class="btn btn--outline btn--small" id="export-btn">&#8681; Export CSV</button>
-      <button class="btn btn--primary btn--small" id="add-lead-btn">+ Add Lead</button>
     </div>
 
+    <div class="leads-count-label" id="leads-count-label"></div>
+
     <!-- Leads Table -->
-    <div class="table-wrapper">
+    <div class="table-wrapper" id="table-wrapper">
       <table class="admin-table" id="leads-table">
         <thead>
           <tr>
-            <th>Name</th>
+            <th>Lead</th>
             <th>Contact</th>
             <th>Interest</th>
             <th>Source</th>
@@ -145,7 +464,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody id="leads-tbody"></tbody>
+        <tbody id="leads-tbody">
+          <!-- Skeleton rows -->
+          <tr class="skeleton-row"><td><div style="display:flex;align-items:center;gap:10px;"><div class="skeleton-circle"></div><div class="skeleton-line" style="width:120px;"></div></div></td><td><div class="skeleton-line" style="width:140px;"></div></td><td><div class="skeleton-line" style="width:80px;"></div></td><td><div class="skeleton-line" style="width:70px;"></div></td><td><div class="skeleton-line" style="width:60px;"></div></td><td><div class="skeleton-line" style="width:80px;"></div></td><td><div class="skeleton-line" style="width:80px;"></div></td></tr>
+          <tr class="skeleton-row"><td><div style="display:flex;align-items:center;gap:10px;"><div class="skeleton-circle"></div><div class="skeleton-line" style="width:100px;"></div></div></td><td><div class="skeleton-line" style="width:160px;"></div></td><td><div class="skeleton-line" style="width:90px;"></div></td><td><div class="skeleton-line" style="width:70px;"></div></td><td><div class="skeleton-line" style="width:60px;"></div></td><td><div class="skeleton-line" style="width:80px;"></div></td><td><div class="skeleton-line" style="width:80px;"></div></td></tr>
+          <tr class="skeleton-row"><td><div style="display:flex;align-items:center;gap:10px;"><div class="skeleton-circle"></div><div class="skeleton-line" style="width:130px;"></div></div></td><td><div class="skeleton-line" style="width:130px;"></div></td><td><div class="skeleton-line" style="width:70px;"></div></td><td><div class="skeleton-line" style="width:70px;"></div></td><td><div class="skeleton-line" style="width:60px;"></div></td><td><div class="skeleton-line" style="width:80px;"></div></td><td><div class="skeleton-line" style="width:80px;"></div></td></tr>
+        </tbody>
       </table>
     </div>
 
@@ -154,10 +478,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- Empty State -->
     <div class="empty-state" id="empty-state" style="display:none;">
-      <div class="empty-state-icon">&#128203;</div>
+      <div class="empty-state-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" style="width:48px;height:48px;color:var(--a-text-muted);"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"/></svg>
+      </div>
       <div class="empty-state-title">No leads yet</div>
-      <div class="empty-state-text">Leads from your AI chatbot and forms will appear here.</div>
-      <button class="btn btn--primary" id="empty-add-btn">+ Add Your First Lead</button>
+      <div class="empty-state-text">Leads from your AI chatbot and contact forms will appear here automatically.</div>
+      <button class="btn btn--primary" id="empty-add-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width:14px;height:14px;display:inline;vertical-align:-2px;margin-right:6px;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+        Add First Lead
+      </button>
     </div>
 
   </div><!-- /admin-content -->
@@ -167,12 +496,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="detail-panel-overlay" id="detail-overlay">
     <div class="detail-panel" id="detail-panel">
       <div class="detail-panel-header">
-        <h2 class="detail-panel-title" id="detail-name">Lead Details</h2>
+        <div>
+          <h2 class="detail-panel-title" id="detail-name">Lead Details</h2>
+          <p id="detail-subtitle" style="font-size:12px;color:var(--a-text-muted);margin:2px 0 0;"></p>
+        </div>
         <button class="detail-panel-close" id="detail-close">&times;</button>
       </div>
-      <div class="detail-panel-body" id="detail-body">
-        <!-- Populated by JS -->
-      </div>
+      <div class="detail-panel-body" id="detail-body"></div>
       <div class="detail-panel-footer">
         <select class="filter-select" id="detail-status-select">
           <option value="new">New</option>
@@ -248,7 +578,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
           <div class="form-group">
             <label for="lead-note">Initial Note</label>
-            <textarea id="lead-note" rows="3" placeholder="Optional note about this lead..."></textarea>
+            <textarea id="lead-note" rows="3" placeholder="Optional note about this lead…"></textarea>
           </div>
         </form>
       </div>
@@ -279,16 +609,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       const tbody = document.getElementById('leads-tbody');
       const paginationEl = document.getElementById('pagination');
       const emptyState = document.getElementById('empty-state');
-      const tableWrapper = document.querySelector('.table-wrapper');
-      const filtersBar = document.querySelector('.filters-bar');
+      const tableWrapper = document.getElementById('table-wrapper');
+
+      // Date header
+      const dateEl = document.getElementById('dash-date');
+      function updateDate() {
+        dateEl.textContent = new Date().toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+      }
+      updateDate();
 
       // Init
       loadLeads();
 
-      // ── Logout ─────────────────────────────
+      // ── Logout ───────────────────────────────────────────
       document.getElementById('logout-btn').addEventListener('click', () => AdminAuth.logout());
 
-      // ── Mobile sidebar toggle ─────────────
+      // ── Mobile sidebar ───────────────────────────────────
       document.getElementById('mobile-toggle').addEventListener('click', () => {
         document.getElementById('admin-sidebar').classList.toggle('open');
         document.getElementById('sidebar-overlay').classList.toggle('open');
@@ -298,15 +634,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         document.getElementById('sidebar-overlay').classList.remove('open');
       });
 
-      // ── Filters ────────────────────────────
+      // ── Refresh button ───────────────────────────────────
+      document.getElementById('refresh-btn').addEventListener('click', async () => {
+        const btn = document.getElementById('refresh-btn');
+        btn.classList.add('loading');
+        btn.disabled = true;
+        await loadLeads();
+        btn.classList.remove('loading');
+        btn.disabled = false;
+        showToast('Leads refreshed.');
+      });
+
+      // ── Filters ──────────────────────────────────────────
       document.getElementById('filter-status').addEventListener('change', applyFilters);
       document.getElementById('filter-source').addEventListener('change', applyFilters);
       document.getElementById('filter-search').addEventListener('input', debounce(applyFilters, 300));
 
-      // ── Export CSV ─────────────────────────
+      // ── Export CSV ───────────────────────────────────────
       document.getElementById('export-btn').addEventListener('click', exportCSV);
 
-      // ── Add Lead Modal ─────────────────────
+      // ── Add Lead Modal ───────────────────────────────────
       document.getElementById('add-lead-btn').addEventListener('click', openAddModal);
       document.getElementById('empty-add-btn').addEventListener('click', openAddModal);
       document.getElementById('add-lead-close').addEventListener('click', closeAddModal);
@@ -316,28 +663,100 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         if (e.target === e.currentTarget) closeAddModal();
       });
 
-      // ── Detail Panel ───────────────────────
+      // ── Detail Panel ─────────────────────────────────────
       document.getElementById('detail-close').addEventListener('click', closeDetail);
       document.getElementById('detail-overlay').addEventListener('click', (e) => {
         if (e.target === e.currentTarget) closeDetail();
       });
       document.getElementById('detail-save-status').addEventListener('click', updateLeadStatus);
 
-      // ── Functions ──────────────────────────
+      // ── Load Leads ───────────────────────────────────────
 
       async function loadLeads() {
         allLeads = await AdminData.getLeads();
         applyFilters();
         updateMetrics();
+        renderPipeline();
+        renderSources();
       }
+
+      // ── Metrics ──────────────────────────────────────────
 
       function updateMetrics() {
         document.getElementById('metric-total').textContent = allLeads.length;
         document.getElementById('metric-new').textContent = allLeads.filter(l => l.status === 'new').length;
+        document.getElementById('metric-contacted').textContent = allLeads.filter(l => l.status === 'contacted').length;
         document.getElementById('metric-qualified').textContent = allLeads.filter(l => l.status === 'qualified').length;
         document.getElementById('metric-converted').textContent = allLeads.filter(l => l.status === 'converted').length;
-        document.getElementById('metric-abandoned').textContent = allLeads.filter(l => l.status === 'abandoned_cart').length;
       }
+
+      // ── Pipeline Funnel ───────────────────────────────────
+
+      function renderPipeline() {
+        const total = allLeads.length;
+        const stages = [
+          { label: 'Total', count: total, cls: 'pbar-total' },
+          { label: 'New', count: allLeads.filter(l => l.status === 'new').length, cls: 'pbar-new' },
+          { label: 'Contacted', count: allLeads.filter(l => l.status === 'contacted').length, cls: 'pbar-cont' },
+          { label: 'Qualified', count: allLeads.filter(l => l.status === 'qualified').length, cls: 'pbar-qual' },
+          { label: 'Converted', count: allLeads.filter(l => l.status === 'converted').length, cls: 'pbar-conv' },
+          { label: 'Abandoned', count: allLeads.filter(l => l.status === 'abandoned_cart').length, cls: 'pbar-aband' },
+        ];
+
+        const container = document.getElementById('pipeline-stages');
+        if (total === 0) {
+          container.innerHTML = '<p class="source-empty">No leads yet.</p>';
+          return;
+        }
+
+        container.innerHTML = stages.map(s => {
+          const pct = total > 0 ? Math.round((s.count / total) * 100) : 0;
+          return `
+            <div class="pipeline-stage">
+              <div class="pipeline-stage-label">${s.label}</div>
+              <div class="pipeline-bar-track">
+                <div class="pipeline-bar-fill ${s.cls}" style="width:${pct}%"></div>
+              </div>
+              <div class="pipeline-count">${s.count}</div>
+              <div class="pipeline-pct">${pct}%</div>
+            </div>`;
+        }).join('');
+      }
+
+      // ── Source Breakdown ─────────────────────────────────
+
+      function renderSources() {
+        const sources = [
+          { key: 'chat', label: 'AI Chatbot', cls: 'src-chat', dotColor: 'var(--a-gold)' },
+          { key: 'quote-form', label: 'Quote Form', cls: 'src-quote', dotColor: 'var(--a-info)' },
+          { key: 'trade-form', label: 'Trade Form', cls: 'src-trade', dotColor: '#8b5cf6' },
+          { key: 'manual', label: 'Manual', cls: 'src-manual', dotColor: 'var(--a-text-muted)' },
+        ];
+
+        const max = Math.max(...sources.map(s => allLeads.filter(l => l.source === s.key).length), 1);
+        const container = document.getElementById('source-rows');
+
+        if (allLeads.length === 0) {
+          container.innerHTML = '<p class="source-empty">No leads yet.</p>';
+          return;
+        }
+
+        container.innerHTML = sources.map(s => {
+          const count = allLeads.filter(l => l.source === s.key).length;
+          const pct = Math.round((count / max) * 100);
+          return `
+            <div class="source-row">
+              <div class="source-dot" style="background:${s.dotColor}"></div>
+              <div class="source-name">${s.label}</div>
+              <div class="source-bar-track">
+                <div class="source-bar-fill ${s.cls}" style="width:${pct}%"></div>
+              </div>
+              <div class="source-count">${count}</div>
+            </div>`;
+        }).join('');
+      }
+
+      // ── Filters ──────────────────────────────────────────
 
       function applyFilters() {
         const status = document.getElementById('filter-status').value;
@@ -359,57 +778,87 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         renderTable();
       }
 
+      // ── Table Render ─────────────────────────────────────
+
+      function avatarClass(name) {
+        const c = (name || 'Z').trim().charAt(0).toLowerCase();
+        const groups = { 'abcde': 'a', 'fghij': 'f', 'klmno': 'k', 'pqrst': 'p', 'uvwxyz': 'u' };
+        for (const [letters, cls] of Object.entries(groups)) {
+          if (letters.includes(c)) return 'av-' + cls;
+        }
+        return 'av-other';
+      }
+
+      function initials(name) {
+        const parts = (name || '?').trim().split(' ');
+        if (parts.length >= 2) return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+        return (parts[0][0] || '?').toUpperCase();
+      }
+
       function renderTable() {
         const perPage = ADMIN_CONFIG.LEADS_PER_PAGE;
         const totalPages = Math.ceil(filteredLeads.length / perPage) || 1;
         const start = (currentPage - 1) * perPage;
         const pageLeads = filteredLeads.slice(start, start + perPage);
 
+        // Count label
+        const countEl = document.getElementById('leads-count-label');
+        if (filteredLeads.length > 0) {
+          countEl.innerHTML = `Showing <strong>${start + 1}–${Math.min(start + perPage, filteredLeads.length)}</strong> of <strong>${filteredLeads.length}</strong> leads`;
+        } else {
+          countEl.innerHTML = '';
+        }
+
         if (filteredLeads.length === 0 && allLeads.length === 0) {
           tableWrapper.style.display = 'none';
-          filtersBar.style.display = 'none';
           paginationEl.style.display = 'none';
           emptyState.style.display = 'block';
           return;
         }
 
         tableWrapper.style.display = '';
-        filtersBar.style.display = '';
         emptyState.style.display = 'none';
 
         tbody.innerHTML = pageLeads.map(lead => {
           const statusCfg = ADMIN_CONFIG.LEAD_STATUSES.find(s => s.value === lead.status) || {};
           const sourceCfg = ADMIN_CONFIG.LEAD_SOURCES.find(s => s.value === lead.source) || {};
           const date = new Date(lead.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+          const avClass = avatarClass(lead.name);
+          const avInitials = initials(lead.name);
+          const interest = lead.materialsInterest
+            ? (Array.isArray(lead.materialsInterest) ? lead.materialsInterest.join(', ') : lead.materialsInterest)
+            : (lead.interest || '—');
 
-          return `<tr data-id="${lead.id}">
+          return `<tr data-id="${lead.id}" style="cursor:pointer;">
             <td>
-              <div class="lead-name">${escHtml(lead.name)}</div>
+              <div class="lead-avatar-cell">
+                <div class="lead-avatar ${avClass}">${escHtml(avInitials)}</div>
+                <div class="lead-avatar-info">
+                  <span class="lead-avatar-name">${escHtml(lead.name || '—')}</span>
+                  ${lead.company ? `<span class="lead-avatar-company">${escHtml(lead.company)}</span>` : ''}
+                </div>
+              </div>
             </td>
-            <td>
-              <div>${escHtml(lead.email)}</div>
-              <div class="lead-email">${escHtml(lead.phone || '—')}</div>
+            <td class="contact-cell">
+              <div class="contact-primary">${lead.email ? `<a href="mailto:${escHtml(lead.email)}" onclick="event.stopPropagation()">${escHtml(lead.email)}</a>` : '—'}</div>
+              ${lead.phone ? `<a href="tel:${escHtml(lead.phone)}" onclick="event.stopPropagation()">${escHtml(lead.phone)}</a>` : ''}
             </td>
-            <td>${escHtml(lead.materialsInterest ? (Array.isArray(lead.materialsInterest) ? lead.materialsInterest.join(', ') : lead.materialsInterest) : (lead.interest || '—'))}</td>
-            <td>${escHtml(sourceCfg.label || lead.source)}</td>
+            <td style="font-size:13px;color:var(--a-text-secondary);">${escHtml(interest)}</td>
+            <td style="font-size:12px;color:var(--a-text-muted);">${escHtml(sourceCfg.label || lead.source)}</td>
             <td><span class="status-badge status-badge--${lead.status}">${escHtml(statusCfg.label || lead.status)}</span></td>
-            <td>${date}</td>
-            <td class="actions-cell">
+            <td style="font-size:12px;color:var(--a-text-muted);white-space:nowrap;">${date}</td>
+            <td class="actions-cell" onclick="event.stopPropagation()">
               <button class="action-btn view-btn" data-id="${lead.id}">View</button>
               <button class="action-btn action-btn--danger delete-btn" data-id="${lead.id}">Delete</button>
             </td>
           </tr>`;
         }).join('');
 
-        // Bind row clicks
-        tbody.querySelectorAll('.view-btn').forEach(btn => {
-          btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            openDetail(btn.dataset.id);
-          });
-        });
-
-        tbody.querySelectorAll('.delete-btn').forEach(btn => {
+        // Bind actions
+        tbody.querySelectorAll('.view-btn').forEach(btn =>
+          btn.addEventListener('click', (e) => { e.stopPropagation(); openDetail(btn.dataset.id); })
+        );
+        tbody.querySelectorAll('.delete-btn').forEach(btn =>
           btn.addEventListener('click', async (e) => {
             e.stopPropagation();
             if (confirm('Delete this lead?')) {
@@ -417,54 +866,57 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               await loadLeads();
               showToast('Lead deleted.');
             }
-          });
-        });
+          })
+        );
+        tbody.querySelectorAll('tr').forEach(tr =>
+          tr.addEventListener('click', () => openDetail(tr.dataset.id))
+        );
 
-        tbody.querySelectorAll('tr').forEach(tr => {
-          tr.addEventListener('click', () => openDetail(tr.dataset.id));
-        });
-
-        // Pagination
         renderPagination(totalPages);
       }
 
       function renderPagination(totalPages) {
-        if (totalPages <= 1) {
-          paginationEl.style.display = 'none';
-          return;
-        }
+        if (totalPages <= 1) { paginationEl.style.display = 'none'; return; }
         paginationEl.style.display = 'flex';
 
-        let html = `<button class="pagination-btn" data-page="${currentPage - 1}" ${currentPage === 1 ? 'disabled' : ''}>&laquo; Prev</button>`;
-        for (let i = 1; i <= totalPages; i++) {
+        let html = `<button class="pagination-btn" data-page="${currentPage - 1}" ${currentPage === 1 ? 'disabled' : ''}>&laquo;</button>`;
+        const maxPages = 7;
+        let start = Math.max(1, currentPage - 3);
+        let end = Math.min(totalPages, start + maxPages - 1);
+        if (end - start < maxPages - 1) start = Math.max(1, end - maxPages + 1);
+
+        if (start > 1) html += `<button class="pagination-btn" data-page="1">1</button>${start > 2 ? '<span style="padding:0 4px;color:var(--a-text-muted);">…</span>' : ''}`;
+        for (let i = start; i <= end; i++) {
           html += `<button class="pagination-btn ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
         }
-        html += `<button class="pagination-btn" data-page="${currentPage + 1}" ${currentPage === totalPages ? 'disabled' : ''}>Next &raquo;</button>`;
+        if (end < totalPages) html += `${end < totalPages - 1 ? '<span style="padding:0 4px;color:var(--a-text-muted);">…</span>' : ''}<button class="pagination-btn" data-page="${totalPages}">${totalPages}</button>`;
+        html += `<button class="pagination-btn" data-page="${currentPage + 1}" ${currentPage === totalPages ? 'disabled' : ''}>&raquo;</button>`;
         paginationEl.innerHTML = html;
 
         paginationEl.querySelectorAll('.pagination-btn').forEach(btn => {
           btn.addEventListener('click', () => {
             const page = parseInt(btn.dataset.page);
-            if (page >= 1 && page <= totalPages) {
-              currentPage = page;
-              renderTable();
-            }
+            if (page >= 1 && page <= totalPages) { currentPage = page; renderTable(); }
           });
         });
       }
 
-      // ── Detail Panel ───────────────────────
+      // ── Detail Panel ─────────────────────────────────────
 
       function openDetail(id) {
         const lead = allLeads.find(l => l.id === id);
         if (!lead) return;
         selectedLeadId = id;
 
-        document.getElementById('detail-name').textContent = lead.name;
+        document.getElementById('detail-name').textContent = lead.name || 'Unknown';
+        document.getElementById('detail-subtitle').textContent =
+          new Date(lead.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
         document.getElementById('detail-status-select').value = lead.status;
 
         const sourceCfg = ADMIN_CONFIG.LEAD_SOURCES.find(s => s.value === lead.source) || {};
-        const date = new Date(lead.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+        const interest = lead.materialsInterest
+          ? (Array.isArray(lead.materialsInterest) ? lead.materialsInterest.join(', ') : lead.materialsInterest)
+          : (lead.interest || '—');
 
         let notesHtml = '';
         if (lead.notes && lead.notes.length > 0) {
@@ -472,24 +924,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="note-item">
               <div class="note-text">${escHtml(n.text)}</div>
               <div class="note-date">${new Date(n.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</div>
-            </div>
-          `).join('');
+            </div>`).join('');
         } else {
-          notesHtml = '<p style="color:var(--color-text-muted);font-size:13px;">No notes yet.</p>';
+          notesHtml = '<p style="color:var(--a-text-muted);font-size:13px;margin:0;">No notes yet.</p>';
+        }
+
+        let messageHtml = '';
+        if (lead.message) {
+          messageHtml = `<div class="detail-field">
+            <div class="detail-label">Message</div>
+            <div class="detail-value" style="font-size:13px;line-height:1.5;color:var(--a-text-secondary);">${escHtml(lead.message)}</div>
+          </div>`;
         }
 
         document.getElementById('detail-body').innerHTML = `
           <div class="detail-field">
             <div class="detail-label">Email</div>
-            <div class="detail-value"><a href="mailto:${escHtml(lead.email)}">${escHtml(lead.email)}</a></div>
+            <div class="detail-value">${lead.email ? `<a href="mailto:${escHtml(lead.email)}" style="color:var(--a-gold);text-decoration:none;">${escHtml(lead.email)}</a>` : '—'}</div>
           </div>
           <div class="detail-field">
             <div class="detail-label">Phone</div>
-            <div class="detail-value">${lead.phone ? `<a href="tel:${escHtml(lead.phone)}">${escHtml(lead.phone)}</a>` : '—'}</div>
+            <div class="detail-value">${lead.phone ? `<a href="tel:${escHtml(lead.phone)}" style="color:var(--a-gold);text-decoration:none;">${escHtml(lead.phone)}</a>` : '—'}</div>
           </div>
+          ${lead.company ? `<div class="detail-field"><div class="detail-label">Company</div><div class="detail-value">${escHtml(lead.company)}</div></div>` : ''}
           <div class="detail-field">
             <div class="detail-label">Materials Interest</div>
-            <div class="detail-value">${escHtml(lead.materialsInterest ? (Array.isArray(lead.materialsInterest) ? lead.materialsInterest.join(', ') : lead.materialsInterest) : (lead.interest || '—'))}</div>
+            <div class="detail-value">${escHtml(interest)}</div>
           </div>
           <div class="detail-field">
             <div class="detail-label">Project Type</div>
@@ -499,23 +959,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="detail-label">Source</div>
             <div class="detail-value">${escHtml(sourceCfg.label || lead.source)}</div>
           </div>
-          <div class="detail-field">
-            <div class="detail-label">Created</div>
-            <div class="detail-value">${date}</div>
-          </div>
+          ${messageHtml}
           <div class="detail-field">
             <div class="detail-label">Notes</div>
             <div class="notes-list">${notesHtml}</div>
             <div class="add-note-form">
-              <textarea id="new-note-text" placeholder="Add a note..." rows="2"></textarea>
+              <textarea id="new-note-text" placeholder="Add a note…" rows="2"></textarea>
               <button class="btn btn--small btn--gold" id="add-note-btn">Add</button>
             </div>
-          </div>
-        `;
+          </div>`;
 
-        // Add note handler
         document.getElementById('add-note-btn').addEventListener('click', addNote);
-
         document.getElementById('detail-overlay').classList.add('open');
       }
 
@@ -527,10 +981,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       async function addNote() {
         const text = document.getElementById('new-note-text').value.trim();
         if (!text || !selectedLeadId) return;
-
         const lead = allLeads.find(l => l.id === selectedLeadId);
         if (!lead) return;
-
         lead.notes = lead.notes || [];
         lead.notes.push({ text, date: new Date().toISOString() });
         await AdminData.updateLead(selectedLeadId, { notes: lead.notes });
@@ -547,7 +999,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         showToast('Status updated.');
       }
 
-      // ── Add Lead Modal ─────────────────────
+      // ── Add Lead Modal ────────────────────────────────────
 
       function openAddModal() {
         document.getElementById('add-lead-modal').classList.add('open');
@@ -561,15 +1013,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       async function submitNewLead() {
         const name = document.getElementById('lead-name').value.trim();
         const email = document.getElementById('lead-email').value.trim();
-        if (!name || !email) {
-          showToast('Name and email are required.', 'error');
-          return;
-        }
-
+        if (!name || !email) { showToast('Name and email are required.', 'error'); return; }
         const noteText = document.getElementById('lead-note').value.trim();
         const lead = {
-          name,
-          email,
+          name, email,
           phone: document.getElementById('lead-phone').value.trim(),
           materialsInterest: [document.getElementById('lead-interest').value].filter(Boolean),
           projectType: document.getElementById('lead-project').value,
@@ -577,31 +1024,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           status: 'new',
           notes: noteText ? [{ text: noteText, date: new Date().toISOString() }] : [],
         };
-
         await AdminData.saveLead(lead);
         closeAddModal();
         await loadLeads();
         showToast('Lead added successfully.');
       }
 
-      // ── Export CSV ─────────────────────────
+      // ── Export CSV ───────────────────────────────────────
 
       function exportCSV() {
-        if (filteredLeads.length === 0) {
-          showToast('No leads to export.', 'warning');
-          return;
-        }
-
-        const headers = ['Name', 'Email', 'Phone', 'Materials Interest', 'Project Type', 'Source', 'Status', 'Created'];
+        if (filteredLeads.length === 0) { showToast('No leads to export.', 'warning'); return; }
+        const headers = ['Name', 'Email', 'Phone', 'Company', 'Materials Interest', 'Project Type', 'Source', 'Status', 'Message', 'Created'];
         const rows = filteredLeads.map(l => [
-          l.name || '', l.email || '', l.phone || '', l.materialsInterest ? (Array.isArray(l.materialsInterest) ? l.materialsInterest.join('; ') : l.materialsInterest) : (l.interest || ''), l.projectType || '',
-          l.source, l.status, new Date(l.createdAt).toLocaleDateString()
+          l.name || '', l.email || '', l.phone || '', l.company || '',
+          l.materialsInterest ? (Array.isArray(l.materialsInterest) ? l.materialsInterest.join('; ') : l.materialsInterest) : (l.interest || ''),
+          l.projectType || '', l.source, l.status, l.message || '',
+          new Date(l.createdAt).toLocaleDateString()
         ]);
-
         const csv = [headers, ...rows].map(row =>
           row.map(cell => '"' + String(cell).replace(/"/g, '""') + '"').join(',')
         ).join('\n');
-
         const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
@@ -612,7 +1054,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         showToast('CSV exported.');
       }
 
-      // ── Utilities ──────────────────────────
+      // ── Utilities ────────────────────────────────────────
 
       function escHtml(str) {
         const div = document.createElement('div');
@@ -622,10 +1064,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       function debounce(fn, ms) {
         let timer;
-        return function (...args) {
-          clearTimeout(timer);
-          timer = setTimeout(() => fn.apply(this, args), ms);
-        };
+        return function (...args) { clearTimeout(timer); timer = setTimeout(() => fn.apply(this, args), ms); };
       }
 
       function showToast(message, type = 'success') {

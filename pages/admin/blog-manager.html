@@ -107,10 +107,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- ═══ EDITOR VIEW ═══ -->
     <div class="editor-section" id="section-editor">
 
-      <!-- AI Ideas Generator -->
-      <div style="margin-bottom:32px;">
-        <button class="btn btn--gold" id="generate-ideas-btn">&#9733; Generate 3 AI Ideas</button>
-        <span style="font-size:13px;color:var(--color-text-muted);margin-left:12px;">or write manually below</span>
+      <!-- AI Quick Generate -->
+      <div style="background:rgba(196,163,90,0.07);border:1px solid rgba(196,163,90,0.2);border-radius:8px;padding:20px 24px;margin-bottom:28px;">
+        <div style="font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent-gold);margin-bottom:12px;">AI Content Generator</div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;">
+          <div style="flex:1;min-width:220px;">
+            <label style="font-size:12px;color:var(--color-text-muted);display:block;margin-bottom:6px;">Topic / Subject</label>
+            <input type="text" id="quick-topic" placeholder="e.g. How to choose the right quartz countertop" style="width:100%;padding:10px 14px;background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.1);border-radius:4px;color:#ebebeb;font-family:var(--font-body);font-size:14px;box-sizing:border-box;">
+          </div>
+          <div style="min-width:160px;">
+            <label style="font-size:12px;color:var(--color-text-muted);display:block;margin-bottom:6px;">Category</label>
+            <select id="quick-category" style="width:100%;padding:10px 14px;background:#1a1a1f;border:1px solid rgba(255,255,255,0.1);border-radius:4px;color:#ebebeb;font-family:var(--font-body);font-size:14px;">
+              <option value="design-trends">Design Trends</option>
+              <option value="stone-care">Stone Care</option>
+              <option value="industry-news">Industry News</option>
+              <option value="project-spotlights">Project Spotlights</option>
+              <option value="hanstone-updates">Hanstone Updates</option>
+            </select>
+          </div>
+          <button class="btn btn--gold" id="quick-generate-btn" style="white-space:nowrap;padding:10px 20px;">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width:15px;height:15px;display:inline;vertical-align:-3px;margin-right:6px;"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z"/></svg>
+            Generate Post
+          </button>
+        </div>
+        <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;gap:12px;">
+          <span style="font-size:12px;color:var(--color-text-muted);">Or generate ideas first:</span>
+          <button class="btn btn--outline btn--small" id="generate-ideas-btn">Generate 3 AI Ideas</button>
+        </div>
       </div>
 
       <!-- Pipeline Progress (hidden by default) -->
@@ -341,6 +364,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       });
 
       // ── AI Ideas ───────────────────────────
+      document.getElementById('quick-generate-btn').addEventListener('click', quickGenerate);
       document.getElementById('generate-ideas-btn').addEventListener('click', generateIdeas);
       document.getElementById('regenerate-ideas-btn').addEventListener('click', generateIdeas);
       document.getElementById('dismiss-ideas').addEventListener('click', () => {
@@ -547,6 +571,90 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         document.getElementById('preview-seo-desc').textContent = 'Your meta description will appear here...';
         updateCharCount('seo-title-count', 0, 60);
         updateCharCount('seo-desc-count', 0, 155);
+      }
+
+      // ── Quick Generate (topic → full post) ──
+
+      async function quickGenerate() {
+        const topic = document.getElementById('quick-topic').value.trim();
+        if (!topic) {
+          showToast('Enter a topic first.', 'error');
+          document.getElementById('quick-topic').focus();
+          return;
+        }
+
+        const category = document.getElementById('quick-category').value;
+        const btn = document.getElementById('quick-generate-btn');
+        btn.disabled = true;
+        btn.innerHTML = '<span class="spinner"></span> Generating…';
+
+        // Show pipeline
+        const pipeline = document.getElementById('pipeline-progress');
+        pipeline.style.display = 'block';
+        const steps = pipeline.querySelectorAll('.pipeline-step');
+        steps.forEach(s => { s.classList.remove('active', 'done'); });
+        steps[0].classList.add('active');
+
+        // Simulate step progression
+        let stepIdx = 0;
+        const stepTimer = setInterval(() => {
+          if (stepIdx < steps.length - 1) {
+            steps[stepIdx].classList.remove('active');
+            steps[stepIdx].classList.add('done');
+            stepIdx++;
+            steps[stepIdx].classList.add('active');
+          }
+        }, 8000);
+
+        const result = await AdminData.generateBlogContent(topic, '', category);
+
+        clearInterval(stepTimer);
+        steps.forEach(s => { s.classList.remove('active'); s.classList.add('done'); });
+
+        btn.disabled = false;
+        btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width:15px;height:15px;display:inline;vertical-align:-3px;margin-right:6px;"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z"/></svg> Generate Post';
+
+        if (!result) {
+          showToast('Generation failed. Check n8n webhook.', 'error');
+          setTimeout(() => { pipeline.style.display = 'none'; }, 2000);
+          return;
+        }
+
+        // Populate editor
+        document.getElementById('post-title').value = topic;
+        document.getElementById('post-title').dispatchEvent(new Event('input'));
+        document.getElementById('post-content').value = result.content || '';
+        document.getElementById('post-category').value = result.category || category;
+
+        if (result.tags && Array.isArray(result.tags)) {
+          tags = result.tags;
+          renderTags();
+        }
+
+        if (result.featuredImage) {
+          document.getElementById('post-image').value = result.featuredImage;
+          document.getElementById('post-image').dispatchEvent(new Event('input'));
+        }
+
+        if (result.seo) {
+          document.getElementById('seo-title').value = result.seo.titleTag || '';
+          document.getElementById('seo-description').value = result.seo.metaDescription || '';
+          document.getElementById('seo-og-title').value = result.seo.ogTitle || '';
+          document.getElementById('seo-og-desc').value = result.seo.ogDescription || '';
+          document.getElementById('seo-alt').value = result.seo.altText || '';
+          const slug = AdminData.slugify(topic);
+          document.getElementById('seo-canonical').value = result.seo.canonicalUrl || '/pages/blog-post.html?post=' + slug;
+          document.getElementById('preview-seo-title').textContent = result.seo.titleTag || '';
+          document.getElementById('preview-seo-url').textContent = 'thestonesurfaces.com/pages/blog-post.html?post=' + slug;
+          document.getElementById('preview-seo-desc').textContent = result.seo.metaDescription || '';
+          updateCharCount('seo-title-count', (result.seo.titleTag || '').length, 60);
+          updateCharCount('seo-desc-count', (result.seo.metaDescription || '').length, 155);
+        } else {
+          await autoGenerateSEO();
+        }
+
+        showToast('Post generated! Review and edit before publishing.');
+        setTimeout(() => { pipeline.style.display = 'none'; }, 3000);
       }
 
       // ── AI Ideas ───────────────────────────
