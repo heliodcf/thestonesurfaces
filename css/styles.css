@@ -2575,10 +2575,15 @@ p {
 
   .header-right .btn--primary,
   .header-right .btn--lucciare {
-    font-size: 10px;
-    padding: 6px 10px;
+    font-size: 9px !important;
+    padding: 5px 8px !important;
     white-space: nowrap;
-    letter-spacing: 0;
+    letter-spacing: 0 !important;
+    min-height: 0 !important;
+    min-width: 0 !important;
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .hero-content {
