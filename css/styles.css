@@ -2573,15 +2573,14 @@ p {
   .user-toggle { display: none; }
   .nav-toggle { display: flex; }
 
-  .header-right .btn--primary,
-  .header-right .btn--lucciare {
+  .header-right .btn {
     font-size: 9px !important;
     padding: 5px 8px !important;
     white-space: nowrap;
     letter-spacing: 0 !important;
     min-height: 0 !important;
     min-width: 0 !important;
-    max-width: 120px;
+    max-width: 110px;
     overflow: hidden;
     text-overflow: ellipsis;
   }
@@ -2613,8 +2612,7 @@ p {
     --section-padding-desktop: 64px;
   }
 
-  .header-right .btn--primary,
-  .header-right .btn--lucciare {
+  .header-right .btn {
     display: none !important;
   }
 
