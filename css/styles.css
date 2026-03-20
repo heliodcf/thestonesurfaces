@@ -2770,8 +2770,9 @@ p {
     right: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    border-radius: 0;
+    height: 85dvh;
+    max-height: calc(100vh - 60px);
+    border-radius: 16px 16px 0 0;
   }
 
   .chat-widget-btn {
