@@ -2602,8 +2602,21 @@ p {
     height: 350px;
   }
 
-  .hero .hanstone-badge { display: none; }
-  .hero-badges { display: none; }
+  .hero .hanstone-badge { display: block; }
+  .hero-badges {
+    display: flex;
+    flex-direction: row;
+    top: auto;
+    bottom: 100px;
+    right: 16px;
+    left: 16px;
+    gap: 8px;
+    justify-content: center;
+  }
+  .hero-badges img {
+    width: 80px !important;
+    height: auto;
+  }
 }
 
 /* --- Responsive: Mobile --- */
@@ -2613,7 +2626,15 @@ p {
   }
 
   .header-right .btn {
-    display: none !important;
+    font-size: 8px !important;
+    padding: 4px 8px !important;
+    min-height: 0 !important;
+    min-width: 0 !important;
+    max-width: 80px;
+    letter-spacing: 0 !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   /* Mobile: hide video, show fallback image to save bandwidth */
