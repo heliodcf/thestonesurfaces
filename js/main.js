@@ -140,6 +140,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // Mobile keyboard: adjust chat panel height when virtual keyboard opens/closes
+  if (chatPanel && window.visualViewport) {
+    const adjustChatForKeyboard = () => {
+      if (!chatPanel.classList.contains('active')) return;
+      const viewportHeight = window.visualViewport.height;
+      const windowHeight = window.innerHeight;
+      const keyboardHeight = windowHeight - viewportHeight;
+      if (keyboardHeight > 100) {
+        // Keyboard is open
+        chatPanel.style.height = (viewportHeight - 20) + 'px';
+        chatPanel.style.maxHeight = (viewportHeight - 20) + 'px';
+        chatPanel.style.bottom = '0';
+      } else {
+        // Keyboard is closed
+        chatPanel.style.height = '';
+        chatPanel.style.maxHeight = '';
+        chatPanel.style.bottom = '';
+      }
+    };
+    window.visualViewport.addEventListener('resize', adjustChatForKeyboard);
+    window.visualViewport.addEventListener('scroll', adjustChatForKeyboard);
+  }
+
   // Quick action buttons
   document.querySelectorAll('.quick-actions button').forEach(btn => {
     btn.addEventListener('click', () => {
