@@ -1812,8 +1812,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             padding: 0 var(--padding-mobile);
           }
           .nc-grid {
-            grid-template-columns: 1fr;
-            gap: 16px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
           }
           .nc-search input {
             padding: 14px 20px 14px 46px;
@@ -1825,7 +1825,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             gap: 12px;
           }
           .nc-card-body {
-            padding: 14px 16px 16px;
+            padding: 10px 12px 14px;
+          }
+          .nc-card-name {
+            font-size: 15px;
+          }
+          .nc-card-sku {
+            font-size: 10px;
+          }
+          .nc-card-category {
+            font-size: 9px;
+          }
+          .nc-card-tags {
+            display: none;
+          }
+          .nc-card-footer {
+            flex-direction: column;
+            gap: 4px;
+          }
+          .nc-card-stock {
+            font-size: 10px;
           }
         }
         @media (prefers-reduced-motion: reduce) {
